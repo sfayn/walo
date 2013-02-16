@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDateTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDateEmpty}" rendered="#{dateController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dateController.items.rowCount > 0}">
+                    <h:outputText value="#{dateController.pagination.pageFirstItem + 1}..#{dateController.pagination.pageLastItem + 1}/#{dateController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dateController.previous}" value="#{bundle.Previous} #{dateController.pagination.pageSize}" rendered="#{dateController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dateController.next}" value="#{bundle.Next} #{dateController.pagination.pageSize}" rendered="#{dateController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dateController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateG}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateG}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateH}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateH}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateHAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateHAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateHFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateHFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateGAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateGAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_dateGFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateGFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_heureAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.heureAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_heureFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.heureFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_minFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_minAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDateTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dateController.prepareView}" value="#{bundle.ListDateViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dateController.prepareEdit}" value="#{bundle.ListDateEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dateController.destroy}" value="#{bundle.ListDateDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dateController.prepareCreate}" value="#{bundle.ListDateCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDateIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDateTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDateLabel_dateG}"/>
+                    <h:outputText value="#{dateController.selected.dateG}" title="#{bundle.ViewDateTitle_dateG}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_dateH}"/>
+                    <h:outputText value="#{dateController.selected.dateH}" title="#{bundle.ViewDateTitle_dateH}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_dateHAr}"/>
+                    <h:outputText value="#{dateController.selected.dateHAr}" title="#{bundle.ViewDateTitle_dateHAr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_dateHFr}"/>
+                    <h:outputText value="#{dateController.selected.dateHFr}" title="#{bundle.ViewDateTitle_dateHFr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_dateGAr}"/>
+                    <h:outputText value="#{dateController.selected.dateGAr}" title="#{bundle.ViewDateTitle_dateGAr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_dateGFr}"/>
+                    <h:outputText value="#{dateController.selected.dateGFr}" title="#{bundle.ViewDateTitle_dateGFr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_heureAr}"/>
+                    <h:outputText value="#{dateController.selected.heureAr}" title="#{bundle.ViewDateTitle_heureAr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_heureFr}"/>
+                    <h:outputText value="#{dateController.selected.heureFr}" title="#{bundle.ViewDateTitle_heureFr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_minFr}"/>
+                    <h:outputText value="#{dateController.selected.minFr}" title="#{bundle.ViewDateTitle_minFr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_minAr}"/>
+                    <h:outputText value="#{dateController.selected.minAr}" title="#{bundle.ViewDateTitle_minAr}"/>
+                    <h:outputText value="#{bundle.ViewDateLabel_id}"/>
+                    <h:outputText value="#{dateController.selected.id}" title="#{bundle.ViewDateTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dateController.destroyAndView}" value="#{bundle.ViewDateDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDateEditLink}"/>
+                <br />
+                <h:commandLink action="#{dateController.prepareCreate}" value="#{bundle.ViewDateCreateLink}" />
+                <br />
+                <h:commandLink action="#{dateController.prepareList}" value="#{bundle.ViewDateShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDateIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

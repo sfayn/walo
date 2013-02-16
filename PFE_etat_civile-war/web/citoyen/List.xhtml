@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCitoyenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCitoyenEmpty}" rendered="#{citoyenController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{citoyenController.items.rowCount > 0}">
+                    <h:outputText value="#{citoyenController.pagination.pageFirstItem + 1}..#{citoyenController.pagination.pageLastItem + 1}/#{citoyenController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{citoyenController.previous}" value="#{bundle.Previous} #{citoyenController.pagination.pageSize}" rendered="#{citoyenController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{citoyenController.next}" value="#{bundle.Next} #{citoyenController.pagination.pageSize}" rendered="#{citoyenController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{citoyenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_nomAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_nomFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_prenomAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_prenomFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_professionAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_professionFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_numActe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numActe}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_addresseAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addresseAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_addresseFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addresseFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_ville}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ville}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_pere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pere}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_mere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mere}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_nationalite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nationalite}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_sex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sex}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCitoyenTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{citoyenController.prepareView}" value="#{bundle.ListCitoyenViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{citoyenController.prepareEdit}" value="#{bundle.ListCitoyenEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{citoyenController.destroy}" value="#{bundle.ListCitoyenDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{citoyenController.prepareCreate}" value="#{bundle.ListCitoyenCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCitoyenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

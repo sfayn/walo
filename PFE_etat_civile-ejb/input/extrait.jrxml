@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport name="report_name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="50"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="addresseAr" class="java.lang.String">
+		<fieldDescription><![CDATA[addresseAr]]></fieldDescription>
+	</field>
+	<field name="addresseFr" class="java.lang.String">
+		<fieldDescription><![CDATA[addresseFr]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="mere" class="bean.Citoyen">
+		<fieldDescription><![CDATA[mere]]></fieldDescription>
+	</field>
+	<field name="nationalite" class="bean.Nationalite">
+		<fieldDescription><![CDATA[nationalite]]></fieldDescription>
+	</field>
+	<field name="nomAr" class="java.lang.String">
+		<fieldDescription><![CDATA[nomAr]]></fieldDescription>
+	</field>
+	<field name="nomFr" class="java.lang.String">
+		<fieldDescription><![CDATA[nomFr]]></fieldDescription>
+	</field>
+	<field name="numActe" class="java.lang.Integer">
+		<fieldDescription><![CDATA[numActe]]></fieldDescription>
+	</field>
+	<field name="pere" class="bean.Citoyen">
+		<fieldDescription><![CDATA[pere]]></fieldDescription>
+	</field>
+	<field name="prenomAr" class="java.lang.String">
+		<fieldDescription><![CDATA[prenomAr]]></fieldDescription>
+	</field>
+	<field name="prenomFr" class="java.lang.String">
+		<fieldDescription><![CDATA[prenomFr]]></fieldDescription>
+	</field>
+	<field name="professionAr" class="java.lang.String">
+		<fieldDescription><![CDATA[professionAr]]></fieldDescription>
+	</field>
+	<field name="professionFr" class="java.lang.String">
+		<fieldDescription><![CDATA[professionFr]]></fieldDescription>
+	</field>
+	<field name="sex" class="bean.Sex">
+		<fieldDescription><![CDATA[sex]]></fieldDescription>
+	</field>
+	<background>
+		<band />
+	</background>
+	<title>
+		<band height="140">
+			<staticText>
+				<reportElement x="0" y="19" width="148" height="51"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ministère de l'Intérieur
+Préfecture (ou Préfecture)
+................................
+Commune ...................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="148" height="19"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ROYAUME DU MAROC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="30" width="156" height="19"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bureau de l'Etat civil
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="54" width="156" height="65"/>
+				<textElement/>
+				<text><![CDATA[d...........................................
+Extrait des registres du bureau
+de l'Etat Civil d...................
+..................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="70" width="148" height="24"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Acte N°: ....................."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="106" width="32" height="13"/>
+				<textElement/>
+				<text><![CDATA[Année]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="94" width="100" height="35"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Hégirienne
+Grégorienne]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35">
+			<staticText>
+				<reportElement x="100" y="0" width="201" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[EXTRAIT D'ACTE DE NAISSANCE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="220">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Prénom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nom de Famille:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Lieu de Naissance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Né(e) le:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Correspondant au:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nationnalité:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fils ou Fille de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Et de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="148" height="20"/>
+				<textElement/>
+				<text><![CDATA[Mention marginale (de décès):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="266" height="20"/>
+				<textElement/>
+				<text><![CDATA[Extrait certifié conforme aux registres de l'Etat-civil par nous]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="200" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Officier de l'Etat Civil]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="148" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prenomFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nomFr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="148" y="40" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ville]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="60" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="80" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[date]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31">
+			<staticText>
+				<reportElement x="190" y="1" width="191" height="30"/>
+				<textElement/>
+				<text><![CDATA[A:...................... Le:......................14
+Correspondant au:..............................]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="201" y="1" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{addresseFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("Y m d").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="60">
+			<staticText>
+				<reportElement x="0" y="0" width="132" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sceau du Bureau de l'Etat Civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="0" width="117" height="32"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[L'Officier de l'état Civil
+Signé:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

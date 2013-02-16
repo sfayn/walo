@@ -1,0 +1,197 @@
+<<<<<<< OURS
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCitoyenTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <br />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form  >
+                <b:gridRow styleClass="show-grid" fluid="true">
+                    <b:gridRow styleClass="show-grid" fluid="true">
+                        <b:gridColumn span="5">
+                            <br />
+                            <br />
+                            <br />
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputLabel value="Nom" for="nomFr" />
+                                <h:inputText id="nomFr" value="#{citoyenController.selected.nomFr}" title="#{bundle.CreateCitoyenTitle_nomFr}" />
+                                <h:outputLabel value="Prenom" for="prenomFr" />
+                                <h:inputText id="prenomFr" value="#{citoyenController.selected.prenomFr}" title="#{bundle.CreateCitoyenTitle_prenomFr}" />
+                                <h:outputLabel value="Profession" for="professionFr" />
+                                <h:inputText id="professionFr" value="#{citoyenController.selected.professionFr}" title="#{bundle.CreateCitoyenTitle_professionFr}" />
+                                <h:outputLabel value="Adresse" for="addresseFr" />
+                                <h:inputText id="addresseFr" value="#{citoyenController.selected.addresseFr}" title="#{bundle.CreateCitoyenTitle_addresseFr}" />
+                                <h:outputLabel value="Lieu de naissance" for="ville" />
+
+<!--                                <b:input id="ville" value="#{citoyenController.selected.ville}" title="#{bundle.CreateCitoyenTitle_ville}">
+    <b:autocomplete suggestions="#{villeController.list}"/>
+    <f:facet name="append">
+        <h:panelGroup>
+            <b:commandButton value="+"/>
+        </h:panelGroup>
+    </f:facet>
+</b:input>-->       
+                                <rich:autocomplete mode="client" autocompleteList="#{villeController.list}" var="item" layout="div" >
+                                                <h:inputHidden id="ville" value="#{citoyenController.selected.ville}"/>
+                                                <b>#{item.libelleFr}</b>
+                                            </rich:autocomplete>
+
+<!--                                <rich:autocomplete id="ville" value="#{citoyenController.selected.ville}" mode="client" minChars="0" autofill="false" autocompleteList="#{villeController.list}" var="ville"/>-->
+
+
+
+<!--                               <h:selectOneMenu id="ville" value="#{citoyenController.selected.ville}" title="#{bundle.CreateCitoyenTitle_ville}" >
+       <f:selectItems value="#{villeController.itemsAvailableSelectOne}"/>
+    </h:selectOneMenu>                                -->
+                            </h:panelGrid>
+                        </b:gridColumn>
+                        <b:gridColumn span="2" style="text-align: center;">
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_numActe}" for="numActe" />
+                                <h:inputText class="input-small" id="numActe" value="#{citoyenController.selected.numActe}" title="#{bundle.CreateCitoyenTitle_numActe}" />
+                            </h:panelGrid>
+                        </b:gridColumn>
+                        <b:gridColumn span="5" style="direction: rtl;">
+                            <br />
+                            <br />
+                            <br />
+                            <h:panelGrid columns="2" dir="rtl">
+                                <h:outputLabel value="الإسم العائلي" for="nomAr" />
+                                <h:inputText id="nomAr" value="#{citoyenController.selected.nomAr}" title="#{bundle.CreateCitoyenTitle_nomAr}" />
+                                <h:outputLabel value="الإسم الشخصي" for="prenomAr" />
+                                <h:inputText id="prenomAr" value="#{citoyenController.selected.prenomAr}" title="#{bundle.CreateCitoyenTitle_prenomAr}" />
+                                <h:outputLabel value="حرفته(ها)" for="professionAr" />
+                                <h:inputText id="professionAr" value="#{citoyenController.selected.professionAr}" title="#{bundle.CreateCitoyenTitle_professionAr}" />                 
+                                <h:outputLabel value="العنوان" for="addresseAr" />
+                                <h:inputText id="addresseAr" value="#{citoyenController.selected.addresseAr}" title="#{bundle.CreateCitoyenTitle_addresseAr}" />
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_pere}" for="pere" />
+                                <h:selectOneMenu id="pere" value="#{citoyenController.selected.pere}" title="#{bundle.CreateCitoyenTitle_pere}" >
+                                    <f:selectItems value="#{citoyenController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_mere}" for="mere" />
+                                <h:selectOneMenu id="mere" value="#{citoyenController.selected.mere}" title="#{bundle.CreateCitoyenTitle_mere}" >
+                                    <f:selectItems value="#{citoyenController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_nationalite}" for="nationalite" />
+                                <h:selectOneMenu id="nationalite" value="#{citoyenController.selected.nationalite}" title="#{bundle.CreateCitoyenTitle_nationalite}" >
+                                    <f:selectItems value="#{nationaliteController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_sex}" for="sex" />
+                                <h:selectOneMenu id="sex" value="#{citoyenController.selected.sex}" title="#{bundle.CreateCitoyenTitle_sex}" >
+                                    <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="#{bundle.CreateCitoyenLabel_date}" for="date" />
+                                <h:selectOneMenu id="date" value="#{citoyenController.selected.date}" title="#{bundle.CreateCitoyenTitle_date}" >
+                                    <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </b:gridColumn>
+                    </b:gridRow>
+                </b:gridRow>
+
+
+                <br />
+                <h:commandLink action="#{citoyenController.create}" value="#{bundle.CreateCitoyenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{citoyenController.prepareList}" value="#{bundle.CreateCitoyenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCitoyenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCitoyenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_nomAr}" for="nomAr" />
+                    <h:inputText id="nomAr" value="#{citoyenController.selected.nomAr}" title="#{bundle.CreateCitoyenTitle_nomAr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_nomFr}" for="nomFr" />
+                    <h:inputText id="nomFr" value="#{citoyenController.selected.nomFr}" title="#{bundle.CreateCitoyenTitle_nomFr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_prenomAr}" for="prenomAr" />
+                    <h:inputText id="prenomAr" value="#{citoyenController.selected.prenomAr}" title="#{bundle.CreateCitoyenTitle_prenomAr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_prenomFr}" for="prenomFr" />
+                    <h:inputText id="prenomFr" value="#{citoyenController.selected.prenomFr}" title="#{bundle.CreateCitoyenTitle_prenomFr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_professionAr}" for="professionAr" />
+                    <h:inputText id="professionAr" value="#{citoyenController.selected.professionAr}" title="#{bundle.CreateCitoyenTitle_professionAr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_professionFr}" for="professionFr" />
+                    <h:inputText id="professionFr" value="#{citoyenController.selected.professionFr}" title="#{bundle.CreateCitoyenTitle_professionFr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_numActe}" for="numActe" />
+                    <h:inputText id="numActe" value="#{citoyenController.selected.numActe}" title="#{bundle.CreateCitoyenTitle_numActe}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_addresseAr}" for="addresseAr" />
+                    <h:inputText id="addresseAr" value="#{citoyenController.selected.addresseAr}" title="#{bundle.CreateCitoyenTitle_addresseAr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_addresseFr}" for="addresseFr" />
+                    <h:inputText id="addresseFr" value="#{citoyenController.selected.addresseFr}" title="#{bundle.CreateCitoyenTitle_addresseFr}" />
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_ville}" for="ville" />
+                    <h:selectOneMenu id="ville" value="#{citoyenController.selected.ville}" title="#{bundle.CreateCitoyenTitle_ville}" >
+                        <f:selectItems value="#{villeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_pere}" for="pere" />
+                    <h:selectOneMenu id="pere" value="#{citoyenController.selected.pere}" title="#{bundle.CreateCitoyenTitle_pere}" >
+                        <f:selectItems value="#{citoyenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_mere}" for="mere" />
+                    <h:selectOneMenu id="mere" value="#{citoyenController.selected.mere}" title="#{bundle.CreateCitoyenTitle_mere}" >
+                        <f:selectItems value="#{citoyenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_nationalite}" for="nationalite" />
+                    <h:selectOneMenu id="nationalite" value="#{citoyenController.selected.nationalite}" title="#{bundle.CreateCitoyenTitle_nationalite}" >
+                        <f:selectItems value="#{nationaliteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_sex}" for="sex" />
+                    <h:selectOneMenu id="sex" value="#{citoyenController.selected.sex}" title="#{bundle.CreateCitoyenTitle_sex}" >
+                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_date}" for="date" />
+                    <h:selectOneMenu id="date" value="#{citoyenController.selected.date}" title="#{bundle.CreateCitoyenTitle_date}" >
+                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitoyenLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{citoyenController.selected.id}" title="#{bundle.CreateCitoyenTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{citoyenController.create}" value="#{bundle.CreateCitoyenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{citoyenController.prepareList}" value="#{bundle.CreateCitoyenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCitoyenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+>>>>>>> THEIRS
