@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+    </h:head>
+
+    <h:body styleClass="span10 offset1">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand pull-right" href="./index.html">Etat civil</a>
+                    <div class="nav-collapse collapse pull-right">
+                        <ul class="nav">
+                            <li class="">
+                                <a href="#" style="font-size: 12pt; font-weight: bold;">الإحصائيات</a>
+                            </li>
+                            <li class="">
+                                <a href="#" style="font-size: 12pt; font-weight: bold;">أحكام الوفيات</a>
+                            </li>
+                            <li class="">
+                                <a href="#" style="font-size: 12pt; font-weight: bold;">الوفيات</a>
+                            </li>
+                            <li class="">
+                                <a href="#" style="font-size: 12pt; font-weight: bold;">نقل التصاريح</a>
+                            </li>
+                            <li class="">
+                                <a href="#" style="font-size: 12pt; font-weight: bold;">أحكام الولادات</a>
+                            </li>
+                            <li class="#{view.viewId == '/acte_Naissance/List.xhtml' ? 'active' : ''}">
+                                <a href="#{request.contextPath}/faces/acte_Naissance/List.xhtml" style="font-size: 12pt; font-weight: bold;">الولادات</a>
+                            </li>
+                            <li class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">
+                                <a href="#{request.contextPath}/faces/index.xhtml" style="font-size: 12pt; font-weight: bold;">الإستقبال</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <b:heroUnit>
+            <div dir="rtl" >
+             
+
+                    <h1 style=" font-size: 30pt; border-bottom: rgb(58,135,173) solid 1px;">
+                    <ui:insert name="title">Default Title</ui:insert>
+                </h1>
+          
+                <p>
+                    <ui:insert name="body" >Default Body</ui:insert>
+                </p>
+                
+            </div>
+        </b:heroUnit>
+    </h:body>
+
+</html>

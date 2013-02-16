@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditActe_NaissanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_numActe}" for="numActe" />
+                    <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.EditActe_NaissanceTitle_numActe}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nom_Ar}" for="nom_Ar" />
+                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.EditActe_NaissanceTitle_nom_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nom_Fr}" for="nom_Fr" />
+                    <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.EditActe_NaissanceTitle_nom_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenom_Ar}" for="prenom_Ar" />
+                    <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.EditActe_NaissanceTitle_prenom_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenom_Fr}" for="prenom_Fr" />
+                    <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.EditActe_NaissanceTitle_prenom_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_profession_Ar}" for="profession_Ar" />
+                    <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.EditActe_NaissanceTitle_profession_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_profession_Fr}" for="profession_Fr" />
+                    <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.EditActe_NaissanceTitle_profession_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_date_de_naiss}" for="date_de_naiss" />
+                    <h:selectOneMenu id="date_de_naiss" value="#{acte_NaissanceController.selected.date_de_naiss}" title="#{bundle.EditActe_NaissanceTitle_date_de_naiss}" >
+                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nomP_Ar}" for="nomP_Ar" />
+                    <h:inputText id="nomP_Ar" value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.EditActe_NaissanceTitle_nomP_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nomP_Fr}" for="nomP_Fr" />
+                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.EditActe_NaissanceTitle_nomP_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenomP_Ar}" for="prenomP_Ar" />
+                    <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.EditActe_NaissanceTitle_prenomP_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenomP_Fr}" for="prenomP_Fr" />
+                    <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.EditActe_NaissanceTitle_prenomP_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_professionP_Ar}" for="professionP_Ar" />
+                    <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.EditActe_NaissanceTitle_professionP_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_professionP_Fr}" for="professionP_Fr" />
+                    <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.EditActe_NaissanceTitle_professionP_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_lieu_de_NaissP_Fr}" for="lieu_de_NaissP_Fr" />
+                    <h:inputText id="lieu_de_NaissP_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.EditActe_NaissanceTitle_lieu_de_NaissP_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_lieu_de_NaissP_Ar}" for="lieu_de_NaissP_Ar" />
+                    <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.EditActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nationalteP_Fr}" for="nationalteP_Fr" />
+                    <h:inputText id="nationalteP_Fr" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.EditActe_NaissanceTitle_nationalteP_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nationalteP_Ar}" for="nationalteP_Ar" />
+                    <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.EditActe_NaissanceTitle_nationalteP_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_date_de_naissP}" for="date_de_naissP" />
+                    <h:selectOneMenu id="date_de_naissP" value="#{acte_NaissanceController.selected.date_de_naissP}" title="#{bundle.EditActe_NaissanceTitle_date_de_naissP}" >
+                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nomM_Ar}" for="nomM_Ar" />
+                    <h:inputText id="nomM_Ar" value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.EditActe_NaissanceTitle_nomM_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nomM_Fr}" for="nomM_Fr" />
+                    <h:inputText id="nomM_Fr" value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.EditActe_NaissanceTitle_nomM_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenomM_Ar}" for="prenomM_Ar" />
+                    <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.EditActe_NaissanceTitle_prenomM_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_prenomM_Fr}" for="prenomM_Fr" />
+                    <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.EditActe_NaissanceTitle_prenomM_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_professionM_Ar}" for="professionM_Ar" />
+                    <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.EditActe_NaissanceTitle_professionM_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_professionM_Fr}" for="professionM_Fr" />
+                    <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.EditActe_NaissanceTitle_professionM_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_lieu_de_NaissM_Fr}" for="lieu_de_NaissM_Fr" />
+                    <h:inputText id="lieu_de_NaissM_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.EditActe_NaissanceTitle_lieu_de_NaissM_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_lieu_de_NaissM_Ar}" for="lieu_de_NaissM_Ar" />
+                    <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.EditActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nationalteM_Fr}" for="nationalteM_Fr" />
+                    <h:inputText id="nationalteM_Fr" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.EditActe_NaissanceTitle_nationalteM_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_nationalteM_Ar}" for="nationalteM_Ar" />
+                    <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.EditActe_NaissanceTitle_nationalteM_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_date_de_naissM}" for="date_de_naissM" />
+                    <h:selectOneMenu id="date_de_naissM" value="#{acte_NaissanceController.selected.date_de_naissM}" title="#{bundle.EditActe_NaissanceTitle_date_de_naissM}" >
+                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_addressePa_Ar}" for="addressePa_Ar" />
+                    <h:inputText id="addressePa_Ar" value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.EditActe_NaissanceTitle_addressePa_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_addressePa_Fr}" for="addressePa_Fr" />
+                    <h:inputText id="addressePa_Fr" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.EditActe_NaissanceTitle_addressePa_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_sex}" for="sex" />
+                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.EditActe_NaissanceTitle_sex}" >
+                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditActe_NaissanceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{acte_NaissanceController.selected.id}" title="#{bundle.EditActe_NaissanceTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{acte_NaissanceController.update}" value="#{bundle.EditActe_NaissanceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditActe_NaissanceViewLink}"/>
+                <br />
+                <h:commandLink action="#{acte_NaissanceController.prepareList}" value="#{bundle.EditActe_NaissanceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditActe_NaissanceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

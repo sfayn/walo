@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewActe_NaissanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_numActe}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.ViewActe_NaissanceTitle_numActe}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_profession_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.ViewActe_NaissanceTitle_profession_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_profession_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.ViewActe_NaissanceTitle_profession_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naiss}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomP_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nomP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomP_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nomP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionP_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionP_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naissP}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissP}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissP}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomM_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nomM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomM_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nomM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionM_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionM_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.sex}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
+                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_id}"/>
+                    <h:outputText value="#{acte_NaissanceController.selected.id}" title="#{bundle.ViewActe_NaissanceTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{acte_NaissanceController.destroyAndView}" value="#{bundle.ViewActe_NaissanceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewActe_NaissanceEditLink}"/>
+                <br />
+                <h:commandLink action="#{acte_NaissanceController.prepareCreate}" value="#{bundle.ViewActe_NaissanceCreateLink}" />
+                <br />
+                <h:commandLink action="#{acte_NaissanceController.prepareList}" value="#{bundle.ViewActe_NaissanceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewActe_NaissanceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

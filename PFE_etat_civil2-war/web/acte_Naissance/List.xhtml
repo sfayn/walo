@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListActe_NaissanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListActe_NaissanceEmpty}" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{acte_NaissanceController.items.rowCount > 0}">
+                    <h:outputText value="#{acte_NaissanceController.pagination.pageFirstItem + 1}..#{acte_NaissanceController.pagination.pageLastItem + 1}/#{acte_NaissanceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{acte_NaissanceController.previous}" value="#{bundle.Previous} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{acte_NaissanceController.next}" value="#{bundle.Next} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{acte_NaissanceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_numActe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numActe}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nom_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nom_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenom_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenom_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_profession_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profession_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_profession_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profession_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_date_de_naiss}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date_de_naiss}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nomP_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomP_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nomP_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomP_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenomP_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomP_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenomP_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomP_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_professionP_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionP_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_professionP_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionP_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieu_de_NaissP_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieu_de_NaissP_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nationalteP_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nationalteP_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nationalteP_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nationalteP_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_date_de_naissP}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date_de_naissP}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nomM_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomM_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nomM_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomM_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenomM_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomM_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_prenomM_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenomM_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_professionM_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionM_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_professionM_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.professionM_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieu_de_NaissM_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieu_de_NaissM_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nationalteM_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nationalteM_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_nationalteM_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nationalteM_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_date_de_naissM}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date_de_naissM}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_addressePa_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addressePa_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_addressePa_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addressePa_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_sex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sex}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_NaissanceTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{acte_NaissanceController.prepareView}" value="#{bundle.ListActe_NaissanceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}" value="#{bundle.ListActe_NaissanceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acte_NaissanceController.destroy}" value="#{bundle.ListActe_NaissanceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{acte_NaissanceController.prepareCreate}" value="#{bundle.ListActe_NaissanceCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListActe_NaissanceIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
