@@ -40,7 +40,7 @@
                                 <a href="#" style="font-size: 12pt; font-weight: bold;">أحكام الولادات</a>
                             </li>
                             <li class="#{view.viewId == '/acte_Naissance/List.xhtml' ? 'active' : ''}">
-                                <a href="#{request.contextPath}/faces/acte_Naissance/List.xhtml" style="font-size: 12pt; font-weight: bold;">الولادات</a>
+                                <a href="#{request.contextPath}/faces/acte_Naissance/#{acte_NaissanceController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">الولادات</a>
                             </li>
                             <li class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">
                                 <a href="#{request.contextPath}/faces/index.xhtml" style="font-size: 12pt; font-weight: bold;">الإستقبال</a>

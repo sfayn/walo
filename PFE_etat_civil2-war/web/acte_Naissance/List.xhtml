@@ -21,7 +21,7 @@
                     <h:outputText value="#{acte_NaissanceController.pagination.pageFirstItem + 1}..#{acte_NaissanceController.pagination.pageLastItem + 1}/#{acte_NaissanceController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{acte_NaissanceController.previous}" value="#{bundle.Previous} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{acte_NaissanceController.next}" value="#{bundle.Next} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasNextPage}"/>&nbsp;
-                    <rich:dataTable styleClass="table" value="#{acte_NaissanceController.items}" var="item">
+                    <rich:dataTable styleClass="table table-bordered table-striped table-condensed" value="#{acte_NaissanceController.items}" var="item">
                         <rich:column>
                             <f:facet name="header">
                                 <h:outputText value="تاريخ الإزدياد"/>
