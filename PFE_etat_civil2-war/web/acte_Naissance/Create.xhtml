@@ -16,132 +16,138 @@
             </h:panelGroup>
             <h:form>
                 <b:gridRow styleClass="show-grid" fluid="true">
-                    <b:gridRow styleClass="show-grid" fluid="true">
-                        <b:gridColumn span="5">
-                            <h:panelGrid columns="2" dir="ltr">
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_numActe}" for="numActe" />
-                                <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" />
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nom_Fr}" for="nom_Fr" />
-                                <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" />
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenom_Fr}" for="prenom_Fr" />
-                                <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" />
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_profession_Fr}" for="profession_Fr" />
-                                <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
-
-                                <h:outputLabel value="lieu_de_Naiss" for="lieu_de_Naiss_Fr" />
-                                <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}" />
-
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_date_de_naiss}" for="date_de_naiss" />
-                                <h:selectOneMenu id="date_de_naiss" value="date naiss" title="#{bundle.CreateActe_NaissanceTitle_date_de_naiss}" >
-                                    <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_sex}" for="sex" />
-                                <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}" >
-                                    <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
-                                </h:selectOneMenu>
-                            </h:panelGrid>
-                        </b:gridColumn>
-
-                        <b:gridColumn span="5">
-                            <h:panelGrid columns="2" dir="rtl">
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nom_Ar}" for="nom_Ar" />
-                                <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}" />
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenom_Ar}" for="prenom_Ar" />
-                                <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" />
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_profession_Ar}" for="profession_Ar" />
-                                <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
-                                <h:outputLabel value="lieu_de_Naiss" for="lieu_de_Naiss_Ar" />
-                                <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}" />
-                            </h:panelGrid>
-                        </b:gridColumn>
-                    </b:gridRow>
-                    <fieldset><legend>infos:</legend>
+                    <fieldset><legend>معلومات عن المولود</legend>
                         <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
+                                <br/>
+                                <br/>
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nomP_Fr}" for="nomP_Fr" />
-                                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenomP_Fr}" for="prenomP_Fr" />
-                                    <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_professionP_Fr}" for="professionP_Fr" />
-                                    <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_lieu_de_NaissP_Fr}" for="lieu_de_NaissP_Fr" />
-                                    <h:inputText id="lieu_de_NaissP_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nationalteP_Fr}" for="nationalteP_Fr" />
-                                    <h:inputText id="nationalteP_Fr" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_date_de_naissP}" for="date_de_naissP" />
-                                    <h:selectOneMenu id="date_de_naissP" value="#{acte_NaissanceController.selected.date_de_naissP}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissP}" >
-                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
-
-
+                                    <h:outputLabel value="Prénom" for="prenom_Fr" />
+                                    <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" />
+                                    <h:outputLabel value="Nom" for="nom_Fr" />
+                                    <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" />
+                                    <h:outputLabel value="Prof." for="profession_Fr" />
+                                    <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
+                                    <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
+                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}" />
                                 </h:panelGrid>
                             </b:gridColumn>
+
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nomP_Ar}" for="nomP_Ar" />
-                                    <h:inputText id="nomP_Ar" value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenomP_Ar}" for="prenomP_Ar" />
-                                    <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_professionP_Ar}" for="professionP_Ar" />
-                                    <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_lieu_de_NaissP_Ar}" for="lieu_de_NaissP_Ar" />
-                                    <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nationalteP_Ar}" for="nationalteP_Ar" />
-                                    <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
+                                    <h:outputLabel value="رقم الرسم" for="numActe" />
+                                    <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" />
+                                    <h:outputLabel value="الإسم" for="prenom_Ar" />
+                                    <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" />
+                                    <h:outputLabel value="النسب" for="nom_Ar" />
+                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}" />
+                                    <h:outputLabel value="المهنة" for="profession_Ar" />
+                                    <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
+                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}" />
+                                    <h:outputLabel value="الجنس" for="sex" />
+                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}" >
+                                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss" />
+                                    <h:selectOneMenu id="date_de_naiss" value="date naiss" title="#{bundle.CreateActe_NaissanceTitle_date_de_naiss}" >
+                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
-                    <b:gridRow styleClass="show-grid" fluid="true">
-      
+                    <fieldset><legend>معلومات عن الأب</legend>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nomM_Fr}" for="nomM_Fr" />
-                                    <h:inputText id="nomM_Fr" value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenomM_Fr}" for="prenomM_Fr" />
-                                    <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_professionM_Fr}" for="professionM_Fr" />
-                                    <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_lieu_de_NaissM_Fr}" for="lieu_de_NaissM_Fr" />
-                                    <h:inputText id="lieu_de_NaissM_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nationalteM_Fr}" for="nationalteM_Fr" />
-                                    <h:inputText id="nationalteM_Fr" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Fr}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_date_de_naissM}" for="date_de_naissM" />
-                                    <h:selectOneMenu id="date_de_naissM" value="#{acte_NaissanceController.selected.date_de_naissM}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissM}" >
-                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
-                                  
+                                    <h:outputLabel value="Prénom" for="nomP_Fr" />
+                                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Fr}" />
+                                    <h:outputLabel value="Nom" for="prenomP_Fr" />
+                                    <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
+                                    <h:outputLabel value="Prof." for="professionP_Fr" />
+                                    <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
+                                    <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissP_Fr" />
+                                    <h:inputText id="lieu_de_NaissP_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Fr}" />
+                                    <h:outputLabel value="Nationalité" for="nationalteP_Fr" />
+                                    <h:inputText id="nationalteP_Fr" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Fr}" />
                                 </h:panelGrid>
                             </b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nomM_Ar}" for="nomM_Ar" />
-                                    <h:inputText id="nomM_Ar" value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_prenomM_Ar}" for="prenomM_Ar" />
-                                    <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_professionM_Ar}" for="professionM_Ar" />
-                                    <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_lieu_de_NaissM_Ar}" for="lieu_de_NaissM_Ar" />
-                                    <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
-                                    <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_nationalteM_Ar}" for="nationalteM_Ar" />
-                                    <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
+                                    <h:outputLabel value="الإسم" for="prenomP_Ar" />
+                                    <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
+                                    <h:outputLabel value="النسب" for="nomP_Ar" />
+                                    <h:inputText id="nomP_Ar" value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Ar}" />
+                                    <h:outputLabel value="المهنة" for="professionP_Ar" />
+                                    <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissP_Ar" />
+                                    <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
+                                    <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
+                                    <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP" />
+                                    <h:selectOneMenu id="date_de_naissP" value="#{acte_NaissanceController.selected.date_de_naissP}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissP}" >
+                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset><legend>معلومات عن الأم</legend>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1"></b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Prénom" for="prenomM_Fr" />
+                                    <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
+                                    <h:outputLabel value="Nom" for="nomM_Fr" />
+                                    <h:inputText id="nomM_Fr" value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Fr}" />
+                                    <h:outputLabel value="Prof." for="professionM_Fr" />
+                                    <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Fr}" />
+                                    <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissM_Fr" />
+                                    <h:inputText id="lieu_de_NaissM_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Fr}" />
+                                    <h:outputLabel value="Nationalité" for="nationalteM_Fr" />
+                                    <h:inputText id="nationalteM_Fr" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Fr}" />
 
                                 </h:panelGrid>
                             </b:gridColumn>
-                    </b:gridRow>
-                    <b:gridRow styleClass="show" fluid="true">
-                        <b:gridColumn span="8">
-                            <h:panelGrid columns="2" dir="ltr">
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_addressePa_Fr}" for="addressePa_Fr" />
-                                <h:inputText id="addressePa_Fr" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Fr}" />
-                            </h:panelGrid>
-                            <h:panelGrid columns="2" dir="rtl">
-                                <h:outputLabel value="#{bundle.CreateActe_NaissanceLabel_addressePa_Ar}" for="addressePa_Ar" />
-                                <h:inputText id="addressePa_Ar" value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
-                            </h:panelGrid>
-                        </b:gridColumn>
-                    </b:gridRow>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الإسم" for="prenomM_Ar" />
+                                    <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
+                                    <h:outputLabel value="النسب" for="nomM_Ar" />
+                                    <h:inputText id="nomM_Ar" value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Ar}" />
+                                    <h:outputLabel value="المهنة" for="professionM_Ar" />
+                                    <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissM_Ar" />
+                                    <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
+                                    <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
+                                    <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM" />
+                                    <h:selectOneMenu id="date_de_naissM" value="#{acte_NaissanceController.selected.date_de_naissM}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissM}" >
+                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset><legend></legend>
+                        <b:gridRow styleClass="show" fluid="true">
+                            <b:gridColumn span="10">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الساكنان ب" for="addressePa_Ar" />
+                                    <b:input id="addressePa_Ar" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Adresse parents" for="addressePa_Fr" />
+                                    <b:input id="addressePa_Fr" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Fr}" />
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
                 </b:gridRow>
                 <br />
                 <h:commandLink action="#{acte_NaissanceController.create}" value="#{bundle.CreateActe_NaissanceSaveLink}" />
