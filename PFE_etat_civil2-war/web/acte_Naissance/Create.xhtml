@@ -11,9 +11,13 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
+            <!--            <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>-->
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h:messages errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warning" layout="table"/>
             </h:panelGroup>
+
             <h:form>
                 <b:gridRow styleClass="show-grid" fluid="true">
                     <fieldset><legend>معلومات عن المولود</legend>
@@ -41,7 +45,7 @@
                                     <h:outputLabel value="الإسم" for="prenom_Ar" />
                                     <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" />
                                     <h:outputLabel value="النسب" for="nom_Ar" />
-                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}" />
+                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}" required="true" />
                                     <h:outputLabel value="المهنة" for="profession_Ar" />
                                     <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
@@ -54,6 +58,26 @@
                                     <h:selectOneMenu id="date_de_naiss" value="date naiss" title="#{bundle.CreateActe_NaissanceTitle_date_de_naiss}" >
                                         <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
+                                    <b:commandButton value="Launch Custom Modal" mode="client" onclick="#{b:show('customModal')}" />
+
+                                    <b:modal id="customModal" closeable="false">
+                                        <b:headerFacet>
+                                            <h3>A custom header</h3>
+                                        </b:headerFacet>
+
+                                        <h:form style="margin: 0">
+                                            <b:bodyFacet>
+                                                <ui:include src="../date/Create.xhtml" />
+                                            </b:bodyFacet>
+
+                                            <b:footerFacet>
+                                                <h:commandLink action="#{dateController.create}" value="#{bundle.CreateDateSaveLink}" />
+<!--                                                <b:commandButton value="Save" severity="primary" mode="client" onclick="#{b:hide('customModal')}" />-->
+
+                                                <b:commandButton value="Cancel" mode="client" onclick="#{b:hide('customModal')}" />
+                                            </b:footerFacet>
+                                        </h:form>
+                                    </b:modal>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -150,13 +174,9 @@
                     </fieldset>
                 </b:gridRow>
                 <br />
-                <h:commandLink action="#{acte_NaissanceController.create}" value="#{bundle.CreateActe_NaissanceSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{acte_NaissanceController.prepareList}" value="#{bundle.CreateActe_NaissanceShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateActe_NaissanceIndexLink}"/>
+
+                <h:commandLink action="#{acte_NaissanceController.create}" value="#{bundle.CreateActe_NaissanceSaveLink}" class="btn btn-primary" />
+
 
             </h:form>
         </ui:define>
