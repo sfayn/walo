@@ -17,8 +17,13 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warning" layout="table"/>
             </h:panelGroup>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
             <h:form>
+                <input size="16" type="text" value="2012-06-15 14:45" class="form_datetime"/>
+
                 <b:gridRow styleClass="show-grid" fluid="true">
                     <fieldset><legend>معلومات عن المولود</legend>
                         <b:gridRow styleClass="show-grid" fluid="true">
@@ -34,7 +39,7 @@
                                     <h:outputLabel value="Prof." for="profession_Fr" />
                                     <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
                                     <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
-                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}" />
+                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}" />                                    
                                 </h:panelGrid>
                             </b:gridColumn>
 
@@ -54,30 +59,17 @@
                                     <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}" >
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss" />
-                                    <h:selectOneMenu id="date_de_naiss" value="date naiss" title="#{bundle.CreateActe_NaissanceTitle_date_de_naiss}" >
-                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
-                                    <b:commandButton value="Launch Custom Modal" mode="client" onclick="#{b:show('customModal')}" />
 
-                                    <b:modal id="customModal" closeable="false">
-                                        <b:headerFacet>
-                                            <h3>A custom header</h3>
-                                        </b:headerFacet>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss_H" />
+                                    <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss_G" />
+                                    <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                    </h:inputText>
 
-                                        <h:form style="margin: 0">
-                                            <b:bodyFacet>
-                                                <ui:include src="../date/Create.xhtml" />
-                                            </b:bodyFacet>
 
-                                            <b:footerFacet>
-                                                <h:commandLink action="#{dateController.create}" value="#{bundle.CreateDateSaveLink}" />
-<!--                                                <b:commandButton value="Save" severity="primary" mode="client" onclick="#{b:hide('customModal')}" />-->
-
-                                                <b:commandButton value="Cancel" mode="client" onclick="#{b:hide('customModal')}" />
-                                            </b:footerFacet>
-                                        </h:form>
-                                    </b:modal>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -111,10 +103,14 @@
                                     <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
                                     <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP" />
-                                    <h:selectOneMenu id="date_de_naissP" value="#{acte_NaissanceController.selected.date_de_naissP}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissP}" >
-                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP_H" />
+                                    <h:inputText class="datepick" id="date_de_naissP_H" value="#{acte_NaissanceController.selected.date_de_naissP_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP_G" />
+                                    <h:inputText class="datepick" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -149,10 +145,14 @@
                                     <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM" />
-                                    <h:selectOneMenu id="date_de_naissM" value="#{acte_NaissanceController.selected.date_de_naissM}" title="#{bundle.CreateActe_NaissanceTitle_date_de_naissM}" >
-                                        <f:selectItems value="#{dateController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM_H" />
+                                    <h:inputText class="datepick" id="date_de_naissM_H" value="#{acte_NaissanceController.selected.date_de_naissM_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM_G" />
+                                    <h:inputText class="datepick" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -177,7 +177,20 @@
 
                 <h:commandLink action="#{acte_NaissanceController.create}" value="#{bundle.CreateActe_NaissanceSaveLink}" class="btn btn-primary" />
 
+                <script type="text/javascript">
+               
+                    $('.form_datetime').datetimepicker({
+                        language:  'fr',
+                        weekStart: 1,
+                        todayBtn:  1,
+                        autoclose: 1,
+                        todayHighlight: 1,
+                        startView: 2,
+                        forceParse: 0,
+                        startDate: "2012-06-15 00:00"
+                    });
 
+                </script>
             </h:form>
         </ui:define>
     </ui:composition>

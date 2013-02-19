@@ -26,8 +26,9 @@
                             <f:facet name="header">
                                 <h:outputText value="تاريخ الإزدياد"/>
                             </f:facet>
-                            <h:outputText value="#{item.date_de_naiss}"/>
-                        </rich:column>
+                            <h:outputText value="#{item.date_de_naiss_H}">
+                                <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                            </h:outputText> </rich:column>
                         <rich:column>
                             <f:facet name="header">
                                 <h:outputText value="الإسم"/>
@@ -64,18 +65,22 @@
 
 
 
-                        <rich:column>
+                        <rich:column style="width: 35px">
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{acte_NaissanceController.prepareView}" value="#{bundle.ListActe_NaissanceViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}" value="#{bundle.ListActe_NaissanceEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{acte_NaissanceController.destroy}" value="#{bundle.ListActe_NaissanceDestroyLink}"/>
+                            <h:commandLink action="#{acte_NaissanceController.prepareView}" >
+                                <i class="icon-eye-open"></i>
+                            </h:commandLink>
+
+                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
+                                <i class="icon-edit"></i></h:commandLink>
+                            <h:commandLink action="#{acte_NaissanceController.destroy}">
+                                <i class="icon-remove" style="color: red"></i></h:commandLink>
                         </rich:column>
                     </rich:dataTable>
                 </h:panelGroup>
+
                 <br />
                 <h:commandLink  action="#{acte_NaissanceController.prepareCreate}" class="btn btn-primary" value="إضافة رسم جديد"/>
 

@@ -4,22 +4,92 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-
     <ui:composition template="/template.xhtml" >
-        
+        <style>
+            #graph {
+                width: 900px;
+                height: 500px;
+                margin: 8px auto;
+            }
+        </style>
         <ui:define name="title">
             صفحة الإستقبال
         </ui:define>
         <ui:define name="body">
+            <fieldset>
+                <legend>المهام الأساسية</legend>
+                <a href="" class="btn btn-primary span2" style="font-size: 12pt;" ><i class="icon-wrench "> </i>&nbsp;&nbsp;&nbsp;إعدادات</a>
+                <a href="" class="btn btn-primary span2" style="font-size: 12pt;" ><i class="icon-hdd "> </i>&nbsp;&nbsp;&nbsp;استعادة قاعدة البيانات</a>
+                <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-download-alt"> </i>&nbsp;&nbsp;&nbsp;نسخ قاعدة البيانات</a>
+                <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-file"> </i>&nbsp;&nbsp;&nbsp;دليل الإستعمال</a>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>إحصائيات عامة</legend>
+                <div id="graph"> </div>
+            </fieldset>
+           <script type="text/javascript" src="#{request.contextPath}/resources/js/flotr2.min.js"></script>
+            <!-- <script type="text/javascript" src="#{request.contextPath}/js/graph.js"></script>-->
+            <script type="text/javascript">
+                <!--
+                /* 
+                 * To change this template, choose Tools | Templates
+                 * and open the template in the editor.
+                 */
 
-        <br />
-        <h:link outcome="/acte_Naissance/List" value="Show All Acte_Naissance Items"/>
-        <br />
-        <h:link outcome="/date/List" value="Show All Date Items"/>
-        <br />
-        <h:link outcome="/sex/List" value="Show All Sex Items"/>
-    </ui:define>
-</ui:composition>
+                (function basic_bars(container, horizontal) {
+
+                    var horizontal = ( horizontal ? true : false),
+                    // Show horizontal bars
+                    d1 = [],
+                    // First data series
+                    d2 = [],
+                    // Second data series
+                    point, // Data point variable declaration
+                    i;
+
+                    for ( i = 0; i < 12; i++) {
+
+                        if (horizontal) {
+                            point = [Math.ceil(Math.random() * 100), i];
+                        } else {
+                            point = [i, Math.ceil(Math.random() * 100)];
+                        }
+
+                        d1.push(point);
+
+                        if (horizontal) {
+                            point = [Math.ceil(Math.random() * 100), i + 0.5];
+                        } else {
+                            point = [i + 0.5, Math.ceil(Math.random() * 100)];
+                        }
+
+                        d2.push(point);
+                    };
+
+                    // Draw the graph
+                    Flotr.draw(container, [d1, d2], {
+                        bars : {
+                            show : true,
+                            horizontal : horizontal,
+                            shadowSize : 0,
+                            barWidth : 0.5
+                        },
+                        mouse : {
+                            track : true,
+                            relative : true
+                        },
+                        yaxis : {
+                            min : 0,
+                            autoscaleMargin : 1
+                        }
+                    });
+                })(document.getElementById("graph"));
+                -->
+            </script>
+
+        </ui:define>
+
+    </ui:composition>
 
 </html>
-
