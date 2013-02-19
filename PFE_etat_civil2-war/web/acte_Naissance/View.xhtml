@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,76 +15,152 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_numActe}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.ViewActe_NaissanceTitle_numActe}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_profession_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.ViewActe_NaissanceTitle_profession_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_profession_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.ViewActe_NaissanceTitle_profession_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomP_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nomP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomP_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nomP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionP_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionP_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naissP}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissP}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomM_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nomM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nomM_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nomM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionM_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_professionM_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.sex}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
-                    <h:outputText value="#{bundle.ViewActe_NaissanceLabel_id}"/>
-                    <h:outputText value="#{acte_NaissanceController.selected.id}" title="#{bundle.ViewActe_NaissanceTitle_id}"/>
-                </h:panelGrid>
+            <br/>
+                <b:gridRow styleClass="show-grid" fluid="false">
+
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <b:gridColumn span="10">
+
+                            <h:panelGrid columns="2" styleClass="badge badge-inverse" style="font-size: 16px; text-align: center;" dir="rtl" width="25%">
+
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_numActe}"/>
+                                <h:outputText value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.ViewActe_NaissanceTitle_numActe}"/>
+
+                            </h:panelGrid>
+
+                        </b:gridColumn>
+                    </b:gridRow>
+
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_profession_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.ViewActe_NaissanceTitle_profession_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Fr}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" style="width: 80%;" dir="rtl">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_profession_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.ViewActe_NaissanceTitle_profession_Ar}"/>   
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
+                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                    </h:outputText>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.sex}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </fieldset>
+                    </b:gridRow>
+
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الأب :</legend>
+
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Fr}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissP}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissP}">
+                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                    </h:outputText>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </fieldset>
+                    </b:gridRow>
+
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;">   معلومات عن الأم  :</legend>
+
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Fr}"/>
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}"/>
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </fieldset>
+                    </b:gridRow>
+
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;"> </legend>
+
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="ltr" style="width: 80%;">                                
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
+                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </fieldset>
+                    </b:gridRow>
+                </b:gridRow>
                 <br />
                 <h:commandLink action="#{acte_NaissanceController.destroyAndView}" value="#{bundle.ViewActe_NaissanceDestroyLink}"/>
                 <br />
