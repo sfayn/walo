@@ -3,15 +3,10 @@
     <type>org.netbeans.modules.j2ee.earproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2ee-earproject/2">
-<<<<<<< HEAD
             <name>PFE_etat_civil2</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries/>
             <web-module-additional-libraries>
-                <library>
-                    <file>${reference.PFE_etat_civil2-war.dist-ear}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
                 <library>
                     <file>${reference.PFE_etat_civil2-ejb.dist-ear}</file>
                     <path-in-war>/</path-in-war>
@@ -21,41 +16,6 @@
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
             <reference>
                 <foreign-project>PFE_etat_civil2-ejb</foreign-project>
-                <artifact-type>j2ee_ear_archive</artifact-type>
-                <script>build.xml</script>
-                <target>dist-ear</target>
-                <clean-target>clean-ear</clean-target>
-                <id>dist-ear</id>
-            </reference>
-            <reference>
-                <foreign-project>PFE_etat_civil2-war</foreign-project>
-=======
-            <name>PFE_etat_civile</name>
-            <minimum-ant-version>1.6.5</minimum-ant-version>
-            <web-module-libraries/>
-            <web-module-additional-libraries>
-                <library>
-                    <file>${reference.PFE_etat_civile-war.dist-ear}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library>
-                    <file>${reference.PFE_etat_civile-ejb.dist-ear}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-            </web-module-additional-libraries>
-        </data>
-        <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
-            <reference>
-                <foreign-project>PFE_etat_civile-ejb</foreign-project>
-                <artifact-type>j2ee_ear_archive</artifact-type>
-                <script>build.xml</script>
-                <target>dist-ear</target>
-                <clean-target>clean-ear</clean-target>
-                <id>dist-ear</id>
-            </reference>
-            <reference>
-                <foreign-project>PFE_etat_civile-war</foreign-project>
->>>>>>> branch 'master' of github.com:sfayn/pfe.git
                 <artifact-type>j2ee_ear_archive</artifact-type>
                 <script>build.xml</script>
                 <target>dist-ear</target>

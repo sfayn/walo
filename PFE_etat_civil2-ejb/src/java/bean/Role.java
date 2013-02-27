@@ -15,32 +15,22 @@ import javax.persistence.Id;
  * @author Sfayn
  */
 @Entity
-public class Sex implements Serializable {
+public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String libelleAr;
-    private String libelleFr;
+    private String libelle;
 
-    public String getLibelleAr() {
-        return libelleAr;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setLibelleAr(String libelleAr) {
-        this.libelleAr = libelleAr;
-    }
-
-    public String getLibelleFr() {
-        return libelleFr;
-    }
-
-    public void setLibelleFr(String libelleFr) {
-        this.libelleFr = libelleFr;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
     
     
-
     public Long getId() {
         return id;
     }
@@ -59,10 +49,10 @@ public class Sex implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sex)) {
+        if (!(object instanceof Role)) {
             return false;
         }
-        Sex other = (Sex) object;
+        Role other = (Role) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +61,7 @@ public class Sex implements Serializable {
 
     @Override
     public String toString() {
-        return libelleAr;
+        return "bean.Role[ id=" + id + " ]";
     }
     
 }

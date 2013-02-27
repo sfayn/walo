@@ -15,10 +15,13 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-            <br/>
+                <br />
                 <b:gridRow styleClass="show-grid" fluid="false">
 
                     <b:gridRow styleClass="show-grid" fluid="false">
+                        <b:gridColumn span="1" dir="rtl" style="width: 10%;">
+                            <h:commandLink class="btn #{acte_NaissanceController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}"  action="#{acte_NaissanceController.check}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" />
+                        </b:gridColumn>  
                         <b:gridColumn span="10">
 
                             <h:panelGrid columns="2" styleClass="badge badge-inverse" style="font-size: 16px; text-align: center;" dir="rtl" width="25%">
@@ -62,7 +65,7 @@
                                         <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
                                     </h:outputText>
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.sex}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.sex.libelleAr}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
 
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -134,7 +137,9 @@
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
                                     <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}">
+                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                    </h:outputText>
 
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -161,19 +166,49 @@
                         </fieldset>
                     </b:gridRow>
                 </b:gridRow>
-                <br />
-                <h:commandLink action="#{acte_NaissanceController.destroyAndView}" value="#{bundle.ViewActe_NaissanceDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewActe_NaissanceEditLink}"/>
-                <br />
-                <h:commandLink action="#{acte_NaissanceController.prepareCreate}" value="#{bundle.ViewActe_NaissanceCreateLink}" />
-                <br />
-                <h:commandLink action="#{acte_NaissanceController.prepareList}" value="#{bundle.ViewActe_NaissanceShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewActe_NaissanceIndexLink}"/>
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                </style>
+                <b:gridRow styleClass="show-grid" fluid="false">
 
+                    <b:gridColumn span="10">
+                        <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
+                            <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
+
+                            <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
+                            <b:buttonDropdown buttonStyle="icon-file" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                                <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#{acte_NaissanceController.PDF}" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                                <b:separatorFacet />
+                                <h:commandLink action="#" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#" value="شهادة الخطوبة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#"  value="ورقة المعلومات" style="font-size: 13pt; color: #000000;"/>
+                            </b:buttonDropdown>
+                            <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroyAndView}" onclick="#{acte_NaissanceController.prepareList()}"/>
+                                    <h:outputText value="  "/>
+                                    <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                </b:footerFacet>
+                            </b:modal>
+                        </h:panelGrid>
+                    </b:gridColumn>
+                </b:gridRow>
             </h:form>
         </ui:define>
     </ui:composition>

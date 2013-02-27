@@ -1,17 +1,12 @@
 package controller;
 
-import bean.Acte_Naissance;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
-import java.io.File;
-import java.io.IOException;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,45 +18,38 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import org.ini4j.Wini;
-import session.Acte_NaissanceFacade;
+import javax.sound.midi.Soundbank;
+import session.UserFacade;
 
-@ManagedBean(name = "acte_NaissanceController")
+@ManagedBean(name = "userController")
 @SessionScoped
-public class Acte_NaissanceController implements Serializable {
+public class UserController implements Serializable {
 
-    private Acte_Naissance current;
+    private User current;
     private DataModel items = null;
     @EJB
-    private session.Acte_NaissanceFacade ejbFacade;
+    private session.UserFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public Acte_NaissanceController() {
+    public UserController() {
     }
 
-    public Acte_Naissance getSelected() {
+    public User getSelected() {
         if (current == null) {
-            current = new Acte_Naissance();
+            current = new User();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private Acte_NaissanceFacade getFacade() {
+    private UserFacade getFacade() {
         return ejbFacade;
     }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(getFacade().count()) {
+            pagination = new PaginationHelper(10) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -82,25 +70,53 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Acte_Naissance();
+        current = new User();
         selectedItemIndex = -1;
-        recreatePagination();
-        recreateModel();
         return "Create";
     }
 
+    public String authentification() {
+        boolean trouve = false;
+        for (Iterator it = ejbFacade.findAll().iterator(); it.hasNext();) {
+            User u = (User) it.next();
+            if (u.equals(current)) {
+                current = u;
+                trouve = true;
+                break;
+            }
+        }
+
+        if (trouve) {
+            return "index";
+        } else {
+
+            JsfUtil.addErrorMessage("Le mot de passe que vous avez saisi est incorrect");
+
+            return null;
+
+        }
+    }
+
+    public String check() {
+       if (current.getLogin().equals("") || current.getPassword().equals("")) {
+            return "login";
+        } else {
+
+            return "#";
+
+        }
+    }
+    
     public String create() {
         try {
-            System.out.println("UTF-8 NOM: " + new String(current.getNom_Ar().getBytes("ISO-8859-6")) + " : " + current.getNom_Ar());
             getFacade().create(current);
-            //System.out.println("UTF-8 NOM: " + new String(current.getNom_Ar().getBytes(), "ISO-8859-6") + " : " + current.getNom_Ar());
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -109,7 +125,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -117,61 +133,16 @@ public class Acte_NaissanceController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
-    }
-
-    public String check() {
-        if (current.isChecked()) {
-            current.setChecked(false);
-        } else {
-            current.setChecked(true);
-        }
-        try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
-            return "View";
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
-        }
-    }
-
-    public void PDF() throws JRException, IOException {
-        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
-        acts.add(current);
-        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
-        Map params = new HashMap();
-        params.put("nom", current.getNom_Fr());
-        params.put("prenom", current.getPrenom_Fr());
-        params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
-        params.put("dateNaissance", "Trente Juin Mille neuf cents quatre vignt dix");
-        params.put("numActe", "" + current.getNumActe());
-        params.put("correspondant", "7 do alhijja Mille quatres cents");
-        params.put("nationnalite", "Marocaine");
-        params.put("pere", current.getPrenomP_Fr());
-        params.put("mere", current.getPrenomM_Fr());
-        params.put("deces", "Néant");
-        params.put("anneeH", "1410");
-        params.put("anneeG", "1990");
-        Wini ini = new Wini(new File("/jars/conf/conf.ini"));
-        params.put("province", ini.get("commune", "privince"));
-        params.put("commune", ini.get("commune", "commune"));
-        params.put("officier", "Signé dessous");
-        JasperPrint jasperPrint = JasperFillManager.fillReport("c:\\jars\\extrait-fr.jasper", params, beanCollectionDataSource);
-        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        httpServletResponse.setContentType("application/pdf");
-        //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
-        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
     }
 
     public String destroy() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -182,14 +153,20 @@ public class Acte_NaissanceController implements Serializable {
     public String destroyAndView() {
         performDestroy();
         recreateModel();
-        return "List";
-
+        updateCurrentItem();
+        if (selectedItemIndex >= 0) {
+            return "View";
+        } else {
+            // all items were removed - go back to list
+            recreateModel();
+            return "List";
+        }
     }
 
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -245,15 +222,15 @@ public class Acte_NaissanceController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Acte_Naissance.class)
-    public static class Acte_NaissanceControllerConverter implements Converter {
+    @FacesConverter(forClass = User.class)
+    public static class UserControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            Acte_NaissanceController controller = (Acte_NaissanceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "acte_NaissanceController");
+            UserController controller = (UserController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "userController");
             return controller.ejbFacade.find(getKey(value));
         }
 
@@ -273,11 +250,11 @@ public class Acte_NaissanceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Acte_Naissance) {
-                Acte_Naissance o = (Acte_Naissance) object;
+            if (object instanceof User) {
+                User o = (User) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Acte_Naissance.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + User.class.getName());
             }
         }
     }

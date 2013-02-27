@@ -5,13 +5,14 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.ejb.LocalBean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -20,12 +21,13 @@ import javax.persistence.OneToOne;
 @Entity
 @LocalBean
 public class Acte_Naissance implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer numActe;
-    private boolean checked=false;
+    private boolean checked = false;
     //info citoyen
     private String nom_Ar;
     private String nom_Fr;
@@ -35,8 +37,11 @@ public class Acte_Naissance implements Serializable {
     private String profession_Fr;
     private String lieu_de_Naiss_Fr;
     private String lieu_de_Naiss_Ar;
-    @OneToOne
-    private Date date_de_naiss;
+
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naiss_H;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naiss_G;
     //info pere
     private String nomP_Ar;
     private String nomP_Fr;
@@ -48,8 +53,10 @@ public class Acte_Naissance implements Serializable {
     private String lieu_de_NaissP_Ar;
     private String nationalteP_Fr;
     private String nationalteP_Ar;
-    @OneToOne
-    private Date date_de_naissP;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naissP_H;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naissP_G;
     //info mere
     private String nomM_Ar;
     private String nomM_Fr;
@@ -61,14 +68,63 @@ public class Acte_Naissance implements Serializable {
     private String lieu_de_NaissM_Ar;
     private String nationalteM_Fr;
     private String nationalteM_Ar;
-    @OneToOne
-    private Date date_de_naissM;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naissM_H;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date date_de_naissM_G;
     //info parent
     private String addressePa_Ar;
     private String addressePa_Fr;
-
     @ManyToOne
     private Sex sex;
+
+    public Date getDate_de_naiss_H() {
+        return date_de_naiss_H;
+    }
+
+    public void setDate_de_naiss_H(Date date_de_naiss_H) {
+        this.date_de_naiss_H = date_de_naiss_H;
+    }
+
+    public Date getDate_de_naiss_G() {
+        return date_de_naiss_G;
+    }
+
+    public void setDate_de_naiss_G(Date date_de_naiss_G) {
+        this.date_de_naiss_G = date_de_naiss_G;
+    }
+
+    public Date getDate_de_naissP_H() {
+        return date_de_naissP_H;
+    }
+
+    public void setDate_de_naissP_H(Date date_de_naissP_H) {
+        this.date_de_naissP_H = date_de_naissP_H;
+    }
+
+    public Date getDate_de_naissP_G() {
+        return date_de_naissP_G;
+    }
+
+    public void setDate_de_naissP_G(Date date_de_naissP_G) {
+        this.date_de_naissP_G = date_de_naissP_G;
+    }
+
+    public Date getDate_de_naissM_H() {
+        return date_de_naissM_H;
+    }
+
+    public void setDate_de_naissM_H(Date date_de_naissM_H) {
+        this.date_de_naissM_H = date_de_naissM_H;
+    }
+
+    public Date getDate_de_naissM_G() {
+        return date_de_naissM_G;
+    }
+
+    public void setDate_de_naissM_G(Date date_de_naissM_G) {
+        this.date_de_naissM_G = date_de_naissM_G;
+    }
 
     public String getLieu_de_Naiss_Fr() {
         return lieu_de_Naiss_Fr;
@@ -93,8 +149,6 @@ public class Acte_Naissance implements Serializable {
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
-    
-    
 
     public Integer getNumActe() {
         return numActe;
@@ -150,14 +204,6 @@ public class Acte_Naissance implements Serializable {
 
     public void setProfession_Fr(String profession_Fr) {
         this.profession_Fr = profession_Fr;
-    }
-
-    public Date getDate_de_naiss() {
-        return date_de_naiss;
-    }
-
-    public void setDate_de_naiss(Date date_de_naiss) {
-        this.date_de_naiss = date_de_naiss;
     }
 
     public String getNomP_Ar() {
@@ -240,14 +286,6 @@ public class Acte_Naissance implements Serializable {
         this.nationalteP_Ar = nationalteP_Ar;
     }
 
-    public Date getDate_de_naissP() {
-        return date_de_naissP;
-    }
-
-    public void setDate_de_naissP(Date date_de_naissP) {
-        this.date_de_naissP = date_de_naissP;
-    }
-
     public String getNomM_Ar() {
         return nomM_Ar;
     }
@@ -328,14 +366,6 @@ public class Acte_Naissance implements Serializable {
         this.nationalteM_Ar = nationalteM_Ar;
     }
 
-    public Date getDate_de_naissM() {
-        return date_de_naissM;
-    }
-
-    public void setDate_de_naissM(Date date_de_naissM) {
-        this.date_de_naissM = date_de_naissM;
-    }
-
     public String getAddressePa_Ar() {
         return addressePa_Ar;
     }
@@ -359,7 +389,7 @@ public class Acte_Naissance implements Serializable {
     public void setSex(Sex sex) {
         this.sex = sex;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -392,5 +422,4 @@ public class Acte_Naissance implements Serializable {
     public String toString() {
         return "bean.Acte_Naissance[ id=" + id + " ]";
     }
-    
 }

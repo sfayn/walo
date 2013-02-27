@@ -21,10 +21,13 @@
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
-            <h:form>
-                
+            <h:form acceptcharset="UTF-8">
+
                 <b:gridRow styleClass="show-grid" fluid="true">
-                    <fieldset><legend>معلومات عن المولود</legend>
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن المولود :</legend>
                         <b:gridRow styleClass="show-grid" fluid="true">
                             <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
@@ -58,30 +61,34 @@
                                     <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}" >
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
-
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss_H" />
-                                    <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
-                                    </h:inputText>
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naiss_G" />
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
                                     <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
+                                    <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                    </h:inputText>
+
 
 
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
-                    <fieldset><legend>معلومات عن الأب</legend>
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأب :</legend>
+
                         <b:gridRow styleClass="show-grid" fluid="true">
                             <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="Prénom" for="nomP_Fr" />
-                                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Fr}" />
-                                    <h:outputLabel value="Nom" for="prenomP_Fr" />
+                                    <h:outputLabel value="Prénom" for="prenomP_Fr" />
                                     <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
+                                    <h:outputLabel value="Nom" for="nomP_Fr" />
+                                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Fr}" />
                                     <h:outputLabel value="Prof." for="professionP_Fr" />
                                     <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
                                     <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissP_Fr" />
@@ -102,19 +109,22 @@
                                     <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
                                     <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP_H" />
-                                    <h:inputText class="datepick" id="date_de_naissP_H" value="#{acte_NaissanceController.selected.date_de_naissP_H}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissP_G" />
+                                    <h:inputText class="form_datetime" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissP_G" />
-                                    <h:inputText class="datepick" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H" />
+                                    <h:inputText class="form_datetime" id="date_de_naissP_H" value="#{acte_NaissanceController.selected.date_de_naissP_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
-                    <fieldset><legend>معلومات عن الأم</legend>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأم :</legend>
+
                         <b:gridRow styleClass="show-grid" fluid="true">
                             <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
@@ -144,19 +154,22 @@
                                     <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM_H" />
-                                    <h:inputText class="datepick" id="date_de_naissM_H" value="#{acte_NaissanceController.selected.date_de_naissM_H}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" />
+                                    <h:inputText class="form_datetime" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
-                                    <h:outputLabel value="تاريخ الإزدياد" for="date_de_naissM_G" />
-                                    <h:inputText class="datepick" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H" />
+                                    <h:inputText class="form_datetime" id="date_de_naissM_H" value="#{acte_NaissanceController.selected.date_de_naissM_H}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
-                    <fieldset><legend></legend>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;"></legend>
+
                         <b:gridRow styleClass="show" fluid="true">
                             <b:gridColumn span="10">
                                 <h:panelGrid columns="2" dir="rtl">
@@ -173,8 +186,19 @@
                     </fieldset>
                 </b:gridRow>
                 <br />
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                       color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                </style>
 
-                <h:commandLink action="#{acte_NaissanceController.create}" value="#{bundle.CreateActe_NaissanceSaveLink}" class="btn btn-primary" />
+                <h:commandLink style="font-size: 14pt;" action="#{acte_NaissanceController.create}" value="تسجيل" class="btn btn-primary" />
 
                 <script type="text/javascript">
                

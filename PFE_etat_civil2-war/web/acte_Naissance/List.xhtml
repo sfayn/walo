@@ -12,77 +12,101 @@
             التصرف في رسوم الولادات : قائمة الرسوم
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
+
+            <h:form>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-                <h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{acte_NaissanceController.items.rowCount > 0}">
-                    <h:outputText value="#{acte_NaissanceController.pagination.pageFirstItem + 1}..#{acte_NaissanceController.pagination.pageLastItem + 1}/#{acte_NaissanceController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{acte_NaissanceController.previous}" value="#{bundle.Previous} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{acte_NaissanceController.next}" value="#{bundle.Next} #{acte_NaissanceController.pagination.pageSize}" rendered="#{acte_NaissanceController.pagination.hasNextPage}"/>&nbsp;
-                    <rich:dataTable styleClass="table table-bordered table-striped table-condensed" value="#{acte_NaissanceController.items}" var="item">
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="تاريخ الإزدياد"/>
-                            </f:facet>
-                            <h:outputText value="#{item.date_de_naiss_H}">
-                                <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
-                            </h:outputText> </rich:column>
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="الإسم"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prenom_Ar}"/>
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="النسب"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nom_Ar}"/>
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nom"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nom_Fr}"/>
-                        </rich:column>
+<!--                <h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>-->
+                <h:panelGroup >
+                    <table  cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+                        <thead>
+                            <tr>
+                                <th><h:outputText value="تاريخ الإزدياد"/></th>
+                                <th><h:outputText value="الإسم"/></th>
+                                <th><h:outputText value="النسب"/></th>
+                                <th><h:outputText value="Nom"/></th>
+                                <th><h:outputText value="Prénom"/></th>
+                                <th><h:outputText value="رقم الرسم"/></th>
+                                <th><h:outputText value="Validé"/></th>
+                                <th><h:outputText value="action"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{acte_NaissanceController.items}" var="item" >
 
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="Prénom"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prenom_Fr}"/>
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header">
-                                <h:outputText value="رقم الرسم"/>
-                            </f:facet>
-                            <h:outputText value="#{item.numActe}"/>
-                        </rich:column>
+                                <tr>
+                                    <td>
+                                        <h:outputText value="#{item.date_de_naiss_G}">
+                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                        </h:outputText>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{item.prenom_Ar}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{item.nom_Ar}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{item.nom_Fr}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{item.prenom_Fr}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{item.numActe}"/>
+                                    </td>
+                                    <td>
+                                        <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
+                                            <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
+                                        </font>
+                                    </td>
+                                    <td>
+                                        <h:commandLink action="#{acte_NaissanceController.prepareView}">
+                                            <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
+                                        </h:commandLink>
+                                        <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
+                                            <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
+                                        </h:commandLink>
+                                        <a title="remove" href="#" onclick="#{b:show('customModal')}">
+                                            <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
+                                        </a>
+                                        <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
+                                            <b:headerFacet>
+                                                <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                            </b:headerFacet>
+                                            <b:bodyFacet>
+                                                <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                            </b:bodyFacet>
+                                            <b:footerFacet>
+                                                <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
+                                                <h:outputText value="  "/>
+                                                <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                            </b:footerFacet>
 
+                                        </b:modal>
+                                    </td>
+                                </tr>
 
-
-
-                        <rich:column style="width: 35px">
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{acte_NaissanceController.prepareView}" >
-                                <i class="icon-eye-open"></i>
-                            </h:commandLink>
-
-                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
-                                <i class="icon-edit"></i></h:commandLink>
-                            <h:commandLink action="#{acte_NaissanceController.destroy}">
-                                <i class="icon-remove" style="color: red"></i></h:commandLink>
-                        </rich:column>
-                    </rich:dataTable>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
                 </h:panelGroup>
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
 
+                </style>
                 <br />
-                <h:commandLink  action="#{acte_NaissanceController.prepareCreate}" class="btn btn-primary" value="إضافة رسم جديد"/>
+                <h:commandLink  action="#{acte_NaissanceController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة رسم جديد"/>
 
             </h:form>
         </ui:define>
