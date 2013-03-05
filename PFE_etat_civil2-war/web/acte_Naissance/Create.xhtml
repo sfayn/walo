@@ -18,7 +18,9 @@
                 <h:messages errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warning" layout="table"/>
             </h:panelGroup>
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
             <h:form prependId="false">
@@ -203,17 +205,14 @@
                             <b:gridColumn span="4">
 
                                 <script>
-                                    function doIt(obj,attr){
-                                        document.getElementById(document.forms[0].name+":"+attr).value = obj.value;
-                                    }
                                     function display(obj){
                                         //alert(obj);
                                         if(obj == "false"){
-                                            document.getElementById(document.forms[0].name+":dateHo").style.display = "none";
-                                            document.getElementById(document.forms[0].name+":dateHoOut").style.display = "none";
+                                            document.getElementById("dateHo").style.display = "none";
+                                            document.getElementById("dateHoOut").style.display = "none";
                                         }else{
-                                            document.getElementById(document.forms[0].name+":dateHo").style.display = "block";
-                                            document.getElementById(document.forms[0].name+":dateHoOut").style.display = "block";
+                                            document.getElementById("dateHo").style.display = "block";
+                                            document.getElementById("dateHoOut").style.display = "block";
                                         }
                                     }
                                 </script>
@@ -249,7 +248,7 @@
                                     <h:inputText id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
 
                                 </h:panelGrid>
-<!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
+                                <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
                                 <h:outputScript name="jsf.js" library="javax.faces" target="head" />
                             </b:gridColumn>
                         </b:gridRow>
@@ -276,7 +275,7 @@
 
                 <script type="text/javascript">
                
-                    $('.form_datetime').datetimepicker({
+                    $('#form_datetime').datetimepicker({
                         language:  'fr',
                         format: 'dd-mm-yyyy',
                         weekStart: 1,
@@ -287,6 +286,10 @@
                         forceParse: 0
                     });
 
+                    $('.form_datetime').datepicker({
+                        format: 'dd-mm-yyyy',
+                        autoclose: 1
+                    });
                 </script>
             </h:form>
         </ui:define>

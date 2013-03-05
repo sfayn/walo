@@ -88,6 +88,7 @@ public class Acte_Naissance implements Serializable {
     private String declaration_Ar;
     private String declaration_Fr;
 
+    
     public boolean isTypeT() {
         return typeT;
     }

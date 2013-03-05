@@ -46,6 +46,11 @@ public class Acte_NaissanceController implements Serializable {
     private String datetasH_Fr;
     private String datetasM_Ar;
     private String datetasM_Fr;
+    private Date datetasH_Obj;
+
+    public void setDatetasH_Obj(Date datetasH_Obj) {
+        this.datetasH_Obj = datetasH_Obj;
+    }
     @EJB
     private session.Acte_NaissanceFacade ejbFacade;
     private PaginationHelper pagination;
@@ -94,17 +99,6 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Acte_NaissanceController() {
-    }
-
-    public void Action() {
-        datetasH_Ar = "value";
-        datetasH_Fr = "anaaaa";
-        datetasM_Ar = "anaaaa";
-        datetasM_Fr = "anaaaa";
-    }
-
-    public String get_datetasH_Ar() {
-        return current.getDateTah_H().toString().length() == 0 ? "" : "Welcome to JSF2 + AJAX, ";
     }
 
     public Acte_Naissance getSelected() {
@@ -185,7 +179,7 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
-    public String check() {
+    public void check() {
         if (current.isChecked()) {
             current.setChecked(false);
         } else {
@@ -194,10 +188,10 @@ public class Acte_NaissanceController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
-            return "View";
+            
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+           
         }
     }
 
