@@ -21,7 +21,7 @@
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
-            <h:form acceptcharset="UTF-8">
+            <h:form prependId="false">
 
                 <b:gridRow styleClass="show-grid" fluid="true">
 
@@ -52,7 +52,7 @@
                                     <h:outputLabel value="الإسم" for="prenom_Ar" />
                                     <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" />
                                     <h:outputLabel value="النسب" for="nom_Ar" />
-                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}" required="true" />
+                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}"/>
                                     <h:outputLabel value="المهنة" for="profession_Ar" />
                                     <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
@@ -184,33 +184,107 @@
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التصريح :</legend>
+
+                        <b:gridRow styleClass="show" fluid="true">
+                            <b:gridColumn span="7">
+                                <h:panelGrid columns="2" dir="rtl">  
+                                    <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" />
+                                    <h:inputText class="form_datetime" id="dateHo" value="#{acte_NaissanceController.selected.dateHo}" title="تاريخ الحكم" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:inputText>
+
+                                </h:panelGrid>  
+                            </b:gridColumn>
+
+                            <b:gridColumn span="4">
+
+                                <script>
+                                    function doIt(obj,attr){
+                                        document.getElementById(document.forms[0].name+":"+attr).value = obj.value;
+                                    }
+                                    function display(obj){
+                                        //alert(obj);
+                                        if(obj == "false"){
+                                            document.getElementById(document.forms[0].name+":dateHo").style.display = "none";
+                                            document.getElementById(document.forms[0].name+":dateHoOut").style.display = "none";
+                                        }else{
+                                            document.getElementById(document.forms[0].name+":dateHo").style.display = "block";
+                                            document.getElementById(document.forms[0].name+":dateHoOut").style.display = "block";
+                                        }
+                                    }
+                                </script>
+                                <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
+                                    <f:selectItem  itemValue="true"  itemLabel="حكم" />
+                                    <f:selectItem itemValue="false" itemLabel="تصريح" />
+                                </h:selectOneRadio>
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow styleClass="fluid" fluid="true">
+                            <b:gridColumn span="6">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
+                                    <h:inputText class="form_datetime" id="dateTah_G"  onchange="jsf.ajax.request(this, event, {execute: 'dateTah_G', render: 'dateTh_H_textAr dateTh_H_textFr dateTh_G_textAr dateTh_G_textFr dateTah_H'}); return false;" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:inputText>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText id="dateTh_G_textFr" value="#{acte_NaissanceController.datetasM_Fr}"/>
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
+                                    <h:inputText  class="form_datetime" id="dateTah_H" value="#{acte_NaissanceController.datetasH_Obj}" title="تاريخ التصريح الهجري" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:inputText>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText id="dateTh_H_textAr" value="#{acte_NaissanceController.datetasH_Ar}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
+
+                                </h:panelGrid>
+<!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
+                                <h:outputScript name="jsf.js" library="javax.faces" target="head" />
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
                 </b:gridRow>
+
                 <br />
                 <style>
                     a:visited{
                         color: #ffffff ;
                     }
                     li>a{
-                       color: #000000;
+                        color: #000000;
                     }
                     a:hover{
                         color: #ffffff !important;
                     }
-                </style>
+                    .inlineRadioButtons { } 
+                    .inlineRadioButtons label {     
+                        display: inline; }
+                    </style>
 
-                <h:commandLink style="font-size: 14pt;" action="#{acte_NaissanceController.create}" value="تسجيل" class="btn btn-primary" />
+                    <h:commandLink style="font-size: 14pt;" action="#{acte_NaissanceController.create}" value="تسجيل" class="btn btn-primary" />
 
                 <script type="text/javascript">
                
                     $('.form_datetime').datetimepicker({
                         language:  'fr',
+                        format: 'dd-mm-yyyy',
                         weekStart: 1,
                         todayBtn:  1,
                         autoclose: 1,
                         todayHighlight: 1,
                         startView: 2,
-                        forceParse: 0,
-                        startDate: "2012-06-15 00:00"
+                        forceParse: 0
                     });
 
                 </script>

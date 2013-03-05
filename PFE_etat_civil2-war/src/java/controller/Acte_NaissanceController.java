@@ -1,6 +1,7 @@
 package controller;
 
 import bean.Acte_Naissance;
+import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.File;
@@ -8,7 +9,9 @@ import java.io.IOException;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,12 +42,69 @@ public class Acte_NaissanceController implements Serializable {
 
     private Acte_Naissance current;
     private DataModel items = null;
+    private String datetasH_Ar;
+    private String datetasH_Fr;
+    private String datetasM_Ar;
+    private String datetasM_Fr;
     @EJB
     private session.Acte_NaissanceFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
+    public String getDatetasH_Ar() {
+        current.setDateTah_H(current.getDateTah_G() == null ? null : Helper.dateGrToH(current.getDateTah_G()));
+        return current.getDateTah_G() == null ? "null" : Helper.dateToStrArH(current.getDateTah_G());
+    }
+
+    public Date getDatetasH_Obj() {
+        if (current.getDateTah_G() == null) {
+            return null;
+        } else {
+            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
+            return current.getDateTah_H();
+        }
+    }
+
+    public void setDatetasH_Ar(String datetasH_Ar) {
+        this.datetasH_Ar = datetasH_Ar;
+    }
+
+    public String getDatetasH_Fr() {
+        return current.getDateTah_G() == null ? "null" : Helper.dateToStrH(current.getDateTah_G());
+    }
+
+    public void setDatetasH_Fr(String datetasH_Fr) {
+        this.datetasH_Fr = datetasH_Fr;
+    }
+
+    public String getDatetasM_Ar() {
+        return current.getDateTah_G() == null ? "null" : Helper.dateToStrArG(current.getDateTah_G());
+    }
+
+    public void setDatetasM_Ar(String datetasM_Ar) {
+        this.datetasM_Ar = datetasM_Ar;
+    }
+
+    public String getDatetasM_Fr() {
+        return current.getDateTah_G() == null ? "null" : Helper.dateToStrG(current.getDateTah_G());
+    }
+
+    public void setDatetasM_Fr(String datetasM_Fr) {
+        this.datetasM_Fr = datetasM_Fr;
+    }
+
     public Acte_NaissanceController() {
+    }
+
+    public void Action() {
+        datetasH_Ar = "value";
+        datetasH_Fr = "anaaaa";
+        datetasM_Ar = "anaaaa";
+        datetasM_Fr = "anaaaa";
+    }
+
+    public String get_datetasH_Ar() {
+        return current.getDateTah_H().toString().length() == 0 ? "" : "Welcome to JSF2 + AJAX, ";
     }
 
     public Acte_Naissance getSelected() {
@@ -97,9 +157,9 @@ public class Acte_NaissanceController implements Serializable {
 
     public String create() {
         try {
-            System.out.println("UTF-8 NOM: " + new String(current.getNom_Ar().getBytes("ISO-8859-6")) + " : " + current.getNom_Ar());
+            System.out.println(current.getNom_Ar());
             getFacade().create(current);
-            //System.out.println("UTF-8 NOM: " + new String(current.getNom_Ar().getBytes(), "ISO-8859-6") + " : " + current.getNom_Ar());
+
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
         } catch (Exception e) {

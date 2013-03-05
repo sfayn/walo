@@ -77,7 +77,65 @@ public class Acte_Naissance implements Serializable {
     private String addressePa_Fr;
     @ManyToOne
     private Sex sex;
+    //info tassri7
+    private boolean typeT=true;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateTah_H;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateTah_G;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateHo=null;
+    private String declaration_Ar;
+    private String declaration_Fr;
 
+    public boolean isTypeT() {
+        return typeT;
+    }
+
+    public void setTypeT(boolean typeT) {
+        this.typeT = typeT;
+    }
+
+    public Date getDateTah_H() {
+        return dateTah_H;
+    }
+
+    public void setDateTah_H(Date dateTah_H) {
+        this.dateTah_H = dateTah_H;
+    }
+
+    public Date getDateTah_G() {
+        return dateTah_G;
+    }
+
+    public void setDateTah_G(Date dateTah_G) {
+        this.dateTah_G = dateTah_G;
+    }
+
+    public Date getDateHo() {
+        return dateHo;
+    }
+
+    public void setDateHo(Date dateHo) {
+        this.dateHo = dateHo;
+    }
+
+    public String getDeclaration_Ar() {
+        return declaration_Ar;
+    }
+
+    public void setDeclaration_Ar(String declaration_Ar) {
+        this.declaration_Ar = declaration_Ar;
+    }
+
+    public String getDeclaration_Fr() {
+        return declaration_Fr;
+    }
+
+    public void setDeclaration_Fr(String declaration_Fr) {
+        this.declaration_Fr = declaration_Fr;
+    }
+    
     public Date getDate_de_naiss_H() {
         return date_de_naiss_H;
     }
