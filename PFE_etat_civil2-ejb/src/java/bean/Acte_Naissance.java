@@ -5,6 +5,8 @@
 package bean;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import javax.ejb.LocalBean;
 import javax.persistence.Entity;
@@ -217,8 +219,8 @@ public class Acte_Naissance implements Serializable {
         this.numActe = numActe;
     }
 
-    public String getNom_Ar() {
-        return nom_Ar;
+    public String getNom_Ar() throws UnsupportedEncodingException {
+        return nom_Ar == null ? "" : URLDecoder.decode(nom_Ar, "UTF-8");
     }
 
     public void setNom_Ar(String nom_Ar) {

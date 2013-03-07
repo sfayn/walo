@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -149,11 +149,18 @@ public class Acte_NaissanceController implements Serializable {
         return "Create";
     }
 
+    public void g_to_h() {
+        System.out.println("haniii"+current.getDate_de_naiss_G());
+        current.setDate_de_naiss_H(current.getDate_de_naiss_G() == null ? null : Helper.dateGrToH(current.getDate_de_naiss_G()));
+    }
+
     public String create() {
         try {
-            System.out.println(current.getNom_Ar());
+            System.out.println();
+            String enc = URLEncoder.encode(current.getNom_Ar(), "UTF-8");
+            System.out.println(enc);
+            current.setNom_Ar(enc);
             getFacade().create(current);
-
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
         } catch (Exception e) {
@@ -188,10 +195,10 @@ public class Acte_NaissanceController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
-            
+
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-           
+
         }
     }
 

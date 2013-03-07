@@ -37,7 +37,7 @@
                                 <br/>
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="Prénom" for="prenom_Fr" />
-                                    <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" />
+                                    <h:inputText required="True"  requiredMessage="veuillez saisir un nom" id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" />
                                     <h:outputLabel value="Nom" for="nom_Fr" />
                                     <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" />
                                     <h:outputLabel value="Prof." for="profession_Fr" />
@@ -71,8 +71,8 @@
                                     <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
-
-
+                                    <h:button value="walo" onclick="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H', listener: '#{acte_NaissanceController.g_to_h()}'}); return false;" /> 
+                                    
 
                                 </h:panelGrid>
                             </b:gridColumn>
