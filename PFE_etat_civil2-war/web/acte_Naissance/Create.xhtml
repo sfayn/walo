@@ -71,7 +71,7 @@
                                     <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
-                                    <h:button value="walo" onclick="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H', listener: '#{acte_NaissanceController.g_to_h()}'}); return false;" /> 
+                                    <h:button value="walo" onclick="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H', listener: #{acte_NaissanceController.g_to_h()}}); return false;" /> 
                                     
 
                                 </h:panelGrid>
