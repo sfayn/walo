@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -47,9 +48,16 @@ public class Acte_NaissanceController implements Serializable {
     private String datetasM_Ar;
     private String datetasM_Fr;
     private Date datetasH_Obj;
+    private Date g_to_h;
+    private int i = 0;
+    private int j = 0;
 
     public void setDatetasH_Obj(Date datetasH_Obj) {
         this.datetasH_Obj = datetasH_Obj;
+    }
+
+    public void setG_to_h(Date g_to_h) {
+        this.g_to_h = g_to_h;
     }
     @EJB
     private session.Acte_NaissanceFacade ejbFacade;
@@ -149,9 +157,29 @@ public class Acte_NaissanceController implements Serializable {
         return "Create";
     }
 
-    public Date g_to_h() {
-        System.out.println("haniii"+current.getDate_de_naiss_G());
-        return current.getDate_de_naiss_G() == null ? null : Helper.dateGrToH(current.getDate_de_naiss_G());
+    public void init() {
+        System.out.println("haniiiiiii"+ i);
+        i = 0;
+    }
+
+    public Date getG_to_h() {
+        if (current.getDate_de_naiss_G() == null) {
+            return null;
+        } else {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+            return current.getDate_de_naiss_H();
+        }
+
+    }
+
+    public void g_to_hplus() {
+        i++;
+        current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+    }
+
+    public void g_to_hmoins() {
+        i--;
+        current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
     }
 
     public String create() {

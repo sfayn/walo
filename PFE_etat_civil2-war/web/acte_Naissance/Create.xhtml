@@ -64,16 +64,23 @@
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                    <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                    <h:inputText class="form_datetime" id="date_de_naiss_G" onchange="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H'}); return false;" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
                                     </h:inputText>
-                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
-                                    <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h()}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
-                                    </h:inputText>
-                                    <h:button value="walo" onclick="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H'}); return false;" /> 
-                                    
 
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
+                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hplus()}"/> 
+                                        </h:commandLink>
+
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -119,6 +126,7 @@
                                     <h:inputText class="form_datetime" id="date_de_naissP_H" value="#{acte_NaissanceController.selected.date_de_naissP_H}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
+
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
