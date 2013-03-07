@@ -149,9 +149,9 @@ public class Acte_NaissanceController implements Serializable {
         return "Create";
     }
 
-    public void g_to_h() {
+    public Date g_to_h() {
         System.out.println("haniii"+current.getDate_de_naiss_G());
-        current.setDate_de_naiss_H(current.getDate_de_naiss_G() == null ? null : Helper.dateGrToH(current.getDate_de_naiss_G()));
+        return current.getDate_de_naiss_G() == null ? null : Helper.dateGrToH(current.getDate_de_naiss_G());
     }
 
     public String create() {
