@@ -223,7 +223,7 @@ public class Helper {
 
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
-        today.set((int) iDate[7], (int) iDate[6], (int) iDate[5]);
+        today.set((int) iDate[7], (int) iDate[6], (int) iDate[5], Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
         
         return today.getTime();
     }
