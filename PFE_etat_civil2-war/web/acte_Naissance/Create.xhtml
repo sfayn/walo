@@ -64,16 +64,17 @@
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                    <h:inputText class="form_datetime" id="date_de_naiss_G" onchange="jsf.ajax.request(this, event, {execute: 'date_de_naiss_G', render: 'date_de_naiss_H'}); return false;" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.selected.setI(0)}"/> 
+                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
 
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
                                     <h:panelGrid columns="3" class="input-prepend">
-                                        <h:inputText class="form_datetime" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
+                                        <h:inputText class="form_datetime" readonly="true" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
                                             <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                         </h:inputText>
-                                        <h:commandLink class="btn add-on" value="+">
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
                                             <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hplus()}"/> 
                                         </h:commandLink>
 
@@ -283,9 +284,9 @@
 
                 <script type="text/javascript">
                
-                    $('#form_datetime').datetimepicker({
+                    $('.form_datetime').datetimepicker({
                         language:  'fr',
-                        format: 'dd-mm-yyyy',
+                        format: 'yyyy-mm-dd hh:ii',
                         weekStart: 1,
                         todayBtn:  1,
                         autoclose: 1,
@@ -294,7 +295,7 @@
                         forceParse: 0
                     });
 
-                    $('.form_datetime').datepicker({
+                    $('.form_date').datepicker({
                         format: 'dd-mm-yyyy',
                         autoclose: 1
                     });

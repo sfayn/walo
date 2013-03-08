@@ -171,7 +171,7 @@ public class Acte_Naissance implements Serializable {
         return date_de_naiss_G;
     }
 
-    public void setDate_de_naiss_G(Date date_de_naiss_G) {
+    public void setDate_de_naiss_G(Date date_de_naiss_G) {  
         this.date_de_naiss_G = date_de_naiss_G;
     }
 

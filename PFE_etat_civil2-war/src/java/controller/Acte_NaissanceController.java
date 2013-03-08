@@ -49,8 +49,6 @@ public class Acte_NaissanceController implements Serializable {
     private String datetasM_Fr;
     private Date datetasH_Obj;
     private Date g_to_h;
-    private Integer i = 0;
-
     public void setDatetasH_Obj(Date datetasH_Obj) {
         this.datetasH_Obj = datetasH_Obj;
     }
@@ -156,11 +154,6 @@ public class Acte_NaissanceController implements Serializable {
         return "Create";
     }
 
-    public void init() {
-        System.out.println("haniiiiiii" + i);
-        i = 0;
-    }
-
     public Date getG_to_h() {
         if (current.getDate_de_naiss_G() == null) {
             return null;
@@ -173,15 +166,16 @@ public class Acte_NaissanceController implements Serializable {
 
     public void g_to_hplus() {
         if (current.getDate_de_naiss_G() != null) {
-            i++;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            current.setI(current.getI()+1);
+            System.out.println(current.getI());
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + current.getI());
         }
     }
 
     public void g_to_hmoins() {
         if (current.getDate_de_naiss_G() != null) {
-            i--;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            current.setI(current.getI()-1);
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + current.getI());
         }
     }
 
