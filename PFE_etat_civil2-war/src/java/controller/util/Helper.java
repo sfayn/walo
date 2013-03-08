@@ -215,7 +215,7 @@ public class Helper {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        SimpleDateFormat h = new SimpleDateFormat("hh");
+        SimpleDateFormat h = new SimpleDateFormat("kk");
         SimpleDateFormat i = new SimpleDateFormat("mm");
         
         Calendar today = Calendar.getInstance();
