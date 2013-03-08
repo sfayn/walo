@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author YOU$$EF
  */
-@WebFilter("/faces/*")
+@WebFilter("/faces/pages/*")
 public class AuthorizationFilter implements Filter {
 
     @Override
@@ -28,7 +28,8 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         User auth = (User) req.getSession().getAttribute("auth");
         System.out.println("point 1");
-        if (auth != null) {
+        if 
+                (auth != null) {
             // User is logged in, so just continue request.
             chain.doFilter(request, response);
             System.out.println("point 2");
