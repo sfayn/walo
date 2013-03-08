@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import util.Helper;
 
 /**
  *
@@ -71,9 +72,12 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-
+    
+    /**
+     * Hashage du Mot de passe par MD5
+     */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = Helper.md5(password);
     }
 
     public Date getLastLogin() {
