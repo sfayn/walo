@@ -23,7 +23,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="brand pull-right" href="./index.html">e-Registre</a>
+                    <a class="brand pull-right" href="#{request.contextPath}/faces/index.xhtml"><img src="#{request.contextPath}/faces/resources/images/logo-header.png" width="150px" /></a>
                     <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
                             <li class="">
@@ -55,18 +55,17 @@
         <br/>
         <br/>
         <br/>
-        <b:heroUnit styleClass="span10">
-            <div dir="rtl" >
-             
-
-                    <h1 style=" font-size: 30pt; border-bottom: rgb(58,135,173) solid 1px;">
+        <b:heroUnit styleClass="span10" style="padding-top: 10px;">
+            <img style="float: left;" src="#{request.contextPath}/faces/resources/images/logo.png" width="90px"/>
+            <div dir="rtl" style="padding-top: 20px">
+                <h1 style=" font-size: 30pt; border-bottom: rgb(58,135,173) solid 1px;">
                     <ui:insert name="title">Default Title</ui:insert>
                 </h1>
-          
+
                 <p>
                     <ui:insert name="body" >Default Body</ui:insert>
                 </p>
-                
+
             </div>
         </b:heroUnit>
     </h:body>
