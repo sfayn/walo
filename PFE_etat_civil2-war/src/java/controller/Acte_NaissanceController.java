@@ -49,8 +49,7 @@ public class Acte_NaissanceController implements Serializable {
     private String datetasM_Fr;
     private Date datetasH_Obj;
     private Date g_to_h;
-    private int i = 0;
-    private int j = 0;
+    private Integer i = 0;
 
     public void setDatetasH_Obj(Date datetasH_Obj) {
         this.datetasH_Obj = datetasH_Obj;
@@ -158,7 +157,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void init() {
-        System.out.println("haniiiiiii"+ i);
+        System.out.println("haniiiiiii" + i);
         i = 0;
     }
 
@@ -173,13 +172,17 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void g_to_hplus() {
-        i++;
-        current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        if (current.getDate_de_naiss_G() != null) {
+            i++;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
     }
 
     public void g_to_hmoins() {
-        i--;
-        current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        if (current.getDate_de_naiss_G() != null) {
+            i--;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
     }
 
     public String create() {
