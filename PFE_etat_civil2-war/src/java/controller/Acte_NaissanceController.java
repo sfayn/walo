@@ -67,6 +67,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Date getDatetasH_Obj() {
+        
         if (current.getDateTah_G() == null) {
             return null;
         } else {
@@ -104,6 +105,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Acte_NaissanceController() {
+    
     }
 
     public Acte_Naissance getSelected() {

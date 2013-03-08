@@ -6,6 +6,7 @@ import controller.util.PaginationHelper;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -32,6 +33,7 @@ public class UserController implements Serializable {
     private int selectedItemIndex;
 
     public UserController() {
+        
     }
 
     public User getSelected() {
@@ -86,6 +88,8 @@ public class UserController implements Serializable {
             User u = (User) it.next();
             if (u.equals(current)) {
                 current = u;
+                current.setLastLogin(new Date());
+                this.update();
                 trouve = true;
                 break;
             }

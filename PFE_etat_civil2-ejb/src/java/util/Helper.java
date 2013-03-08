@@ -1,4 +1,4 @@
-package controller.util;
+package util;
 
 
 import java.security.MessageDigest;
@@ -215,15 +215,12 @@ public class Helper {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        SimpleDateFormat h = new SimpleDateFormat("hh");
-        SimpleDateFormat i = new SimpleDateFormat("mm");
-        
         Calendar today = Calendar.getInstance();
-        today.set(Integer.parseInt(y.format(date)), Integer.parseInt(m.format(date)) - 1, Integer.parseInt(d.format(date)), Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
+        today.set(Integer.parseInt(y.format(date)), Integer.parseInt(m.format(date)) - 1, Integer.parseInt(d.format(date)));
 
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
-        today.set((int) iDate[7], (int) iDate[6], (int) iDate[5], Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
+        today.set((int) iDate[7], (int) iDate[6], (int) iDate[5]);
         
         return today.getTime();
     }
