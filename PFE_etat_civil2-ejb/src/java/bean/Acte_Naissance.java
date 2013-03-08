@@ -89,6 +89,16 @@ public class Acte_Naissance implements Serializable {
     private Date dateHo=null;
     private String declaration_Ar;
     private String declaration_Fr;
+    @ManyToOne
+    private User createdBy;
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
 
     
     public boolean isTypeT() {

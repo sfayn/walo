@@ -6,11 +6,13 @@ package bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -31,6 +33,16 @@ public class User implements Serializable {
     private Date lastLogin;
     @ManyToOne
     private Role role;
+    @OneToMany(mappedBy = "createdBy")
+    private List<Acte_Naissance> acte_Naissances;
+
+    public List<Acte_Naissance> getActe_Naissances() {
+        return acte_Naissances;
+    }
+
+    public void setActe_Naissances(List<Acte_Naissance> acte_Naissances) {
+        this.acte_Naissances = acte_Naissances;
+    }
 
     public String getNom() {
         return nom;
