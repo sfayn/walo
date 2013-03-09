@@ -33,7 +33,6 @@ public class UserController implements Serializable {
     private int selectedItemIndex;
 
     public UserController() {
-        
     }
 
     public User getSelected() {
@@ -98,16 +97,13 @@ public class UserController implements Serializable {
         if (trouve) {
             return "index";
         } else {
-
             JsfUtil.addErrorMessage("Le mot de passe que vous avez saisi est incorrect");
-
             return null;
-
         }
     }
 
     public String check() {
-       if (current.getLogin().equals("") || current.getPassword().equals("")) {
+        if (current.getLogin().equals("") || current.getPassword().equals("")) {
             return "login";
         } else {
 
@@ -115,7 +111,7 @@ public class UserController implements Serializable {
 
         }
     }
-    
+
     public String create() {
         try {
             getFacade().create(current);
