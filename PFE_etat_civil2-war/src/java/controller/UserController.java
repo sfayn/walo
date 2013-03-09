@@ -3,6 +3,7 @@ package controller;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import controller.util.UtilitaireSession;
 
 
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class UserController implements Serializable {
     private int selectedItemIndex;
 
     public UserController() {
+        
     }
 
     public User getSelected() {
@@ -89,11 +91,12 @@ public class UserController implements Serializable {
                 current = u;
                 current.setLastLogin(new Date());
                 this.update();
+                UtilitaireSession us = UtilitaireSession.getInstance();
+                us.set("auth", us);
                 trouve = true;
                 break;
             }
         }
-
         if (trouve) {
             return "index";
         } else {
@@ -101,9 +104,16 @@ public class UserController implements Serializable {
             return null;
         }
     }
+    
+    public String logout(){
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        us.set("auth", null);
+        
+        return "login";
+    }
 
     public String check() {
-        if (current.getLogin().equals("") || current.getPassword().equals("")) {
+       if (current.getLogin().equals("") || current.getPassword().equals("")) {
             return "login";
         } else {
 
@@ -111,7 +121,7 @@ public class UserController implements Serializable {
 
         }
     }
-
+    
     public String create() {
         try {
             getFacade().create(current);

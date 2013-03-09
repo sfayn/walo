@@ -58,7 +58,7 @@ public class UtilitaireSession {
      * @param cle La cle de l'objet a recuperer
      * @return l'objet correspondant
      */
-    private Object get(String cle) {
+    public Object get(String cle) {
         FacesContext fc = FacesContext.getCurrentInstance();
         Object res = null;
         if (isContextOk(fc)) {
@@ -73,7 +73,7 @@ public class UtilitaireSession {
      * @param cle La cle qui permet d'identifier la varaible dans la session
      * @param valeur La valeur a enregistrer
      */
-    private void set(String cle, Object valeur) {
+    public void set(String cle, Object valeur) {
         FacesContext fc = FacesContext.getCurrentInstance();
         if (fc != null && fc.getExternalContext() != null) {
             getSession(fc).setAttribute(cle, valeur);
