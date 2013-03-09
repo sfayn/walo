@@ -1,6 +1,5 @@
 package controller.util;
 
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -14,18 +13,24 @@ import java.util.Date;
 public class Helper {
 
     public static void main(String[] args) {
-        /*Date d = new Date(89, 9, 9);
-         System.out.println(dateToStrG(d));
-         System.out.println(dateToStrH(d));*/
-        Date d = new Date(90, 5, 30);
-        System.out.println(""+dateToStrArG(dateGrToH(d)));
-        System.out.println(dateToStrArG(d));
-        System.out.println(dateToStrArH(d));
-        System.out.println(dateToStrG(d));
-        System.out.println(dateToStrH(d));
+        /*
+         * Date d = new Date(90, 5, 30);
+         * System.out.println(dateToStrG(d));
+         * System.out.println(dateToStrH(d));
+         * System.out.println(""+dateToStrArG(dateGrToH(d)));
+         * System.out.println(dateToStrArG(d));
+         * System.out.println(dateToStrArH(d));
+         * System.out.println(dateToStrG(d));
+         * System.out.println(dateToStrH(d));
+         * System.out.println(dateHToStrH(dateGrToH(d)));
+         * System.out.println(dateHToStrArH(dateGrToH(d)));
+         */
     }
 
-    // 30/06/1990 -----> Trente Juin mille neuf cents quatre vignts dix
+    /*
+     * @param date: Date Grégorian
+     * @return String: Date Gregorian
+     */
     public static String dateToStrG(Date date) {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
@@ -48,6 +53,55 @@ public class Helper {
         result = "" + int2str(Integer.parseInt(d.format(date)));
         result += " " + mois[Integer.parseInt(m.format(date)) - 1];
         result += " " + int2str(Integer.parseInt(y.format(date)));
+        return result;
+    }
+
+    /*
+     * @param date: Date Héjirian
+     * @return String: Date Héjirian
+     */
+    public static String dateHToStrH(Date date) {
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MM");
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        String[] mois = {"Muharram", "Safar", "Rabi'ul Awwal",
+            "Rabi'ul Tani", "Jumadal Ula", "Jumadal Tania", "Rajab",
+            "Sha'ban", "Ramadan", "Shawwal", "Dhul Qa'ada", "Dhul Hijja"};
+
+        String result;
+        result = "" + int2str(Integer.parseInt(d.format(date)));
+        result += " " + mois[Integer.parseInt(m.format(date)) - 1];
+        result += " " + int2str(Integer.parseInt(y.format(date)));
+        return result;
+    }
+
+    /*
+     * @param date: Date Héjirian
+     * @return String: Date Héjirian Ar
+     */
+    public static String dateHToStrArH(Date date) {
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MM");
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        String[] mois = {
+            "محرم",
+            "صفر",
+            "ربيع الأول",
+            "ربيع الثاني",
+            "جمادى الأولى",
+            "جمادى الثانية",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذو القعدة",
+            "ذو الحجة"
+        };
+
+        String result;
+        result = "" + int2strAr(Integer.parseInt(d.format(date)));
+        result += " " + mois[Integer.parseInt(m.format(date)) - 1];
+        result += " " + int2strAr(Integer.parseInt(y.format(date)));
         return result;
     }
 
@@ -85,7 +139,7 @@ public class Helper {
 
         return writeIslamicDate(today);
     }
-    
+
     public static String dateToStrArH(Date date) {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
@@ -210,36 +264,36 @@ public class Helper {
 
         return outputIslamicDate;
     }
-    
+
     public static Date dateTimeGrToH(Date date) {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
         SimpleDateFormat h = new SimpleDateFormat("kk");
         SimpleDateFormat i = new SimpleDateFormat("mm");
-        
+
         Calendar today = Calendar.getInstance();
         today.set(Integer.parseInt(y.format(date)), Integer.parseInt(m.format(date)) - 1, Integer.parseInt(d.format(date)), Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
 
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
         today.set((int) iDate[7], (int) iDate[6], (int) iDate[5], Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
-        
+
         return today.getTime();
     }
-    
+
     public static Date dateGrToH(Date date) {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        
+
         Calendar today = Calendar.getInstance();
         today.set(Integer.parseInt(y.format(date)), Integer.parseInt(m.format(date)) - 1, Integer.parseInt(d.format(date)));
 
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
         today.set((int) iDate[7], (int) iDate[6], (int) iDate[5]);
-        
+
         return today.getTime();
     }
 
@@ -442,19 +496,19 @@ public class Helper {
         /*String[] wdNames = {"Ahad", "Ithnin", "Thulatha", "Arbaa", "Khams",
          "Jumuah", "Sabt"};*/
         String[] iMonthNames = {
-			"محرم", 
-			"صفر", 
-			"ربيع الأول",
-            "ربيع الثاني", 
-			"جمادى الأولى", 
-			"جمادى الثانية", 
-			"رجب",
-            "شعبان", 
-			"رمضان", 
-			"شوال", 
-			"ذو القعدة", 
-			"ذو الحجة"
-			};
+            "محرم",
+            "صفر",
+            "ربيع الأول",
+            "ربيع الثاني",
+            "جمادى الأولى",
+            "جمادى الثانية",
+            "رجب",
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "ذو القعدة",
+            "ذو الحجة"
+        };
         // This Value is used to give the correct day +- 1 day  
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
@@ -462,29 +516,27 @@ public class Helper {
 
         return outputIslamicDate;
     }
-    
-    static public String md5(String args){
-		byte[] uniqueKey = args.getBytes();
-		byte[] hash      = null;
-		try {
-			hash = MessageDigest.getInstance("MD5").digest(uniqueKey);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		
-		StringBuilder hashString = new StringBuilder();
-        for (int i = 0; i < hash.length; i++)
-        {
+
+    static public String md5(String args) {
+        byte[] uniqueKey = args.getBytes();
+        byte[] hash = null;
+        try {
+            hash = MessageDigest.getInstance("MD5").digest(uniqueKey);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder hashString = new StringBuilder();
+        for (int i = 0; i < hash.length; i++) {
             String hex = Integer.toHexString(hash[i]);
-            if (hex.length() == 1)
-            {
+            if (hex.length() == 1) {
                 hashString.append('0');
                 hashString.append(hex.charAt(hex.length() - 1));
-            }
-            else
+            } else {
                 hashString.append(hex.substring(hex.length() - 2));
+            }
         }
-        
-		return hashString.toString();
-	}
+
+        return hashString.toString();
+    }
 }

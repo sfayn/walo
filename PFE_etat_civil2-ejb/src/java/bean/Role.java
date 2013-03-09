@@ -61,7 +61,6 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Role[ id=" + id + " ]";
+        return this.libelle;
     }
-    
 }
