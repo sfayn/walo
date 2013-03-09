@@ -6,8 +6,6 @@ import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.File;
 import java.io.IOException;
-
-
 import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -18,7 +16,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -39,7 +36,7 @@ import session.Acte_NaissanceFacade;
 
 @ManagedBean(name = "acte_NaissanceController")
 @SessionScoped
-public class Acte_NaissanceController implements Serializable {
+public class Acte_NaissanceController implements Serializable{
 
     private Acte_Naissance current;
     private DataModel items = null;
