@@ -65,7 +65,7 @@
                                     </h:selectOneMenu>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
                                     <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
-                                        <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.selected.setI(0)}"/> 
+                                        <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
 
@@ -122,11 +122,21 @@
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissP_G" />
                                     <h:inputText class="form_datetime" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        <f:ajax event="change" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.setJ(0)}"/> 
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H" />
-                                    <h:inputText class="form_datetime" id="date_de_naissP_H" value="#{acte_NaissanceController.selected.date_de_naissP_H}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
-                                    </h:inputText>
+
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText class="form_datetime" readonly="true" id="date_de_naissP_H" value="#{acte_NaissanceController.g_to_hP}" title="تاريخ الإزدياد" >
+                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
 
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -167,12 +177,22 @@
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" />
                                     <h:inputText class="form_datetime" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.setK(0)}"/> 
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H" />
-                                    <h:inputText class="form_datetime" id="date_de_naissM_H" value="#{acte_NaissanceController.selected.date_de_naissM_H}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
-                                    </h:inputText>
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="date_de_naissM_H" value="#{acte_NaissanceController.g_to_hM}" title="تاريخ الإزدياد" >
+                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMplus()}"/> 
+                                        </h:commandLink>
+
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -235,7 +255,7 @@
                             <b:gridColumn span="6">
                                 <h:panelGrid columns="2" dir="rtl"> 
                                     <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
-                                    <h:inputText class="form_datetime" id="dateTah_G"  onchange="jsf.ajax.request(this, event, {execute: 'dateTah_G', render: 'dateTh_H_textAr dateTh_H_textFr dateTh_G_textAr dateTh_G_textFr dateTah_H'}); return false;" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
+                                    <h:inputText class="form_date" id="dateTah_G"  onchange="jsf.ajax.request(this, event, {execute: 'dateTah_G', render: 'dateTh_H_textAr dateTh_H_textFr dateTh_G_textAr dateTh_G_textFr dateTah_H'}); return false;" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
                                     </h:inputText>
                                     <h:outputLabel value=" "/>
@@ -248,7 +268,7 @@
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl"> 
                                     <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
-                                    <h:inputText  class="form_datetime" id="dateTah_H" value="#{acte_NaissanceController.datetasH_Obj}" title="تاريخ التصريح الهجري" >
+                                    <h:inputText  class="form_date" id="dateTah_H" value="#{acte_NaissanceController.datetasH_Obj}" title="تاريخ التصريح الهجري" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
                                     </h:inputText>
                                     <h:outputLabel value=" "/>
