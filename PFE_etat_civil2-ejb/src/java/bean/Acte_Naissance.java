@@ -92,16 +92,7 @@ public class Acte_Naissance implements Serializable {
     private String declaration_Fr;
     @ManyToOne
     private User createdBy;
-    @Transient
-    int i=0;
-
-    public int getI() {
-        return i;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-    }
+    
     public User getCreatedBy() {
         return createdBy;
     }
@@ -171,7 +162,7 @@ public class Acte_Naissance implements Serializable {
         return date_de_naiss_G;
     }
 
-    public void setDate_de_naiss_G(Date date_de_naiss_G) {
+    public void setDate_de_naiss_G(Date date_de_naiss_G) {  
         this.date_de_naiss_G = date_de_naiss_G;
     }
 

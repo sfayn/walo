@@ -46,7 +46,43 @@ public class Acte_NaissanceController implements Serializable{
     private String datetasM_Fr;
     private Date datetasH_Obj;
     private Date g_to_h;
-    private Integer i = 0;
+    private Date g_to_hP;
+    private Date g_to_hM;
+    private int i = 0;
+    private int j = 0;
+    private int k = 0;
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
+
+    public void setG_to_hM(Date g_to_hM) {
+        this.g_to_hM = g_to_hM;
+    }
+
+    public void setG_to_hP(Date g_to_hP) {
+        this.g_to_hP = g_to_hP;
+    }
 
     public void setDatetasH_Obj(Date datetasH_Obj) {
         this.datetasH_Obj = datetasH_Obj;
@@ -66,7 +102,7 @@ public class Acte_NaissanceController implements Serializable{
     }
 
     public Date getDatetasH_Obj() {
-        
+
         if (current.getDateTah_G() == null) {
             return null;
         } else {
@@ -104,7 +140,6 @@ public class Acte_NaissanceController implements Serializable{
     }
 
     public Acte_NaissanceController() {
-    
     }
 
     public Acte_Naissance getSelected() {
@@ -155,17 +190,32 @@ public class Acte_NaissanceController implements Serializable{
         return "Create";
     }
 
-    public void init() {
-        System.out.println("haniiiiiii" + i);
-        i = 0;
-    }
-
     public Date getG_to_h() {
         if (current.getDate_de_naiss_G() == null) {
             return null;
         } else {
             current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
             return current.getDate_de_naiss_H();
+        }
+
+    }
+
+    public Date getG_to_hP() {
+        if (current.getDate_de_naissP_G() == null) {
+            return null;
+        } else {
+            current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
+            return current.getDate_de_naissP_H();
+        }
+
+    }
+
+    public Date getG_to_hM() {
+        if (current.getDate_de_naissM_G() == null) {
+            return null;
+        } else {
+            current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
+            return current.getDate_de_naissM_H();
         }
 
     }
@@ -184,11 +234,37 @@ public class Acte_NaissanceController implements Serializable{
         }
     }
 
+    public void g_to_hPplus() {
+        if (current.getDate_de_naissP_G() != null) {
+            j++;
+            current.getDate_de_naissP_G().setDate(current.getDate_de_naissP_G().getDate() + j);
+        }
+    }
+
+    public void g_to_hPmoins() {
+        if (current.getDate_de_naissP_G() != null) {
+            j--;
+            current.getDate_de_naissP_G().setDate(current.getDate_de_naissP_G().getDate() + j);
+        }
+    }
+
+    public void g_to_hMplus() {
+        if (current.getDate_de_naissM_G() != null) {
+            k++;
+            current.getDate_de_naissM_G().setDate(current.getDate_de_naissM_G().getDate() + k);
+        }
+    }
+
+    public void g_to_hMmoins() {
+        if (current.getDate_de_naissM_G() != null) {
+            k--;
+            current.getDate_de_naissM_G().setDate(current.getDate_de_naissM_G().getDate() + k);
+        }
+    }
+
     public String create() {
         try {
-            System.out.println();
             String enc = URLEncoder.encode(current.getNom_Ar(), "UTF-8");
-            System.out.println(enc);
             current.setNom_Ar(enc);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
