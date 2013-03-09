@@ -211,7 +211,7 @@ public class Helper {
         return outputIslamicDate;
     }
     
-    public static Date dateGrToH(Date date) {
+    public static Date dateTimeGrToH(Date date) {
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -224,6 +224,21 @@ public class Helper {
         boolean dayTest = true;
         double[] iDate = kuwaiticalendar(today, dayTest);
         today.set((int) iDate[7], (int) iDate[6], (int) iDate[5], Integer.parseInt(h.format(date)), Integer.parseInt(i.format(date)));
+        
+        return today.getTime();
+    }
+    
+    public static Date dateGrToH(Date date) {
+        SimpleDateFormat d = new SimpleDateFormat("dd");
+        SimpleDateFormat m = new SimpleDateFormat("MM");
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        
+        Calendar today = Calendar.getInstance();
+        today.set(Integer.parseInt(y.format(date)), Integer.parseInt(m.format(date)) - 1, Integer.parseInt(d.format(date)));
+
+        boolean dayTest = true;
+        double[] iDate = kuwaiticalendar(today, dayTest);
+        today.set((int) iDate[7], (int) iDate[6], (int) iDate[5]);
         
         return today.getTime();
     }
