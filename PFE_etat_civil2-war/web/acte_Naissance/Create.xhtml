@@ -176,14 +176,14 @@
                                     <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" />
-                                    <h:inputText class="form_datetime" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
+                                    <h:inputText class="form_date" id="date_de_naissM_G" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.setK(0)}"/> 
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H" />
                                     <h:panelGrid columns="3" class="input-prepend">
                                         <h:inputText readonly="true" id="date_de_naissM_H" value="#{acte_NaissanceController.g_to_hM}" title="تاريخ الإزدياد" >
-                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
                                         <h:commandLink class="btn btn-primary add-on" value="+">
                                             <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMplus()}"/> 
@@ -255,26 +255,41 @@
                             <b:gridColumn span="6">
                                 <h:panelGrid columns="2" dir="rtl"> 
                                     <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
-                                    <h:inputText class="form_date" id="dateTah_G"  onchange="jsf.ajax.request(this, event, {execute: 'dateTah_G', render: 'dateTh_H_textAr dateTh_H_textFr dateTh_G_textAr dateTh_G_textFr dateTah_H'}); return false;" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
+                                    <h:inputText class="form_date" id="dateTah_G" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="change" render="dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G" listener="#{acte_NaissanceController.setL(0)}"/> 
                                     </h:inputText>
                                     <h:outputLabel value=" "/>
-                                    <h:inputText id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
+                                    <h:inputText readonly="true" id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
                                     <h:outputLabel value=" "/>
-                                    <h:inputText id="dateTh_G_textFr" value="#{acte_NaissanceController.datetasM_Fr}"/>
+                                    <h:inputText readonly="true" id="dateTh_G_textFr" value="#{acte_NaissanceController.datetasM_Fr}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputTextarea cols="30" rows="5" value="#{acte_NaissanceController.selected.declaration_Fr}" ></h:inputTextarea>
+
                                 </h:panelGrid>
 
                             </b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl"> 
                                     <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
-                                    <h:inputText  class="form_date" id="dateTah_H" value="#{acte_NaissanceController.datetasH_Obj}" title="تاريخ التصريح الهجري" >
-                                        <f:convertDateTime pattern="dd-MM-yyyy" />
-                                    </h:inputText>
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="dateTah_H" value="#{acte_NaissanceController.g_to_hTah}" title="تاريخ التصريح الهجري" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />                                            
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
+
                                     <h:outputLabel value=" "/>
-                                    <h:inputText id="dateTh_H_textAr" value="#{acte_NaissanceController.datetasH_Ar}"/>
+                                    <h:inputText readonly="true" id="dateTh_H_textAr" value="#{acte_NaissanceController.datetasH_Ar}"/>
                                     <h:outputLabel value=" "/>
-                                    <h:inputText id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
+                                    <h:inputText readonly="true" id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputTextarea cols="30" rows="5"  value="#{acte_NaissanceController.selected.declaration_Ar}" ></h:inputTextarea>
 
                                 </h:panelGrid>
                                 <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
@@ -317,6 +332,7 @@
 
                     $('.form_date').datepicker({
                         format: 'dd-mm-yyyy',
+                        language:  'fr',
                         autoclose: 1
                     });
                 </script>

@@ -36,7 +36,7 @@ import session.Acte_NaissanceFacade;
 
 @ManagedBean(name = "acte_NaissanceController")
 @SessionScoped
-public class Acte_NaissanceController implements Serializable{
+public class Acte_NaissanceController implements Serializable {
 
     private Acte_Naissance current;
     private DataModel items = null;
@@ -44,13 +44,26 @@ public class Acte_NaissanceController implements Serializable{
     private String datetasH_Fr;
     private String datetasM_Ar;
     private String datetasM_Fr;
-    private Date datetasH_Obj;
     private Date g_to_h;
+    private Date g_to_hTah;
     private Date g_to_hP;
     private Date g_to_hM;
     private int i = 0;
     private int j = 0;
     private int k = 0;
+    private int l = 0;
+
+    public void setG_to_hTah(Date g_to_hTah) {
+        this.g_to_hTah = g_to_hTah;
+    }
+
+    public int getL() {
+        return l;
+    }
+
+    public void setL(int l) {
+        this.l = l;
+    }
 
     public int getK() {
         return k;
@@ -84,10 +97,6 @@ public class Acte_NaissanceController implements Serializable{
         this.g_to_hP = g_to_hP;
     }
 
-    public void setDatetasH_Obj(Date datetasH_Obj) {
-        this.datetasH_Obj = datetasH_Obj;
-    }
-
     public void setG_to_h(Date g_to_h) {
         this.g_to_h = g_to_h;
     }
@@ -97,17 +106,10 @@ public class Acte_NaissanceController implements Serializable{
     private int selectedItemIndex;
 
     public String getDatetasH_Ar() {
-        current.setDateTah_H(current.getDateTah_G() == null ? null : Helper.dateGrToH(current.getDateTah_G()));
-        return current.getDateTah_G() == null ? "null" : Helper.dateToStrArH(current.getDateTah_G());
-    }
-
-    public Date getDatetasH_Obj() {
-
-        if (current.getDateTah_G() == null) {
-            return null;
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "null" : Helper.dateHToStrArH(current.getDateTah_G());
         } else {
-            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
-            return current.getDateTah_H();
+            return current.getDateTah_H() == null ? "null" : Helper.dateHToStrArH(current.getDateTah_H());
         }
     }
 
@@ -116,7 +118,12 @@ public class Acte_NaissanceController implements Serializable{
     }
 
     public String getDatetasH_Fr() {
-        return current.getDateTah_G() == null ? "null" : Helper.dateToStrH(current.getDateTah_G());
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "null" : Helper.dateToStrH(current.getDateTah_G());
+        } else {
+            return current.getDateTah_H() == null ? "null" : Helper.dateHToStrH(current.getDateTah_H());
+        }
+
     }
 
     public void setDatetasH_Fr(String datetasH_Fr) {
@@ -210,6 +217,16 @@ public class Acte_NaissanceController implements Serializable{
 
     }
 
+    public Date getG_to_hTah() {
+        if (current.getDateTah_G() == null) {
+            return null;
+        } else {
+            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
+            return current.getDateTah_H();
+        }
+
+    }
+
     public Date getG_to_hM() {
         if (current.getDate_de_naissM_G() == null) {
             return null;
@@ -218,6 +235,20 @@ public class Acte_NaissanceController implements Serializable{
             return current.getDate_de_naissM_H();
         }
 
+    }
+
+    public void g_to_hTahplus() {
+        if (current.getDateTah_G() != null) {
+            l++;
+            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+        }
+    }
+
+    public void g_to_hTahmoins() {
+        if (current.getDateTah_G() != null) {
+            l--;
+            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+        }
     }
 
     public void g_to_hplus() {
