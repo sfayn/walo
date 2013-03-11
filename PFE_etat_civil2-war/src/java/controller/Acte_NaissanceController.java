@@ -65,6 +65,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void setL(int l) {
         this.l = l;
+        changeDeclaration();
     }
 
     public int getK() {
@@ -109,9 +110,9 @@ public class Acte_NaissanceController implements Serializable {
 
     public String getDatetasH_Ar() {
         if (current.getDateTah_H() == null) {
-            return current.getDateTah_G() == null ? "null" : Helper.dateHToStrArH(current.getDateTah_G());
+            return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
         } else {
-            return current.getDateTah_H() == null ? "null" : Helper.dateHToStrArH(current.getDateTah_H());
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrArH(current.getDateTah_H());
         }
     }
 
@@ -121,9 +122,9 @@ public class Acte_NaissanceController implements Serializable {
 
     public String getDatetasH_Fr() {
         if (current.getDateTah_H() == null) {
-            return current.getDateTah_G() == null ? "null" : Helper.dateToStrH(current.getDateTah_G());
+            return current.getDateTah_G() == null ? "" : Helper.dateToStrH(current.getDateTah_G());
         } else {
-            return current.getDateTah_H() == null ? "null" : Helper.dateHToStrH(current.getDateTah_H());
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrH(current.getDateTah_H());
         }
 
     }
@@ -133,7 +134,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String getDatetasM_Ar() {
-        return current.getDateTah_G() == null ? "null" : Helper.dateToStrArG(current.getDateTah_G());
+        return current.getDateTah_G() == null ? "" : Helper.dateToStrArG(current.getDateTah_G());
     }
 
     public void setDatetasM_Ar(String datetasM_Ar) {
@@ -141,7 +142,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String getDatetasM_Fr() {
-        return current.getDateTah_G() == null ? "null" : Helper.dateToStrG(current.getDateTah_G());
+        return current.getDateTah_G() == null ? "" : Helper.dateToStrG(current.getDateTah_G());
     }
 
     public void setDatetasM_Fr(String datetasM_Fr) {
@@ -151,15 +152,16 @@ public class Acte_NaissanceController implements Serializable {
     public Acte_NaissanceController() {
     }
 
-
     public void changeDeclaration() {
-        if(current.isTypeT()){
-        current.setDeclaration_Fr("Sur la base de ce qui est venu dans le numéro du jugement "+ Helper.dateToStrH(current.getDateHo()) + "correspondant au " +Helper.dateToStrG(current.getDateHo())+" dans le dossier numéro   du Tribunal de première instance à ");
-        current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + " الموافق ل" + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب");
+
+        if (current.isTypeT()) {
+            current.setDeclaration_Fr("Sur la base de ce qui est venu dans le numéro du jugement " + Helper.dateToStrH(current.getDateHo()) + " correspondant au " + Helper.dateToStrG(current.getDateHo()) + " dans le dossier numéro   du Tribunal de première instance à ");
+            current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + " الموافق ل " + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب ");
+        } else {
+            current.setDeclaration_Ar( " حسب ما صرح به والده السيد "+current.getPrenomP_Ar()+" تحت عدد "+current.getNumActe()+ " جنسيته "+current.getNationalteP_Ar()+ " حرفته "+current.getProfessionP_Ar()+ " و الساكن ب "+current.getAddressePa_Ar());
+            current.setDeclaration_Fr("Selon la déclaration du père "+current.getPrenomP_Fr()+" sous numéro "+current.getNumActe()+" sa nationalité est "+current.getNationalteP_Fr()+" sa fonction est "+current.getProfessionP_Fr()+ " residant à "+current.getAddressePa_Fr());
         }
-        else
-        {}
-        }
+    }
 
     public Acte_Naissance getSelected() {
         if (current == null) {
