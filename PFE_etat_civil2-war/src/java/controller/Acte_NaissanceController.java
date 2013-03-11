@@ -149,6 +149,16 @@ public class Acte_NaissanceController implements Serializable {
     public Acte_NaissanceController() {
     }
 
+
+    public void changeDeclaration() {
+        if(current.isTypeT()){
+        current.setDeclaration_Fr("Sur la base de ce qui est venu dans le numéro du jugement "+ Helper.dateToStrH(current.getDateHo()) + "correspondant au " +Helper.dateToStrG(current.getDateHo())+" dans le dossier numéro   du Tribunal de première instance à ");
+        current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + " الموافق ل" + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب");
+        }
+        else
+        {}
+        }
+
     public Acte_Naissance getSelected() {
         if (current == null) {
             current = new Acte_Naissance();
@@ -201,7 +211,7 @@ public class Acte_NaissanceController implements Serializable {
         if (current.getDate_de_naiss_G() == null) {
             return null;
         } else {
-            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+            current.setDate_de_naiss_H(Helper.dateTimeGrToH(current.getDate_de_naiss_G()));
             return current.getDate_de_naiss_H();
         }
 
