@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -11,29 +12,33 @@
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h:messages errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warning" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditUserLabel_nom}" for="nom" />
-                    <h:inputText id="nom" value="#{userController.selected.nom}" title="#{bundle.EditUserTitle_nom}" />
-                    <h:outputLabel value="#{bundle.EditUserLabel_prenom}" for="prenom" />
-                    <h:inputText id="prenom" value="#{userController.selected.prenom}" title="#{bundle.EditUserTitle_prenom}" />
-                    <h:outputLabel value="#{bundle.EditUserLabel_login}" for="login" />
-                    <h:inputText id="login" value="#{userController.selected.login}" title="#{bundle.EditUserTitle_login}" />
-                    <h:outputLabel value="#{bundle.EditUserLabel_password}" for="password" />
-                    <h:inputText id="password" value="#{userController.selected.password}" title="#{bundle.EditUserTitle_password}" />
-                    <h:outputLabel value="#{bundle.EditUserLabel_lastLogin}" for="lastLogin" />
-                    <h:inputText id="lastLogin" value="#{userController.selected.lastLogin}" title="#{bundle.EditUserTitle_lastLogin}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.EditUserLabel_role}" for="role" />
-                    <h:selectOneMenu id="role" value="#{userController.selected.role}" title="#{bundle.EditUserTitle_role}" >
-                        <f:selectItems value="#{roleController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditUserLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{userController.selected.id}" title="#{bundle.EditUserTitle_id}" />
-                </h:panelGrid>
+            <h:form prependId="false" dir="ltr">
+                <b:gridRow styleClass="show-grid" fluid="true">
+                    <fieldset style="border:2px solid rgb(58,135,173); direction: ltr; padding: 10px; padding-left: 50px; margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:5px; border-bottom: 0px; width: auto;">Information sur le Compte:</legend>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="8">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="#{bundle.CreateUserLabel_nom}" for="nom" class="span2" />
+                                    <h:inputText id="nom" value="#{userController.selected.nom}" title="#{bundle.CreateUserTitle_nom}" />
+                                    <h:outputLabel value="#{bundle.CreateUserLabel_prenom}" for="prenom" />
+                                    <h:inputText id="prenom" value="#{userController.selected.prenom}" title="#{bundle.CreateUserTitle_prenom}" />
+                                    <h:outputLabel value="#{bundle.CreateUserLabel_login}" for="login" />
+                                    <h:inputText id="login" value="#{userController.selected.login}" title="#{bundle.CreateUserTitle_login}" />
+                                    <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />
+                                    <h:inputText id="password" value="" title="#{bundle.CreateUserTitle_password}" />
+                                    <h:outputLabel value="#{bundle.CreateUserLabel_role}" for="role" />
+                                    <h:selectOneMenu id="role" value="#{userController.selected.role}" title="#{bundle.CreateUserTitle_role}" >
+                                        <f:selectItems value="#{roleController.itemsAvailableSelectOne}"/>
+                                    </h:selectOneMenu>            
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                </b:gridRow>
                 <h:commandLink action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
                 <br />
                 <br />

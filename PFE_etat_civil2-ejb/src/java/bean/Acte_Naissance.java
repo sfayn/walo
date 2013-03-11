@@ -15,7 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import javax.persistence.Transient;
 
 /**
  *
@@ -92,6 +91,18 @@ public class Acte_Naissance implements Serializable {
     private String declaration_Fr;
     @ManyToOne
     private User createdBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    
+    
     
     public User getCreatedBy() {
         return createdBy;
