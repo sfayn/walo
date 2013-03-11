@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,24 +15,33 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewUserLabel_nom}"/>
-                    <h:outputText value="#{userController.selected.nom}" title="#{bundle.ViewUserTitle_nom}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_prenom}"/>
-                    <h:outputText value="#{userController.selected.prenom}" title="#{bundle.ViewUserTitle_prenom}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_login}"/>
-                    <h:outputText value="#{userController.selected.login}" title="#{bundle.ViewUserTitle_login}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_password}"/>
-                    <h:outputText value="#{userController.selected.password}" title="#{bundle.ViewUserTitle_password}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_lastLogin}"/>
-                    <h:outputText value="#{userController.selected.lastLogin}" title="#{bundle.ViewUserTitle_lastLogin}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewUserLabel_role}"/>
-                    <h:outputText value="#{userController.selected.role}" title="#{bundle.ViewUserTitle_role}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_id}"/>
-                    <h:outputText value="#{userController.selected.id}" title="#{bundle.ViewUserTitle_id}"/>
-                </h:panelGrid>
+                <b:gridRow styleClass="show-grid" fluid="false">
+                    <fieldset style="border:2px solid rgb(58,135,173); padding: 10px; margin-left: 20px; direction: ltr; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">Informations du Compte:</legend>
+                        <b:gridColumn span="8">
+                            <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_nom}"/>
+                                <h:outputText value="#{userController.selected.nom}" title="#{bundle.ViewUserTitle_nom}"/>
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_prenom}"/>
+                                <h:outputText value="#{userController.selected.prenom}" title="#{bundle.ViewUserTitle_prenom}"/>
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_login}"/>
+                                <h:outputText value="#{userController.selected.login}" title="#{bundle.ViewUserTitle_login}"/>
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_lastLogin}"/>
+                                <h:outputText value="#{userController.selected.lastLogin==null?'aucun':userController.selected.lastLogin}" title="#{bundle.ViewUserTitle_lastLogin}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_role}"/>
+                                <h:outputText value="#{userController.selected.role.toString()}" title="#{bundle.ViewUserTitle_role}"/>
+                                <h:outputText style="font-weight: bold;" value="Actes Saisies"/>
+                                <h:outputText value="#{userController.selected.acte_Naissances.size()}" title="#{bundle.ViewUserTitle_role}"/>
+                            </h:panelGrid>
+                        </b:gridColumn>
+                    </fieldset>
+                </b:gridRow>
+                <ui:repeat value="#{userController.actesCreated }" var="item" >
+                    <h:outputText value="#{item.key} ---> #{item.value}" />
+                </ui:repeat>
                 <br />
                 <h:commandLink action="#{userController.destroyAndView}" value="#{bundle.ViewUserDestroyLink}"/>
                 <br />

@@ -95,8 +95,6 @@ public class User implements Serializable {
     public void setRole(Role role) {
         this.role = role;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -120,15 +118,17 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
+        if(this.login== null || this.password == null){
+            return false;
+        }
         if (!this.login.equals(other.login) || !this.password.equals(other.password)) {
             return false;
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "bean.User[ id=" + id + " ]";
     }
-    
 }

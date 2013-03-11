@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Acte_Naissance;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -7,8 +8,12 @@ import controller.util.UtilitaireSession;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -34,7 +39,6 @@ public class UserController implements Serializable {
     private int selectedItemIndex;
 
     public UserController() {
-        
     }
 
     public User getSelected() {
@@ -65,6 +69,7 @@ public class UserController implements Serializable {
         }
         return pagination;
     }
+    
 
     public String prepareList() {
         recreateModel();
@@ -92,7 +97,8 @@ public class UserController implements Serializable {
                 current.setLastLogin(new Date());
                 this.update();
                 UtilitaireSession us = UtilitaireSession.getInstance();
-                us.set("auth", us);
+                us.set("auth", current);
+                recreateModel();
                 trouve = true;
                 break;
             }
@@ -104,16 +110,17 @@ public class UserController implements Serializable {
             return null;
         }
     }
-    
-    public String logout(){
+
+    public String logout() {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
-        
+
         return "login";
     }
 
     public String check() {
-       if (current.getLogin().equals("") || current.getPassword().equals("")) {
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        if (us.get("auth") == null) {
             return "login";
         } else {
 
@@ -121,7 +128,7 @@ public class UserController implements Serializable {
 
         }
     }
-    
+
     public String create() {
         try {
             getFacade().create(current);
@@ -201,6 +208,20 @@ public class UserController implements Serializable {
             items = getPagination().createPageDataModel();
         }
         return items;
+    }
+
+    public List<Map.Entry<Date, Integer>> getActesCreated() {
+       List<Map.Entry<Date, Integer>> dates = new ArrayList<Map.Entry<Date, Integer>>();
+        Map<Date, Integer> frequency = new HashMap<Date, Integer>();
+        for (Acte_Naissance element : current.getActe_Naissances()) {
+            if (frequency.containsKey(element.getCreatedAt())) {
+                frequency.put(element.getCreatedAt(), frequency.get(element.getCreatedAt()) + 1);
+            } else {
+                frequency.put(element.getCreatedAt(), 1);
+            }
+        }
+        dates.addAll(frequency.entrySet());
+        return dates;
     }
 
     private void recreateModel() {

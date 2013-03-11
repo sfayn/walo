@@ -1,9 +1,11 @@
 package controller;
 
 import bean.Acte_Naissance;
+import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import controller.util.UtilitaireSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -307,6 +309,9 @@ public class Acte_NaissanceController implements Serializable {
         try {
             String enc = URLEncoder.encode(current.getNom_Ar(), "UTF-8");
             current.setNom_Ar(enc);
+            current.setCreatedAt(new Date());
+            UtilitaireSession us = UtilitaireSession.getInstance();
+            current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
