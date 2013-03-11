@@ -11,10 +11,13 @@
             <h:outputText value="#{bundle.ViewUserTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form dir="ltr">
                 <b:gridRow styleClass="show-grid" fluid="false">
                     <fieldset style="border:2px solid rgb(58,135,173); padding: 10px; margin-left: 20px; direction: ltr; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                         <legend style=" margin-bottom:0px; font-size: 30px;
@@ -39,9 +42,38 @@
                         </b:gridColumn>
                     </fieldset>
                 </b:gridRow>
-                <ui:repeat value="#{userController.actesCreated }" var="item" >
-                    <h:outputText value="#{item.key} ---> #{item.value}" />
-                </ui:repeat>
+                <b:gridRow styleClass="show-grid" fluid="false">
+                    <fieldset style="border:2px solid rgb(58,135,173); padding: 10px; margin-left: 20px; direction: ltr; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">Actes Saisies par date:</legend>
+                        <b:gridColumn span="9">
+                            <h:panelGroup >
+                                <table  cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th><h:outputText value="Date"/></th>
+                                            <th><h:outputText value="Nombre d'actes"/></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat value="#{userController.actesCreated}" var="item" >
+                                            <tr>
+                                                <td>
+                                                    <h:outputText value="#{item.key}" >
+                                                        <f:convertDateTime pattern="dd MMM yyyy" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td>
+                                                    <h:outputText value="#{item.value}"/>
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </h:panelGroup>
+                        </b:gridColumn>
+                    </fieldset>
+                </b:gridRow>
                 <br />
                 <h:commandLink action="#{userController.destroyAndView}" value="#{bundle.ViewUserDestroyLink}"/>
                 <br />

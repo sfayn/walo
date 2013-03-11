@@ -128,6 +128,11 @@ public class UserController implements Serializable {
 
         }
     }
+    
+    public User loggedUser(){
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        return (User) us.get("auth");
+    }
 
     public String create() {
         try {

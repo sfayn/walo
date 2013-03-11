@@ -32,6 +32,9 @@ public class Helper {
      * @return String: Date Gregorian
      */
     public static String dateToStrG(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -61,6 +64,9 @@ public class Helper {
      * @return String: Date Héjirian
      */
     public static String dateHToStrH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -80,6 +86,9 @@ public class Helper {
      * @return String: Date Héjirian Ar
      */
     public static String dateHToStrArH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -106,6 +115,9 @@ public class Helper {
     }
 
     public static String dateToStrArG(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -131,6 +143,9 @@ public class Helper {
     }
 
     public static String dateToStrH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -141,6 +156,9 @@ public class Helper {
     }
 
     public static String dateToStrArH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -266,6 +284,9 @@ public class Helper {
     }
 
     public static Date dateTimeGrToH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
@@ -283,6 +304,9 @@ public class Helper {
     }
 
     public static Date dateGrToH(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat d = new SimpleDateFormat("dd");
         SimpleDateFormat m = new SimpleDateFormat("MM");
         SimpleDateFormat y = new SimpleDateFormat("yyyy");

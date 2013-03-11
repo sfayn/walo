@@ -26,6 +26,11 @@
                     <a class="brand pull-right" href="#{request.contextPath}/faces/index.xhtml"><img onmouseover="this.src='#{request.contextPath}/faces/resources/images/logo-header-white.png'" onmouseout="this.src='#{request.contextPath}/faces/resources/images/logo-header.png'" src="#{request.contextPath}/faces/resources/images/logo-header.png" width="150px" /></a>
                     <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
+                            <li class="#{view.viewId == '/user/List.xhtml' ? 'active' : ''}">
+                                <a href="#{request.contextPath}/faces/user/#{userController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">
+                                    #{userController.loggedUser().role == 'Admin'?'الإدارة':''}
+                                </a>
+                            </li>
                             <li class="">
                                 <a href="#" style="font-size: 12pt; font-weight: bold;">الإحصائيات</a>
                             </li>
