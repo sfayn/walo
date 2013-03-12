@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author YOU$$EF
  */
-//@WebFilter("/faces/acte_Naissance/*")
 public class AuthorizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {    
@@ -34,7 +33,7 @@ public class AuthorizationFilter implements Filter {
             // User is not logged in, so redirect to index.
             System.out.println("point 3");
             HttpServletResponse res = (HttpServletResponse) response;
-            res.sendRedirect(req.getContextPath() + "/login.xhtml");
+            res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
         }
     }
 

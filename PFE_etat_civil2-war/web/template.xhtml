@@ -10,8 +10,9 @@
 
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
-
-
+        <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
     </h:head>
 
     <h:body style="margin-left: 60px;">
@@ -30,6 +31,15 @@
                                 <a href="#{request.contextPath}/faces/user/#{userController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">
                                     #{userController.loggedUser().role == 'Admin'?'الإدارة':''}
                                 </a>
+                            </li>
+                            <li>
+                                <a class="icon-user icon-white dropdown-toggle" dir="rtl" data-toggle="dropdown" href="#" style="font-size: 12pt; font-weight: bold;width: auto;"> الحساب الشخصي</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#{request.contextPath}/faces/user/view.xhtml" dir="rtl" style="font-size: 13pt; color: #000000;" >المعلومات الشخصية</a></li>
+                                    <li>
+                                        <h:form prependId="false"><h:commandLink action="#{userController.logout()}" style="font-size: 13pt; color: #000000;">الخروج</h:commandLink></h:form>
+                                     </li>
+                                </ul>
                             </li>
                             <li class="">
                                 <a href="#" style="font-size: 12pt; font-weight: bold;">الإحصائيات</a>
