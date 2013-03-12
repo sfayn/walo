@@ -11,12 +11,12 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
-            <!--            <h:panelGroup id="messagePanel" layout="block">
-                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                        </h:panelGroup>-->
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warning" layout="table"/>
-            </h:panelGroup>
+    
+            <!--                        <h:panelGroup id="messagePanel" layout="block">
+                                        <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                    </h:panelGroup>-->
+            <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color:darkgreen;border-radius: 20px; background-color: #f2dede; border-color: #eed3d7; width: 500px; margin: 10px; font-size: 25px;" layout="table"/>
+            
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
@@ -37,9 +37,14 @@
                                 <br/>
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="Prénom" for="prenom_Fr" />
-                                    <h:inputText required="True"  requiredMessage="veuillez saisir un nom" id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" />
+                                    <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" >
+                                        <f:ajax event="keyup" render="prenom_Fr" />
+                                    </h:inputText>
                                     <h:outputLabel value="Nom" for="nom_Fr" />
-                                    <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" />
+                                    <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" >
+                                        <f:ajax event="keyup" render="nom_Fr" />
+                                    </h:inputText>
+
                                     <h:outputLabel value="Prof." for="profession_Fr" />
                                     <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
                                     <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
@@ -58,9 +63,9 @@
                                     <h:outputLabel value="المهنة" for="profession_Ar" />
                                     <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
-                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}" />
+                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  />
                                     <h:outputLabel value="الجنس" for="sex" />
-                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}" >
+                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                     </h:selectOneMenu>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
@@ -97,8 +102,6 @@
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="Prénom" for="prenomP_Fr" />
                                     <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
-                                    <h:outputLabel value="Nom" for="nomP_Fr" />
-                                    <h:inputText id="nomP_Fr" value="#{acte_NaissanceController.selected.nomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Fr}" />
                                     <h:outputLabel value="Prof." for="professionP_Fr" />
                                     <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
                                     <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissP_Fr" />
@@ -111,8 +114,6 @@
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="الإسم" for="prenomP_Ar" />
                                     <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
-                                    <h:outputLabel value="النسب" for="nomP_Ar" />
-                                    <h:inputText id="nomP_Ar" value="#{acte_NaissanceController.selected.nomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomP_Ar}" />
                                     <h:outputLabel value="المهنة" for="professionP_Ar" />
                                     <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissP_Ar" />
@@ -247,8 +248,8 @@
                                 <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
                                     <f:selectItem  itemValue="true"  itemLabel="حكم" />
                                     <f:selectItem itemValue="false" itemLabel="تصريح" />
-                                
-<!--                                    <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />-->
+
+                                    <!--                                    <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />-->
                                 </h:selectOneRadio>
                             </b:gridColumn>
                         </b:gridRow>

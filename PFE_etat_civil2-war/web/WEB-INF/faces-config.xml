@@ -11,5 +11,7 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <message-bundle>/Message</message-bundle>
     </application>
+
 </faces-config>
