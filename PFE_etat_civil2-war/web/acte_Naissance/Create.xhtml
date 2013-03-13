@@ -11,12 +11,12 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
-    
+
             <!--                        <h:panelGroup id="messagePanel" layout="block">
                                         <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table"/>
                                     </h:panelGroup>-->
             <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color:darkgreen;border-radius: 20px; background-color: #f2dede; border-color: #eed3d7; width: 500px; margin: 10px; font-size: 25px;" layout="table"/>
-            
+
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
@@ -48,29 +48,41 @@
                                     <h:outputLabel value="Prof." for="profession_Fr" />
                                     <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
                                     <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
-                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}" />                                    
+                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}">
+                                        <f:ajax event="keyup" render="lieu_de_Naiss_Fr" />
+                                    </h:inputText>                                    
                                 </h:panelGrid>
                             </b:gridColumn>
 
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="رقم الرسم" for="numActe" />
-                                    <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" />
+                                    <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
+                                        <f:ajax event="keyup" render="numActe" />
+                                    </h:inputText>
                                     <h:outputLabel value="الإسم" for="prenom_Ar" />
-                                    <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" />
+                                    <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" >
+                                        <f:ajax event="keyup" render="prenom_Ar" />
+                                    </h:inputText>
                                     <h:outputLabel value="النسب" for="nom_Ar" />
-                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}"/>
+                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}">
+                                    <f:ajax event="keyup" render="nom_Ar" />
+                                    </h:inputText>
                                     <h:outputLabel value="المهنة" for="profession_Ar" />
                                     <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
-                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  />
+                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
+                                    <f:ajax event="keyup" render="lieu_de_Naiss_Ar" />
+                                    </h:inputText>
                                     <h:outputLabel value="الجنس" for="sex" />
-                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                                        <f:ajax event="keyup" render="sex" />
                                     </h:selectOneMenu>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                    <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="تاريخ الإزدياد" >
+                                    <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
+                                        <f:ajax event="keyup" render="date_de_naiss_G" />
                                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
                                     </h:inputText>
 
@@ -121,15 +133,15 @@
                                     <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
                                     <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissP_G" />
-                                    <h:inputText class="form_datetime" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                    <h:inputText class="form_date" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
                                         <f:ajax event="change" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.setJ(0)}"/> 
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H" />
 
                                     <h:panelGrid columns="3" class="input-prepend">
-                                        <h:inputText class="form_datetime" readonly="true" id="date_de_naissP_H" value="#{acte_NaissanceController.g_to_hP}" title="تاريخ الإزدياد" >
-                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                        <h:inputText  readonly="true" id="date_de_naissP_H" value="#{acte_NaissanceController.g_to_hP}" title="تاريخ الإزدياد" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
                                         <h:commandLink class="btn btn-primary add-on" value="+">
                                             <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPplus()}"/> 
