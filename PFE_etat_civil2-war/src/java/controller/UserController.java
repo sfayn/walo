@@ -5,6 +5,7 @@ import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
+import java.io.IOException;
 
 
 import java.io.Serializable;
@@ -15,10 +16,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -95,7 +99,7 @@ public class UserController implements Serializable {
             if (u.equals(current)) {
                 current = u;
                 current.setLastLogin(new Date());
-                this.update();
+                getFacade().edit(current);
                 UtilitaireSession us = UtilitaireSession.getInstance();
                 us.set("auth", current);
                 recreateModel();
@@ -114,8 +118,10 @@ public class UserController implements Serializable {
     public String logout() {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
+        current = null;
+        
 
-        return "login";
+        return "List";
     }
 
     public String check() {

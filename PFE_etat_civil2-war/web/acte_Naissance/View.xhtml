@@ -19,7 +19,7 @@
                 <b:gridRow styleClass="show-grid" fluid="false">
 
                     <b:gridRow styleClass="show-grid" fluid="false">
-                        <b:gridColumn span="1" dir="rtl" style="width: 10%;">
+                        <b:gridColumn span="1" dir="rtl" style="width: 10%;" rendered="#{userController.loggedUser().role == 'Admin'}">
                             <h:commandLink id="btn" class="btn #{acte_NaissanceController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" >
                                 <f:ajax event="click" render="btn" listener="#{acte_NaissanceController.check()}"/> 
                             </h:commandLink>
@@ -179,6 +179,7 @@
                         color: #ffffff !important;
                     }
                 </style>
+                <b:modal ></b:modal>
                 <b:gridRow styleClass="show-grid" fluid="false">
 
                     <b:gridColumn span="10">
