@@ -11,10 +11,21 @@
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
-            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
-            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+        <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
     </h:head>
-
+    <b:modal></b:modal>
+    <style type="text/css">
+        a:visited{
+            color: #ffffff ;
+        }
+        li>a{
+            color: #000000;
+        }
+        a:hover{
+            color: #ffffff !important;
+        }
+    </style>
     <h:body style="margin-left: 60px;">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
@@ -32,13 +43,11 @@
                                     #{userController.loggedUser().role == 'Admin'?'الإدارة':''}
                                 </a>
                             </li>
-                            <li>
+                            <li class="dropdown">
                                 <a class="icon-user icon-white dropdown-toggle" dir="rtl" data-toggle="dropdown" href="#" style="font-size: 12pt; font-weight: bold;width: auto;"> الحساب الشخصي</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#{request.contextPath}/faces/user/view.xhtml" dir="rtl" style="font-size: 13pt; color: #000000;" >المعلومات الشخصية</a></li>
-                                    <li>
-                                        <h:form prependId="false"><h:commandLink action="#{userController.logout()}" style="font-size: 13pt; color: #000000;">الخروج</h:commandLink></h:form>
-                                     </li>
+                                    <li><a href="#{request.contextPath}/faces/logout.xhtml" dir="rtl" style="font-size: 13pt; color: #000000;" >الخروج</a></li>
                                 </ul>
                             </li>
                             <li class="">

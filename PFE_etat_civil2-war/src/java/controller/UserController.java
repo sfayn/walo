@@ -119,13 +119,7 @@ public class UserController implements Serializable {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
         current = null;
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.invalidateSession();
-        try {
-            ec.redirect("../login.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
         return "List";
     }
