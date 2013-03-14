@@ -9,6 +9,7 @@ import controller.util.UtilitaireSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -156,10 +159,14 @@ public class Acte_NaissanceController implements Serializable {
 
         if (current.isTypeT()) {
             current.setDeclaration_Fr("Sur la base de ce qui est venu dans le numéro du jugement " + Helper.dateToStrH(current.getDateHo()) + " correspondant au " + Helper.dateToStrG(current.getDateHo()) + " dans le dossier numéro   du Tribunal de première instance à ");
-            current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + " الموافق ل " + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب ");
+            current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + "الموافق ل " + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب ");
         } else {
-            current.setDeclaration_Ar( " حسب ما صرح به والده السيد "+current.getPrenomP_Ar()+" تحت عدد "+current.getNumActe()+ " جنسيته "+current.getNationalteP_Ar()+ " حرفته "+current.getProfessionP_Ar()+ " و الساكن ب "+current.getAddressePa_Ar());
-            current.setDeclaration_Fr("Selon la déclaration du père "+current.getPrenomP_Fr()+" sous numéro "+current.getNumActe()+" sa nationalité est "+current.getNationalteP_Fr()+" sa fonction est "+current.getProfessionP_Fr()+ " residant à "+current.getAddressePa_Fr());
+            try {
+                current.setDeclaration_Ar(" حسب ما صرح به والده السيد " + current.getPrenomP_Ar() + " تحت عدد " + current.getNumActe() + " جنسيته " + current.getNationalteP_Ar() + " حرفته " + current.getProfessionP_Ar() + " و الساكن ب " + current.getAddressePa_Ar());
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            current.setDeclaration_Fr("Selon la déclaration du père " + current.getPrenomP_Fr() + " sous numéro " + current.getNumActe() + " sa nationalité est " + current.getNationalteP_Fr() + " sa fonction est " + current.getProfessionP_Fr() + " residant à " + current.getAddressePa_Fr());
         }
     }
 
@@ -307,10 +314,31 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
+    public void encode() {
+        try {
+            current.setNom_Ar(URLEncoder.encode(current.getNom_Ar(), "UTF-8"));
+            current.setPrenom_Ar(URLEncoder.encode(current.getPrenom_Ar(), "UTF-8"));
+            current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
+            current.setLieu_de_Naiss_Ar(URLEncoder.encode(current.getLieu_de_Naiss_Ar(), "UTF-8"));
+            current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
+            current.setPrenomP_Ar(URLEncoder.encode(current.getPrenomP_Ar(), "UTF-8"));
+            current.setPrenomM_Ar(URLEncoder.encode(current.getPrenomM_Ar(), "UTF-8"));
+            current.setProfessionM_Ar(URLEncoder.encode(current.getProfessionM_Ar(), "UTF-8"));
+            current.setProfessionP_Ar(URLEncoder.encode(current.getProfessionP_Ar(), "UTF-8"));
+            current.setLieu_de_NaissM_Ar(URLEncoder.encode(current.getLieu_de_NaissM_Ar(), "UTF-8"));
+            current.setLieu_de_NaissP_Ar(URLEncoder.encode(current.getLieu_de_NaissP_Ar(), "UTF-8"));
+            current.setNationalteM_Ar(URLEncoder.encode(current.getNationalteM_Ar(), "UTF-8"));
+            current.setNationalteP_Ar(URLEncoder.encode(current.getNationalteP_Ar(), "UTF-8"));
+            current.setAddressePa_Ar(URLEncoder.encode(current.getAddressePa_Ar(), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public String create() {
         try {
-            String enc = URLEncoder.encode(current.getNom_Ar(), "UTF-8");
-            current.setNom_Ar(enc);
+            encode();
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
@@ -331,6 +359,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public String update() {
         try {
+            encode();
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
             return "View";

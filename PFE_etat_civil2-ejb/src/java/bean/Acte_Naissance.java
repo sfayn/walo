@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -31,62 +32,73 @@ public class Acte_Naissance implements Serializable {
     private Integer numActe;
     private boolean checked = false;
     //info citoyen
+    @Lob
     private String nom_Ar;
     private String nom_Fr;
+    @Lob
     private String prenom_Ar;
     private String prenom_Fr;
+    @Lob
     private String profession_Ar;
     private String profession_Fr;
     private String lieu_de_Naiss_Fr;
+    @Lob
     private String lieu_de_Naiss_Ar;
-
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naiss_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naiss_G;
     //info pere
-    private String nomP_Ar;
-    private String nomP_Fr;
+    @Lob
     private String prenomP_Ar;
     private String prenomP_Fr;
+    @Lob
     private String professionP_Ar;
     private String professionP_Fr;
+    @Lob
     private String lieu_de_NaissP_Fr;
+    @Lob
     private String lieu_de_NaissP_Ar;
     private String nationalteP_Fr;
+    @Lob
     private String nationalteP_Ar;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_G;
     //info mere
-    private String nomM_Ar;
-    private String nomM_Fr;
+    @Lob
     private String prenomM_Ar;
     private String prenomM_Fr;
+    @Lob
     private String professionM_Ar;
     private String professionM_Fr;
     private String lieu_de_NaissM_Fr;
+    @Lob
     private String lieu_de_NaissM_Ar;
     private String nationalteM_Fr;
+    @Lob
     private String nationalteM_Ar;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_G;
     //info parent
+    @Lob
     private String addressePa_Ar;
+    @Lob
     private String addressePa_Fr;
     @ManyToOne
     private Sex sex;
     //info tassri7
-    private boolean typeT=true;
+    private boolean typeT = true;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTah_H;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTah_G;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateHo=null;
+    private Date dateHo = null;
+    @Lob
     private String declaration_Ar;
     private String declaration_Fr;
     @ManyToOne
@@ -101,9 +113,7 @@ public class Acte_Naissance implements Serializable {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    
-    
-    
+
     public User getCreatedBy() {
         return createdBy;
     }
@@ -112,7 +122,6 @@ public class Acte_Naissance implements Serializable {
         this.createdBy = createdBy;
     }
 
-    
     public boolean isTypeT() {
         return typeT;
     }
@@ -145,8 +154,8 @@ public class Acte_Naissance implements Serializable {
         this.dateHo = dateHo;
     }
 
-    public String getDeclaration_Ar() {
-        return declaration_Ar;
+    public String getDeclaration_Ar() throws UnsupportedEncodingException {
+        return declaration_Ar == null ? "" : URLDecoder.decode(declaration_Ar, "UTF-8");
     }
 
     public void setDeclaration_Ar(String declaration_Ar) {
@@ -160,7 +169,7 @@ public class Acte_Naissance implements Serializable {
     public void setDeclaration_Fr(String declaration_Fr) {
         this.declaration_Fr = declaration_Fr;
     }
-    
+
     public Date getDate_de_naiss_H() {
         return date_de_naiss_H;
     }
@@ -173,7 +182,7 @@ public class Acte_Naissance implements Serializable {
         return date_de_naiss_G;
     }
 
-    public void setDate_de_naiss_G(Date date_de_naiss_G) {  
+    public void setDate_de_naiss_G(Date date_de_naiss_G) {
         this.date_de_naiss_G = date_de_naiss_G;
     }
 
@@ -217,8 +226,8 @@ public class Acte_Naissance implements Serializable {
         this.lieu_de_Naiss_Fr = lieu_de_Naiss_Fr;
     }
 
-    public String getLieu_de_Naiss_Ar() {
-        return lieu_de_Naiss_Ar;
+    public String getLieu_de_Naiss_Ar() throws UnsupportedEncodingException {
+        return lieu_de_Naiss_Ar == null ? "" : URLDecoder.decode(lieu_de_Naiss_Ar, "UTF-8");
     }
 
     public void setLieu_de_Naiss_Ar(String lieu_de_Naiss_Ar) {
@@ -257,8 +266,8 @@ public class Acte_Naissance implements Serializable {
         this.nom_Fr = nom_Fr;
     }
 
-    public String getPrenom_Ar() {
-        return prenom_Ar;
+    public String getPrenom_Ar() throws UnsupportedEncodingException {
+        return prenom_Ar == null ? "" : URLDecoder.decode(prenom_Ar, "UTF-8");
     }
 
     public void setPrenom_Ar(String prenom_Ar) {
@@ -273,8 +282,8 @@ public class Acte_Naissance implements Serializable {
         this.prenom_Fr = prenom_Fr;
     }
 
-    public String getProfession_Ar() {
-        return profession_Ar;
+    public String getProfession_Ar() throws UnsupportedEncodingException {
+        return profession_Ar == null ? "" : URLDecoder.decode(profession_Ar, "UTF-8");
     }
 
     public void setProfession_Ar(String profession_Ar) {
@@ -289,24 +298,8 @@ public class Acte_Naissance implements Serializable {
         this.profession_Fr = profession_Fr;
     }
 
-    public String getNomP_Ar() {
-        return nomP_Ar;
-    }
-
-    public void setNomP_Ar(String nomP_Ar) {
-        this.nomP_Ar = nomP_Ar;
-    }
-
-    public String getNomP_Fr() {
-        return nomP_Fr;
-    }
-
-    public void setNomP_Fr(String nomP_Fr) {
-        this.nomP_Fr = nomP_Fr;
-    }
-
-    public String getPrenomP_Ar() {
-        return prenomP_Ar;
+    public String getPrenomP_Ar() throws UnsupportedEncodingException {
+        return prenomP_Ar == null ? "" : URLDecoder.decode(prenomP_Ar, "UTF-8");
     }
 
     public void setPrenomP_Ar(String prenomP_Ar) {
@@ -321,8 +314,8 @@ public class Acte_Naissance implements Serializable {
         this.prenomP_Fr = prenomP_Fr;
     }
 
-    public String getProfessionP_Ar() {
-        return professionP_Ar;
+    public String getProfessionP_Ar() throws UnsupportedEncodingException {
+        return professionP_Ar == null ? "" : URLDecoder.decode(professionP_Ar, "UTF-8");
     }
 
     public void setProfessionP_Ar(String professionP_Ar) {
@@ -345,8 +338,8 @@ public class Acte_Naissance implements Serializable {
         this.lieu_de_NaissP_Fr = lieu_de_NaissP_Fr;
     }
 
-    public String getLieu_de_NaissP_Ar() {
-        return lieu_de_NaissP_Ar;
+    public String getLieu_de_NaissP_Ar() throws UnsupportedEncodingException {
+        return lieu_de_NaissP_Ar == null ? "" : URLDecoder.decode(lieu_de_NaissP_Ar, "UTF-8");
     }
 
     public void setLieu_de_NaissP_Ar(String lieu_de_NaissP_Ar) {
@@ -361,32 +354,16 @@ public class Acte_Naissance implements Serializable {
         this.nationalteP_Fr = nationalteP_Fr;
     }
 
-    public String getNationalteP_Ar() {
-        return nationalteP_Ar;
+    public String getNationalteP_Ar() throws UnsupportedEncodingException {
+        return nationalteP_Ar == null ? "" : URLDecoder.decode(nationalteP_Ar, "UTF-8");
     }
 
     public void setNationalteP_Ar(String nationalteP_Ar) {
         this.nationalteP_Ar = nationalteP_Ar;
     }
 
-    public String getNomM_Ar() {
-        return nomM_Ar;
-    }
-
-    public void setNomM_Ar(String nomM_Ar) {
-        this.nomM_Ar = nomM_Ar;
-    }
-
-    public String getNomM_Fr() {
-        return nomM_Fr;
-    }
-
-    public void setNomM_Fr(String nomM_Fr) {
-        this.nomM_Fr = nomM_Fr;
-    }
-
-    public String getPrenomM_Ar() {
-        return prenomM_Ar;
+    public String getPrenomM_Ar() throws UnsupportedEncodingException {
+        return prenomM_Ar == null ? "" : URLDecoder.decode(prenomM_Ar, "UTF-8");
     }
 
     public void setPrenomM_Ar(String prenomM_Ar) {
@@ -401,8 +378,8 @@ public class Acte_Naissance implements Serializable {
         this.prenomM_Fr = prenomM_Fr;
     }
 
-    public String getProfessionM_Ar() {
-        return professionM_Ar;
+    public String getProfessionM_Ar() throws UnsupportedEncodingException {
+        return professionM_Ar == null ? "" : URLDecoder.decode(professionM_Ar, "UTF-8");
     }
 
     public void setProfessionM_Ar(String professionM_Ar) {
@@ -425,8 +402,8 @@ public class Acte_Naissance implements Serializable {
         this.lieu_de_NaissM_Fr = lieu_de_NaissM_Fr;
     }
 
-    public String getLieu_de_NaissM_Ar() {
-        return lieu_de_NaissM_Ar;
+    public String getLieu_de_NaissM_Ar() throws UnsupportedEncodingException {
+        return lieu_de_NaissM_Ar == null ? "" : URLDecoder.decode(lieu_de_NaissM_Ar, "UTF-8");
     }
 
     public void setLieu_de_NaissM_Ar(String lieu_de_NaissM_Ar) {
@@ -441,16 +418,16 @@ public class Acte_Naissance implements Serializable {
         this.nationalteM_Fr = nationalteM_Fr;
     }
 
-    public String getNationalteM_Ar() {
-        return nationalteM_Ar;
+    public String getNationalteM_Ar() throws UnsupportedEncodingException {
+        return nationalteM_Ar == null ? "" : URLDecoder.decode(nationalteM_Ar, "UTF-8");
     }
 
     public void setNationalteM_Ar(String nationalteM_Ar) {
         this.nationalteM_Ar = nationalteM_Ar;
     }
 
-    public String getAddressePa_Ar() {
-        return addressePa_Ar;
+    public String getAddressePa_Ar() throws UnsupportedEncodingException {
+        return addressePa_Ar == null ? "" : URLDecoder.decode(addressePa_Ar, "UTF-8");
     }
 
     public void setAddressePa_Ar(String addressePa_Ar) {

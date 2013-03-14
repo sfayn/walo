@@ -15,7 +15,7 @@
             <!--                        <h:panelGroup id="messagePanel" layout="block">
                                         <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table"/>
                                     </h:panelGroup>-->
-            <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color:darkgreen;border-radius: 20px; background-color: #f2dede; border-color: #eed3d7; width: 500px; margin: 10px; font-size: 25px;" layout="table"/>
+            <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color: green" layout="table"/>
 
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
@@ -165,8 +165,6 @@
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="Prénom" for="prenomM_Fr" />
                                     <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
-                                    <h:outputLabel value="Nom" for="nomM_Fr" />
-                                    <h:inputText id="nomM_Fr" value="#{acte_NaissanceController.selected.nomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Fr}" />
                                     <h:outputLabel value="Prof." for="professionM_Fr" />
                                     <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Fr}" />
                                     <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissM_Fr" />
@@ -180,8 +178,6 @@
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="الإسم" for="prenomM_Ar" />
                                     <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
-                                    <h:outputLabel value="النسب" for="nomM_Ar" />
-                                    <h:inputText id="nomM_Ar" value="#{acte_NaissanceController.selected.nomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nomM_Ar}" />
                                     <h:outputLabel value="المهنة" for="professionM_Ar" />
                                     <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissM_Ar" />
