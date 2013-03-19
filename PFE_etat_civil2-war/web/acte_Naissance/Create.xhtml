@@ -11,6 +11,8 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
+            <script src="#{request.contextPath}/resources/js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" type="text/css" media="screen" charset="utf-8" />
 
             <!--                        <h:panelGroup id="messagePanel" layout="block">
                                         <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -107,7 +109,17 @@
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                         <legend style=" margin-bottom:0px; font-size: 30px;
                                 margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأب :</legend>
-
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="متوفي" for="decesP" />
+                                    <h:selectBooleanCheckbox  id="decesP" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
+                                        <f:ajax event="change" render="prenomP_Fr prenomP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
+                                    </h:selectBooleanCheckbox>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5"></b:gridColumn>
+                        </b:gridRow>
                         <b:gridRow styleClass="show-grid" fluid="true">
                             <b:gridColumn span="1"></b:gridColumn>
                             <b:gridColumn span="5">
@@ -317,6 +329,7 @@
                     a:visited{
                         color: #ffffff ;
                     }
+                    
                     li>a{
                         color: #000000;
                     }
@@ -348,6 +361,12 @@
                         language:  'fr',
                         autoclose: 1
                     });
+                    //                    $(window).load(function() {
+                    //                        $(':checkbox').iphoneStyle({
+                    //                            checkedLabel: 'متوفي',
+                    //                            uncheckedLabel: 'غير متوفي'
+                    //                        });
+                    //                    });
                 </script>
             </h:form>
         </ui:define>

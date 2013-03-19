@@ -166,7 +166,8 @@ $(document).ready(function() {
             "sEmptyTable": "لا توجد بيانات في الجدول",
             "sInfo": "عرض _START_ الى  _END_ من _TOTAL_ مقالات",
              "sInfoFiltered": "(تصفية من  _MAX_ مقالات)",
-            "sSearch": "  البحث:_INPUT_"
+            "sSearch": "  البحث:_INPUT_",
+            "sZeroRecords": "لا توجد سجلات مطابقة"
             
         },
         "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "كل المقالات"]]

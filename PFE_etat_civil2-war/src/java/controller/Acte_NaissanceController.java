@@ -40,6 +40,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.util.JRProperties;
 import org.ini4j.Wini;
 import session.Acte_NaissanceFacade;
 
@@ -388,6 +389,19 @@ public class Acte_NaissanceController implements Serializable {
 
         }
     }
+      public void changeDecesP() {
+        
+        if (current.isDecesP()) {
+            current.setPrenomP_Ar("متوفي");
+            current.setPrenomP_Fr("décedé");
+        }
+        else{
+        current.setPrenomP_Ar("");
+            current.setPrenomP_Fr("");
+        }
+         
+        
+      }
 
     public void PDF() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
@@ -409,6 +423,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("province", ini.get("commune", "privince"));
         params.put("commune", ini.get("commune", "commune"));
         params.put("officier", "Signé dessous");
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait-fr.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();

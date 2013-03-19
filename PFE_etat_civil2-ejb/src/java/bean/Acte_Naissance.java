@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 /**
  *
@@ -66,6 +67,9 @@ public class Acte_Naissance implements Serializable {
     private Date date_de_naissP_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_G;
+    @Transient
+    private boolean decesP=false;
+    
     //info mere
     @Lob
     private String prenomM_Ar;
@@ -83,6 +87,8 @@ public class Acte_Naissance implements Serializable {
     private Date date_de_naissM_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_G;
+    @Transient
+    private boolean decesM=false;
     //info parent
     @Lob
     private String addressePa_Ar;
@@ -105,6 +111,22 @@ public class Acte_Naissance implements Serializable {
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
+
+    public boolean isDecesP() {
+        return decesP;
+    }
+
+    public void setDecesP(boolean decesP) {
+        this.decesP = decesP;
+    }
+
+    public boolean isDecesM() {
+        return decesM;
+    }
+
+    public void setDecesM(boolean decesM) {
+        this.decesM = decesM;
+    }
 
     public Date getCreatedAt() {
         return createdAt;
