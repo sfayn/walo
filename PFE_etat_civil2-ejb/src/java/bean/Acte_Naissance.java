@@ -49,6 +49,7 @@ public class Acte_Naissance implements Serializable {
     private Date date_de_naiss_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naiss_G;
+    private boolean smj=false;
     //info pere
     @Lob
     private String prenomP_Ar;
@@ -67,7 +68,6 @@ public class Acte_Naissance implements Serializable {
     private Date date_de_naissP_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_G;
-    @Transient
     private boolean decesP=false;
     
     //info mere
@@ -87,7 +87,6 @@ public class Acte_Naissance implements Serializable {
     private Date date_de_naissM_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_G;
-    @Transient
     private boolean decesM=false;
     //info parent
     @Lob

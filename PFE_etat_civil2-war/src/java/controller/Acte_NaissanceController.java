@@ -389,19 +389,43 @@ public class Acte_NaissanceController implements Serializable {
 
         }
     }
-      public void changeDecesP() {
-        
+
+    public void changeDecesP() {
+
         if (current.isDecesP()) {
-            current.setPrenomP_Ar("متوفي");
-            current.setPrenomP_Fr("décedé");
+            current.setLieu_de_NaissP_Ar("متوفي");
+            current.setLieu_de_NaissP_Fr("décédé");
+            current.setNationalteP_Ar("متوفي");
+            current.setNationalteP_Fr("décédé");
+            current.setProfessionP_Ar("متوفي");
+            current.setProfessionP_Fr("décédé");
+        } else {
+            current.setLieu_de_NaissP_Ar("");
+            current.setLieu_de_NaissP_Fr("");
+            current.setNationalteP_Ar("");
+            current.setNationalteP_Fr("");
+            current.setProfessionP_Ar("");
+            current.setProfessionP_Fr("");
         }
-        else{
-        current.setPrenomP_Ar("");
-            current.setPrenomP_Fr("");
+    }
+    public void changeDecesM() {
+
+        if (current.isDecesM()) {
+            current.setLieu_de_NaissM_Ar("متوفية");
+            current.setLieu_de_NaissM_Fr("décédée");
+            current.setNationalteM_Ar("متوفية");
+            current.setNationalteM_Fr("décédée");
+            current.setProfessionM_Ar("متوفية");
+            current.setProfessionM_Fr("décédée");
+        } else {
+            current.setLieu_de_NaissM_Ar("");
+            current.setLieu_de_NaissM_Fr("");
+            current.setNationalteM_Ar("");
+            current.setNationalteM_Fr("");
+            current.setProfessionM_Ar("");
+            current.setProfessionM_Fr("");
         }
-         
-        
-      }
+    }
 
     public void PDF() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
@@ -411,7 +435,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("nom", current.getNom_Ar());
         params.put("prenom", current.getPrenom_Fr());
         params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
-        params.put("dateNaissance",Helper.dateToStrG(current.getDate_de_naiss_G()));
+        params.put("dateNaissance", Helper.dateToStrG(current.getDate_de_naiss_G()));
         params.put("numActe", "" + current.getNumActe());
         params.put("correspondant", Helper.dateHToStrH(current.getDate_de_naiss_H()));
         params.put("nationnalite", "Marocaine");
