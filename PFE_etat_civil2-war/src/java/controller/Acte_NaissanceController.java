@@ -6,7 +6,6 @@ import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -398,7 +397,7 @@ public class Acte_NaissanceController implements Serializable {
             current.setNationalteP_Ar("متوفي");
             current.setNationalteP_Fr("décédé");
             current.setProfessionP_Ar("متوفي");
-            current.setProfessionP_Fr("décédé");
+            current.setProfessionP_Fr("");
         } else {
             current.setLieu_de_NaissP_Ar("");
             current.setLieu_de_NaissP_Fr("");
@@ -432,7 +431,7 @@ public class Acte_NaissanceController implements Serializable {
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
-        params.put("nom", current.getNom_Ar());
+        params.put("nom", current.getNom_Fr());
         params.put("prenom", current.getPrenom_Fr());
         params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
         params.put("dateNaissance", Helper.dateToStrG(current.getDate_de_naiss_G()));

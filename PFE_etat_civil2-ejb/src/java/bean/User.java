@@ -22,6 +22,7 @@ import util.Helper;
  */
 @Entity
 public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -72,12 +73,14 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-    
+
     /**
      * Hashage du Mot de passe par MD5
      */
     public void setPassword(String password) {
-        this.password = Helper.md5(password);
+        if (password != null) {
+            this.password = Helper.md5(password);
+        }
     }
 
     public Date getLastLogin() {
@@ -113,12 +116,14 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (object == null) {
+            return false;
+        }
         if (!(object instanceof User)) {
             return false;
         }
         User other = (User) object;
-        if(this.login== null || this.password == null){
+        if (this.login == null || this.password == null || other.login == null || other.password == null) {
             return false;
         }
         if (!this.login.equals(other.login) || !this.password.equals(other.password)) {
@@ -126,7 +131,7 @@ public class User implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "bean.User[ id=" + id + " ]";

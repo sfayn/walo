@@ -20,6 +20,7 @@
             <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color: green" layout="table"/>
 
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
+<!--            <link rel="stylesheet" href="#{request.contextPath}/resources/css/style2.css" />-->
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
@@ -54,9 +55,11 @@
                                         <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
                                     </h:inputText>                                    
                                 </h:panelGrid>
+
                             </b:gridColumn>
 
                             <b:gridColumn span="5">
+
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="رقم الرسم" for="numActe" />
                                     <h:inputText id="numActe" value="#{acte_NaissanceController.selected.numActe}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
@@ -102,7 +105,12 @@
                                     </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
+
+
+
                         </b:gridRow>
+
+
                     </fieldset>
 
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
@@ -172,7 +180,9 @@
 
                         <b:gridRow >
                             <b:gridColumn span="11">
-                                <h:panelGrid columns="2" dir="ltr">
+                                <h:panelGrid columns="2" dir="ltr" >
+
+
                                     <h:outputLabel value="متوفية" for="decesM" />
                                     <h:selectBooleanCheckbox  id="decesM" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
                                         <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
@@ -336,6 +346,9 @@
 
                 <br />
                 <style>
+                    .icon-whatever {
+                        background:url('../resources/img/glyphicons-halflings.png') 0 0 !important ;
+                    }
                     a:visited{
                         color: #ffffff ;
                     }
