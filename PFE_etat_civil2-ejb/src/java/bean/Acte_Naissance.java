@@ -22,7 +22,6 @@ import javax.persistence.Temporal;
  * @author Sfayn
  */
 @Entity
-@LocalBean
 public class Acte_Naissance implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -109,6 +108,16 @@ public class Acte_Naissance implements Serializable {
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
+    @ManyToOne
+    private Registre registre;
+
+    public Registre getRegistre() {
+        return registre;
+    }
+
+    public void setRegistre(Registre registre) {
+        this.registre = registre;
+    }
 
     public boolean isDecesP() {
         return decesP;

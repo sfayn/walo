@@ -61,6 +61,35 @@ public class Acte_NaissanceController implements Serializable {
     private int j = 0;
     private int k = 0;
     private int l = 0;
+    public String annee;
+    public int numReg;
+
+    public int getNumReg() {
+        return numReg;
+    }
+
+    public void setNumReg(int numReg) {
+        this.numReg = numReg;
+    }
+    
+    public String getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
+
+    public SelectItem[] listannee() {
+        List <String> annees = new ArrayList<String>();
+        for(int i=1900;i<2060;i++){
+        annees.add(i+"");
+        }
+        return JsfUtil.getSelectItems(annees,true);
+    }
+    public SelectItem[] listReg() {
+        return JsfUtil.getSelectItems(ejbFacade.findByDate(annee),true);
+    }
 
     public void setG_to_hTah(Date g_to_hTah) {
         this.g_to_hTah = g_to_hTah;
@@ -407,6 +436,7 @@ public class Acte_NaissanceController implements Serializable {
             current.setProfessionP_Fr("");
         }
     }
+
     public void changeDecesM() {
 
         if (current.isDecesM()) {

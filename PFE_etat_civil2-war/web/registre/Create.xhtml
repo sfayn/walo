@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRegistreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_numPreAct}" for="numPreAct" />
+                    <h:inputText id="numPreAct" value="#{registreController.selected.numPreAct}" title="#{bundle.CreateRegistreTitle_numPreAct}" />
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_nbrAct}" for="nbrAct" />
+                    <h:inputText id="nbrAct" value="#{registreController.selected.nbrAct}" title="#{bundle.CreateRegistreTitle_nbrAct}" />
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_dateEnr}" for="dateEnr" />
+                    <h:inputText id="dateEnr" value="#{registreController.selected.dateEnr}" title="#{bundle.CreateRegistreTitle_dateEnr}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_numReg}" for="numReg" />
+                    <h:inputText id="numReg" value="#{registreController.selected.numReg}" title="#{bundle.CreateRegistreTitle_numReg}" />
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_annee}" for="annee" />
+                    <h:inputText id="annee" value="#{registreController.selected.annee}" title="#{bundle.CreateRegistreTitle_annee}" />
+                    <h:outputLabel value="#{bundle.CreateRegistreLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{registreController.selected.id}" title="#{bundle.CreateRegistreTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registreController.create}" value="#{bundle.CreateRegistreSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{registreController.prepareList}" value="#{bundle.CreateRegistreShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRegistreIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

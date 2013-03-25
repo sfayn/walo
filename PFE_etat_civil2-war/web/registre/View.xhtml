@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegistreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegistreLabel_numPreAct}"/>
+                    <h:outputText value="#{registreController.selected.numPreAct}" title="#{bundle.ViewRegistreTitle_numPreAct}"/>
+                    <h:outputText value="#{bundle.ViewRegistreLabel_nbrAct}"/>
+                    <h:outputText value="#{registreController.selected.nbrAct}" title="#{bundle.ViewRegistreTitle_nbrAct}"/>
+                    <h:outputText value="#{bundle.ViewRegistreLabel_dateEnr}"/>
+                    <h:outputText value="#{registreController.selected.dateEnr}" title="#{bundle.ViewRegistreTitle_dateEnr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRegistreLabel_numReg}"/>
+                    <h:outputText value="#{registreController.selected.numReg}" title="#{bundle.ViewRegistreTitle_numReg}"/>
+                    <h:outputText value="#{bundle.ViewRegistreLabel_annee}"/>
+                    <h:outputText value="#{registreController.selected.annee}" title="#{bundle.ViewRegistreTitle_annee}"/>
+                    <h:outputText value="#{bundle.ViewRegistreLabel_id}"/>
+                    <h:outputText value="#{registreController.selected.id}" title="#{bundle.ViewRegistreTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registreController.destroyAndView}" value="#{bundle.ViewRegistreDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegistreEditLink}"/>
+                <br />
+                <h:commandLink action="#{registreController.prepareCreate}" value="#{bundle.ViewRegistreCreateLink}" />
+                <br />
+                <h:commandLink action="#{registreController.prepareList}" value="#{bundle.ViewRegistreShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegistreIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

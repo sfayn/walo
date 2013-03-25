@@ -5,24 +5,76 @@
 package bean;
 
 import java.io.Serializable;
-import javax.ejb.LocalBean;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Sfayn
  */
 @Entity
-@LocalBean
+@Table( 
+        uniqueConstraints=
+            @UniqueConstraint(columnNames={"numReg", "annee"})
+    )
 public class Registre implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Integer numReg;
+    private String annee;
+    private Integer numPreAct;
+    private Integer nbrAct;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dateEnr;
 
+    public Integer getNumPreAct() {
+        return numPreAct;
+    }
+    public void setNumPreAct(Integer numPreAct) {
+        this.numPreAct = numPreAct;
+    }
+
+    public Integer getNbrAct() {
+        return nbrAct;
+    }
+
+    public void setNbrAct(Integer nbrAct) {
+        this.nbrAct = nbrAct;
+    }
+
+    public Date getDateEnr() {
+        return dateEnr;
+    }
+
+    public void setDateEnr(Date dateEnr) {
+        this.dateEnr = dateEnr;
+    }
+
+    public Integer getNumReg() {
+        return numReg;
+    }
+
+    public void setNumReg(Integer numReg) {
+        this.numReg = numReg;
+    }
+
+    public String getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
 
     public Long getId() {
         return id;
@@ -54,7 +106,6 @@ public class Registre implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Registre[ id=" + id + " ]";
+        return numReg+"";
     }
-    
 }
