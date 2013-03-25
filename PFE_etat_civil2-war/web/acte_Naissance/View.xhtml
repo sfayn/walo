@@ -17,22 +17,24 @@
             <h:form>
                 <br />
                 <b:gridRow styleClass="show-grid" fluid="false">
-
                     <b:gridRow styleClass="show-grid" fluid="false">
-                        <b:gridColumn span="1" dir="rtl" style="width: 10%;" rendered="#{userController.loggedUser().role == 'Admin'}">
+                        <b:gridColumn span="3" style="width: 10%;" rendered="#{userController.loggedUser().role == 'Admin'}">
                             <h:commandLink id="btn" class="btn #{acte_NaissanceController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" >
                                 <f:ajax event="click" render="btn" listener="#{acte_NaissanceController.check()}"/> 
                             </h:commandLink>
-                        </b:gridColumn>  
-                        <b:gridColumn span="10">
-
+                            <b style="text-align: left;">Créé par: </b>
+                            <h:outputText style="text-align: left;" value="#{acte_NaissanceController.selected.createdBy.prenom}&nbsp;#{acte_NaissanceController.selected.createdBy.nom.toUpperCase()}" />
+                            <br />
+                            <b style="text-align: left;">Créé le: </b>
+                            <h:outputText style="text-align: left;" value="#{acte_NaissanceController.selected.createdAt}" >
+                                <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                            </h:outputText>
+                        </b:gridColumn>
+                        <b:gridColumn span="8">
                             <h:panelGrid columns="2" styleClass="badge badge-inverse" style="font-size: 16px; text-align: center;" dir="rtl" width="25%">
-
                                 <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_numActe}"/>
                                 <h:outputText value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.ViewActe_NaissanceTitle_numActe}"/>
-
                             </h:panelGrid>
-
                         </b:gridColumn>
                     </b:gridRow>
 
