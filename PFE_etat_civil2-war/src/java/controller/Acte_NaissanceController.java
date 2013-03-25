@@ -397,7 +397,7 @@ public class Acte_NaissanceController implements Serializable {
             current.setNationalteP_Ar("متوفي");
             current.setNationalteP_Fr("décédé");
             current.setProfessionP_Ar("متوفي");
-            current.setProfessionP_Fr("");
+            current.setProfessionP_Fr("décédé");
         } else {
             current.setLieu_de_NaissP_Ar("");
             current.setLieu_de_NaissP_Fr("");
