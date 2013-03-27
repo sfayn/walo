@@ -8,13 +8,16 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -23,7 +26,8 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Acte_Naissance implements Serializable {
-
+    @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales.class, fetch = FetchType.EAGER)
+    private List<Donnees_Marginales> donnees_Marginaless;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -110,6 +114,14 @@ public class Acte_Naissance implements Serializable {
     private Date createdAt;
     @ManyToOne
     private Registre registre;
+
+    public List<Donnees_Marginales> getDonnees_Marginaless() {
+        return donnees_Marginaless;
+    }
+
+    public void setDonnees_Marginaless(List<Donnees_Marginales> donnees_Marginaless) {
+        this.donnees_Marginaless = donnees_Marginaless;
+    }
 
     public Registre getRegistre() {
         return registre;

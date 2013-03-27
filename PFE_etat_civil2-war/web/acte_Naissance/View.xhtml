@@ -187,8 +187,13 @@
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
                             <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
-
+                            hgjhjj#{acte_NaissanceController.selected.donnees_Marginaless.size()}
+                            <ui:repeat value="#{acte_NaissanceController.selected.donnees_Marginaless}" var="item" >
+                                hjhkjj
+                                <h:outputText value="#{item.date}" />
+                            </ui:repeat>
                             <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
+                            <a  href="#{request.contextPath}/faces/donnees_Marginales/#{donnees_MarginalesController.prepareList()}.xhtml" class="btn btn-primary" style="font-size: 14pt; " >البيانات هامشية</a>
                             <b:buttonDropdown buttonStyle="icon-file" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#{acte_NaissanceController.PDF}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
@@ -212,6 +217,7 @@
                                 </b:footerFacet>
                             </b:modal>
                         </h:panelGrid>
+
                     </b:gridColumn>
                 </b:gridRow>
             </h:form>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListType_Donnees_MarginalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListType_Donnees_MarginalesEmpty}" rendered="#{type_Donnees_MarginalesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{type_Donnees_MarginalesController.items.rowCount > 0}">
+                    <h:outputText value="#{type_Donnees_MarginalesController.pagination.pageFirstItem + 1}..#{type_Donnees_MarginalesController.pagination.pageLastItem + 1}/#{type_Donnees_MarginalesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{type_Donnees_MarginalesController.previous}" value="#{bundle.Previous} #{type_Donnees_MarginalesController.pagination.pageSize}" rendered="#{type_Donnees_MarginalesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{type_Donnees_MarginalesController.next}" value="#{bundle.Next} #{type_Donnees_MarginalesController.pagination.pageSize}" rendered="#{type_Donnees_MarginalesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{type_Donnees_MarginalesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListType_Donnees_MarginalesTitle_libelleAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.libelleAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListType_Donnees_MarginalesTitle_libelleFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.libelleFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListType_Donnees_MarginalesTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{type_Donnees_MarginalesController.prepareView}" value="#{bundle.ListType_Donnees_MarginalesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{type_Donnees_MarginalesController.prepareEdit}" value="#{bundle.ListType_Donnees_MarginalesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{type_Donnees_MarginalesController.destroy}" value="#{bundle.ListType_Donnees_MarginalesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{type_Donnees_MarginalesController.prepareCreate}" value="#{bundle.ListType_Donnees_MarginalesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListType_Donnees_MarginalesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
