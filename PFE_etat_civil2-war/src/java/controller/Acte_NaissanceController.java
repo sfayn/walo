@@ -204,6 +204,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Acte_Naissance getSelected() {
+        recreateModel();
         if (current == null) {
             current = new Acte_Naissance();
             selectedItemIndex = -1;

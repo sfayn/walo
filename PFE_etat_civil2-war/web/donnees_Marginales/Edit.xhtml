@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDonnees_MarginalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{donnees_MarginalesController.selected.date}" title="#{bundle.EditDonnees_MarginalesTitle_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_acte}" for="acte" />
+                    <h:selectOneMenu id="acte" value="#{donnees_MarginalesController.selected.acte}" title="#{bundle.EditDonnees_MarginalesTitle_acte}" >
+                        <f:selectItems value="#{acte_NaissanceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_type}" for="type" />
+                    <h:selectOneMenu id="type" value="#{donnees_MarginalesController.selected.type}" title="#{bundle.EditDonnees_MarginalesTitle_type}" >
+                        <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_descAr}" for="descAr" />
+                    <h:inputText id="descAr" value="#{donnees_MarginalesController.selected.descAr}" title="#{bundle.EditDonnees_MarginalesTitle_descAr}" />
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_descFr}" for="descFr" />
+                    <h:inputText id="descFr" value="#{donnees_MarginalesController.selected.descFr}" title="#{bundle.EditDonnees_MarginalesTitle_descFr}" />
+                    <h:outputLabel value="#{bundle.EditDonnees_MarginalesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{donnees_MarginalesController.selected.id}" title="#{bundle.EditDonnees_MarginalesTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{donnees_MarginalesController.update}" value="#{bundle.EditDonnees_MarginalesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDonnees_MarginalesViewLink}"/>
+                <br />
+                <h:commandLink action="#{donnees_MarginalesController.prepareList}" value="#{bundle.EditDonnees_MarginalesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDonnees_MarginalesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
