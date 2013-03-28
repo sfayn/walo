@@ -37,7 +37,9 @@
                                 <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_role}"/>
                                 <h:outputText value="#{userController.selected.role.toString()}" title="#{bundle.ViewUserTitle_role}"/>
                                 <h:outputText style="font-weight: bold;" value="Actes Saisies"/>
-                                <h:outputText value="#{userController.selected.acte_Naissances.size()}" title="#{bundle.ViewUserTitle_role}"/>
+                                <h:commandLink action="ListActes.xhtml">
+                                    <h:outputText value="#{userController.selected.acte_Naissances.size()}"/>
+                                </h:commandLink>
                             </h:panelGrid>
                         </b:gridColumn>
                     </fieldset>
@@ -82,13 +84,8 @@
                 <br />
                 <h:commandLink action="#{userController.prepareCreate}" value="#{bundle.ViewUserCreateLink}" />
                 <br />
-                <h:commandLink action="#{userController.prepareList}" value="#{bundle.ViewUserShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewUserIndexLink}"/>
-
+                <h:commandLink action="#{userController.prepareList}" value="#{bundle.ViewUserShowAllLink}" rendered="#{userController.loggedUser().role == 'Admin'}"/>
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>

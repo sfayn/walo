@@ -3,8 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:jsflot="http://www.jsflot.org/taglib/jsflot">
+
     <ui:composition template="/template.xhtml" >
         <style>
             #graph {
@@ -17,8 +18,7 @@
             صفحة الإستقبال
         </ui:define>
         <ui:define name="body">
-             <script src="#{request.contextPath}/resources/js/graph.js" ></script>
-             <script type="text/javascript" src="#{request.contextPath}/resources/js/flotr2.min.js"></script>
+            <script src="#{request.contextPath}/resources/js/graphdf.js" ></script>
             <fieldset>
                 <legend>المهام الأساسية</legend>
                 <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-wrench "> </i>&nbsp;&nbsp;&nbsp;إعدادات</a>
@@ -31,6 +31,60 @@
                 <legend>إحصائيات عامة</legend>
                 <div id="graph"> </div>
             </fieldset>
+            <script src="http://www.humblesoftware.com/static/lib/FlashCanvas/bin/flashcanvas.js" type="text/javascript"></script>
+            <script src="http://www.humblesoftware.com/static/js/flotr2.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                //<!--
+                (function basic_bars(container, horizontal) {
+
+                    var horizontal = ( horizontal ? true : false),
+                    // Show horizontal bars
+                    d1 = [],
+                    // First data series
+                    d2 = [],
+                    // Second data series
+                    point, // Data point variable declaration
+                    i;
+
+                    for ( i = 0; i < 12; i++) {
+
+                        if (horizontal) {
+                            point = [Math.ceil(Math.random() * 100), i];
+                        } else {
+                            point = [i, Math.ceil(Math.random() * 100)];
+                        }
+
+                        d1.push(point);
+
+                        if (horizontal) {
+                            point = [Math.ceil(Math.random() * 100), i + 0.5];
+                        } else {
+                            point = [i + 0.5, Math.ceil(Math.random() * 100)];
+                        }
+
+                        d2.push(point);
+                    };
+
+                    // Draw the graph
+                    Flotr.draw(container, [d1, d2], {
+                        bars : {
+                            show : true,
+                            horizontal : horizontal,
+                            shadowSize : 0,
+                            barWidth : 0.5
+                        },
+                        mouse : {
+                            track : true,
+                            relative : true
+                        },
+                        yaxis : {
+                            min : 0,
+                            autoscaleMargin : 1
+                        }
+                    });
+                })(document.getElementById("graph"));
+                //-->
+            </script>
         </ui:define>
     </ui:composition>
 </html>

@@ -115,8 +115,6 @@ public class UserController implements Serializable {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
         current = null;
-        
-
         return "List";
     }
 
