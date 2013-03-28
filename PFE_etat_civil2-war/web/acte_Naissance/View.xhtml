@@ -169,6 +169,67 @@
                             </b:gridColumn>
                         </fieldset>
                     </b:gridRow>
+                    <b:gridRow styleClass="show-grid" fluid="false">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;"> </legend>
+
+                            <h:panelGroup rendered="#{acte_NaissanceController.selected.donnees_Marginaless.size() > 0}">
+                                <h:dataTable value="#{acte_NaissanceController.selected.donnees_Marginaless}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_date}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.date}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_acte}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.acte}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_type}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.type}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_descAr}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.descAr}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_descFr}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.descFr}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListDonnees_MarginalesTitle_id}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.id}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="&nbsp;"/>
+                                        </f:facet>
+                                        <h:commandLink action="#{donnees_MarginalesController.prepareView}" value="#{bundle.ListDonnees_MarginalesViewLink}"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{donnees_MarginalesController.prepareEdit}" value="#{bundle.ListDonnees_MarginalesEditLink}"/>
+                                        <h:outputText value=" "/>
+                                        <h:commandLink action="#{donnees_MarginalesController.destroy}" value="#{bundle.ListDonnees_MarginalesDestroyLink}">
+                                            <f:ajax event="click" render="@form" listener="#{acte_NaissanceController.prepareView()}"/>
+                                        </h:commandLink>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:panelGroup>    
+                        </fieldset>
+                    </b:gridRow>
                 </b:gridRow>
                 <style>
                     a:visited{

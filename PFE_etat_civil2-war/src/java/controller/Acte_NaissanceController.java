@@ -279,7 +279,6 @@ public class Acte_NaissanceController implements Serializable {
             current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
             return current.getDateTah_H();
         }
-
     }
 
     public Date getG_to_hM() {

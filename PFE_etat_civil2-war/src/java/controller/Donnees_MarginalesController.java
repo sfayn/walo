@@ -83,14 +83,6 @@ public class Donnees_MarginalesController implements Serializable {
         try {
             Acte_NaissanceController anc = (Acte_NaissanceController)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("acte_NaissanceController");
             current.setActe(anc.getSelected());
-            List<Donnees_Marginales> lst = anc.getSelected().getDonnees_Marginaless();
-            lst.add(current);
-            //anc.getSelected().getDonnees_Marginaless().add(current);
-            ((Acte_NaissanceController)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("acte_NaissanceController")).getSelected().setDonnees_Marginaless(lst);
-            for (Donnees_Marginales object : lst) {
-                System.out.println(object.getActe());
-            }
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("acte_NaissanceController", anc);
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Donnees_MarginalesCreated"));
             return prepareCreate();
@@ -123,7 +115,7 @@ public class Donnees_MarginalesController implements Serializable {
         performDestroy();
         recreatePagination();
         recreateModel();
-        return "List";
+        return "View";
     }
 
     public String destroyAndView() {
