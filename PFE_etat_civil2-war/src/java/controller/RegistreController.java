@@ -4,6 +4,8 @@ import bean.Registre;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -29,6 +31,13 @@ public class RegistreController implements Serializable {
     private int selectedItemIndex;
 
     public RegistreController() {
+    }
+    public SelectItem[] numRe() {
+        List <String> numb = new ArrayList<String>();
+        for(int i=1;i<13;i++){
+        numb.add(i+"");
+        }
+        return JsfUtil.getSelectItems(numb,true);
     }
 
     public Registre getSelected() {
@@ -98,7 +107,7 @@ public class RegistreController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RegistreUpdated"));
-            return "View";
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;

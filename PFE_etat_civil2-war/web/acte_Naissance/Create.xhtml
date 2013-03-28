@@ -37,6 +37,7 @@
                                     <h:outputLabel value="الجزء" for="registre" />
                                     <h:selectOneMenu id="registre" class="input-small" value="#{acte_NaissanceController.selected.registre}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{acte_NaissanceController.listReg()}"/>
+                                         <f:ajax event="blur" render="registre"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -46,6 +47,7 @@
                                     <h:selectOneMenu id="annee" class="input-small" value="#{acte_NaissanceController.annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{acte_NaissanceController.listannee()}"/>
                                         <f:ajax event="change" render="registre" execute="annee"/> 
+                                        <f:ajax event="blur" render="annee"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -110,16 +112,16 @@
                                             <f:ajax event="blur" render="sex" />
                                         </h:selectOneMenu>
                                         <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                        <h:inputText class="form_datetime" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                        <h:inputText class="form_date" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                             <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
-                                            <f:ajax event="blur" render="date_de_naiss_G" />
-                                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                            
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
 
                                         <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
                                         <h:panelGrid columns="3" class="input-prepend">
                                             <h:inputText class="form_datetime" readonly="true" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
-                                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
                                             </h:inputText>
                                             <h:commandLink class="btn btn-primary add-on" value="+">
                                                 <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hplus()}"/> 
