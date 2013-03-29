@@ -37,7 +37,7 @@
                                     <h:outputLabel value="الجزء" for="registre" />
                                     <h:selectOneMenu id="registre" class="input-small" value="#{acte_NaissanceController.selected.registre}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{acte_NaissanceController.listReg()}"/>
-                                         <f:ajax event="blur" render="registre"/>
+                                        <f:ajax event="blur" render="registre"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -61,316 +61,364 @@
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن المولود :</legend>
-                            <b:gridRow styleClass="show-grid" fluid="true">
-                                <b:gridColumn span="1">                              
-                                </b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="ltr">
-                                        <h:outputLabel value="Prénom" for="prenom_Fr" />
-                                        <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" >
-                                            <f:ajax event="blur" render="prenom_Fr" />
-                                        </h:inputText>
-                                        <h:outputLabel value="Nom" for="nom_Fr" />
-                                        <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" >
-                                            <f:ajax event="blur" render="nom_Fr" />
-                                        </h:inputText>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن المولود :</legend>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1">                              
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Prénom" for="prenom_Fr" />
+                                    <h:inputText id="prenom_Fr" value="#{acte_NaissanceController.selected.prenom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" >
+                                        <f:ajax event="blur" render="prenom_Fr" />
+                                    </h:inputText>
+                                    <h:outputLabel value="Nom" for="nom_Fr" />
+                                    <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" >
+                                        <f:ajax event="blur" render="nom_Fr" />
+                                    </h:inputText>
 
-                                        <h:outputLabel value="Prof." for="profession_Fr" />
-                                        <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
-                                        <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
-                                        <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}">
-                                            <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
-                                        </h:inputText>                                    
-                                    </h:panelGrid>
+                                    <h:outputLabel value="Prof." for="profession_Fr" />
+                                    <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
+                                    <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
+                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}">
+                                        <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
+                                    </h:inputText>                                    
+                                </h:panelGrid>
 
-                                </b:gridColumn>
+                            </b:gridColumn>
 
-                                <b:gridColumn span="5">
+                            <b:gridColumn span="5">
 
-                                    <h:panelGrid columns="2" dir="rtl">
+                                <h:panelGrid columns="2" dir="rtl">
 
-                                        <h:outputLabel value="الإسم" for="prenom_Ar" />
-                                        <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" >
-                                            <f:ajax event="blur" render="prenom_Ar" />
-                                        </h:inputText>
-                                        <h:outputLabel value="النسب" for="nom_Ar" />
-                                        <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}">
-                                            <f:ajax event="blur" render="nom_Ar" />
-                                        </h:inputText>
-                                        <h:outputLabel value="المهنة" for="profession_Ar" />
-                                        <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
-                                        <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
-                                        <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
-                                            <f:ajax event="blur" render="lieu_de_Naiss_Ar" />
-                                        </h:inputText>
-                                        <h:outputLabel value="الجنس" for="sex" />
-                                        <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
-                                            <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
-                                            <f:ajax event="blur" render="sex" />
-                                        </h:selectOneMenu>
-                                        <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                        <h:inputText class="form_date" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
-                                            <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
-                                            
+                                    <h:outputLabel value="الإسم" for="prenom_Ar" />
+                                    <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" >
+                                        <f:ajax event="blur" render="prenom_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="النسب" for="nom_Ar" />
+                                    <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}">
+                                        <f:ajax event="blur" render="nom_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="المهنة" for="profession_Ar" />
+                                    <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_Naiss_Ar" />
+                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
+                                        <f:ajax event="blur" render="lieu_de_Naiss_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="الجنس" for="sex" />
+                                    <h:selectOneMenu id="sex" value="#{acte_NaissanceController.selected.sex}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                                        <f:ajax event="blur" render="sex" />
+                                    </h:selectOneMenu>
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
+                                    <h:inputText class="form_date" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
+
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:inputText>
+
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText class="form_datetime" readonly="true" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
                                             <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
-
-                                        <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" />
-                                        <h:panelGrid columns="3" class="input-prepend">
-                                            <h:inputText class="form_datetime" readonly="true" id="date_de_naiss_H" value="#{acte_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            </h:inputText>
-                                            <h:commandLink class="btn btn-primary add-on" value="+">
-                                                <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hplus()}"/> 
-                                            </h:commandLink>
-                                            <h:commandLink class="btn btn-danger add-on" value="-">
-                                                <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hmoins()}"/> 
-                                            </h:commandLink>
-                                        </h:panelGrid>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.g_to_hmoins()}"/> 
+                                        </h:commandLink>
                                     </h:panelGrid>
-                                </b:gridColumn>
+                                </h:panelGrid>
+                            </b:gridColumn>
 
 
 
-                            </b:gridRow>
+                        </b:gridRow>
 
 
-                        </fieldset>
+                    </fieldset>
 
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأب :</legend>
-                            <b:gridRow >
-                                <b:gridColumn span="11">
-                                    <h:panelGrid columns="2" dir="ltr">
-                                        <h:outputLabel value="متوفي" for="decesP" />
-                                        <h:selectBooleanCheckbox  id="decesP" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
-                                            <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
-                                        </h:selectBooleanCheckbox>
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                                <b:gridColumn span="5"></b:gridColumn>
-                            </b:gridRow>
-                            <b:gridRow styleClass="show-grid" fluid="true">
-                                <b:gridColumn span="1"></b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="ltr">
-                                        <h:outputLabel value="Prénom" for="prenomP_Fr" />
-                                        <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
-                                        <h:outputLabel value="Prof." for="professionP_Fr" />
-                                        <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
-                                        <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissP_Fr" />
-                                        <h:inputText id="lieu_de_NaissP_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Fr}" />
-                                        <h:outputLabel value="Nationalité" for="nationalteP_Fr" />
-                                        <h:inputText id="nationalteP_Fr" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Fr}" />
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="rtl">
-                                        <h:outputLabel value="الإسم" for="prenomP_Ar" />
-                                        <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
-                                        <h:outputLabel value="المهنة" for="professionP_Ar" />
-                                        <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
-                                        <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissP_Ar" />
-                                        <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
-                                        <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
-                                        <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
-                                        <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissP_G" />
-                                        <h:inputText class="form_date" readonly="#{acte_NaissanceController.selected.decesP == true ? 'true' : 'false'}" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
-                                            <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            <f:ajax event="change" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.setJ(0)}"/> 
-                                        </h:inputText>
-                                        <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H" />
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأب :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="متوفي" for="decesP" />
+                                    <h:selectBooleanCheckbox  id="decesP" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
+                                        <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
+                                    </h:selectBooleanCheckbox>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5"></b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1"></b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Prénom" for="prenomP_Fr" />
+                                    <h:inputText id="prenomP_Fr" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
+                                    <h:outputLabel value="Prof." for="professionP_Fr" />
+                                    <h:inputText id="professionP_Fr" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
+                                    <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissP_Fr" />
+                                    <h:inputText id="lieu_de_NaissP_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Fr}" />
+                                    <h:outputLabel value="Nationalité" for="nationalteP_Fr" />
+                                    <h:inputText id="nationalteP_Fr" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Fr}" />
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الإسم" for="prenomP_Ar" />
+                                    <h:inputText id="prenomP_Ar" value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
+                                    <h:outputLabel value="المهنة" for="professionP_Ar" />
+                                    <h:inputText id="professionP_Ar" value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissP_Ar" />
+                                    <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
+                                    <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
+                                    <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissP_G" />
+                                    <h:inputText class="form_date" readonly="#{acte_NaissanceController.selected.decesP == true ? 'true' : 'false'}" id="date_de_naissP_G" value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="change" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.setJ(0)}"/> 
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H" />
 
-                                        <h:panelGrid columns="3" class="input-prepend">
-                                            <h:inputText  readonly="true" id="date_de_naissP_H" value="#{acte_NaissanceController.g_to_hP}" title="تاريخ الإزدياد" >
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            </h:inputText>
-                                            <h:commandLink class="btn btn-primary add-on" value="+">
-                                                <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPplus()}"/> 
-                                            </h:commandLink>
-                                            <h:commandLink class="btn btn-danger add-on" value="-">
-                                                <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPmoins()}"/> 
-                                            </h:commandLink>
-                                        </h:panelGrid>
-
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                            </b:gridRow>
-                        </fieldset>
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأم :</legend>
-
-                            <b:gridRow >
-                                <b:gridColumn span="11">
-                                    <h:panelGrid columns="2" dir="ltr" >
-
-
-                                        <h:outputLabel value="متوفية" for="decesM" />
-                                        <h:selectBooleanCheckbox  id="decesM" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
-                                            <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
-                                        </h:selectBooleanCheckbox>
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                                <b:gridColumn span="5"></b:gridColumn>
-                            </b:gridRow>
-                            <b:gridRow styleClass="show-grid" fluid="true">
-                                <b:gridColumn span="1"></b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="ltr">
-                                        <h:outputLabel value="Prénom" for="prenomM_Fr" />
-                                        <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
-                                        <h:outputLabel value="Prof." for="professionM_Fr" />
-                                        <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Fr}" />
-                                        <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissM_Fr" />
-                                        <h:inputText id="lieu_de_NaissM_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Fr}" />
-                                        <h:outputLabel value="Nationalité" for="nationalteM_Fr" />
-                                        <h:inputText id="nationalteM_Fr" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Fr}" />
-
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="rtl">
-                                        <h:outputLabel value="الإسم" for="prenomM_Ar" />
-                                        <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
-                                        <h:outputLabel value="المهنة" for="professionM_Ar" />
-                                        <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Ar}" />
-                                        <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissM_Ar" />
-                                        <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
-                                        <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
-                                        <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
-                                        <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" />
-                                        <h:inputText class="form_date" id="date_de_naissM_G" readonly="#{acte_NaissanceController.selected.decesM == true ? 'true' : 'false'}" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
-                                            <f:ajax event="change" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.setK(0)}"/> 
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText  readonly="true" id="date_de_naissP_H" value="#{acte_NaissanceController.g_to_hP}" title="تاريخ الإزدياد" >
                                             <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
-                                        <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H" />
-                                        <h:panelGrid columns="3" class="input-prepend">
-                                            <h:inputText readonly="true" id="date_de_naissM_H" value="#{acte_NaissanceController.g_to_hM}" title="تاريخ الإزدياد" >
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            </h:inputText>
-                                            <h:commandLink class="btn btn-primary add-on" value="+">
-                                                <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMplus()}"/> 
-                                            </h:commandLink>
-
-                                            <h:commandLink class="btn btn-danger add-on" value="-">
-                                                <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMmoins()}"/> 
-                                            </h:commandLink>
-                                        </h:panelGrid>
-                                    </h:panelGrid>
-                                </b:gridColumn>
-                            </b:gridRow>
-                        </fieldset>
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;"></legend>
-
-                            <b:gridRow styleClass="show" fluid="true">
-                                <b:gridColumn span="10">
-                                    <h:panelGrid columns="2" dir="rtl">
-                                        <h:outputLabel value="الساكنان ب" for="addressePa_Ar" />
-                                        <b:input id="addressePa_Ar" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
-                                    </h:panelGrid>
-                                    <h:panelGrid columns="2" dir="ltr">
-                                        <h:outputLabel value="Adresse parents" for="addressePa_Fr" />
-                                        <b:input id="addressePa_Fr" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Fr}" />
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naissP_H" execute="date_de_naissP_G" listener="#{acte_NaissanceController.g_to_hPmoins()}"/> 
+                                        </h:commandLink>
                                     </h:panelGrid>
 
-                                </b:gridColumn>
-                            </b:gridRow>
-                        </fieldset>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأم :</legend>
 
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التصريح :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="ltr" >
 
-                            <b:gridRow styleClass="show" fluid="true">
-                                <b:gridColumn span="7">
-                                    <h:panelGrid columns="2" dir="rtl">  
-                                        <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" />
-                                        <h:inputText class="form_date" id="dateHo" value="#{acte_NaissanceController.selected.dateHo}" title="تاريخ الحكم" >
+
+                                    <h:outputLabel value="متوفية" for="decesM" />
+                                    <h:selectBooleanCheckbox  id="decesM" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
+                                        <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
+                                    </h:selectBooleanCheckbox>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5"></b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow styleClass="show-grid" fluid="true">
+                            <b:gridColumn span="1"></b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Prénom" for="prenomM_Fr" />
+                                    <h:inputText id="prenomM_Fr" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
+                                    <h:outputLabel value="Prof." for="professionM_Fr" />
+                                    <h:inputText id="professionM_Fr" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Fr}" />
+                                    <h:outputLabel value="Lieu de naissance" for="lieu_de_NaissM_Fr" />
+                                    <h:inputText id="lieu_de_NaissM_Fr" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Fr}" />
+                                    <h:outputLabel value="Nationalité" for="nationalteM_Fr" />
+                                    <h:inputText id="nationalteM_Fr" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Fr}" />
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الإسم" for="prenomM_Ar" />
+                                    <h:inputText id="prenomM_Ar" value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
+                                    <h:outputLabel value="المهنة" for="professionM_Ar" />
+                                    <h:inputText id="professionM_Ar" value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionM_Ar}" />
+                                    <h:outputLabel value="مكان الإزدياد" for="lieu_de_NaissM_Ar" />
+                                    <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
+                                    <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
+                                    <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
+                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" />
+                                    <h:inputText class="form_date" id="date_de_naissM_G" readonly="#{acte_NaissanceController.selected.decesM == true ? 'true' : 'false'}" value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.setK(0)}"/> 
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="date_de_naissM_H" value="#{acte_NaissanceController.g_to_hM}" title="تاريخ الإزدياد" >
                                             <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="dateHo typeT" listener="#{acte_NaissanceController.changeDeclaration()}"/>
                                         </h:inputText>
-                                    </h:panelGrid>  
-                                </b:gridColumn>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMplus()}"/> 
+                                        </h:commandLink>
 
-                                <b:gridColumn span="4">
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naissM_H" execute="date_de_naissM_G" listener="#{acte_NaissanceController.g_to_hMmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;"></legend>
 
-                                    <script>
-                                        function display(obj){
-                                            if(obj == "false"){
-                                                document.getElementById("dateHo").style.display = "none";
-                                                document.getElementById("dateHoOut").style.display = "none";
-                                            }else{
-                                                document.getElementById("dateHo").style.display = "block";
-                                                document.getElementById("dateHoOut").style.display = "block";
-                                            }
+                        <b:gridRow styleClass="show" fluid="true">
+                            <b:gridColumn span="10">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الساكنان ب" for="addressePa_Ar" />
+                                    <b:input id="addressePa_Ar" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Adresse parents" for="addressePa_Fr" />
+                                    <b:input id="addressePa_Fr" scale="xxlarge" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Fr}" />
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التصريح :</legend>
+
+                        <b:gridRow styleClass="show" fluid="true">
+                            <b:gridColumn span="7">
+                                <h:panelGrid columns="2" dir="rtl">  
+                                    <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" />
+                                    <h:inputText class="form_date" id="dateHo" value="#{acte_NaissanceController.selected.dateHo}" title="تاريخ الحكم" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="dateHo typeT" listener="#{acte_NaissanceController.changeDeclaration()}"/>
+                                    </h:inputText>
+                                </h:panelGrid>  
+                            </b:gridColumn>
+
+                            <b:gridColumn span="4">
+
+                                <script>
+                                    function display(obj){
+                                        if(obj == "false"){
+                                            document.getElementById("dateHo").style.display = "none";
+                                            document.getElementById("dateHoOut").style.display = "none";
+                                        }else{
+                                            document.getElementById("dateHo").style.display = "block";
+                                            document.getElementById("dateHoOut").style.display = "block";
                                         }
-                                    </script>
-                                    <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
-                                        <f:selectItem  itemValue="true"  itemLabel="حكم" />
-                                        <f:selectItem itemValue="false" itemLabel="تصريح" />
+                                    }
+                                </script>
+                                <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
+                                    <f:selectItem  itemValue="true"  itemLabel="حكم" />
+                                    <f:selectItem itemValue="false" itemLabel="تصريح" />
 
-                                        <!--                                    <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />-->
-                                    </h:selectOneRadio>
-                                </b:gridColumn>
-                            </b:gridRow>
-                            <b:gridRow styleClass="fluid" fluid="true">
-                                <b:gridColumn span="6">
-                                    <h:panelGrid columns="2" dir="rtl"> 
-                                        <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
-                                        <h:inputText class="form_date" id="dateTah_G" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
-                                            <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G typeT prenomP_Ar professionP_Ar addressePa_Ar nationalteP_Ar prenomP_Fr professionP_Fr addressePa_Fr nationalteP_Fr numActe" listener="#{acte_NaissanceController.setL(0)}"/> 
+                                    <!--                                    <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />-->
+                                </h:selectOneRadio>
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow styleClass="fluid" fluid="true">
+                            <b:gridColumn span="6">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
+                                    <h:inputText class="form_date" id="dateTah_G" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G typeT prenomP_Ar professionP_Ar addressePa_Ar nationalteP_Ar prenomP_Fr professionP_Fr addressePa_Fr nationalteP_Fr numActe" listener="#{acte_NaissanceController.setL(0)}"/> 
+                                    </h:inputText>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText readonly="true" id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText readonly="true" id="dateTh_G_textFr" value="#{acte_NaissanceController.datetasM_Fr}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputTextarea cols="30" rows="5" id="declaration_Fr" dir="ltr" value="#{acte_NaissanceController.selected.declaration_Fr}" >
+
+                                    </h:inputTextarea>
+
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="dateTah_H" value="#{acte_NaissanceController.g_to_hTah}" title="تاريخ التصريح الهجري" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />                                            
                                         </h:inputText>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputText readonly="true" id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputText readonly="true" id="dateTh_G_textFr" value="#{acte_NaissanceController.datetasM_Fr}"/>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputTextarea cols="30" rows="5" id="declaration_Fr" dir="ltr" value="#{acte_NaissanceController.selected.declaration_Fr}" >
-
-                                        </h:inputTextarea>
-
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahmoins()}"/> 
+                                        </h:commandLink>
                                     </h:panelGrid>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText readonly="true" id="dateTh_H_textAr" value="#{acte_NaissanceController.datetasH_Ar}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputText readonly="true" id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
+                                    <h:outputLabel value=" "/>
+                                    <h:inputTextarea cols="30" rows="5"  id="declaration_Ar" value="#{acte_NaissanceController.selected.declaration_Ar}" >
 
-                                </b:gridColumn>
-                                <b:gridColumn span="5">
-                                    <h:panelGrid columns="2" dir="rtl"> 
-                                        <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
-                                        <h:panelGrid columns="3" class="input-prepend">
-                                            <h:inputText readonly="true" id="dateTah_H" value="#{acte_NaissanceController.g_to_hTah}" title="تاريخ التصريح الهجري" >
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />                                            
+                                    </h:inputTextarea>
+
+                                </h:panelGrid>
+                                <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن البيانات الهامشية :</legend>
+                        <b:gridRow styleClass="show" fluid="true">
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="عدد البيانات الهامشية" for="registre" />
+                                    <h:selectOneMenu id="nbdonne" change="submit()" class="input-small" value="#{acte_NaissanceController.nbdonnees}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{registreController.numRe()}"/>
+                                        <f:selectItem itemValue="#{acte_NaissanceController.nbdonnees}" />
+                                        <f:ajax event="change" execute="nbdonne" render="donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_Marginales()}"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+
+                        <b:gridRow styleClass="show" fluid="true" id="donnees_marginales">
+                            <ui:repeat var="donnee_Marginale"  value="#{acte_NaissanceController.selected.donnees_Marginaless}" >
+                                <br/>
+                                <b:gridRow styleClass="show" fluid="true" style=" font-size: 30pt; border-top:  rgb(58,135,173) solid 1px;">
+                                    <br/>
+                                    <b:gridColumn span="5">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel value="التاريخ" for="date" />
+                                            <h:inputText class="form_date" id="date" value="#{donnee_Marginale.date}" title="التاريخ" >
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
                                             </h:inputText>
-                                            <h:commandLink class="btn btn-primary add-on" value="+">
-                                                <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahplus()}"/> 
-                                            </h:commandLink>
-                                            <h:commandLink class="btn btn-danger add-on" value="-">
-                                                <f:ajax event="click" render="dateTah_H dateTh_H_textAr dateTh_H_textFr" execute="dateTah_G dateTah_H" listener="#{acte_NaissanceController.g_to_hTahmoins()}"/> 
-                                            </h:commandLink>
+                                            <h:outputLabel value="" for="descFr" />
+                                            <h:inputTextarea cols="30" rows="5" id="descFr" value="#{donnee_Marginale.descFr}" />
                                         </h:panelGrid>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputText readonly="true" id="dateTh_H_textAr" value="#{acte_NaissanceController.datetasH_Ar}"/>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputText readonly="true" id="dateTh_H_textFr" value="#{acte_NaissanceController.datetasH_Fr}"/>
-                                        <h:outputLabel value=" "/>
-                                        <h:inputTextarea cols="30" rows="5"  id="declaration_Ar" value="#{acte_NaissanceController.selected.declaration_Ar}" >
+                                    </b:gridColumn>
 
-                                        </h:inputTextarea>
+                                    <b:gridColumn span="6">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel value="نوع البيان" for="type" />
+                                            <h:selectOneMenu id="type" value="#{donnee_Marginale.type}" title="نوع البيان" >
+                                                <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
+                                            </h:selectOneMenu>
+                                            <h:outputLabel value="معلومات عن البيان" for="descAr" />
+                                            <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                </b:gridRow>
 
-                                    </h:panelGrid>
-                                    <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
-                                    <h:outputScript name="jsf.js" library="javax.faces" target="head" />
-                                </b:gridColumn>
-                            </b:gridRow>
-                        </fieldset>
+                            </ui:repeat>
+
+                        </b:gridRow>
+                    </fieldset>
                 </b:gridRow>
-
+                <h:outputScript name="jsf.js" library="javax.faces" target="head" />
                 <br />
                 <style>
                     .icon-whatever {

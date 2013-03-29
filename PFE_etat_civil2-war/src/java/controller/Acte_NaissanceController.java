@@ -1,6 +1,7 @@
 package controller;
 
 import bean.Acte_Naissance;
+import bean.Donnees_Marginales;
 import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
@@ -61,6 +62,32 @@ public class Acte_NaissanceController implements Serializable {
     private int l = 0;
     public String annee;
     public int numReg;
+    @EJB
+    private session.Acte_NaissanceFacade ejbFacade;
+    @EJB
+    private session.Donnees_MarginalesFacade ejbFacade2;
+    private PaginationHelper pagination;
+    private int selectedItemIndex;
+    public Integer nbdonnees= 0;
+    
+    
+
+    public void changeDonnees_Marginales() {
+        for (int i = 0; i < nbdonnees; i++) {
+            Donnees_Marginales dm = new Donnees_Marginales();            
+            ejbFacade2.create(dm);
+            current.getDonnees_Marginaless().add(dm);
+        }
+
+    }
+
+    public Integer getNbdonnees() {
+        return nbdonnees;
+    }
+
+    public void setNbdonnees(Integer nbdonnees) {
+        this.nbdonnees = nbdonnees;
+    }
 
     public int getNumReg() {
         return numReg;
@@ -69,7 +96,7 @@ public class Acte_NaissanceController implements Serializable {
     public void setNumReg(int numReg) {
         this.numReg = numReg;
     }
-    
+
     public String getAnnee() {
         return annee;
     }
@@ -79,14 +106,15 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public SelectItem[] listannee() {
-        List <String> annees = new ArrayList<String>();
-        for(int i=1900;i<2060;i++){
-        annees.add(i+"");
+        List<String> annees = new ArrayList<String>();
+        for (int i = 1900; i < 2060; i++) {
+            annees.add(i + "");
         }
-        return JsfUtil.getSelectItems(annees,true);
+        return JsfUtil.getSelectItems(annees, true);
     }
+
     public SelectItem[] listReg() {
-        return JsfUtil.getSelectItems(ejbFacade.findByDate(annee),true);
+        return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
     }
 
     public void setG_to_hTah(Date g_to_hTah) {
@@ -137,10 +165,6 @@ public class Acte_NaissanceController implements Serializable {
     public void setG_to_h(Date g_to_h) {
         this.g_to_h = g_to_h;
     }
-    @EJB
-    private session.Acte_NaissanceFacade ejbFacade;
-    private PaginationHelper pagination;
-    private int selectedItemIndex;
 
     public String getDatetasH_Ar() {
         if (current.getDateTah_H() == null) {
@@ -216,7 +240,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(4000) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -243,6 +267,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareCreate() {
+        nbdonnees=0;
         current = new Acte_Naissance();
         selectedItemIndex = -1;
         recreatePagination();
@@ -369,11 +394,17 @@ public class Acte_NaissanceController implements Serializable {
 
     public String create() {
         try {
+            nbdonnees=0;
             encode();
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
+            for(Donnees_Marginales dm : current.getDonnees_Marginaless()){
+            dm.setActe(current);
+            dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+            ejbFacade2.edit(dm);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
         } catch (Exception e) {

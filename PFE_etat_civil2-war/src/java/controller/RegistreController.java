@@ -54,7 +54,7 @@ public class RegistreController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(4000) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
