@@ -7,6 +7,7 @@ package bean;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -26,7 +27,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Acte_Naissance implements Serializable {
-    @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales.class, fetch = FetchType.EAGER,orphanRemoval=true)
     private List<Donnees_Marginales> donnees_Marginaless;
     private static final long serialVersionUID = 1L;
     @Id
@@ -114,6 +115,12 @@ public class Acte_Naissance implements Serializable {
     private Date createdAt;
     @ManyToOne
     private Registre registre;
+
+    public Acte_Naissance() {
+        donnees_Marginaless=new ArrayList<Donnees_Marginales>();
+    }
+    
+    
 
     public List<Donnees_Marginales> getDonnees_Marginaless() {
         return donnees_Marginaless;

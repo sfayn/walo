@@ -5,11 +5,14 @@
 package bean;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -21,7 +24,7 @@ import javax.persistence.Temporal;
 public class Donnees_Marginales implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;    
@@ -30,7 +33,9 @@ public class Donnees_Marginales implements Serializable {
     
     @ManyToOne
     private Acte_Naissance acte;
+    @Lob
     private String descAr;
+    @Lob
     private String descFr;
 
     public Date getDate() {
@@ -57,8 +62,8 @@ public class Donnees_Marginales implements Serializable {
         this.type = type;
     }
 
-    public String getDescAr() {
-        return descAr;
+    public String getDescAr() throws UnsupportedEncodingException {
+        return descAr == null ? "" : URLDecoder.decode(descAr, "UTF-8");
     }
 
     public void setDescAr(String descAr) {

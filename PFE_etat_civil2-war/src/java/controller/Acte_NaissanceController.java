@@ -1,6 +1,7 @@
 package controller;
 
 import bean.Acte_Naissance;
+import bean.Donnees_Marginales;
 import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
@@ -16,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -39,6 +41,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
+import org.apache.batik.util.io.UTF8Decoder;
 import org.ini4j.Wini;
 import session.Acte_NaissanceFacade;
 
@@ -62,7 +65,25 @@ public class Acte_NaissanceController implements Serializable {
     private int l = 0;
     public String annee;
     public int numReg;
+    @EJB
+    private session.Acte_NaissanceFacade ejbFacade;
+    @EJB
+    private session.Donnees_MarginalesFacade ejbFacade2;
+    private PaginationHelper pagination;
+    private int selectedItemIndex;
+    
 
+    public void changeDonnees_Marginales() {
+            Donnees_Marginales dm = new Donnees_Marginales();            
+            current.getDonnees_Marginaless().add(dm);
+    }
+    public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale){
+        for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+            if(current.getDonnees_Marginaless().get(i) ==donnee_Marginale){
+                current.getDonnees_Marginaless().remove(i);
+            }
+        }
+    }
     public int getNumReg() {
         return numReg;
     }
@@ -139,10 +160,6 @@ public class Acte_NaissanceController implements Serializable {
     public void setG_to_h(Date g_to_h) {
         this.g_to_h = g_to_h;
     }
-    @EJB
-    private session.Acte_NaissanceFacade ejbFacade;
-    private PaginationHelper pagination;
-    private int selectedItemIndex;
 
     public String getDatetasH_Ar() {
         if (current.getDateTah_H() == null) {
@@ -218,7 +235,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(4000) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -375,7 +392,15 @@ public class Acte_NaissanceController implements Serializable {
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
+            for(Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().create(current);
+            for(Donnees_Marginales dm : current.getDonnees_Marginaless()){
+            dm.setActe(current);
+            dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+            ejbFacade2.edit(dm);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
         } catch (Exception e) {

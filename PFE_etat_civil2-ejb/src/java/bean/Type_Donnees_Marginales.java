@@ -71,7 +71,7 @@ public class Type_Donnees_Marginales implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Type_Donnees_Marginales[ id=" + id + " ]";
+        return libelleAr;
     }
     
 }
