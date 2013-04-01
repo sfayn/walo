@@ -490,10 +490,10 @@ public class Acte_NaissanceController implements Serializable {
         params.put("prenomAr", current.getPrenom_Ar());
         params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
         params.put("dateNaissanceAr", Helper.dateToStrArG(current.getDate_de_naiss_G()));
-        params.put("nationnaliteAr", "Marocaine");
+        params.put("nationnaliteAr", "مغربية");
         params.put("pereAr", current.getPrenomP_Ar());
         params.put("mereAr", current.getPrenomM_Ar());
-        params.put("decesAr", "Néant");
+        params.put("decesAr", "لا شيء");
 
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
