@@ -25,7 +25,7 @@
             <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
-            <h:form prependId="false">
+            <h:form prependId="false" id="formCreate">
 
                 <b:gridRow styleClass="show-grid" fluid="true">
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
@@ -208,8 +208,6 @@
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr" >
-
-
                                     <h:outputLabel value="متوفية" for="decesM" />
                                     <h:selectBooleanCheckbox  id="decesM" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
                                         <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
@@ -372,28 +370,24 @@
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                         <legend style=" margin-bottom:0px; font-size: 30px;
                                 margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن البيانات الهامشية :</legend>
-                        <b:gridRow styleClass="show" fluid="true">
-                            <b:gridColumn span="11">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="عدد البيانات الهامشية" for="registre" />
-                                    <h:selectOneMenu id="nbdonne" change="submit()" class="input-small" value="#{acte_NaissanceController.nbdonnees}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
-                                        <f:selectItems value="#{registreController.numRe()}"/>
-                                        <f:selectItem itemValue="#{acte_NaissanceController.nbdonnees}" />
-                                        <f:ajax event="change" execute="nbdonne" render="donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_Marginales()}"/>
-                                    </h:selectOneMenu>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </b:gridRow>
 
                         <b:gridRow styleClass="show" fluid="true" id="donnees_marginales">
+
                             <ui:repeat var="donnee_Marginale"  value="#{acte_NaissanceController.selected.donnees_Marginaless}" >
                                 <br/>
                                 <b:gridRow styleClass="show" fluid="true" style=" font-size: 30pt; border-top:  rgb(58,135,173) solid 1px;">
-                                    <br/>
+                                    <b:gridColumn span="12">
+                                        <h:commandLink title="remove" >
+                                            <font size="+1" title="حذف"><i class="icon-remove-circle" style="color: red"></i></font>
+                                            <f:ajax event="click" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_MarginalesRemove(donnee_Marginale)}"/> 
+                                        </h:commandLink>
+                                    </b:gridColumn>
+                                </b:gridRow>
+                                <b:gridRow styleClass="show" fluid="true" >
                                     <b:gridColumn span="5">
                                         <h:panelGrid columns="2" dir="rtl">
                                             <h:outputLabel value="التاريخ" for="date" />
-                                            <h:inputText class="form_date" id="date" value="#{donnee_Marginale.date}" title="التاريخ" >
+                                            <h:inputText class="form_date" onclick="" id="date" value="#{donnee_Marginale.date}" title="التاريخ" >
                                                 <f:convertDateTime pattern="dd-MM-yyyy" />
                                             </h:inputText>
                                             <h:outputLabel value="" for="descFr" />
@@ -415,6 +409,15 @@
 
                             </ui:repeat>
 
+                        </b:gridRow>
+                        <b:gridRow styleClass="show" fluid="true">
+
+                            <b:gridColumn span="12">
+                                <h:commandLink class="btn btn-primary" style="font-size: 14pt;" value="إضافة بيان هامشي">
+                                    <f:ajax event="click" execute="donnees_marginales" render="donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_Marginales()}"/>
+
+                                </h:commandLink>
+                            </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
                 </b:gridRow>
@@ -459,12 +462,10 @@
                         language:  'fr',
                         autoclose: 1
                     });
-                    //                    $(window).load(function() {
-                    //                        $(':checkbox').iphoneStyle({
-                    //                            checkedLabel: 'متوفي',
-                    //                            uncheckedLabel: 'غير متوفي'
-                    //                        });
-                    //                    });
+                    
+                    $(".form_date").click(function() {
+                        alert("Handler for .click() called.");
+                    });
                 </script>
             </h:form>
         </ui:define>

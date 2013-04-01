@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -40,6 +41,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
+import org.apache.batik.util.io.UTF8Decoder;
 import org.ini4j.Wini;
 import session.Acte_NaissanceFacade;
 
@@ -69,27 +71,19 @@ public class Acte_NaissanceController implements Serializable {
     private session.Donnees_MarginalesFacade ejbFacade2;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    public Integer nbdonnees= 0;
-    
     
 
     public void changeDonnees_Marginales() {
-        for (int i = 0; i < nbdonnees; i++) {
             Donnees_Marginales dm = new Donnees_Marginales();            
-            ejbFacade2.create(dm);
             current.getDonnees_Marginaless().add(dm);
+    }
+    public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale){
+        for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+            if(current.getDonnees_Marginaless().get(i) ==donnee_Marginale){
+                current.getDonnees_Marginaless().remove(i);
+            }
         }
-
     }
-
-    public Integer getNbdonnees() {
-        return nbdonnees;
-    }
-
-    public void setNbdonnees(Integer nbdonnees) {
-        this.nbdonnees = nbdonnees;
-    }
-
     public int getNumReg() {
         return numReg;
     }
@@ -268,7 +262,6 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareCreate() {
-        nbdonnees=0;
         current = new Acte_Naissance();
         selectedItemIndex = -1;
         recreatePagination();
@@ -395,11 +388,13 @@ public class Acte_NaissanceController implements Serializable {
 
     public String create() {
         try {
-            nbdonnees=0;
             encode();
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
+            for(Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().create(current);
             for(Donnees_Marginales dm : current.getDonnees_Marginaless()){
             dm.setActe(current);

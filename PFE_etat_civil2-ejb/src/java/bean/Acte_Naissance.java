@@ -27,7 +27,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Acte_Naissance implements Serializable {
-    @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales.class, fetch = FetchType.EAGER,orphanRemoval=true)
     private List<Donnees_Marginales> donnees_Marginaless;
     private static final long serialVersionUID = 1L;
     @Id

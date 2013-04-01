@@ -20,7 +20,7 @@
             <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
 
-            <h:form prependId="false">
+            <h:form prependId="false" id="formEdit">
 
                 <b:gridRow styleClass="show-grid" fluid="true">
 
@@ -310,24 +310,20 @@
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                         <legend style=" margin-bottom:0px; font-size: 30px;
                                 margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن البيانات الهامشية :</legend>
-                        <b:gridRow styleClass="show" fluid="true">
-                            <b:gridColumn span="11">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="عدد البيانات الهامشية" for="nbdonne" />
-                                    <h:selectOneMenu id="nbdonne" change="submit()" class="input-small" value="#{acte_NaissanceController.nbdonnees}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
-                                        <f:selectItems value="#{registreController.numRe()}"/>
-                                        <f:selectItem itemValue="#{acte_NaissanceController.nbdonnees}" />
-                                        <f:ajax event="change" execute="nbdonne" render="donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_Marginales()}"/>
-                                    </h:selectOneMenu>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </b:gridRow>
+
 
                         <b:gridRow styleClass="show" fluid="true" id="donnees_marginales">
                             <ui:repeat var="donnee_Marginale"  value="#{acte_NaissanceController.selected.donnees_Marginaless}" >
                                 <br/>
                                 <b:gridRow styleClass="show" fluid="true" style=" font-size: 30pt; border-top:  rgb(58,135,173) solid 1px;">
-                                    <br/>
+                                    <b:gridColumn span="12">
+                                        <h:commandLink title="remove" >
+                                            <font size="+1" title="حذف"><i class="icon-remove-circle" style="color: red"></i></font>
+                                            <f:ajax event="click" render=":formEdit:donnees_marginales" execute=":formEdit:donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_MarginalesRemove(donnee_Marginale)}"/> 
+                                        </h:commandLink>
+                                    </b:gridColumn>
+                                </b:gridRow>
+                                <b:gridRow styleClass="show" fluid="true" >
                                     <b:gridColumn span="5">
                                         <h:panelGrid columns="2" dir="rtl">
                                             <h:outputLabel value="التاريخ" for="date" />
@@ -354,8 +350,16 @@
                             </ui:repeat>
 
                         </b:gridRow>
-                    </fieldset>
+                        <b:gridRow styleClass="show" fluid="true">
 
+                            <b:gridColumn span="12">
+                                <h:commandLink class="btn btn-primary" style="font-size: 14pt;" value="إضافة بيان هامشي">
+                                    <f:ajax event="click" execute="donnees_marginales" render="donnees_marginales" listener="#{acte_NaissanceController.changeDonnees_Marginales()}"/>
+
+                                </h:commandLink>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
                 </b:gridRow>
 
                 <br />

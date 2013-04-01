@@ -24,7 +24,7 @@ import javax.persistence.Temporal;
 public class Donnees_Marginales implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;    
