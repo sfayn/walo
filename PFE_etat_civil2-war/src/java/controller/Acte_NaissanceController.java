@@ -76,6 +76,9 @@ public class Acte_NaissanceController implements Serializable {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
     }
+    public void test(){
+        System.out.println("hanii" + current.isNoMJ());
+    }
 
     public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale) {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {

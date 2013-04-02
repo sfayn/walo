@@ -48,6 +48,7 @@ public class Acte_Naissance implements Serializable {
     private String lieu_de_Naiss_Fr;
     @Lob
     private String lieu_de_Naiss_Ar;
+    private boolean noMJ=false;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naiss_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -67,6 +68,7 @@ public class Acte_Naissance implements Serializable {
     private String nationalteP_Fr;
     @Lob
     private String nationalteP_Ar;
+    private boolean noMJP=false;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -86,6 +88,7 @@ public class Acte_Naissance implements Serializable {
     private String nationalteM_Fr;
     @Lob
     private String nationalteM_Ar;
+    private boolean noMJM=false;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_H;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -115,6 +118,30 @@ public class Acte_Naissance implements Serializable {
     private Date createdAt;
     @ManyToOne
     private Registre registre;
+
+    public boolean isNoMJ() {
+        return noMJ;
+    }
+
+    public void setNoMJ(boolean noMJ) {
+        this.noMJ = noMJ;
+    }
+
+    public boolean isNoMJP() {
+        return noMJP;
+    }
+
+    public void setNoMJP(boolean noMJP) {
+        this.noMJP = noMJP;
+    }
+
+    public boolean isNoMJM() {
+        return noMJM;
+    }
+
+    public void setNoMJM(boolean noMJM) {
+        this.noMJM = noMJM;
+    }
 
     public Acte_Naissance() {
         donnees_Marginaless=new ArrayList<Donnees_Marginales>();
