@@ -71,19 +71,20 @@ public class Acte_NaissanceController implements Serializable {
     private session.Donnees_MarginalesFacade ejbFacade2;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    
 
     public void changeDonnees_Marginales() {
-            Donnees_Marginales dm = new Donnees_Marginales();            
-            current.getDonnees_Marginaless().add(dm);
+        Donnees_Marginales dm = new Donnees_Marginales();
+        current.getDonnees_Marginaless().add(dm);
     }
-    public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale){
+
+    public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale) {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
-            if(current.getDonnees_Marginaless().get(i) ==donnee_Marginale){
+            if (current.getDonnees_Marginaless().get(i) == donnee_Marginale) {
                 current.getDonnees_Marginaless().remove(i);
             }
         }
     }
+
     public int getNumReg() {
         return numReg;
     }
@@ -392,14 +393,14 @@ public class Acte_NaissanceController implements Serializable {
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
-            for(Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 ejbFacade2.create(dm);
             }
             getFacade().create(current);
-            for(Donnees_Marginales dm : current.getDonnees_Marginaless()){
-            dm.setActe(current);
-            dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
-            ejbFacade2.edit(dm);
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                dm.setActe(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                ejbFacade2.edit(dm);
             }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
             return prepareCreate();
@@ -418,7 +419,15 @@ public class Acte_NaissanceController implements Serializable {
     public String update() {
         try {
             encode();
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().edit(current);
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                dm.setActe(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                ejbFacade2.edit(dm);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
             return "View";
         } catch (Exception e) {
@@ -491,11 +500,11 @@ public class Acte_NaissanceController implements Serializable {
         params.put("anneeH", y.format(current.getDateTah_H()));
         params.put("anneeG", y.format(current.getDateTah_G()));
         //Wini ini = new Wini(new File("C:\\jars\\conf.ini"));
-        File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")); 
-        System.out.println("length "+f1.length());
+        File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
+        System.out.println("length " + f1.length());
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
         System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
-        System.out.println(""+ini.size());
+        System.out.println("" + ini.size());
         params.put("province", ini.get("commune", "province"));
         params.put("commune", ini.get("commune", "commune"));
         params.put("communeAr", ini.get("commune", "communeAr"));
