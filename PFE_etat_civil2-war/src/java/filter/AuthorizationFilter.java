@@ -24,14 +24,11 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {    
         HttpServletRequest req = (HttpServletRequest) request;
         User auth = (User) req.getSession().getAttribute("auth");
-        System.out.println("point 1");
         if (auth != null) {
             // User is logged in, so just continue request.
             chain.doFilter(request, response);
-            System.out.println("point 2");
         } else {
             // User is not logged in, so redirect to index.
-            System.out.println("point 3");
             HttpServletResponse res = (HttpServletResponse) response;
             res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
         }
