@@ -85,13 +85,10 @@
                                         <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
                                     </h:inputText>                                    
                                 </h:panelGrid>
-
                             </b:gridColumn>
 
                             <b:gridColumn span="5">
-
                                 <h:panelGrid columns="2" dir="rtl">
-
                                     <h:outputLabel value="الإسم" for="prenom_Ar" />
                                     <h:inputText id="prenom_Ar" value="#{acte_NaissanceController.selected.prenom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" >
                                         <f:ajax event="blur" render="prenom_Ar" />
@@ -111,10 +108,26 @@
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                         <f:ajax event="blur" render="sex" />
                                     </h:selectOneMenu>
-                                    <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naiss_G" />
-                                    <h:inputText class="form_date" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                    <h:outputLabel value="إزالة اليوم و الشهر" for="noMJ" />
+                                    <h:selectBooleanCheckbox  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
+                                        <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
+                                    </h:selectBooleanCheckbox>
+                                </h:panelGrid>                
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow styleClass="show-grid" fluid="true" id="blocNoMJ">
+                            <b:gridColumn span="1">                              
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                              </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel id="outdate_de_naiss_G2" value="تاريخ الإزدياد يلادي" rendered="#{acte_NaissanceController.selected.noMJ}" for="date_de_naiss_G2" />
+                                    <h:inputText id="date_de_naiss_G2" rendered="#{acte_NaissanceController.selected.noMJ}" value="#{acte_NaissanceController.selected.date_de_naiss_G.year}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                    </h:inputText>
+                                    <h:outputLabel id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!acte_NaissanceController.selected.noMJ}" for="date_de_naiss_G" />
+                                    <h:inputText class="form_date" rendered="#{!acte_NaissanceController.selected.noMJ}" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 
-
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
                                     </h:inputText>
 
@@ -132,12 +145,7 @@
                                     </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
-
-
-
                         </b:gridRow>
-
-
                     </fieldset>
 
                     <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
