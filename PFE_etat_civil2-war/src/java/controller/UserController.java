@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -111,6 +110,7 @@ public class UserController implements Serializable {
             return null;
         }
     }
+
     public String logout() {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
