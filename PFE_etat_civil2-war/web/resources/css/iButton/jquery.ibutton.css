@@ -12,7 +12,7 @@
 	-moz-user-focus: ignore; 
 	-moz-user-input: disabled;
 	/* set default width based on ON/OFF labels */
-	width: 89px;
+	width: 69px;
 }
 
 .ibutton-container input {
@@ -108,7 +108,7 @@ div.ibutton-label-off span {
 /* create an outline when button gets focus via keyboard */
 .ibutton-container label {
 	cursor: inherit;
-	padding: 1px 30px;
+	padding: 1px 3px;
 	font-size: 1em !important;
 }
 

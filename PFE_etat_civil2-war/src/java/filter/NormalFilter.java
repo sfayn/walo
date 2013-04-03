@@ -26,15 +26,12 @@ public class NormalFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
         User auth = (User) req.getSession().getAttribute("auth");
-        System.out.println("point 1");
         if (auth != null) {
             // User is logged in, so just continue request.
-            System.out.println("point 2");
             HttpServletResponse res = (HttpServletResponse) response;
             res.sendRedirect(req.getContextPath() + "/faces/index.xhtml");
         } else {
             // User is not logged in, so redirect to index.
-            System.out.println("point 3");
             chain.doFilter(request, response);
         }
     }

@@ -10,7 +10,7 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
-           
+
             <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color: green" layout="table"/>
 
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
@@ -107,11 +107,13 @@
                                         <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
                                         <f:ajax event="blur" render="sex" />
                                     </h:selectOneMenu>
-                                    <h:outputLabel value="إزالة اليوم و الشهر" for="noMJ" />
-                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'ON', labelOff: 'OFF', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
+                                </h:panelGrid>   
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
                                         <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
                                     </h:selectBooleanCheckbox>
-                                </h:panelGrid>                
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                </h:panelGrid> 
                             </b:gridColumn>
                         </b:gridRow>
                         <b:gridRow id="blocNoMJ">
@@ -195,11 +197,13 @@
                                     <h:inputText id="lieu_de_NaissP_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissP_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteP_Ar" />
                                     <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
-                                    <h:outputLabel value="إزالة اليوم و الشهر" for="noMJP" />
-                                    <h:selectBooleanCheckbox  id="noMJP" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJP}" >
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:selectBooleanCheckbox  id="noMJP" class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJP}" >
                                         <f:ajax event="change" render="blocNoMJP" execute="noMJP"/> 
                                     </h:selectBooleanCheckbox>
-                                </h:panelGrid>                
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                </h:panelGrid> 
                             </b:gridColumn>
                         </b:gridRow>
                         <b:gridRow id="blocNoMJP">
@@ -251,8 +255,7 @@
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr" >
-                                    <h:outputLabel value="متوفية" for="decesM" />
-                                    <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
+                                    <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفية', labelOff: 'غير متوفية', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
                                         <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
@@ -284,15 +287,19 @@
                                     <h:inputText id="lieu_de_NaissM_Ar" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_NaissM_Ar}" />
                                     <h:outputLabel value="الجنسية" for="nationalteM_Ar" />
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
-                                    <h:outputLabel value="إزالة اليوم و الشهر" for="noMJM" />
-                                    <h:selectBooleanCheckbox  id="noMJM" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJM}" >
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJM" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJM}" >
                                         <f:ajax event="change" render="blocNoMJM" execute="noMJM"/> 
                                     </h:selectBooleanCheckbox>
-                                </h:panelGrid>                
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                </h:panelGrid> 
                             </b:gridColumn>
                         </b:gridRow>
+
                         <b:gridRow id="blocNoMJM">
-                            <b:gridColumn span="1">                              
+                            <b:gridColumn span="1"> 
+
                             </b:gridColumn>
                             <b:gridColumn span="5">
                             </b:gridColumn>
@@ -365,24 +372,26 @@
                             </b:gridColumn>
 
                             <b:gridColumn span="4">
-
-                                <script>
-                                    function display(obj){
-                                        if(obj == "false"){
-                                            document.getElementById("dateHo").style.display = "none";
-                                            document.getElementById("dateHoOut").style.display = "none";
-                                        }else{
-                                            document.getElementById("dateHo").style.display = "block";
-                                            document.getElementById("dateHoOut").style.display = "block";
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <script>
+                                        function display(obj){
+                                            if(!obj){
+                                                document.getElementById("dateHo").style.display = "none";
+                                                document.getElementById("dateHoOut").style.display = "none";
+                                            }else{
+                                                document.getElementById("dateHo").style.display = "block";
+                                                document.getElementById("dateHoOut").style.display = "block";
+                                            }
                                         }
-                                    }
-                                </script>
-                                <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
-                                    <f:selectItem  itemValue="true"  itemLabel="حكم" />
-                                    <f:selectItem itemValue="false" itemLabel="تصريح" />
-
-                                    <!--                                    <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />-->
-                                </h:selectOneRadio>
+                                    </script>
+                                    <!--<h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
+                                        <f:selectItem  itemValue="true"  itemLabel="حكم" />
+                                        <f:selectItem itemValue="false" itemLabel="تصريح" />
+    
+                                                                            <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />
+                                    </h:selectOneRadio>-->
+                                    <h:selectBooleanCheckbox  id="typeT" onchange="display(this.checked);" class="checkbox {labelOn: 'حكم', labelOff: 'تصريح', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.typeT}" />
+                                </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                         <b:gridRow >
