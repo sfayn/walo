@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -41,7 +40,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
-import org.apache.batik.util.io.UTF8Decoder;
 import org.ini4j.Wini;
 import session.Acte_NaissanceFacade;
 
@@ -72,23 +70,37 @@ public class Acte_NaissanceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
+    public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
+        for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+            if (current.getDonnees_Marginaless().get(i) == dm) {
+                if(current.getDonnees_Marginaless().get(i).getType().getId()==1){
+                    current.getDonnees_Marginaless().get(i).setDescAr("تزوج " + current.getNom_Ar()+" "+current.getPrenom_Ar() +" ب    بمقتضى الرسم رقم     بثاريخ                   المخاطب عليه من طرف قاظي المحكمة الإبتدائية ل         حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
+                }
+                 
+            }
+        }
+    }
+
     public void changeDonnees_Marginales() {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
     }
-    public void GToHAnnee(){
-        if(current.getDate_de_naiss_G()!=null){        
-        current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+
+    public void GToHAnnee() {
+        if (current.getDate_de_naiss_G() != null) {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
     }
-    public void GToHAnneeP(){
-        if(current.getDate_de_naissP_G()!=null){        
-        current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
+
+    public void GToHAnneeP() {
+        if (current.getDate_de_naissP_G() != null) {
+            current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
         }
     }
-    public void GToHAnneeM(){
-        if(current.getDate_de_naissM_G()!=null){        
-        current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
+
+    public void GToHAnneeM() {
+        if (current.getDate_de_naissM_G() != null) {
+            current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
         }
     }
 
@@ -512,8 +524,8 @@ public class Acte_NaissanceController implements Serializable {
         Map params = new HashMap();
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
         params.put("numActe", "" + current.getNumActe());
-        params.put("anneeH", y.format(current.getDateTah_H()));
-        params.put("anneeG", y.format(current.getDateTah_G()));
+        params.put("anneeH", "" + y.format(current.getDateTah_H()));
+        params.put("anneeG", "" + y.format(current.getDateTah_G()));
         //Wini ini = new Wini(new File("C:\\jars\\conf.ini"));
         File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
         System.out.println("length " + f1.length());
@@ -529,7 +541,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("nom", current.getNom_Fr());
         params.put("prenom", current.getPrenom_Fr());
         params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
-        params.put("dateNaissance", Helper.dateToStrG(current.getDate_de_naiss_G()));
+        params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("nationnalite", "Marocaine");
         params.put("pere", current.getPrenomP_Fr());
         params.put("mere", current.getPrenomM_Fr());
@@ -538,7 +550,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("nomAr", current.getNom_Ar());
         params.put("prenomAr", current.getPrenom_Ar());
         params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
-        params.put("dateNaissanceAr", Helper.dateToStrArG(current.getDate_de_naiss_G()));
+        params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("nationnaliteAr", "مغربية");
         params.put("pereAr", current.getPrenomP_Ar());
         params.put("mereAr", current.getPrenomM_Ar());

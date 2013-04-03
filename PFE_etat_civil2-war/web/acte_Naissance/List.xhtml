@@ -39,9 +39,9 @@
 
                                 <tr>
                                     <td>
-                                        <h:outputText value="#{item.date_de_naiss_G}">
-                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
-                                        </h:outputText>
+                                        <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                            <f:param value="#{item.date_de_naiss_G}" />
+                                        </h:outputFormat>
                                     </td>
                                     <td>
                                         <h:outputText value="#{item.prenom_Ar}"/>

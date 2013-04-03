@@ -99,7 +99,7 @@
                                     </h:inputText>
                                     <h:outputLabel value="المهنة" for="profession_Ar" />
                                     <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
-                                    <h:outputLabel value="مكان الإزدياد" style="width: 103px" escape="false" for="lieu_de_Naiss_Ar" />
+                                    <h:outputLabel value="مكان الإزدياد" style="width: 103px" for="lieu_de_Naiss_Ar" />
                                     <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
                                         <f:ajax event="blur" render="lieu_de_Naiss_Ar" />
                                     </h:inputText>
@@ -468,6 +468,7 @@
                                             <h:outputLabel value="نوع البيان" for="type" />
                                             <h:selectOneMenu id="type" value="#{donnee_Marginale.type}" title="نوع البيان" >
                                                 <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
+                                                <f:ajax event="change" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{acte_NaissanceController.changeDescDM(donnee_Marginale)}"/> 
                                             </h:selectOneMenu>
                                             <h:outputLabel value="معلومات عن البيان" for="descAr" />
                                             <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />

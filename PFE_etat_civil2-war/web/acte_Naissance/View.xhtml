@@ -65,9 +65,9 @@
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Ar}"/>
                                     <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Ar}"/>
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naiss_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
-                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
-                                    </h:outputText>
+                                    <h:outputFormat value="#{acte_NaissanceController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
+                                        <f:param value="#{acte_NaissanceController.selected.date_de_naiss_G}" />
+                                    </h:outputFormat>
                                     <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
                                     <h:outputText value="#{acte_NaissanceController.selected.sex.libelleAr}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
 
@@ -169,7 +169,7 @@
                             </b:gridColumn>
                         </fieldset>
                     </b:gridRow>
-                   
+
                 </b:gridRow>
                 <style>
                     a:visited{
@@ -188,7 +188,7 @@
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
                             <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
-                          
+
                             <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
                             <b:buttonDropdown buttonStyle="icon-file" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
