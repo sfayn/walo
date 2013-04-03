@@ -322,7 +322,7 @@ public class Helper {
     }
 
     //Integer to String Fr
-    static String int2str(Integer a) {
+    public static String int2str(Integer a) {
         if (a < 0) {
             return "moins " + int2str(-a);
         }
@@ -411,7 +411,7 @@ public class Helper {
     }
 
     //Integer to String Ar
-    static String int2strAr(Integer a) {
+    public static String int2strAr(Integer a) {
 
         String dec[] = {
             "ثلاث",
