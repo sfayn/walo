@@ -10,12 +10,7 @@
             التصرف في رسوم الولادات : إضافة رسم جديد
         </ui:define>
         <ui:define name="body">
-            <script src="#{request.contextPath}/resources/js/iphone-style-checkboxes.js" type="text/javascript" charset="utf-8"></script>
-            <link rel="stylesheet" href="#{request.contextPath}/resources/css/style.css" type="text/css" media="screen" charset="utf-8" />
-
-            <!--                        <h:panelGroup id="messagePanel" layout="block">
-                                        <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                                    </h:panelGroup>-->
+           
             <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color: green" layout="table"/>
 
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
@@ -23,7 +18,11 @@
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
+            <link type="text/css" href="#{request.contextPath}/resources/css/iButton/jquery.ibutton.css" rel="stylesheet" media="all" />
             <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.ibutton.js" ></script>       
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.easing.1.3.js" ></script>       
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.metadata.js" ></script>
 
             <h:form prependId="false" id="formCreate">
 
@@ -109,7 +108,7 @@
                                         <f:ajax event="blur" render="sex" />
                                     </h:selectOneMenu>
                                     <h:outputLabel value="إزالة اليوم و الشهر" for="noMJ" />
-                                    <h:selectBooleanCheckbox  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
+                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'ON', labelOff: 'OFF', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
                                         <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>                
@@ -119,7 +118,7 @@
                             <b:gridColumn span="1">                              
                             </b:gridColumn>
                             <b:gridColumn span="5">
-                              </b:gridColumn>
+                            </b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel id="outdate_de_naiss_G2" value="تاريخ الإزدياد يلادي" rendered="#{acte_NaissanceController.selected.noMJ}" for="date_de_naiss_G2" />
@@ -154,8 +153,8 @@
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="متوفي" for="decesP" />
-                                    <h:selectBooleanCheckbox  id="decesP" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
+                                    <h:outputLabel value="" for="decesP" />
+                                    <h:selectBooleanCheckbox id="decesP" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
                                         <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
@@ -217,7 +216,7 @@
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr" >
                                     <h:outputLabel value="متوفية" for="decesM" />
-                                    <h:selectBooleanCheckbox  id="decesM" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
+                                    <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
                                         <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
@@ -451,7 +450,6 @@
                     <h:commandLink style="font-size: 14pt;" action="#{acte_NaissanceController.create}" value="تسجيل" class="btn btn-primary" />
 
                 <script type="text/javascript">
-               
                     $('.form_datetime').datetimepicker({
                         language:  'fr',
                         format: 'yyyy-mm-dd hh:ii',
@@ -468,7 +466,9 @@
                         language:  'fr',
                         autoclose: 1
                     });
-                    
+                    $(document).ready(function (){
+                        $(".checkbox").iButton();
+                    });
                 </script>
             </h:form>
         </ui:define>
