@@ -76,8 +76,20 @@ public class Acte_NaissanceController implements Serializable {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
     }
-    public void test(){
-        System.out.println("hanii" + current.isNoMJ());
+    public void GToHAnnee(){
+        if(current.getDate_de_naiss_G()!=null){        
+        current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+        }
+    }
+    public void GToHAnneeP(){
+        if(current.getDate_de_naissP_G()!=null){        
+        current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
+        }
+    }
+    public void GToHAnneeM(){
+        if(current.getDate_de_naissM_G()!=null){        
+        current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
+        }
     }
 
     public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale) {
