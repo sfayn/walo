@@ -23,6 +23,20 @@
             <script src="#{request.contextPath}/resources/js/iButton/jquery.ibutton.js" ></script>       
             <script src="#{request.contextPath}/resources/js/iButton/jquery.easing.1.3.js" ></script>       
             <script src="#{request.contextPath}/resources/js/iButton/jquery.metadata.js" ></script>
+            <style type="text/css">
+                input.button {
+                    margin-top: 5px;
+                }
+
+                /* shows overwriting styles via CSS */
+                .ibutton-container {
+                    width: 175px;
+                }
+
+                .ibutton-container .ibutton-handle {
+                    width: 5px;
+                }
+            </style>
 
             <h:form prependId="false" id="formCreate">
 
