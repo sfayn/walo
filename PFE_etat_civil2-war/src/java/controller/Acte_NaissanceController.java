@@ -73,10 +73,53 @@ public class Acte_NaissanceController implements Serializable {
     public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
-                if(current.getDonnees_Marginaless().get(i).getType().getId()==1){
-                    current.getDonnees_Marginaless().get(i).setDescAr("تزوج " + current.getNom_Ar()+" "+current.getPrenom_Ar() +" ب    بمقتضى الرسم رقم     بثاريخ                   المخاطب عليه من طرف قاظي المحكمة الإبتدائية ل         حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("تزوج " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " ب    بمقتضى الرسم رقم     بثاريخ                   المخاطب عليه من طرف قاظي المحكمة الإبتدائية ل         حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
                 }
-                 
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 2) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(current.getNom_Ar() + " " + current.getPrenom_Ar() + "متزوج ب  بناء على شهادة الثبوت الصادرة تحت   المخاطب عليها من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدني  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 3) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("حصل تقارر بالزوجية بين " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " ب   بناء على شهادة التقارر الصادرة تحت  المخاطب عليها من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 4) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("طلاق "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" من   بناء على الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 5) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("راجع "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" زوجته   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 6) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("قام "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" بمراجعة   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 7) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("تعوض كلمة         في السطر         ب               لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 8) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أصلح      ليصبح     عوض       بمقتضى الحكم عدد       الصادر عن المحكمة الإبتدائية ب        بتاريخ       الموفق ل        و المنقول في سجل الأحكام لسنة         تحت عدد       و حرر بتاريخ      الموفق ل         لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 9) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم العائلي لصاحب الرسم ليصبح       عوض "+current.getNom_Ar() +" بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ " );
+                }
+               
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 10) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم الشخصي الأجنبي  لصاحب الرسم ليصبح       عوض "+current.getPrenom_Ar() +" بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ " );
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 11) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أدخل الإسم العائلي أو الشخصي        بالأحرف اللاتينية في صلب الرسم، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 12) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أصلح الإسم العائلي أو الشخصي بالأحرف اللاتينية و ذلك بجعله من  ، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 13) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("اكتسب صاحب الرسم الجنسية المغربية بموجب (وثيقة التجنيس ظهير أو مرسوم أو مقرر لوزير العدل  )      عدد       الصادر عن   بتاريخ        الموافق لـ    وحرر بتاريخ");                
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 14) {
+                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() +"بتاريخ       بجماعة أو مدينة        وقد سجلت وفاته تحت عدد      سنة     وحرر بتاريخ      موافق    لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
+                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح");
+                }
             }
         }
     }

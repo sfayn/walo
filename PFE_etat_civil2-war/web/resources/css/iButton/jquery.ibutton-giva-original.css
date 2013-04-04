@@ -11,6 +11,10 @@
 	-moz-user-select: none;
 	-moz-user-focus: ignore; 
 	-moz-user-input: disabled;
+        -webkit-user-select: none;
+	-webkit-user-focus: ignore; 
+	-webkit-user-input: disabled;
+        
 	/* set default width based on ON/OFF labels */
 	width: 89px;
 }
@@ -22,7 +26,8 @@
 
 	/* hide the element */
 	filter:alpha(opacity=0);
-	-moz-opacity: 0.0; 
+	-moz-opacity: 0.0;
+	-webkit-opacity: 0.0;
 	opacity: 0.0;
 
 	/* allow checking of input if visible */
