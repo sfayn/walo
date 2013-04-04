@@ -199,7 +199,7 @@
                                     <h:inputText id="nationalteP_Ar" value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteP_Ar}" />
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:selectBooleanCheckbox  id="noMJP" class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJP}" >
+                                    <h:selectBooleanCheckbox readonly="#{acte_NaissanceController.selected.decesP}" id="noMJP" class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJP}" >
                                         <f:ajax event="change" render="blocNoMJP" execute="noMJP"/> 
                                     </h:selectBooleanCheckbox>
                                     <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
@@ -289,7 +289,7 @@
                                     <h:inputText id="nationalteM_Ar" value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_nationalteM_Ar}" />
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJM" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJM}" >
+                                    <h:selectBooleanCheckbox readonly="#{acte_NaissanceController.selected.decesM}" class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJM" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJM}" >
                                         <f:ajax event="change" render="blocNoMJM" execute="noMJM"/> 
                                     </h:selectBooleanCheckbox>
                                     <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />

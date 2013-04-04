@@ -40,6 +40,32 @@
 
                     <b:gridRow styleClass="show-grid" fluid="false">
                         <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="3">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputText value="الجزء" />
+                                    <h:outputText value="#{acte_NaissanceController.selected.registre.numReg}"></h:outputText>                                        
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputText value="السنة"/>
+                                    <h:outputText value="#{acte_NaissanceController.selected.registre.annee}"></h:outputText>                                        
+                                    
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputText value="رقم الرسم" />
+                                    <h:outputText value="#{acte_NaissanceController.selected.numActe}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                        
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                             <legend style=" margin-bottom:0px; font-size: 30px;
                                     margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
                             <b:gridColumn span="4">

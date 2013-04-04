@@ -118,7 +118,7 @@ public class Acte_NaissanceController implements Serializable {
                 current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() +"بتاريخ       بجماعة أو مدينة        وقد سجلت وفاته تحت عدد      سنة     وحرر بتاريخ      موافق    لدينا نحن ضابط الحالة المدنية ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
-                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح");
+                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح ");
                 }
             }
         }
@@ -180,6 +180,9 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public SelectItem[] listReg() {
+        if(annee==null && current.getRegistre() !=null){
+            annee = current.getRegistre().getAnnee();
+        }
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
     }
 
