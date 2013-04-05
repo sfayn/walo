@@ -38,7 +38,37 @@
                         </b:gridColumn>
                     </b:gridRow>
 
-                    <b:gridRow styleClass="show-grid" fluid="false">
+                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
+                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                            <legend style=" margin-bottom:0px; font-size: 30px;
+                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                            <b:gridRow>
+                                <h:panelGrid columns="4" style="width: 100%;">  
+                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
+                                        <h:outputText value=" "/>
+                                        <h:outputText value=" "/>
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
+                                        <h:outputText style="font-weight: bold;" value="رقم الرسم :" />
+                                        <h:outputText value="#{acte_NaissanceController.selected.numActe}"/>
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
+                                        <h:outputText style="font-weight: bold;" value="السنة :"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.registre.annee}"></h:outputText>                                        
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="2" style="width: 20%;" dir="rtl">                                    
+                                        <h:outputText style="font-weight: bold;" value="الجزء :" />
+                                        <h:outputText value="#{acte_NaissanceController.selected.registre.numReg}"></h:outputText>                                        
+                                    </h:panelGrid>
+
+
+
+
+
+                                </h:panelGrid>
+                            </b:gridRow>
+                        </fieldset>
+
                         <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                             <legend style=" margin-bottom:0px; font-size: 30px;
                                     margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
@@ -76,7 +106,7 @@
                         </fieldset>
                     </b:gridRow>
 
-                    <b:gridRow styleClass="show-grid" fluid="false">
+                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
                         <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                             <legend style=" margin-bottom:0px; font-size: 30px;
                                     margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الأب :</legend>
@@ -150,7 +180,7 @@
                         </fieldset>
                     </b:gridRow>
 
-                    <b:gridRow styleClass="show-grid" fluid="false">
+                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
                         <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                             <legend style=" margin-bottom:0px; font-size: 30px;
                                     margin-left:16px; border-bottom: 0px; width: auto;"> </legend>
@@ -183,14 +213,14 @@
                     }
                 </style>
                 <b:modal ></b:modal>
-                <b:gridRow styleClass="show-grid" fluid="false">
+                <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
 
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
                             <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
 
                             <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
-                            <b:buttonDropdown buttonStyle="icon-file" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                            <b:buttonDropdown buttonStyle="icon-file"  title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#{acte_NaissanceController.PDF}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
                                 <b:separatorFacet />
