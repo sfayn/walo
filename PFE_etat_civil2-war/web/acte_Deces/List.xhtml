@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListActe_DecesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListActe_DecesEmpty}" rendered="#{acte_DecesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{acte_DecesController.items.rowCount > 0}">
+                    <h:outputText value="#{acte_DecesController.pagination.pageFirstItem + 1}..#{acte_DecesController.pagination.pageLastItem + 1}/#{acte_DecesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{acte_DecesController.previous}" value="#{bundle.Previous} #{acte_DecesController.pagination.pageSize}" rendered="#{acte_DecesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{acte_DecesController.next}" value="#{bundle.Next} #{acte_DecesController.pagination.pageSize}" rendered="#{acte_DecesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{acte_DecesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_acte_Naissance}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acte_Naissance}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_cin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cin}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_situation_familiale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.situation_familiale}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_adresse_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_adresse_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_dateDeces}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateDeces}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_lieuDeces_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieuDeces_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_lieuDeces_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lieuDeces_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_dateTah_H}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateTah_H}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_dateTah_G}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateTah_G}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_dateHo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateHo}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_declaration_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.declaration_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_declaration_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.declaration_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_profession_Ar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profession_Ar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_profession_Fr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profession_Fr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListActe_DecesTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{acte_DecesController.prepareView}" value="#{bundle.ListActe_DecesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acte_DecesController.prepareEdit}" value="#{bundle.ListActe_DecesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{acte_DecesController.destroy}" value="#{bundle.ListActe_DecesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{acte_DecesController.prepareCreate}" value="#{bundle.ListActe_DecesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListActe_DecesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

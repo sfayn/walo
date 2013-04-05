@@ -444,7 +444,6 @@ public class Acte_NaissanceController implements Serializable {
             current.setPrenom_Ar(URLEncoder.encode(current.getPrenom_Ar(), "UTF-8"));
             current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
             current.setLieu_de_Naiss_Ar(URLEncoder.encode(current.getLieu_de_Naiss_Ar(), "UTF-8"));
-            current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
             current.setPrenomP_Ar(URLEncoder.encode(current.getPrenomP_Ar(), "UTF-8"));
             current.setPrenomM_Ar(URLEncoder.encode(current.getPrenomM_Ar(), "UTF-8"));
             current.setProfessionM_Ar(URLEncoder.encode(current.getProfessionM_Ar(), "UTF-8"));

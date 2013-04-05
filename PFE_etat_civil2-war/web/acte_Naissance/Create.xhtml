@@ -77,9 +77,6 @@
                                     <h:inputText id="nom_Fr" value="#{acte_NaissanceController.selected.nom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" >
                                         <f:ajax event="blur" render="nom_Fr" />
                                     </h:inputText>
-
-                                    <h:outputLabel value="Prof." for="profession_Fr" />
-                                    <h:inputText id="profession_Fr" value="#{acte_NaissanceController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_profession_Fr}" />
                                     <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
                                     <h:inputText id="lieu_de_Naiss_Fr" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}">
                                         <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
@@ -97,8 +94,6 @@
                                     <h:inputText id="nom_Ar" value="#{acte_NaissanceController.selected.nom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}">
                                         <f:ajax event="blur" render="nom_Ar" />
                                     </h:inputText>
-                                    <h:outputLabel value="المهنة" for="profession_Ar" />
-                                    <h:inputText id="profession_Ar" value="#{acte_NaissanceController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_profession_Ar}" />
                                     <h:outputLabel value="مكان الإزدياد" style="width: 103px" for="lieu_de_Naiss_Ar" />
                                     <h:inputText id="lieu_de_Naiss_Ar" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
                                         <f:ajax event="blur" render="lieu_de_Naiss_Ar" />
@@ -389,9 +384,7 @@
                                     </script>
                                     <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
                                         <f:selectItem  itemValue="true"  itemLabel="حكم" />
-                                        <f:selectItem itemValue="false" itemLabel="تصريح" />
-    
-                                                                            <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />
+                                        <f:selectItem itemValue="false" itemLabel="تصريح" />                                        
                                     </h:selectOneRadio>
                                     <!--<h:selectBooleanCheckbox  id="typeT" onchange="display(this.checked);" class="checkbox {labelOn: 'حكم', labelOff: 'تصريح', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.typeT}" />-->
                                 </h:panelGrid>
@@ -539,7 +532,7 @@
                         language:  'fr',
                         autoclose: 1
                     });
-                   /* $(document).ready(function (){
+                    /* $(document).ready(function (){
                         $(".checkbox").iButton();
                     });*/
                 </script>
