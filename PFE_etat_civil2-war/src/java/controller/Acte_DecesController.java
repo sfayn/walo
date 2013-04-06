@@ -1,9 +1,13 @@
 package controller;
 
 import bean.Acte_Deces;
+import bean.Acte_Naissance;
+import bean.Registre;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -27,6 +31,56 @@ public class Acte_DecesController implements Serializable {
     private session.Acte_DecesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String annee;
+    private int numActe;
+    private Registre registre;
+
+    public int getNumActe() {
+        return numActe;
+    }
+
+    public void setNumActe(int numActe) {
+        this.numActe = numActe;
+    }
+
+    public Registre getRegistre() {
+        return registre;
+    }
+
+    public void setRegistre(Registre registre) {
+        this.registre = registre;
+    }
+
+    public String getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
+
+    public SelectItem[] listReg() {
+        return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
+    }
+
+    public void findAct() {
+        if (registre != null && numActe != 0) {
+            if (!ejbFacade.findActe_Naiss(numActe, registre).isEmpty()) {
+                current.setActe_Naissance(ejbFacade.findActe_Naiss(numActe, registre).get(0));
+            }
+            else{
+                current.setActe_Naissance(null);
+            }
+        }
+    }
+
+    public SelectItem[] listannee() {
+        List<String> annees = new ArrayList<String>();
+        for (int i = 1900; i < 2060; i++) {
+            annees.add(i + "");
+        }
+        return JsfUtil.getSelectItems(annees, true);
+    }
 
     public Acte_DecesController() {
     }
