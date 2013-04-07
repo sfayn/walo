@@ -26,7 +26,7 @@
                                     <h:selectOneMenu id="registre" class="input-small" value="#{acte_DecesController.registre}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{acte_DecesController.listReg()}"/>
                                         <f:ajax event="blur" render="registre"/>
-                                        <f:ajax event="change" execute="registre numActe" render="blocDeces test" listener="#{acte_DecesController.findAct()}"/>
+                                        <f:ajax event="change" execute="registre numActe" render="blocDeces" listener="#{acte_DecesController.findAct()}"/>
                                     </h:selectOneMenu>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -45,11 +45,10 @@
                                     <h:outputLabel value="رقم الرسم" for="numActe" />
                                     <h:inputText id="numActe" class="input-small" value="#{acte_DecesController.numActe}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
                                         <f:ajax event="blur" render="numActe " />
-                                        <f:ajax event="change" execute="numActe registre" render="blocDeces test" listener="#{acte_DecesController.findAct()}"/>
+                                        <f:ajax event="change" execute="numActe registre" render="blocDeces" listener="#{acte_DecesController.findAct()}"/>
                                     </h:inputText>
                                 </h:panelGrid>
                             </b:gridColumn>
-                            <h:outputLabel value="#{acte_DecesController.selected.acte_Naissance}" id="test" />
                         </b:gridRow>
                     </fieldset>
                     <b:gridRow id="blocDeces">
