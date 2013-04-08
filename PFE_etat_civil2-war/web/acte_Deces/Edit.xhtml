@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditActe_DecesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_acte_Naissance}" for="acte_Naissance" />
+                    <h:selectOneMenu id="acte_Naissance" value="#{acte_DecesController.selected.acte_Naissance}" title="#{bundle.EditActe_DecesTitle_acte_Naissance}" >
+                        <f:selectItems value="#{acte_NaissanceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_cin}" for="cin" />
+                    <h:inputText id="cin" value="#{acte_DecesController.selected.cin}" title="#{bundle.EditActe_DecesTitle_cin}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_situation_familiale}" for="situation_familiale" />
+                    <h:inputTextarea rows="4" cols="30" id="situation_familiale" value="#{acte_DecesController.selected.situation_familiale}" title="#{bundle.EditActe_DecesTitle_situation_familiale}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_adresse_Ar}" for="adresse_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="adresse_Ar" value="#{acte_DecesController.selected.adresse_Ar}" title="#{bundle.EditActe_DecesTitle_adresse_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_adresse_Fr}" for="adresse_Fr" />
+                    <h:inputText id="adresse_Fr" value="#{acte_DecesController.selected.adresse_Fr}" title="#{bundle.EditActe_DecesTitle_adresse_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_dateDeces}" for="dateDeces" />
+                    <h:inputText id="dateDeces" value="#{acte_DecesController.selected.dateDeces}" title="#{bundle.EditActe_DecesTitle_dateDeces}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_lieuDeces_Ar}" for="lieuDeces_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="lieuDeces_Ar" value="#{acte_DecesController.selected.lieuDeces_Ar}" title="#{bundle.EditActe_DecesTitle_lieuDeces_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_lieuDeces_Fr}" for="lieuDeces_Fr" />
+                    <h:inputText id="lieuDeces_Fr" value="#{acte_DecesController.selected.lieuDeces_Fr}" title="#{bundle.EditActe_DecesTitle_lieuDeces_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_dateTah_H}" for="dateTah_H" />
+                    <h:inputText id="dateTah_H" value="#{acte_DecesController.selected.dateTah_H}" title="#{bundle.EditActe_DecesTitle_dateTah_H}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_dateTah_G}" for="dateTah_G" />
+                    <h:inputText id="dateTah_G" value="#{acte_DecesController.selected.dateTah_G}" title="#{bundle.EditActe_DecesTitle_dateTah_G}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_dateHo}" for="dateHo" />
+                    <h:inputText id="dateHo" value="#{acte_DecesController.selected.dateHo}" title="#{bundle.EditActe_DecesTitle_dateHo}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_declaration_Ar}" for="declaration_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="declaration_Ar" value="#{acte_DecesController.selected.declaration_Ar}" title="#{bundle.EditActe_DecesTitle_declaration_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_declaration_Fr}" for="declaration_Fr" />
+                    <h:inputText id="declaration_Fr" value="#{acte_DecesController.selected.declaration_Fr}" title="#{bundle.EditActe_DecesTitle_declaration_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_profession_Ar}" for="profession_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="profession_Ar" value="#{acte_DecesController.selected.profession_Ar}" title="#{bundle.EditActe_DecesTitle_profession_Ar}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_profession_Fr}" for="profession_Fr" />
+                    <h:inputText id="profession_Fr" value="#{acte_DecesController.selected.profession_Fr}" title="#{bundle.EditActe_DecesTitle_profession_Fr}" />
+                    <h:outputLabel value="#{bundle.EditActe_DecesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{acte_DecesController.selected.id}" title="#{bundle.EditActe_DecesTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{acte_DecesController.update}" value="#{bundle.EditActe_DecesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditActe_DecesViewLink}"/>
+                <br />
+                <h:commandLink action="#{acte_DecesController.prepareList}" value="#{bundle.EditActe_DecesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditActe_DecesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

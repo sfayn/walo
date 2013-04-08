@@ -42,9 +42,7 @@ public class Acte_Naissance implements Serializable {
     @Lob
     private String prenom_Ar;
     private String prenom_Fr;
-    @Lob
-    private String profession_Ar;
-    private String profession_Fr;
+
     private String lieu_de_Naiss_Fr;
     @Lob
     private String lieu_de_Naiss_Ar;
@@ -355,22 +353,6 @@ public class Acte_Naissance implements Serializable {
 
     public void setPrenom_Fr(String prenom_Fr) {
         this.prenom_Fr = prenom_Fr;
-    }
-
-    public String getProfession_Ar() throws UnsupportedEncodingException {
-        return profession_Ar == null ? "" : URLDecoder.decode(profession_Ar, "UTF-8");
-    }
-
-    public void setProfession_Ar(String profession_Ar) {
-        this.profession_Ar = profession_Ar;
-    }
-
-    public String getProfession_Fr() {
-        return profession_Fr;
-    }
-
-    public void setProfession_Fr(String profession_Fr) {
-        this.profession_Fr = profession_Fr;
     }
 
     public String getPrenomP_Ar() throws UnsupportedEncodingException {

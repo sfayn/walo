@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            التصرف في رسوم الوفيات: إضافة رسم جديد
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <b:gridRow styleClass="show-grid" fluid="true">
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن رسم الولادة :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="3">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الجزء" for="registre" />
+                                    <h:selectOneMenu id="registre" class="input-small" value="#{acte_DecesController.registre}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{acte_DecesController.listReg()}"/>
+                                        <f:ajax event="blur" render="registre"/>
+                                        <f:ajax event="change" execute="registre numActe" render="blocDeces test" listener="#{acte_DecesController.findAct()}"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="السنة" for="annee" />
+                                    <h:selectOneMenu id="annee" class="input-small" value="#{acte_DecesController.annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                                        <f:ajax event="change" render="registre" execute="annee"/> 
+                                        <f:ajax event="blur" render="annee"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="رقم الرسم" for="numActe" />
+                                    <h:inputText id="numActe" class="input-small" value="#{acte_DecesController.numActe}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
+                                        <f:ajax event="blur" render="numActe " />
+                                        <f:ajax event="change" execute="numActe registre" render="blocDeces test" listener="#{acte_DecesController.findAct()}"/>
+                                    </h:inputText>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <h:outputLabel value="#{acte_DecesController.selected.acte_Naissance}" id="test" />
+                        </b:gridRow>
+                    </fieldset>
+                    <b:gridRow id="blocDeces">
+                        <h:panelGrid columns="2" rendered="#{acte_DecesController.selected.acte_Naissance==null ? false : true}">
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_acte_Naissance}" for="acte_Naissance" />
+                            <h:selectOneMenu id="acte_Naissance" value="#{acte_DecesController.selected.acte_Naissance}" title="#{bundle.CreateActe_DecesTitle_acte_Naissance}" >
+                                <f:selectItems value="#{acte_NaissanceController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_cin}" for="cin" />
+                            <h:inputText id="cin" value="#{acte_DecesController.selected.cin}" title="#{bundle.CreateActe_DecesTitle_cin}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_situation_familiale}" for="situation_familiale" />
+                            <h:inputTextarea rows="4" cols="30" id="situation_familiale" value="#{acte_DecesController.selected.situation_familiale}" title="#{bundle.CreateActe_DecesTitle_situation_familiale}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_adresse_Ar}" for="adresse_Ar" />
+                            <h:inputTextarea rows="4" cols="30" id="adresse_Ar" value="#{acte_DecesController.selected.adresse_Ar}" title="#{bundle.CreateActe_DecesTitle_adresse_Ar}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_adresse_Fr}" for="adresse_Fr" />
+                            <h:inputText id="adresse_Fr" value="#{acte_DecesController.selected.adresse_Fr}" title="#{bundle.CreateActe_DecesTitle_adresse_Fr}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_dateDeces}" for="dateDeces" />
+                            <h:inputText id="dateDeces" value="#{acte_DecesController.selected.dateDeces}" title="#{bundle.CreateActe_DecesTitle_dateDeces}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_lieuDeces_Ar}" for="lieuDeces_Ar" />
+                            <h:inputTextarea rows="4" cols="30" id="lieuDeces_Ar" value="#{acte_DecesController.selected.lieuDeces_Ar}" title="#{bundle.CreateActe_DecesTitle_lieuDeces_Ar}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_lieuDeces_Fr}" for="lieuDeces_Fr" />
+                            <h:inputText id="lieuDeces_Fr" value="#{acte_DecesController.selected.lieuDeces_Fr}" title="#{bundle.CreateActe_DecesTitle_lieuDeces_Fr}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_dateTah_H}" for="dateTah_H" />
+                            <h:inputText id="dateTah_H" value="#{acte_DecesController.selected.dateTah_H}" title="#{bundle.CreateActe_DecesTitle_dateTah_H}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_dateTah_G}" for="dateTah_G" />
+                            <h:inputText id="dateTah_G" value="#{acte_DecesController.selected.dateTah_G}" title="#{bundle.CreateActe_DecesTitle_dateTah_G}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_dateHo}" for="dateHo" />
+                            <h:inputText id="dateHo" value="#{acte_DecesController.selected.dateHo}" title="#{bundle.CreateActe_DecesTitle_dateHo}" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_declaration_Ar}" for="declaration_Ar" />
+                            <h:inputTextarea rows="4" cols="30" id="declaration_Ar" value="#{acte_DecesController.selected.declaration_Ar}" title="#{bundle.CreateActe_DecesTitle_declaration_Ar}" />
+                            <h:outputLabel value="#{bundle.CreateActe_DecesLabel_declaration_Fr}" for="declaration_Fr" />
+                            <h:inputText id="declaration_Fr" value="#{acte_DecesController.selected.declaration_Fr}" title="#{bundle.CreateActe_DecesTitle_declaration_Fr}" />
+                                     <h:outputLabel value="#{bundle.CreateActe_DecesLabel_profession_Ar}" for="profession_Ar" />
+                                     <h:inputTextarea rows="4" cols="30" id="profession_Ar" value="#{acte_DecesController.selected.profession_Ar}" title="#{bundle.CreateActe_DecesTitle_profession_Ar}" />
+                                     <h:outputLabel value="#{bundle.CreateActe_DecesLabel_profession_Fr}" for="profession_Fr" />
+                                     <h:inputText id="profession_Fr" value="#{acte_DecesController.selected.profession_Fr}" title="#{bundle.CreateActe_DecesTitle_profession_Fr}" />
+                                     <h:outputLabel value="#{bundle.CreateActe_DecesLabel_id}" for="id" />
+                                     <h:inputText id="id" value="#{acte_DecesController.selected.id}" title="#{bundle.CreateActe_DecesTitle_id}" />
+
+                        </h:panelGrid>
+                    </b:gridRow>
+                </b:gridRow>
+                <br />
+                <h:commandLink action="#{acte_DecesController.create}" value="#{bundle.CreateActe_DecesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{acte_DecesController.prepareList}" value="#{bundle.CreateActe_DecesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateActe_DecesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
