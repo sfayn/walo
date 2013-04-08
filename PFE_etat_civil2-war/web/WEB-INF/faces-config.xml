@@ -14,5 +14,11 @@
         <message-bundle>/Message</message-bundle>
   
     </application>
-
+    <navigation-rule>
+        <from-view-id>/C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Profile.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>List</from-outcome>
+            <to-view-id>/C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/List.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

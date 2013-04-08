@@ -7,7 +7,7 @@
       xmlns:jsflot="http://www.jsflot.org/taglib/jsflot">
 
     <ui:composition template="/template.xhtml" >
-      
+
         <ui:define name="title">
             صفحة الإستقبال
         </ui:define>
@@ -39,7 +39,7 @@
                     point, // Data point variable declaration
                     i;
 
-                    for ( i = 0; i < 12; i++) {
+                    for ( i = 1; i < 13; i++) {
 
                         if (horizontal) {
                             point = [Math.ceil(Math.random() * 100), i];
@@ -70,13 +70,18 @@
                             track : true,
                             relative : true
                         },
+                        xaxis:{
+                            tickSize : 1,
+                            min: 1,
+                            ticks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                        },
                         yaxis : {
                             min : 0,
                             autoscaleMargin : 1
                         }
                     });
                 })(document.getElementById("graph"));
-               // ]]> 
+                // ]]> 
             </script>
         </ui:define>
     </ui:composition>

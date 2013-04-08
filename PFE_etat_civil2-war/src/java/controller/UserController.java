@@ -37,6 +37,25 @@ public class UserController implements Serializable {
     private session.UserFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String password = "";
+    private User loggedUser;
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
+    }
+    
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public UserController() {
     }
@@ -94,6 +113,7 @@ public class UserController implements Serializable {
             User u = (User) it.next();
             if (u.equals(current)) {
                 current = u;
+                setLoggedUser(u);
                 current.setLastLogin(new Date());
                 getFacade().edit(current);
                 UtilitaireSession us = UtilitaireSession.getInstance();
@@ -114,6 +134,7 @@ public class UserController implements Serializable {
     public String logout() {
         UtilitaireSession us = UtilitaireSession.getInstance();
         us.set("auth", null);
+        setLoggedUser(null);
         current = null;
         return "List";
     }
@@ -123,14 +144,13 @@ public class UserController implements Serializable {
         if (us.get("auth") == null) {
             return "login";
         } else {
-
             return "#";
-
         }
     }
     
     public User loggedUser(){
         UtilitaireSession us = UtilitaireSession.getInstance();
+        
         return (User) us.get("auth");
     }
 
@@ -153,9 +173,28 @@ public class UserController implements Serializable {
 
     public String update() {
         try {
+            if(!password.equals("")){
+                current.setPassword(password);
+            }
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
             return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    
+    public String updateProfile() {
+        try {
+            if(!password.equals("")){
+                loggedUser.setPassword(password);
+            }
+            current=loggedUser;
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
+            
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;

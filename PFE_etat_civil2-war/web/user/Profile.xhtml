@@ -8,7 +8,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.EditUserTitle}"></h:outputText>
+            <h:outputText value="تعديل المعلومات الشخصية"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -23,17 +23,13 @@
                             <b:gridColumn span="8">
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="#{bundle.CreateUserLabel_nom}" for="nom" class="span2" />
-                                    <h:inputText id="nom" value="#{userController.selected.nom}" title="#{bundle.CreateUserTitle_nom}" />
+                                    <h:inputText id="nom" value="#{userController.loggedUser.nom}" title="#{bundle.CreateUserTitle_nom}" />
                                     <h:outputLabel value="#{bundle.CreateUserLabel_prenom}" for="prenom" />
-                                    <h:inputText id="prenom" value="#{userController.selected.prenom}" title="#{bundle.CreateUserTitle_prenom}" />
+                                    <h:inputText id="prenom" value="#{userController.loggedUser.prenom}" title="#{bundle.CreateUserTitle_prenom}" />
                                     <h:outputLabel value="#{bundle.CreateUserLabel_login}" for="login" />
-                                    <h:inputText id="login" value="#{userController.selected.login}" title="#{bundle.CreateUserTitle_login}" />
+                                    <h:inputText id="login" value="#{userController.loggedUser.login}" title="#{bundle.CreateUserTitle_login}" />
                                     <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />
                                     <h:inputText id="password" value="#{userController.password}" title="#{bundle.CreateUserTitle_password}" />
-                                    <h:outputLabel value="#{bundle.CreateUserLabel_role}" for="role" />
-                                    <h:selectOneMenu id="role" value="#{userController.selected.role}" title="#{bundle.CreateUserTitle_role}" >
-                                        <f:selectItems value="#{roleController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>            
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -42,8 +38,8 @@
                 <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl"  cellpadding="10">
-                            <h:commandLink class="btn btn-primary" action="#{userController.prepareList}" style="font-size: 14pt;" value="#{bundle.EditUserShowAllLink}" immediate="true"/>
-                            <h:commandLink class="btn btn-primary" style="font-size: 14pt;" action="#{userController.update}" value="#{bundle.EditUserSaveLink}"/>
+                            <a href="#{request.contextPath}/faces/acte_Naissance/#{acte_NaissanceController.prepareList()}.xhtml" class="btn btn-warning" >الرجوع</a>
+                            <h:commandLink class="btn btn-primary" style="font-size: 14pt;" action="#{userController.updateProfile}" value="#{bundle.EditUserSaveLink}"/>
                         </h:panelGrid>
                     </b:gridColumn>
                 </b:gridRow>
