@@ -35,7 +35,7 @@ public class User implements Serializable {
     private Date lastLogin;
     @ManyToOne
     private Role role;
-    @OneToMany(mappedBy = "createdBy")
+    @OneToMany(mappedBy = "createdBy", orphanRemoval=false)
     private List<Acte_Naissance> acte_Naissances;
 
     public List<Acte_Naissance> getActe_Naissances() {

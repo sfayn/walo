@@ -10,7 +10,7 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.ejb.LocalBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -112,7 +112,7 @@ public class Acte_Naissance implements Serializable {
     @Lob
     private String declaration_Ar;
     private String declaration_Fr;
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.ALL})
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;

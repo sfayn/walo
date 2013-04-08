@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/donnees_Marginales/Create.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/List.xhtml" x="355" y="442" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/registre/List.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/View.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/type_Donnees_Marginales/View.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/donnees_Marginales/Edit.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/logout.xhtml" x="207" y="645" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/type_Donnees_Marginales/Create.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/role/View.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/sex/Edit.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/registre/Edit.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Profile.xhtml" x="454" y="518" zoom="false"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/role/Create.xhtml" x="438" y="731" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/registre/View.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/donnees_Marginales/List.xhtml" x="351" y="705" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/List.xhtml" x="346" y="737" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/sex/Create.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/ListActes.xhtml" x="216" y="712" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/role/List.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/type_Donnees_Marginales/List.xhtml" x="225" y="721" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/login.xhtml" x="476" y="711" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/Create.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/Edit.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/donnees_Marginales/View.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/sex/List.xhtml" x="315" y="643" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/role/Edit.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/type_Donnees_Marginales/Edit.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/registre/Create.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Edit.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/template.xhtml" x="366" y="598" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/sex/View.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/index.xhtml" x="577" y="703" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/View.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Create.xhtml" x="650" y="150" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

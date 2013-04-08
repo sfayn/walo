@@ -510,6 +510,11 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void check() {
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        
+        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+            return;
+        }
         if (current.isChecked()) {
             current.setChecked(false);
         } else {
