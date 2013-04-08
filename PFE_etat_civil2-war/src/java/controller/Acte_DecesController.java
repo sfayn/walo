@@ -63,15 +63,18 @@ public class Acte_DecesController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
     }
 
-    public void findAct() {
+    public boolean findAct() {
         if (registre != null && numActe != 0) {
             if (!ejbFacade.findActe_Naiss(numActe, registre).isEmpty()) {
                 current.setActe_Naissance(ejbFacade.findActe_Naiss(numActe, registre).get(0));
+            return true;
             }
             else{
                 current.setActe_Naissance(null);
+                return false;
             }
         }
+        return false;
     }
 
     public SelectItem[] listannee() {
