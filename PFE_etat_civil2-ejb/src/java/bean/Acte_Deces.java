@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -27,6 +28,9 @@ public class Acte_Deces implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Integer numActe;
+    @ManyToOne
+    private Registre_Deces registre;
     @OneToOne
     private Acte_Naissance acte_Naissance;
     @Lob
@@ -55,6 +59,23 @@ public class Acte_Deces implements Serializable {
     private String declaration_Ar;
     private String declaration_Fr;
 
+    public Integer getNumActe() {
+        return numActe;
+    }
+
+    public void setNumActe(Integer numActe) {
+        this.numActe = numActe;
+    }
+    
+    public Registre_Deces getRegistre() {
+        return registre;
+    }
+
+    public void setRegistre(Registre_Deces registre) {
+        this.registre = registre;
+    }
+
+    
     public Acte_Naissance getActe_Naissance() {
         return acte_Naissance;
     }
@@ -71,8 +92,8 @@ public class Acte_Deces implements Serializable {
         this.cin = cin;
     }
 
-    public String getSituation_familiale() {
-        return situation_familiale;
+    public String getSituation_familiale() throws UnsupportedEncodingException {
+        return situation_familiale == null ? "" : URLDecoder.decode(situation_familiale, "UTF-8");
     }
 
     public void setSituation_familiale(String situation_familiale) {
