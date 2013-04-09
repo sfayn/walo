@@ -7,6 +7,7 @@ package session;
 import bean.Acte_Deces;
 import bean.Acte_Naissance;
 import bean.Registre;
+import bean.Registre_Deces;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -40,6 +41,15 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery(Registre.class);
         Root emp = cq.from(Registre.class);
+        Predicate predicate = cb.equal(emp.get("annee"),annee);
+        cq.where(predicate);
+        cq.select(emp);
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+    public List<Registre> findByDate_Deces(String annee) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Registre_Deces.class);
+        Root emp = cq.from(Registre_Deces.class);
         Predicate predicate = cb.equal(emp.get("annee"),annee);
         cq.where(predicate);
         cq.select(emp);

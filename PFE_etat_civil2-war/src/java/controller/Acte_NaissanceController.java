@@ -458,7 +458,6 @@ public class Acte_NaissanceController implements Serializable {
         }
 
     }
-
     public String create() {
         try {
             encode();

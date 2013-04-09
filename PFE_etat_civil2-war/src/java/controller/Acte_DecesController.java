@@ -3,12 +3,18 @@ package controller;
 import bean.Acte_Deces;
 import bean.Acte_Naissance;
 import bean.Registre;
+import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -31,10 +37,101 @@ public class Acte_DecesController implements Serializable {
     private session.Acte_DecesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String datetasH_Ar;
+    private String datetasH_Fr;
+    private String datetasM_Ar;
+    private String datetasM_Fr;
+    private Date g_to_hTah;
     private String annee;
+    private String annee_d;
     private int numActe;
     private Registre registre;
+    private int l = 0;
 
+    public String getDatetasH_Ar() {
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
+        } else {
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrArH(current.getDateTah_H());
+        }
+    }
+
+    public void setDatetasH_Ar(String datetasH_Ar) {
+        this.datetasH_Ar = datetasH_Ar;
+    }
+
+    public String getDatetasH_Fr() {
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "" : Helper.dateToStrH(current.getDateTah_G());
+        } else {
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrH(current.getDateTah_H());
+        }
+
+    }
+
+    public void setDatetasH_Fr(String datetasH_Fr) {
+        this.datetasH_Fr = datetasH_Fr;
+    }
+
+    public String getDatetasM_Ar() {
+        return current.getDateTah_G() == null ? "" : Helper.dateToStrArG(current.getDateTah_G());
+    }
+
+    public void setDatetasM_Ar(String datetasM_Ar) {
+        this.datetasM_Ar = datetasM_Ar;
+    }
+
+    public String getDatetasM_Fr() {
+        return current.getDateTah_G() == null ? "" : Helper.dateToStrG(current.getDateTah_G());
+    }
+
+    public void setDatetasM_Fr(String datetasM_Fr) {
+        this.datetasM_Fr = datetasM_Fr;
+    }
+
+    public void g_to_hTahplus() {
+        if (current.getDateTah_G() != null) {
+            l++;
+            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+        }
+    }
+
+    public Date getG_to_hTah() {
+        if (current.getDateTah_G() == null) {
+            return null;
+        } else {
+            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
+            return current.getDateTah_H();
+        }
+    }
+
+    public void g_to_hTahmoins() {
+        if (current.getDateTah_G() != null) {
+            l--;
+            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+        }
+    }
+
+    public int getL() {
+        return l;
+    }
+
+    public void setL(int l) {
+        this.l = l;
+        changeDeclaration();
+    }
+
+    public void setG_to_hTah(Date g_to_hTah) {
+        this.g_to_hTah = g_to_hTah;
+    }
+public SelectItem[] listSituationFam() {
+        List<String> situation = new ArrayList<String>();        
+            situation.add("عازب");
+            situation.add("متزوج");
+            situation.add("مطلق");
+            situation.add("أرمل");
+        return JsfUtil.getSelectItems(situation, true);
+    }
     public int getNumActe() {
         return numActe;
     }
@@ -59,17 +156,42 @@ public class Acte_DecesController implements Serializable {
         this.annee = annee;
     }
 
+    public String getAnnee_d() {
+        return annee_d;
+    }
+
+    public void setAnnee_d(String annee_d) {
+        this.annee_d = annee_d;
+    }
+
     public SelectItem[] listReg() {
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
+    }
+     public SelectItem[] listReg_dec() {
+        return JsfUtil.getSelectItems(ejbFacade.findByDate_Deces(annee_d), true);
+    }
+
+    public void changeDeclaration() {
+
+        if (current.isTypeT()) {
+            current.setDeclaration_Fr("Sur la base de ce qui est venu dans le numéro du jugement " + Helper.dateToStrH(current.getDateHo()) + " correspondant au " + Helper.dateToStrG(current.getDateHo()) + " dans le dossier numéro   du Tribunal de première instance à ");
+            current.setDeclaration_Ar(" بناء على ما جاء في الحكم عدد   الصادر بتاريخ " + Helper.dateToStrArH(current.getDateHo()) + "الموافق ل " + Helper.dateToStrArG(current.getDateHo()) + "  في الملف عدد     عن المحكمة الإبتدائية ب ");
+        } else {
+            try {
+                current.setDeclaration_Ar("test");
+            } catch (Exception ex) {
+                Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            current.setDeclaration_Fr("test");
+        }
     }
 
     public boolean findAct() {
         if (registre != null && numActe != 0) {
             if (!ejbFacade.findActe_Naiss(numActe, registre).isEmpty()) {
                 current.setActe_Naissance(ejbFacade.findActe_Naiss(numActe, registre).get(0));
-            return true;
-            }
-            else{
+                return true;
+            } else {
                 current.setActe_Naissance(null);
                 return false;
             }
@@ -133,9 +255,24 @@ public class Acte_DecesController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    
+    public void encode() {
+        try {
+            current.setAdresse_Ar(URLEncoder.encode(current.getAdresse_Ar(), "UTF-8"));
+            current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
+            current.setSituation_familiale(URLEncoder.encode(current.getSituation_familiale(), "UTF-8"));
+            current.setLieuDeces_Ar(URLEncoder.encode(current.getLieuDeces_Ar(), "UTF-8"));
+            current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
+            
+ } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
     public String create() {
         try {
+            encode();
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_DecesCreated"));
             return prepareCreate();
