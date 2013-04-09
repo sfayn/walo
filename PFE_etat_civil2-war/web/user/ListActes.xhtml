@@ -67,27 +67,6 @@
                                         <h:commandLink action="#{acte_NaissanceController.prepareView}">
                                             <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
                                         </h:commandLink>
-                                        <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
-                                            <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
-                                        </h:commandLink>
-                                        <a title="remove" href="#" onclick="#{b:show('customModal')}">
-                                            <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
-                                        </a>
-                                        <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
-
-                                            <b:headerFacet>
-                                                <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
-                                            </b:headerFacet>
-                                            <b:bodyFacet>
-                                                <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
-                                            </b:bodyFacet>
-                                            <b:footerFacet>
-                                                <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
-                                                <h:outputText value="  "/>
-                                                <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
-                                            </b:footerFacet>
-
-                                        </b:modal>
                                     </td>
                                 </tr>
                             </ui:repeat>
