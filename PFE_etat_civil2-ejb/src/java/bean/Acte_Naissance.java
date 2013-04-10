@@ -110,7 +110,7 @@ public class Acte_Naissance implements Serializable {
     @Lob
     private String declaration_Ar;
     private String declaration_Fr;
-    @ManyToOne(cascade={CascadeType.ALL})
+    @ManyToOne
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
