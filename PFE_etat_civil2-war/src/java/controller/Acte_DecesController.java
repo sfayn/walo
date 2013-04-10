@@ -3,9 +3,11 @@ package controller;
 import bean.Acte_Deces;
 import bean.Acte_Naissance;
 import bean.Registre;
+import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import controller.util.UtilitaireSession;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -124,14 +126,16 @@ public class Acte_DecesController implements Serializable {
     public void setG_to_hTah(Date g_to_hTah) {
         this.g_to_hTah = g_to_hTah;
     }
-public SelectItem[] listSituationFam() {
-        List<String> situation = new ArrayList<String>();        
-            situation.add("عازب");
-            situation.add("متزوج");
-            situation.add("مطلق");
-            situation.add("أرمل");
+
+    public SelectItem[] listSituationFam() {
+        List<String> situation = new ArrayList<String>();
+        situation.add("عازب");
+        situation.add("متزوج");
+        situation.add("مطلق");
+        situation.add("أرمل");
         return JsfUtil.getSelectItems(situation, true);
     }
+
     public int getNumActe() {
         return numActe;
     }
@@ -167,7 +171,11 @@ public SelectItem[] listSituationFam() {
     public SelectItem[] listReg() {
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
     }
-     public SelectItem[] listReg_dec() {
+
+    public SelectItem[] listReg_dec() {
+        if (annee_d == null && current.getRegistre() != null) {
+            annee_d = current.getRegistre().getAnnee();
+        }
         return JsfUtil.getSelectItems(ejbFacade.findByDate_Deces(annee_d), true);
     }
 
@@ -255,8 +263,7 @@ public SelectItem[] listSituationFam() {
         selectedItemIndex = -1;
         return "Create";
     }
-    
-    
+
     public void encode() {
         try {
             current.setAdresse_Ar(URLEncoder.encode(current.getAdresse_Ar(), "UTF-8"));
@@ -264,15 +271,19 @@ public SelectItem[] listSituationFam() {
             current.setSituation_familiale(URLEncoder.encode(current.getSituation_familiale(), "UTF-8"));
             current.setLieuDeces_Ar(URLEncoder.encode(current.getLieuDeces_Ar(), "UTF-8"));
             current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
-            
- } catch (UnsupportedEncodingException ex) {
+
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
     public String create() {
         try {
             encode();
+            current.setCreatedAt(new Date());
+            UtilitaireSession us = UtilitaireSession.getInstance();
+            current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_DecesCreated"));
             return prepareCreate();
@@ -290,6 +301,7 @@ public SelectItem[] listSituationFam() {
 
     public String update() {
         try {
+            encode();
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_DecesUpdated"));
             return "View";

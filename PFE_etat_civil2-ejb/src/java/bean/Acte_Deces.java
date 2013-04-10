@@ -42,7 +42,7 @@ public class Acte_Deces implements Serializable {
     @Lob
     private String adresse_Ar;
     private String adresse_Fr;
-    
+    private boolean noMJ = false;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeces;
     @Lob
@@ -58,6 +58,45 @@ public class Acte_Deces implements Serializable {
     @Lob
     private String declaration_Ar;
     private String declaration_Fr;
+    private boolean checked = false;
+    @ManyToOne
+    private User createdBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    
+    
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    
+    public boolean isNoMJ() {
+        return noMJ;
+    }
+
+    public void setNoMJ(boolean noMJ) {
+        this.noMJ = noMJ;
+    }
 
     public Integer getNumActe() {
         return numActe;
@@ -66,7 +105,7 @@ public class Acte_Deces implements Serializable {
     public void setNumActe(Integer numActe) {
         this.numActe = numActe;
     }
-    
+
     public Registre_Deces getRegistre() {
         return registre;
     }
@@ -75,7 +114,6 @@ public class Acte_Deces implements Serializable {
         this.registre = registre;
     }
 
-    
     public Acte_Naissance getActe_Naissance() {
         return acte_Naissance;
     }
@@ -187,10 +225,7 @@ public class Acte_Deces implements Serializable {
     public void setDeclaration_Fr(String declaration_Fr) {
         this.declaration_Fr = declaration_Fr;
     }
-    
-    
-    
-    
+
     public String getProfession_Ar() throws UnsupportedEncodingException {
         return profession_Ar == null ? "" : URLDecoder.decode(profession_Ar, "UTF-8");
     }
