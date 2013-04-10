@@ -162,7 +162,7 @@
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="" for="decesP" />
+                                    <h:outputLabel value="متوفي" for="decesP" />
                                     <h:selectBooleanCheckbox id="decesP" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
                                         <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
                                     </h:selectBooleanCheckbox>
@@ -252,6 +252,7 @@
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="ltr" >
+                                    <h:outputLabel value="متوفية" for="decesM" />
                                     <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفية', labelOff: 'غير متوفية', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
                                         <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
                                     </h:selectBooleanCheckbox>
@@ -371,6 +372,7 @@
                                 <h:panelGrid columns="2" dir="ltr">
                                     <script>
                                         function display(obj){
+                                            var obj = obj == 'true'? true: false;
                                             if(!obj){
                                                 document.getElementById("dateHo").style.display = "none";
                                                 document.getElementById("dateHoOut").style.display = "none";
@@ -380,13 +382,11 @@
                                             }
                                         }
                                     </script>
-                                    <!--<h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
+                                    <h:selectOneRadio id="typeT" value="#{acte_NaissanceController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
                                         <f:selectItem  itemValue="true"  itemLabel="حكم" />
                                         <f:selectItem itemValue="false" itemLabel="تصريح" />
-    
-                                                                            <f:ajax execute="@this" render="declaration_Ar declaration_Fr" />
-                                    </h:selectOneRadio>-->
-                                    <h:selectBooleanCheckbox  id="typeT" onchange="display(this.checked);" class="checkbox {labelOn: 'حكم', labelOff: 'تصريح', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.typeT}" />
+                                    </h:selectOneRadio>
+                                    <!--<h:selectBooleanCheckbox  id="typeT" onchange="display(this.checked);" class="checkbox {labelOn: 'حكم', labelOff: 'تصريح', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.typeT}" />-->
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -515,9 +515,9 @@
                         language:  'fr',
                         autoclose: 1
                     });
-                    $(document).ready(function (){
+                    /*$(document).ready(function (){
                         $(".checkbox").iButton();
-                    });
+                    });*/
                 </script>
             </h:form>
         </ui:define>
