@@ -1,7 +1,6 @@
 package controller;
 
 import bean.Acte_Deces;
-import bean.Acte_Naissance;
 import bean.Registre;
 import bean.User;
 import controller.util.Helper;
@@ -49,7 +48,43 @@ public class Acte_DecesController implements Serializable {
     private int numActe;
     private Registre registre;
     private int l = 0;
+    private int i=0;
 
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public Date getG_to_h() {
+        if (current.getDateDecesG() == null) {
+            return null;
+        } else {
+            current.setDateDecesH(Helper.dateTimeGrToH(current.getDateDecesG()));
+            return current.getDateDecesH();
+        }
+
+    }
+    public void GToHAnnee() {
+        if (current.getDateDecesG() != null) {
+            current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
+        }
+    }
+    public void g_to_hplus() {
+        if (current.getDateDecesG() != null) {
+            i++;
+            current.getDateDecesG().setDate(current.getDateDecesG().getDate() + i);
+        }
+    }
+
+    public void g_to_hmoins() {
+        if (current.getDateDecesG() != null) {
+            i--;
+            current.getDateDecesG().setDate(current.getDateDecesG().getDate() + i);
+        }
+    }
     public String getDatetasH_Ar() {
         if (current.getDateTah_H() == null) {
             return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
@@ -281,14 +316,16 @@ public class Acte_DecesController implements Serializable {
     public String create() {
         try {
             encode();
+            numActe=0;
+            registre=null;
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_DecesCreated"));
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }

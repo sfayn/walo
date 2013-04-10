@@ -24,46 +24,48 @@
                     <table  cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
                         <thead>
                             <tr>
-                                <th><h:outputText value="تاريخ الإزدياد"/></th>
-                                <th><h:outputText value="الإسم"/></th>
-                                <th><h:outputText value="النسب"/></th>
-                                <th><h:outputText value="Nom"/></th>
-                                <th><h:outputText value="Prénom"/></th>
-                                <th><h:outputText value="رقم الرسم"/></th>
-                                <th><h:outputText value="Validé"/></th>
-                                <th><h:outputText value="action"/></th>
+                                <th><center><h:outputText value="رقم الرسم"/></center></th>
+                                <th><center><h:outputText value="الإسم"/></center></th>
+                                <th><center><h:outputText value="النسب"/></center></th>
+                                <th><center><h:outputText value="Nom"/></center></th>
+                                <th><center><h:outputText value="Prénom"/></center></th>
+                                <th><center><h:outputText value="تاريخ الإزدياد"/></center></th>                                
+                                <th><center><h:outputText value="Validé"/></center></th>
+                                <th><center><h:outputText value="action"/></center></th>
                             </tr>
                         </thead>
                         <tbody>
                             <ui:repeat value="#{acte_NaissanceController.items}" var="item" >
 
                                 <tr>
-                                    <td>
+                                    <td><center>
+                                        <h:outputText value="#{item.numActe}"/>
+                                    </center></td>
+                                    
+                                    <td><center>
+                                        <h:outputText value="#{item.prenom_Ar}"/>
+                                    </center></td>
+                                    <td><center>
+                                        <h:outputText value="#{item.nom_Ar}"/>
+                                    </center></td>
+                                    <td><center>
+                                        <h:outputText value="#{item.nom_Fr}"/>
+                                    </center></td>
+                                    <td><center>
+                                        <h:outputText value="#{item.prenom_Fr}"/>
+                                    </center></td>
+                                    <td><center>
                                         <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                             <f:param value="#{item.date_de_naiss_G}" />
                                         </h:outputFormat>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.prenom_Ar}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.nom_Ar}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.nom_Fr}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.prenom_Fr}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.numActe}"/>
-                                    </td>
-                                    <td>
+                                    </center></td>
+                                    
+                                    <td><center>
                                         <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
                                             <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
                                         </font>
-                                    </td>
-                                    <td>
+                                    </center></td>
+                                    <td><center>
                                         <h:commandLink action="#{acte_NaissanceController.prepareView}">
                                             <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
                                         </h:commandLink>
@@ -88,7 +90,7 @@
                                             </b:footerFacet>
 
                                         </b:modal>
-                                    </td>
+                                    </center></td>
                                 </tr>
 
                             </ui:repeat>

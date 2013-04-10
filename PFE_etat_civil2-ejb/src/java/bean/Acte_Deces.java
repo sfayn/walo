@@ -15,13 +15,19 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Sfayn
  */
 @Entity
+@Table( 
+        uniqueConstraints=
+            @UniqueConstraint(columnNames={"numActe", "registre_id"})
+    )
 public class Acte_Deces implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,7 +50,9 @@ public class Acte_Deces implements Serializable {
     private String adresse_Fr;
     private boolean noMJ = false;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateDeces;
+    private Date dateDecesG;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateDecesH;
     @Lob
     private String lieuDeces_Ar;
     private String lieuDeces_Fr;
@@ -154,12 +162,19 @@ public class Acte_Deces implements Serializable {
         this.adresse_Fr = adresse_Fr;
     }
 
-    public Date getDateDeces() {
-        return dateDeces;
+    public Date getDateDecesH() {
+        return dateDecesH;
     }
 
-    public void setDateDeces(Date dateDeces) {
-        this.dateDeces = dateDeces;
+    public void setDateDecesH(Date dateDeces) {
+        this.dateDecesH = dateDeces;
+    }
+    public Date getDateDecesG() {
+        return dateDecesG;
+    }
+
+    public void setDateDecesG(Date dateDeces) {
+        this.dateDecesG = dateDeces;
     }
 
     public String getLieuDeces_Ar() throws UnsupportedEncodingException {
