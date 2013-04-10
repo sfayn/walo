@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="extrait" pageWidth="630" pageHeight="421" orientation="Landscape" columnWidth="590" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dec0617-bc67-4840-a631-577a85c01589">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="4"/>
+	<property name="ireport.y" value="52"/>
 	<parameter name="prenom" class="java.lang.String"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="nom" class="java.lang.String"/>
@@ -206,14 +206,14 @@ Grégorienne
 				<textFieldExpression><![CDATA[$P{numActe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e3f8c5b6-3dab-4f88-b971-e22bf7bb4efc" x="10" y="7" width="45" height="15"/>
+				<reportElement uuid="e3f8c5b6-3dab-4f88-b971-e22bf7bb4efc" x="39" y="7" width="45" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Acte N°: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0dd064b2-c748-4ec7-b1da-d035482bc230" x="55" y="7" width="67" height="15"/>
+				<reportElement uuid="0dd064b2-c748-4ec7-b1da-d035482bc230" x="108" y="7" width="72" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
@@ -226,7 +226,7 @@ Grégorienne
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="55" y="17" width="70" height="1"/>
+				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="109" y="17" width="70" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dotted"/>
 				</graphicElement>

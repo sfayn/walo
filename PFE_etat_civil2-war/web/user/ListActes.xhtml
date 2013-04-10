@@ -31,7 +31,7 @@
                                 <th><h:outputText value="Prénom"/></th>
                                 <th><h:outputText value="رقم الرسم"/></th>
                                 <th><h:outputText value="Validé"/></th>
-                                <th><h:outputText value="action"/></th>
+                                <!--<th><h:outputText value="action"/></th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -63,11 +63,11 @@
                                             <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
                                         </font>
                                     </td>
-                                    <td>
+                                   <!-- <td>
                                         <h:commandLink action="#{acte_NaissanceController.prepareView}">
                                             <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
                                         </h:commandLink>
-                                    </td>
+                                    </td>-->
                                 </tr>
                             </ui:repeat>
                         </tbody>
