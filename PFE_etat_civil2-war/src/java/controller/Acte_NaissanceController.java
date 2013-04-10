@@ -473,14 +473,13 @@ public class Acte_NaissanceController implements Serializable {
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceCreated"));
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
-
     public String prepareEdit() {
         current = (Acte_Naissance) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();

@@ -11,7 +11,9 @@
         </ui:define>
         <ui:define name="body">
 
-            <h:messages errorStyle="border-radius: 20px; color: #b94a48; background-color: #f2dede; border-color: #eed3d7; width: 400px; margin: 5px;" infoStyle="color: green" layout="table"/>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup> 
 
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
             <!-- <link rel="stylesheet" href="#{request.contextPath}/resources/css/style2.css" /> -->
@@ -130,8 +132,6 @@
                                         <f:convertDateTime pattern="yyyy" />
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
-
-
                                     <h:outputLabel id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!acte_NaissanceController.selected.noMJ}" for="date_de_naiss_G" />
                                     <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" rendered="#{!acte_NaissanceController.selected.noMJ}" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{acte_NaissanceController.setI(0)}"/> 

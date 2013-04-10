@@ -53,9 +53,9 @@
                                         </center></td>
 
                                     <td><center>
-                                            <h:outputFormat value="{0, date, yyyy-MM-dd}">
-                                                <f:param value="#{item.dateDeces}" />
-                                            </h:outputFormat>                                           
+                                            <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                                <f:param value="#{item.dateDecesG}" />
+                                            </h:outputFormat>                                      
                                         </center></td>
                                     <td><center>
                                             <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">

@@ -152,27 +152,66 @@
                                     <legend style=" margin-bottom:0px; font-size: 30px; margin-right: 10px;
                                             margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الوفاة :</legend>
                                     <b:gridRow>
-                                        <b:gridColumn span="1">                              
-                                        </b:gridColumn>
-                                        <b:gridColumn span="5">
-                                            <br/>
-                                            <br/>
-                                            <h:panelGrid columns="2" dir="rtl">
-                                                <h:outputLabel for="lieuDeces_Fr" value="" style="width: 103px" />
-                                                <h:inputText id="lieuDeces_Fr" dir="ltr" value="#{acte_DecesController.selected.lieuDeces_Fr}" title="Lieu de décés" />
-                                            </h:panelGrid>
-                                        </b:gridColumn>
-                                        <b:gridColumn span="5">
-                                            <h:panelGrid columns="2" dir="rtl">                                           
-                                                <h:outputLabel value="تاريخ الوفاة" style="width: 103px" for="dateDeces" />
-                                                <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateDeces" value="#{acte_DecesController.selected.dateDeces}" title="تاريخ الوفاة" >
+                                    <b:gridColumn span="1">                              
+                                    </b:gridColumn>
+                                    <b:gridColumn span="5">
+
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel for="lieuDeces_Fr" value="" style="width: 103px" />
+                                            <h:inputText id="lieuDeces_Fr" dir="ltr" value="#{acte_DecesController.selected.lieuDeces_Fr}" title="Lieu de décés" />
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="5">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel value="مكان الوفاة" style="width: 103px" for="lieuDeces_Ar" />
+                                            <h:inputText id="lieuDeces_Ar" value="#{acte_DecesController.selected.lieuDeces_Ar}" title="مكان الوفاة" />
+                                            <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                            <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_DecesController.selected.noMJ}" >
+                                                <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
+                                            </h:selectBooleanCheckbox>
+                                            
+                                        </h:panelGrid>                                            
+                                    </b:gridColumn>
+                                </b:gridRow>
+                                <b:gridRow id="blocNoMJ">
+                                    <b:gridColumn span="1">
+                                    </b:gridColumn>
+                                    <b:gridColumn span="5">
+                                    </b:gridColumn>
+                                    <b:gridColumn span="5">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel id="outdateDecesG2" style="width: 103px" value="تاريخ الوفاة الميلادي" rendered="#{acte_DecesController.selected.noMJ}" for="dateDecesG2" />
+                                            <h:inputText id="dateDecesG2" rendered="#{acte_DecesController.selected.noMJ}" value="#{acte_DecesController.selected.dateDecesG}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                                <f:ajax event="change" render="dateDecesH2" execute="dateDecesG2" listener="#{acte_DecesController.GToHAnnee()}"/> 
+                                                <f:convertDateTime pattern="yyyy" />
+                                                <f:ajax event="blur" render="@this" />
+                                            </h:inputText>
+                                            <h:outputLabel value="تاريخ الوفاة الهجري" style="width: 103px" for="dateDecesH2" rendered="#{acte_DecesController.selected.noMJ}" />
+                                            <h:inputText id="dateDecesH2" rendered="#{acte_DecesController.selected.noMJ}" value="#{acte_DecesController.selected.dateDecesH}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                                <f:convertDateTime pattern="yyyy" />
+                                                <f:ajax event="blur" render="@this" />
+                                            </h:inputText>
+                                            <h:outputLabel id="outdateDecesG" style="width: 103px" value="تاريخ الوفاة الميلادي" rendered="#{!acte_DecesController.selected.noMJ}" for="dateDecesG" />
+                                            <h:inputText id="dateDecesG" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" rendered="#{!acte_DecesController.selected.noMJ}" value="#{acte_DecesController.selected.dateDecesG}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                                <f:ajax event="change" render="dateDecesH" execute="dateDecesG" listener="#{acte_DecesController.setI(0)}"/> 
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                <f:ajax event="blur" render="@this" />
+                                            </h:inputText>
+                                            <h:outputLabel value="تاريخ الوفاة الهجري" style="width: 103px" for="dateDecesH" rendered="#{!acte_DecesController.selected.noMJ}" />
+                                            <h:panelGrid columns="3" class="input-prepend" rendered="#{!acte_DecesController.selected.noMJ}">
+                                                <h:inputText readonly="true" id="dateDecesH" value="#{acte_DecesController.g_to_h}" title="تاريخ الإزدياد" >
                                                     <f:convertDateTime pattern="dd-MM-yyyy" />
                                                 </h:inputText>
-                                                <h:outputLabel value="مكان الوفاة" style="width: 103px" for="lieuDeces_Ar" />
-                                                <h:inputText id="lieuDeces_Ar" value="#{acte_DecesController.selected.lieuDeces_Ar}" title="مكان الوفاة" />
-                                            </h:panelGrid>
-                                        </b:gridColumn>
-                                    </b:gridRow>  
+                                                <h:commandLink class="btn btn-primary add-on" value="+">
+                                                    <f:ajax event="click" render="dateDecesH" execute="dateDecesG" listener="#{acte_DecesController.g_to_hplus()}"/> 
+                                                </h:commandLink>
+                                                <h:commandLink class="btn btn-danger add-on" value="-">
+                                                    <f:ajax event="click" render="dateDecesH" execute="dateDecesG" listener="#{acte_DecesController.g_to_hmoins()}"/> 
+                                                </h:commandLink>
+                                            </h:panelGrid>     
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                </b:gridRow>
                                 </fieldset>
                                 <fieldset style="border:2px solid rgb(58,135,173); margin-left: 80px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                                     <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
