@@ -165,7 +165,7 @@
                                         <h:panelGrid columns="2" dir="rtl">
                                             <h:outputLabel value="مكان الوفاة" style="width: 103px" for="lieuDeces_Ar" />
                                             <h:inputText id="lieuDeces_Ar" value="#{acte_DecesController.selected.lieuDeces_Ar}" title="مكان الوفاة" />
-                                            <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                            <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" />
                                             <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_DecesController.selected.noMJ}" >
                                                 <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
                                             </h:selectBooleanCheckbox>
