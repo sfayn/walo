@@ -615,6 +615,7 @@ public class Acte_NaissanceController implements Serializable {
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+        
     }
 
     public String destroy() {
