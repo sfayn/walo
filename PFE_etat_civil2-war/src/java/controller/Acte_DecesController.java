@@ -72,6 +72,26 @@ public class Acte_DecesController implements Serializable {
             current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
         }
     }
+    public void check() {
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        
+        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+            return;
+        }
+        if (current.isChecked()) {
+            current.setChecked(false);
+        } else {
+            current.setChecked(true);
+        }
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
+
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+
+        }
+    }
     public void g_to_hplus() {
         if (current.getDateDecesG() != null) {
             i++;

@@ -16,180 +16,200 @@
             </h:panelGroup>
             <h:form>
                 <br />
-                <b:gridRow styleClass="show-grid" fluid="false">
-                    <b:gridRow styleClass="show-grid" fluid="false">
-                        <b:gridColumn span="3" style="width: 10%;" rendered="#{userController.loggedUser().role == 'Admin'}">
+                <b:alert severity="#{acte_NaissanceController.selected.checked==true ? 'success' : 'error' }" closable="false" rendered="#{userController.loggedUser().role == 'Admin'}">
+                    <b:gridRow  >
+                        <b:gridColumn span="2" >
                             <h:commandLink id="btn" class="btn #{acte_NaissanceController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" >
-                                <f:ajax event="click" render="btn" listener="#{acte_NaissanceController.check()}"/> 
+                                <f:ajax event="click" render="@form" listener="#{acte_NaissanceController.check()}"/> 
                             </h:commandLink>
-                            <b style="text-align: left;">Créé par: </b>
-                            <h:outputText style="text-align: left;" value="#{acte_NaissanceController.selected.createdBy.prenom}&nbsp;#{acte_NaissanceController.selected.createdBy.nom.toUpperCase()}" />
-                            <br />
-                            <b style="text-align: left;">Créé le: </b>
-                            <h:outputText style="text-align: left;" value="#{acte_NaissanceController.selected.createdAt}" >
-                                <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
-                            </h:outputText>
                         </b:gridColumn>
-                        <b:gridColumn span="8">
-                            <h:panelGrid columns="2" styleClass="badge badge-inverse" style="font-size: 16px; text-align: center;" dir="rtl" width="25%">
-                                <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_numActe}"/>
-                                <h:outputText value="#{acte_NaissanceController.selected.numActe}" title="#{bundle.ViewActe_NaissanceTitle_numActe}"/>
+                        <b:gridColumn span="4" >
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputText value="Créé par :" style="font-weight: bold"/>
+                                <h:outputText  value="#{acte_NaissanceController.selected.createdBy.prenom}&nbsp;#{acte_NaissanceController.selected.createdBy.nom.toUpperCase()}" />
+                            </h:panelGrid>
+                        </b:gridColumn>                    
+                        <b:gridColumn span="3" >
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputText value="Le :" style="font-weight: bold"/>
+                                <h:outputText  value="#{acte_NaissanceController.selected.createdAt}" >
+                                    <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                </h:outputText>
                             </h:panelGrid>
                         </b:gridColumn>
-                    </b:gridRow>
 
-                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
-                            <b:gridRow>
-                                <h:panelGrid columns="4" style="width: 100%;">  
-                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
-                                        <h:outputText value=" "/>
-                                        <h:outputText value=" "/>
+                    </b:gridRow>
+                </b:alert>
+                <b:gridRow > 
+                    <b:gridColumn span="7">
+                        <b:gridRow >
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                                <b:gridRow>
+                                    <b:gridColumn span="2"> 
+                                        <h:panelGrid columns="2"  dir="rtl">                                    
+                                            <h:outputLabel style="font-weight: bold; width: 50px;" value="الجزء :" />
+                                            <h:outputText value="#{acte_NaissanceController.selected.registre.numReg}"></h:outputText>                                        
+                                        </h:panelGrid>                                 
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2"> 
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 50px;" value="السنة :"/>
+                                            <h:outputText value="#{acte_NaissanceController.selected.registre.annee}"></h:outputText>                                        
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2">                                          
+                                        <h:panelGrid columns="2" dir="rtl" >
+                                            <h:outputLabel style="font-weight: bold; width: 60px;" value="رقم الرسم :" />
+                                            <h:outputText value="#{acte_NaissanceController.selected.numActe}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>                                    
+                                </b:gridRow>
+                                <br/>
+                            </fieldset>
+
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
+                                
+                                <b:gridColumn span="3">                                    
+                                    <h:panelGrid columns="2" dir="ltr">
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Fr}"/>
                                     </h:panelGrid>
-                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
-                                        <h:outputText style="font-weight: bold;" value="رقم الرسم :" />
-                                        <h:outputText value="#{acte_NaissanceController.selected.numActe}"/>
+                                </b:gridColumn>                                
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2"  dir="rtl">
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
+                                        <h:outputFormat value="#{acte_NaissanceController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
+                                            <f:param value="#{acte_NaissanceController.selected.date_de_naiss_G}" />
+                                        </h:outputFormat>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.sex.libelleAr}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
+
                                     </h:panelGrid>
-                                    <h:panelGrid columns="2" dir="rtl" style="width: 20%;">
-                                        <h:outputText style="font-weight: bold;" value="السنة :"/>
-                                        <h:outputText value="#{acte_NaissanceController.selected.registre.annee}"></h:outputText>                                        
+                                </b:gridColumn>
+                            </fieldset>
+                        </b:gridRow>
+
+                        <b:gridRow >
+                            
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عن الأب :</legend>
+                                
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="ltr">
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Fr}"/>
                                     </h:panelGrid>
-                                    <h:panelGrid columns="2" style="width: 20%;" dir="rtl">                                    
-                                        <h:outputText style="font-weight: bold;" value="الجزء :" />
-                                        <h:outputText value="#{acte_NaissanceController.selected.registre.numReg}"></h:outputText>                                        
+                                </b:gridColumn>
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="rtl">
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissP}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissP}">
+                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                        </h:outputText>
                                     </h:panelGrid>
+                                </b:gridColumn>
+                            </fieldset>
+                        </b:gridRow>
+
+                        <b:gridRow >
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">   معلومات عن الأم  :</legend>
+
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="ltr">
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Fr}"/>
+
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="rtl">
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}">
+                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                        </h:outputText>
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                            </fieldset>
+                        </b:gridRow>
+
+                        <b:gridRow >
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;"> </legend>
+
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="ltr">                                
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="rtl">
+                                        <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
+                                        <h:outputText value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                            </fieldset>
+                        </b:gridRow>
+                    </b:gridColumn>
+                    <b:gridColumn span="3">
+                        <br/>
+                        <br/>
+                        <b:gridRow >
+                            <ui:repeat var="donnee_Marginale"  value="#{acte_NaissanceController.selected.donnees_Marginaless}" >
+                                <h:panelGrid bodyrows="3" style="width: 90%;">                            
+                                    <h:outputLabel value="#{donnee_Marginale.type.libelleAr} :" style="font-weight: bold;text-decoration: underline;"  for="Dm"/>
+                                    <h:outputText id="Dm" value="#{donnee_Marginale.descAr}"/>
+                                    <h:outputText value=""/>
                                 </h:panelGrid>
-                            </b:gridRow>
-                        </fieldset>
-
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Fr}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" style="width: 80%;" dir="rtl">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
-                                    <h:outputFormat value="#{acte_NaissanceController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
-                                        <f:param value="#{acte_NaissanceController.selected.date_de_naiss_G}" />
-                                    </h:outputFormat>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.sex.libelleAr}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
-
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </fieldset>
-                    </b:gridRow>
-
-                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الأب :</legend>
-
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Fr}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionP_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.professionP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionP_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissP_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissP_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteP_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteP_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissP}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissP_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissP}">
-                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
-                                    </h:outputText>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </fieldset>
-                    </b:gridRow>
-
-                    <b:gridRow styleClass="show-grid" fluid="false">
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;">   معلومات عن الأم  :</legend>
-
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" style="width: 80%;" dir="ltr">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Fr}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Fr}"/>
-
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_professionM_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.professionM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_professionM_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_NaissM_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.lieu_de_NaissM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_NaissM_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_nationalteM_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.nationalteM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nationalteM_Ar}"/>
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naissM}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.date_de_naissM_G}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naissM}">
-                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
-                                    </h:outputText>
-
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </fieldset>
-                    </b:gridRow>
-
-                    <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
-                        <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                            <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                    margin-left:16px; border-bottom: 0px; width: auto;"> </legend>
-
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" dir="ltr" style="width: 80%;">                                
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" dir="rtl" style="width: 80%;">
-                                    <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
-                                    <h:outputText value="#{acte_NaissanceController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </fieldset>
-                    </b:gridRow>
+                            </ui:repeat>
+                        </b:gridRow>
+                    </b:gridColumn>
 
                 </b:gridRow>
                 <style>
@@ -202,22 +222,28 @@
                     a:hover{
                         color: #ffffff !important;
                     }
+                    .docs{
+                        font-size: 14pt !important;
+                    }
                 </style>
                 <b:modal ></b:modal>
-                <b:gridRow styleClass="show-grid" fluid="false" style="font-size: 15px;">
+                <b:gridRow id="blocBtn">
 
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
                             <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
 
                             <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
-                            <b:buttonDropdown buttonStyle="icon-file"  title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                            <b:gridRow rendered="#{!acte_NaissanceController.selected.checked}" >
+                                <a class="btn btn-primary icon-file" style="font-size: 14pt;"  onclick="#{b:show('customModal2')}">   الوثائق</a>
+                            </b:gridRow >
+                            <b:buttonDropdown rendered="#{acte_NaissanceController.selected.checked}" buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#{acte_NaissanceController.PDF}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
                                 <b:separatorFacet />
                                 <h:commandLink action="#" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#" value="شهادة الخطوبة" style="font-size: 13pt; color: #000000;"/>
-                                <h:commandLink action="#"  value="ورقة المعلومات" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#"  value="ورقة المعلومات" style="font-size: 13pt; color: #000000;"/>                                
                             </b:buttonDropdown>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
@@ -231,6 +257,18 @@
                                     <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroyAndView}" onclick="#{acte_NaissanceController.prepareList()}"/>
                                     <h:outputText value="  "/>
                                     <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                </b:footerFacet>
+                            </b:modal>
+                            <b:modal id="customModal2" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">       مراقبة الرسم</h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;"> الرسم غير مراقب من طرف ضابط الحالة المدنية </p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <b:commandButton value="  إغلاق " mode="client" onclick="#{b:hide('customModal2')}" />
                                 </b:footerFacet>
                             </b:modal>
                         </h:panelGrid>
