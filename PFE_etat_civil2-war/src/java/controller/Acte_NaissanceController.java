@@ -3,6 +3,7 @@ package controller;
 import bean.Acte_Naissance;
 import bean.Donnees_Marginales;
 import bean.User;
+import com.google.common.collect.Maps;
 import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -41,6 +42,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
 import org.ini4j.Wini;
+import org.richfaces.model.Filter;
 import session.Acte_NaissanceFacade;
 
 @ManagedBean(name = "acte_NaissanceController")
@@ -69,7 +71,60 @@ public class Acte_NaissanceController implements Serializable {
     private session.Donnees_MarginalesFacade ejbFacade2;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Long numActeFilter;
+    private String anneeFilter;
+    private Integer primaryRowCount = 10;
 
+    public Integer getPrimaryRowCount() {
+        return primaryRowCount;
+    }
+
+    public void setPrimaryRowCount(Integer primaryRowCount) {
+        this.primaryRowCount = primaryRowCount;
+    }
+
+    public Long getNumActeFilter() {
+        return numActeFilter;
+    }
+
+    public void setNumActeFilter(Long numActeFilter) {
+        this.numActeFilter = numActeFilter;
+    }
+
+    public String getAnneeFilter() {
+        return anneeFilter;
+    }
+
+    public void setAnneeFilter(String anneeFilter) {
+        this.anneeFilter = anneeFilter;
+    }
+
+    public Filter<?> getNumActeFilterImpl() {
+        return new Filter<Acte_Naissance>() {
+            public boolean accept(Acte_Naissance item) {
+                Long numActe = getNumActeFilter();
+                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    public Filter<?> getAnneeFilterImpl() {
+        return new Filter<Acte_Naissance>() {
+            public boolean accept(Acte_Naissance item) {
+                String Annee = getAnneeFilter();
+                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    
+    public Acte_NaissanceController() {
+    }
+    
     public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
@@ -276,8 +331,6 @@ public class Acte_NaissanceController implements Serializable {
         this.datetasM_Fr = datetasM_Fr;
     }
 
-    public Acte_NaissanceController() {
-    }
 
     public void changeDeclaration() {
 

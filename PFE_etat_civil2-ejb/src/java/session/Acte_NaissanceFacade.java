@@ -28,7 +28,7 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
     }
 
