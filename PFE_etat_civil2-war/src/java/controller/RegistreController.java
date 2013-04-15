@@ -102,14 +102,13 @@ public class RegistreController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
-
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RegistreUpdated"));
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }

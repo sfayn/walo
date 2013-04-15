@@ -1,11 +1,11 @@
 package controller;
 
-import bean.Registre_Deces;
+import bean.Registre_jugement_Deces;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import session.Registre_jugement_DecesFacade;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,44 +17,36 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
-import session.Registre_DecesFacade;
 
-@ManagedBean(name = "registre_DecesController")
+@ManagedBean(name = "registre_jugement_DecesController")
 @SessionScoped
-public class Registre_DecesController implements Serializable {
+public class Registre_jugement_DecesController implements Serializable {
 
-    private Registre_Deces current;
+    private Registre_jugement_Deces current;
     private DataModel items = null;
     @EJB
-    private session.Registre_DecesFacade ejbFacade;
+    private session.Registre_jugement_DecesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public Registre_DecesController() {
-    }
-    public SelectItem[] numRe() {
-        List <String> numb = new ArrayList<String>();
-        for(int i=1;i<13;i++){
-        numb.add(i+"");
-        }
-        return JsfUtil.getSelectItems(numb,true);
+    public Registre_jugement_DecesController() {
     }
 
-    public Registre_Deces getSelected() {
+    public Registre_jugement_Deces getSelected() {
         if (current == null) {
-            current = new Registre_Deces();
+            current = new Registre_jugement_Deces();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private Registre_DecesFacade getFacade() {
+    private Registre_jugement_DecesFacade getFacade() {
         return ejbFacade;
     }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(4000) {
+            pagination = new PaginationHelper(10) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -75,13 +67,13 @@ public class Registre_DecesController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Registre_Deces) getItems().getRowData();
+        current = (Registre_jugement_Deces) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Registre_Deces();
+        current = new Registre_jugement_Deces();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -98,7 +90,7 @@ public class Registre_DecesController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Registre_Deces) getItems().getRowData();
+        current = (Registre_jugement_Deces) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +99,7 @@ public class Registre_DecesController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
-            return "View";
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
@@ -115,7 +107,7 @@ public class Registre_DecesController implements Serializable {
     }
 
     public String destroy() {
-        current = (Registre_Deces) getItems().getRowData();
+        current = (Registre_jugement_Deces) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -139,7 +131,7 @@ public class Registre_DecesController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Registre_DecesDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Registre_jugement_DecesDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -195,15 +187,15 @@ public class Registre_DecesController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Registre_Deces.class)
-    public static class Registre_DecesControllerConverter implements Converter {
+    @FacesConverter(forClass = Registre_jugement_Deces.class)
+    public static class Registre_jugement_DecesControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            Registre_DecesController controller = (Registre_DecesController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "registre_DecesController");
+            Registre_jugement_DecesController controller = (Registre_jugement_DecesController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "registre_jugement_DecesController");
             return controller.ejbFacade.find(getKey(value));
         }
 
@@ -223,11 +215,11 @@ public class Registre_DecesController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Registre_Deces) {
-                Registre_Deces o = (Registre_Deces) object;
+            if (object instanceof Registre_jugement_Deces) {
+                Registre_jugement_Deces o = (Registre_jugement_Deces) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Registre_Deces.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Registre_jugement_Deces.class.getName());
             }
         }
     }

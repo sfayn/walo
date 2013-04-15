@@ -25,11 +25,11 @@
                         <thead>
                             <tr>
                                 <th><center><h:outputText value="رقم الرسم"/></center></th>
+                                <th><center><h:outputText value="السنة"/></center></th>
                                 <th><center><h:outputText value="الإسم"/></center></th>
                                 <th><center><h:outputText value="النسب"/></center></th>
                                 <th><center><h:outputText value="Nom"/></center></th>
-                                <th><center><h:outputText value="Prénom"/></center></th>
-                                <th><center><h:outputText value="تاريخ الإزدياد"/></center></th>                                
+                                <th><center><h:outputText value="Prénom"/></center></th>                                                                
                                 <th><center><h:outputText value="Validé"/></center></th>
                                 <th><center><h:outputText value="action"/></center></th>
                             </tr>
@@ -41,7 +41,9 @@
                                     <td><center>
                                         <h:outputText value="#{item.numActe}"/>
                                     </center></td>
-                                    
+                                    <td><center>
+                                        <h:outputText value="#{item.registre.annee}"/>
+                                    </center></td>                                    
                                     <td><center>
                                         <h:outputText value="#{item.prenom_Ar}"/>
                                     </center></td>
@@ -53,11 +55,6 @@
                                     </center></td>
                                     <td><center>
                                         <h:outputText value="#{item.prenom_Fr}"/>
-                                    </center></td>
-                                    <td><center>
-                                        <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
-                                            <f:param value="#{item.date_de_naiss_G}" />
-                                        </h:outputFormat>
                                     </center></td>
                                     
                                     <td><center>

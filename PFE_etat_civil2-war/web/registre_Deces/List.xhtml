@@ -59,7 +59,7 @@
                                                 <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف السجل؟</p>
                                             </b:bodyFacet>
                                             <b:footerFacet>
-                                                <b:commandButton value="نعم" severity="danger" action="#{registre_DecesController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
+                                                <b:commandButton value="نعم" severity="danger" action="#{registre_DecesController.destroy()}" onclick="#{registre_DecesController.prepareList()}"/>
                                                 <h:outputText value="  "/>
                                                 <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
                                             </b:footerFacet>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditJugement_DecesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_numActe}" for="numActe" />
+                    <h:inputText id="numActe" value="#{jugement_DecesController.selected.numActe}" title="#{bundle.EditJugement_DecesTitle_numActe}" />
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_registre}" for="registre" />
+                    <h:selectOneMenu id="registre" value="#{jugement_DecesController.selected.registre}" title="#{bundle.EditJugement_DecesTitle_registre}" >
+                        <f:selectItems value="#{registre_jugement_DecesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_acte_deces}" for="acte_deces" />
+                    <h:selectOneMenu id="acte_deces" value="#{jugement_DecesController.selected.acte_deces}" title="#{bundle.EditJugement_DecesTitle_acte_deces}" >
+                        <f:selectItems value="#{acte_DecesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_descrAr}" for="descrAr" />
+                    <h:inputTextarea rows="4" cols="30" id="descrAr" value="#{jugement_DecesController.selected.descrAr}" title="#{bundle.EditJugement_DecesTitle_descrAr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_descrFr}" for="descrFr" />
+                    <h:inputText id="descrFr" value="#{jugement_DecesController.selected.descrFr}" title="#{bundle.EditJugement_DecesTitle_descrFr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_datesdistr}" for="datesdistr" />
+                    <h:inputText id="datesdistr" value="#{jugement_DecesController.selected.datesdistr}" title="#{bundle.EditJugement_DecesTitle_datesdistr}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugement_DecesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{jugement_DecesController.selected.id}" title="#{bundle.EditJugement_DecesTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{jugement_DecesController.update}" value="#{bundle.EditJugement_DecesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditJugement_DecesViewLink}"/>
+                <br />
+                <h:commandLink action="#{jugement_DecesController.prepareList}" value="#{bundle.EditJugement_DecesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditJugement_DecesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditJugement_NaissanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_numActe}" for="numActe" />
+                    <h:inputText id="numActe" value="#{jugement_NaissanceController.selected.numActe}" title="#{bundle.EditJugement_NaissanceTitle_numActe}" />
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_registre}" for="registre" />
+                    <h:selectOneMenu id="registre" value="#{jugement_NaissanceController.selected.registre}" title="#{bundle.EditJugement_NaissanceTitle_registre}" >
+                        <f:selectItems value="#{registre_jugement_NaissanceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_acte_Naissance}" for="acte_Naissance" />
+                    <h:selectOneMenu id="acte_Naissance" value="#{jugement_NaissanceController.selected.acte_Naissance}" title="#{bundle.EditJugement_NaissanceTitle_acte_Naissance}" >
+                        <f:selectItems value="#{acte_NaissanceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_tasrhAr}" for="tasrhAr" />
+                    <h:inputTextarea rows="4" cols="30" id="tasrhAr" value="#{jugement_NaissanceController.selected.tasrhAr}" title="#{bundle.EditJugement_NaissanceTitle_tasrhAr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_tasrhFr}" for="tasrhFr" />
+                    <h:inputText id="tasrhFr" value="#{jugement_NaissanceController.selected.tasrhFr}" title="#{bundle.EditJugement_NaissanceTitle_tasrhFr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_dateDeclaration}" for="dateDeclaration" />
+                    <h:inputText id="dateDeclaration" value="#{jugement_NaissanceController.selected.dateDeclaration}" title="#{bundle.EditJugement_NaissanceTitle_dateDeclaration}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_dateJug}" for="dateJug" />
+                    <h:inputText id="dateJug" value="#{jugement_NaissanceController.selected.dateJug}" title="#{bundle.EditJugement_NaissanceTitle_dateJug}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_datesdistr}" for="datesdistr" />
+                    <h:inputText id="datesdistr" value="#{jugement_NaissanceController.selected.datesdistr}" title="#{bundle.EditJugement_NaissanceTitle_datesdistr}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_descriptionAr}" for="descriptionAr" />
+                    <h:inputTextarea rows="4" cols="30" id="descriptionAr" value="#{jugement_NaissanceController.selected.descriptionAr}" title="#{bundle.EditJugement_NaissanceTitle_descriptionAr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_descriptionFr}" for="descriptionFr" />
+                    <h:inputText id="descriptionFr" value="#{jugement_NaissanceController.selected.descriptionFr}" title="#{bundle.EditJugement_NaissanceTitle_descriptionFr}" />
+                    <h:outputLabel value="#{bundle.EditJugement_NaissanceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{jugement_NaissanceController.selected.id}" title="#{bundle.EditJugement_NaissanceTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{jugement_NaissanceController.update}" value="#{bundle.EditJugement_NaissanceSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditJugement_NaissanceViewLink}"/>
+                <br />
+                <h:commandLink action="#{jugement_NaissanceController.prepareList}" value="#{bundle.EditJugement_NaissanceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditJugement_NaissanceIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
