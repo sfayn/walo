@@ -4,8 +4,9 @@
  */
 package session;
 
-import bean.Acte_Naissance;
-import bean.Registre;
+import bean.Jugement_Naissance;
+import bean.Registre_jugement_Deces;
+import bean.Registre_jugement_Naissance;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,7 +23,7 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 @LocalBean
-public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> implements Acte_NaissanceFacadeLocal {
+public class Jugement_NaissanceFacade extends AbstractFacade<Jugement_Naissance> implements Jugement_NaissanceFacadeLocal {
     @PersistenceContext(unitName = "PFE_etat_civil2-ejbPU")
     private EntityManager em;
 
@@ -31,14 +32,13 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         return em;
     }
 
-    public Acte_NaissanceFacade() {
-        super(Acte_Naissance.class);
+    public Jugement_NaissanceFacade() {
+        super(Jugement_Naissance.class);
     }
-
-    public List<Registre> findByDate(String annee) {
+    public List<Registre_jugement_Naissance> findByDate(String annee) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery cq = cb.createQuery(Registre.class);
-        Root emp = cq.from(Registre.class);
+        CriteriaQuery cq = cb.createQuery(Registre_jugement_Naissance.class);
+        Root emp = cq.from(Registre_jugement_Naissance.class);
         Predicate predicate = cb.equal(emp.get("annee"),annee);
         cq.where(predicate);
         cq.select(emp);

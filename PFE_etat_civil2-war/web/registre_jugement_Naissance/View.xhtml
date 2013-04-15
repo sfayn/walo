@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_numReg}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.numReg}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_numReg}"/>
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_annee}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.annee}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_annee}"/>
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_numPreAct}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.numPreAct}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_numPreAct}"/>
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_nbrAct}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.nbrAct}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_nbrAct}"/>
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_dateEnr}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.dateEnr}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_dateEnr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRegistre_jugement_NaissanceLabel_id}"/>
+                    <h:outputText value="#{registre_jugement_NaissanceController.selected.id}" title="#{bundle.ViewRegistre_jugement_NaissanceTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registre_jugement_NaissanceController.destroyAndView}" value="#{bundle.ViewRegistre_jugement_NaissanceDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegistre_jugement_NaissanceEditLink}"/>
+                <br />
+                <h:commandLink action="#{registre_jugement_NaissanceController.prepareCreate}" value="#{bundle.ViewRegistre_jugement_NaissanceCreateLink}" />
+                <br />
+                <h:commandLink action="#{registre_jugement_NaissanceController.prepareList}" value="#{bundle.ViewRegistre_jugement_NaissanceShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegistre_jugement_NaissanceIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

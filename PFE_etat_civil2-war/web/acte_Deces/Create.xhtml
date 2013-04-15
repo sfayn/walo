@@ -178,7 +178,7 @@
                                             <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_DecesController.selected.noMJ}" >
                                                 <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
                                             </h:selectBooleanCheckbox>
-                                            
+
                                         </h:panelGrid>                                            
                                     </b:gridColumn>
                                 </b:gridRow>
@@ -293,13 +293,15 @@
                                     </b:gridColumn>
                                 </b:gridRow>
                             </fieldset>
+                            <br />
+                            <h:commandLink style="font-size: 14pt;" action="#{acte_DecesController.create}" class="btn btn-primary" value="تسجيل" />
+
 
                         </b:gridRow>
 
+
                     </b:gridRow>
                 </b:gridRow>
-                <br />
-                <h:commandLink style="font-size: 14pt;" action="#{acte_DecesController.create}" class="btn btn-primary" value="تسجيل" />
                 <style>
                     .inlineRadioButtons { } 
                     .inlineRadioButtons label {     

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJugement_DecesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_numActe}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.numActe}" title="#{bundle.ViewJugement_DecesTitle_numActe}"/>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_registre}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.registre}" title="#{bundle.ViewJugement_DecesTitle_registre}"/>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_acte_deces}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.acte_deces}" title="#{bundle.ViewJugement_DecesTitle_acte_deces}"/>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_descrAr}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.descrAr}" title="#{bundle.ViewJugement_DecesTitle_descrAr}"/>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_descrFr}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.descrFr}" title="#{bundle.ViewJugement_DecesTitle_descrFr}"/>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_datesdistr}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.datesdistr}" title="#{bundle.ViewJugement_DecesTitle_datesdistr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_id}"/>
+                    <h:outputText value="#{jugement_DecesController.selected.id}" title="#{bundle.ViewJugement_DecesTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{jugement_DecesController.destroyAndView}" value="#{bundle.ViewJugement_DecesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewJugement_DecesEditLink}"/>
+                <br />
+                <h:commandLink action="#{jugement_DecesController.prepareCreate}" value="#{bundle.ViewJugement_DecesCreateLink}" />
+                <br />
+                <h:commandLink action="#{jugement_DecesController.prepareList}" value="#{bundle.ViewJugement_DecesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewJugement_DecesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="التصرف في أحكام الوفيات : إضافة سجل جديد"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>            
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
+            <br />
+            <h:form prependId="false">
+                <fieldset style="border:2px solid rgb(58,135,173); margin-left: 300px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                    <legend style=" margin-bottom:0px; font-size: 30px; margin-right: 20px;
+                            margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                    <b:gridRow styleClass="show-grid" fluid="true">
+
+                        <b:gridColumn span="4">
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+
+                            <h:panelGrid columns="2">
+                                <h:commandLink class="btn btn-primary" action="#{registre_jugement_DecesController.create}" style="font-size: 14pt;" value="#{bundle.CreateRegistreSaveLink}" >
+    <!--                                <f:ajax render="@form" listener="#{registre_jugement_DecesController.prepareList()}"/>-->
+                                </h:commandLink>
+                                <h:commandLink class="btn btn-primary" style="font-size: 14pt;" action="#{registre_jugement_DecesController.prepareList}" value="#{bundle.CreateRegistreShowAllLink}" immediate="true"/>
+
+                            </h:panelGrid>
+                        </b:gridColumn>
+
+                        <b:gridColumn span="7"> 
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="#{bundle.CreateRegistreLabel_annee}" for="annee" />
+                                <h:selectOneMenu id="annee" value="#{registre_jugement_DecesController.selected.annee}" title="#{bundle.CreateRegistreTitle_annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                    <f:selectItems value="#{acte_NaissanceController.listannee()}"/>
+                                    <f:ajax event="blur" render="annee" />
+                                </h:selectOneMenu>                                
+                                <h:outputLabel value="#{bundle.CreateRegistreLabel_numReg}" for="numReg" />
+                                <h:selectOneMenu id="numReg" value="#{registre_jugement_DecesController.selected.numReg}" title="#{bundle.CreateRegistreTitle_numReg}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                    <f:selectItems value="#{registreController.numRe()}"/>
+                                    <f:ajax event="blur" render="numReg" />
+                                </h:selectOneMenu>
+                                <h:outputLabel value="#{bundle.CreateRegistreLabel_numPreAct}" for="numPreAct" />                                  
+                                <h:inputText id="numPreAct" value="#{registre_jugement_DecesController.selected.numPreAct}" title="#{bundle.CreateRegistreTitle_numPreAct}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                    <f:ajax event="blur" render="numPreAct" />
+                                </h:inputText>
+                                <h:outputLabel value="#{bundle.CreateRegistreLabel_nbrAct}" for="nbrAct" />
+                                <h:inputText id="nbrAct" value="#{registre_jugement_DecesController.selected.nbrAct}" title="#{bundle.CreateRegistreTitle_nbrAct}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                    <f:ajax event="blur" render="nbrAct" />
+                                </h:inputText>
+                                <h:outputLabel value="#{bundle.CreateRegistreLabel_dateEnr}" for="dateEnr" />
+                                <h:inputText id="dateEnr" class="form_date" value="#{registre_jugement_DecesController.selected.dateEnr}" title="#{bundle.CreateRegistreTitle_dateEnr}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy" />                             
+                                </h:inputText>
+                            </h:panelGrid>
+                        </b:gridColumn>
+                    </b:gridRow>
+                </fieldset>
+                <b:gridRow styleClass="show-grid" fluid="true">
+
+                </b:gridRow>
+
+                <script type="text/javascript">
+                    $('.form_date').datepicker({
+                        format: 'dd-mm-yyyy',
+                        language:  'fr',
+                        autoclose: 1
+                    });                    
+                </script>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

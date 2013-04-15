@@ -25,6 +25,7 @@
                             <tr>
 
                                 <th><center><h:outputText value="رقم الرسم"/> </center></th>
+                                <th><center><h:outputText value="السنة"/></center></th>
                                 <th><center><h:outputText value="الإسم"/></center></th>
                                 <th><center><h:outputText value="النسب"/></center></th>
                                 <th><center><h:outputText value="تاريخ الإزدياد"/></center></th>                                
@@ -40,6 +41,9 @@
                                     <td><center>
                                             <h:outputText value="#{item.numActe}"/>
                                         </center></td>
+                                    <td><center>
+                                        <h:outputText value="#{item.registre.annee}"/>
+                                    </center></td>  
                                     <td><center>
                                             <h:outputText value="#{item.acte_Naissance.prenom_Ar}"/>
                                         </center></td>
