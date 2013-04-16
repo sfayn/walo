@@ -9,7 +9,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="التصرف في رسوم الولادات : قائمة الرسوم"></h:outputText>
+            <h:outputText value="التصرف في أحكام الوفيات : قائمة الأحكام"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
@@ -20,11 +20,10 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-<!--                <h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>-->
                 <div class="row">
                     <div class="span6" dir="rtl" align="left">
                         عدد البيانات في الصفحة: 
-                        <h:selectOneMenu id="dataPager" value="#{acte_NaissanceController.primaryRowCount}" >
+                        <h:selectOneMenu id="dataPager" value="#{jugement_DecesController.primaryRowCount}" >
                             <f:ajax render="extended" event="change" />
                             <f:selectItem itemLabel="5" itemValue="5"/>  
                             <f:selectItem itemLabel="10" itemValue="10"/>  
@@ -36,40 +35,38 @@
                     </div>
                 </div>
                 <h:panelGroup >
-                    <rich:extendedDataTable style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                    <rich:extendedDataTable style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{jugement_DecesController.items}" var="item" filterVar="filterValue" rows="#{jugement_DecesController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
                         <rich:column sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
-                                     filterValue="#{acte_NaissanceController.numActeFilter == 0? '': acte_NaissanceController.numActeFilter}"
+                                     filterValue="#{jugement_DecesController.numActeFilter == 0? '': jugement_DecesController.numActeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
                             <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
                             <h:outputText value="#{item.numActe}"/>
                         </rich:column>
                         <rich:column sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
-                                     filterValue="#{acte_NaissanceController.anneeFilter}"
+                                     filterValue="#{jugement_DecesController.anneeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value">
                             <f:facet name="header"><h:outputText value="السنة"/></f:facet>
                             <h:outputText value="#{item.registre.annee}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.prenom_Ar}">
+                        <rich:column sortBy="#{item.acte_Deces.acte_Naissance.prenom_Ar}">
                             <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
-                            <h:outputText value="#{item.prenom_Ar}"/>
+                            <h:outputText value="#{item.acte_deces.acte_Naissance.prenom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{car.nom_Ar}">
+                        <rich:column sortBy="#{item.acte_deces.acte_Naissance.nom_Ar}">
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
-                            <h:outputText value="#{item.nom_Ar}"/>
+                            <h:outputText value="#{item.acte_deces.acte_Naissance.nom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.nom_Fr}">
-                            <f:facet name="header"><h:outputText value="Nom"/></f:facet>
-                            <h:outputText value="#{item.nom_Fr}"/>
-                        </rich:column>
-                        <rich:column sortBy="#{item.prenom_Fr}">
-                            <f:facet name="header"><h:outputText value="Prénom"/></f:facet>
-                            <h:outputText value="#{item.prenom_Fr}"/>
-                        </rich:column>
-                        <rich:column sortBy="#{item.date_de_naiss_G}">
+                        <rich:column sortBy="#{item.acte_deces.acte_Naissance.date_de_naiss_G}">
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
-                            <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
-                                <f:param value="#{item.date_de_naiss_G}" />
+                            <h:outputFormat value="#{item.acte_deces.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                <f:param value="#{item.acte_deces.acte_Naissance.date_de_naiss_G}" />
                             </h:outputFormat>
+                        </rich:column>
+                        <rich:column sortBy="#{item.acte_deces.dateDecesG}">
+                            <f:facet name="header"><h:outputText value="تاريخ الوفاة"/></f:facet>
+                            <h:outputFormat value="#{item.acte_deces.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                <f:param value="#{item.acte_deces.dateDecesG}" />
+                            </h:outputFormat>  
                         </rich:column>
                         <rich:column>
                             <f:facet name="header"><h:outputText value="Validé"/></f:facet>
@@ -79,10 +76,10 @@
                         </rich:column>
                         <rich:column>
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
-                            <h:commandLink action="#{acte_NaissanceController.prepareView}">
+                            <h:commandLink action="#{jugement_DecesController.prepareView}">
                                 <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
                             </h:commandLink>
-                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
+                            <h:commandLink action="#{jugement_DecesController.prepareEdit}">
                                 <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
                             </h:commandLink>
                             <a title="remove" href="#" onclick="#{b:show('customModal')}">
@@ -96,7 +93,7 @@
                                     <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
                                 </b:bodyFacet>
                                 <b:footerFacet>
-                                    <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
+                                    <b:commandButton value="نعم" severity="danger" action="#{jugement_DecesController.destroy()}" onclick="#{jugement_DecesController.prepareList()}"/>
                                     <h:outputText value="  "/>
                                     <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
                                 </b:footerFacet>
@@ -107,7 +104,7 @@
                 <br />
                 <div class="row">
                     <div class="span4">
-                        <h:outputText value="#{acte_NaissanceController.pagination.pageFirstItem + 1}..#{acte_NaissanceController.pagination.pageLastItem + 1}/#{acte_NaissanceController.pagination.itemsCount}"/>&nbsp;
+                        <h:outputText value="#{jugement_DecesController.pagination.pageFirstItem + 1}..#{jugement_DecesController.pagination.pageLastItem + 1}/#{jugement_DecesController.pagination.itemsCount}"/>&nbsp;
                     </div>
                     <div class="span6" >
                         <rich:dataScroller renderIfSinglePage="false" for="extended" style="direction: ltr;" maxPages="10" id="scroller" fastControls="hide"  styleClass="wrap-paginacao" boundaryControls="hide" stepControls="show">
@@ -130,8 +127,8 @@
                     }
                 </style>
                 <br />
-                <h:commandLink  action="#{acte_NaissanceController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة رسم جديد"/>
-                <a  href="#{request.contextPath}/faces/registre/#{registreController.prepareCreate()}.xhtml" class="btn btn-primary" style="font-size: 14pt; " >إضافة سجل جديد</a>
+                <h:commandLink  action="#{jugement_DecesController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة رسم جديد"/>
+                <a  href="#{request.contextPath}/faces/registre_jugement_Deces/#{registre_DecesController.prepareCreate()}.xhtml" class="btn btn-primary" style="font-size: 14pt; " >إضافة سجل جديد</a>
             </h:form>
         </ui:define>
     </ui:composition>
