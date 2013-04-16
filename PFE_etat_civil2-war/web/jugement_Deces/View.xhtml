@@ -3,17 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ViewJugement_DecesTitle}"></h:outputText>
+            <h:outputText value="التصرف في أحكام الوفيات : مشاهدة البيانات"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                <br />
+                <b:alert severity="#{jugement_DecesController.selected.checked==true ? 'success' : 'error' }" closable="false" rendered="#{userController.loggedUser().role == 'Admin'}">
+                    <b:gridRow  >
+                        <b:gridColumn span="2" >
+                            <h:commandLink id="btn" class="btn #{jugement_DecesController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" >
+                                <f:ajax event="click" render="@form" listener="#{jugement_DecesController.check()}"/> 
+                            </h:commandLink>
+                        </b:gridColumn>
+                        <b:gridColumn span="4" >
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputText value="Créé par :" style="font-weight: bold"/>
+                                <h:outputText  value="#{jugement_DecesController.selected.createdBy.prenom}&nbsp;#{jugement_DecesController.selected.createdBy.nom.toUpperCase()}" />
+                            </h:panelGrid>
+                        </b:gridColumn>                    
+                        <b:gridColumn span="3" >
+                            <h:panelGrid columns="2" dir="ltr">
+                                <h:outputText value="Le :" style="font-weight: bold"/>
+                                <h:outputText  value="#{jugement_DecesController.selected.createdAt}" >
+                                    <f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+                                </h:outputText>
+                            </h:panelGrid>
+                        </b:gridColumn>
+
+                    </b:gridRow>
+                </b:alert>
+
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewJugement_DecesLabel_numActe}"/>
                     <h:outputText value="#{jugement_DecesController.selected.numActe}" title="#{bundle.ViewJugement_DecesTitle_numActe}"/>

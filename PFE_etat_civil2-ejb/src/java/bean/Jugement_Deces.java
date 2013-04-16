@@ -45,6 +45,28 @@ public class Jugement_Deces implements Serializable {
     private String descrFr;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datesdistr;
+    @ManyToOne
+    private User createdBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date createdAt;
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    
+    
 
     public boolean isChecked() {
         return checked;

@@ -52,6 +52,26 @@ public class Jugement_Naissance implements Serializable {
     private String descriptionAr;
     @Lob
     private String descriptionFr;
+    @ManyToOne
+    private User createdBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date createdAt;
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public boolean isChecked() {
         return checked;
@@ -61,7 +81,6 @@ public class Jugement_Naissance implements Serializable {
         this.checked = checked;
     }
 
-    
     public Integer getNumActe() {
         return numActe;
     }

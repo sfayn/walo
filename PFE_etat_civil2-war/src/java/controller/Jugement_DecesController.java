@@ -3,12 +3,15 @@ package controller;
 import bean.Acte_Naissance;
 import bean.Jugement_Deces;
 import bean.Registre_Deces;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import controller.util.UtilitaireSession;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -173,6 +176,26 @@ public class Jugement_DecesController implements Serializable {
     private Jugement_DecesFacade getFacade() {
         return ejbFacade;
     }
+    public void check() {
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        
+        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+            return;
+        }
+        if (current.isChecked()) {
+            current.setChecked(false);
+        } else {
+            current.setChecked(true);
+        }
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
+
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+
+        }
+    }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
@@ -221,11 +244,14 @@ public class Jugement_DecesController implements Serializable {
             encode();            
             numActe=0;
             registre_d=null;
+            current.setCreatedAt(new Date());
+            UtilitaireSession us = UtilitaireSession.getInstance();
+            current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_DecesCreated"));
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }

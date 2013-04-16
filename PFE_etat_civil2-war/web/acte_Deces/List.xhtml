@@ -77,12 +77,6 @@
                         </rich:column>
                         <rich:column>
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
-                            <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
-                                <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
-                            </font>
-                        </rich:column>
-                        <rich:column>
-                            <f:facet name="header"><h:outputText value="action"/></f:facet>
                             <h:commandLink action="#{acte_DecesController.prepareView}">
                                 <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
                             </h:commandLink>

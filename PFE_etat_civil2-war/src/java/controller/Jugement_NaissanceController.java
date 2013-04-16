@@ -1,11 +1,16 @@
 package controller;
 
+import bean.Jugement_Deces;
 import bean.Jugement_Naissance;
+import bean.Registre;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import controller.util.UtilitaireSession;
 import session .Jugement_NaissanceFacade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,6 +22,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.richfaces.model.Filter;
 
 @ManagedBean(name = "jugement_NaissanceController")
 @SessionScoped
@@ -29,7 +35,95 @@ public class Jugement_NaissanceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String annee;
+    private int numActe;
+    private Registre registre;
+    private Long numActeFilter;
+    private String anneeFilter;
+    private Integer primaryRowCount = 10;
 
+    public Integer getPrimaryRowCount() {
+        return primaryRowCount;
+    }
+
+    public void setPrimaryRowCount(Integer primaryRowCount) {
+        this.primaryRowCount = primaryRowCount;
+    }
+
+    public Long getNumActeFilter() {
+        return numActeFilter;
+    }
+
+    public void setNumActeFilter(Long numActeFilter) {
+        this.numActeFilter = numActeFilter;
+    }
+
+    public String getAnneeFilter() {
+        return anneeFilter;
+    }
+
+    public void setAnneeFilter(String anneeFilter) {
+        this.anneeFilter = anneeFilter;
+    }
+
+    public Filter<?> getNumActeFilterImpl() {
+        return new Filter<Jugement_Naissance>() {
+            public boolean accept(Jugement_Naissance item) {
+                Long numActe = getNumActeFilter();
+                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    public Filter<?> getAnneeFilterImpl() {
+        return new Filter<Jugement_Naissance>() {
+            public boolean accept(Jugement_Naissance item) {
+                String Annee = getAnneeFilter();
+                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    public void check() {
+        UtilitaireSession us = UtilitaireSession.getInstance();
+        
+        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+            return;
+        }
+        if (current.isChecked()) {
+            current.setChecked(false);
+        } else {
+            current.setChecked(true);
+        }
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+
+        }
+    }
+
+    public int getNumActe() {
+        return numActe;
+    }
+
+    public void setNumActe(int numActe) {
+        this.numActe = numActe;
+    }
+
+    public Registre getRegistre() {
+        return registre;
+    }
+
+    public void setRegistre(Registre registre) {
+        this.registre = registre;
+    }
+
+    
     public Jugement_NaissanceController() {
     }
 
@@ -94,6 +188,11 @@ public class Jugement_NaissanceController implements Serializable {
 
     public String create() {
         try {
+            numActe=0;
+            registre=null;
+            current.setCreatedAt(new Date());
+            UtilitaireSession us = UtilitaireSession.getInstance();
+            current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceCreated"));
             return prepareCreate();
