@@ -15,13 +15,18 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Sfayn
  */
 @Entity
+@Table( 
+        uniqueConstraints =
+@UniqueConstraint(columnNames = {"numActe", "registre_id"}))
 public class Jugement_Naissance implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,6 +34,7 @@ public class Jugement_Naissance implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer numActe;
+    private boolean checked = false;
     @ManyToOne
     private Registre_jugement_Naissance registre;
     @OneToOne
@@ -44,8 +50,18 @@ public class Jugement_Naissance implements Serializable {
     private Date datesdistr;
     @Lob
     private String descriptionAr;
+    @Lob
     private String descriptionFr;
 
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    
     public Integer getNumActe() {
         return numActe;
     }
@@ -124,8 +140,8 @@ public class Jugement_Naissance implements Serializable {
 
     public void setDescriptionFr(String descriptionFr) {
         this.descriptionFr = descriptionFr;
-    }    
-    
+    }
+
     public Long getId() {
         return id;
     }
