@@ -20,7 +20,7 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-<h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>
+                <h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>
                 <div class="row">
                     <div class="span6" dir="rtl" align="left">
                         <h:outputText rendered="#{acte_NaissanceController.items.rowCount != 0}" value="عدد البيانات في الصفحة:" />
@@ -37,70 +37,75 @@
                 </div>
                 <h:panelGroup >
                     <rich:extendedDataTable rendered="#{acte_NaissanceController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
-                        <rich:column sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
+                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
                                      filterValue="#{acte_NaissanceController.numActeFilter == 0? '': acte_NaissanceController.numActeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
                             <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
                             <h:outputText value="#{item.numActe}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
+                        <rich:column width="80px" sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
                                      filterValue="#{acte_NaissanceController.anneeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value">
                             <f:facet name="header"><h:outputText value="السنة"/></f:facet>
                             <h:outputText value="#{item.registre.annee}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.prenom_Ar}">
+                        <rich:column width="130px" sortBy="#{item.prenom_Ar}">
                             <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
                             <h:outputText value="#{item.prenom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{car.nom_Ar}">
+                        <rich:column width="130px" sortBy="#{car.nom_Ar}">
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
                             <h:outputText value="#{item.nom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.nom_Fr}">
+                        <rich:column width="130px" sortBy="#{item.nom_Fr}">
                             <f:facet name="header"><h:outputText value="Nom"/></f:facet>
                             <h:outputText value="#{item.nom_Fr}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.prenom_Fr}">
+                        <rich:column width="110px" sortBy="#{item.prenom_Fr}">
                             <f:facet name="header"><h:outputText value="Prénom"/></f:facet>
                             <h:outputText value="#{item.prenom_Fr}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.date_de_naiss_G}">
+                        <rich:column width="110px" sortBy="#{item.date_de_naiss_G}">
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
                             <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.date_de_naiss_G}" />
                             </h:outputFormat>
                         </rich:column>
-                        <rich:column>
+                        <rich:column width="60px">
                             <f:facet name="header"><h:outputText value="Validé"/></f:facet>
-                            <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
-                                <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
-                            </font>
+                            <center>
+                                <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
+                                    <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
+                                </font>
+                            </center>
                         </rich:column>
-                        <rich:column>
+                        <rich:column style="text-align: center;" width="90px">
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
-                            <h:commandLink action="#{acte_NaissanceController.prepareView}">
-                                <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
-                            </h:commandLink>
-                            <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
-                                <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
-                            </h:commandLink>
-                            <a title="remove" href="#" onclick="#{b:show('customModal')}">
-                                <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
-                            </a>
-                            <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
-                                <b:headerFacet>
-                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
-                                </b:headerFacet>
-                                <b:bodyFacet>
-                                    <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
-                                </b:bodyFacet>
-                                <b:footerFacet>
-                                    <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
-                                    <h:outputText value="  "/>
-                                    <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
-                                </b:footerFacet>
-                            </b:modal>
+                            <center>
+                                <h:outputText value="&nbsp;&nbsp;" />
+                                <h:commandLink action="#{acte_NaissanceController.prepareView}">
+                                    <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
+                                </h:commandLink>
+                                <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
+                                    <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
+                                </h:commandLink>
+                                <a title="remove" href="#" onclick="#{b:show('customModal')}">
+                                    <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
+                                </a>
+                                <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
+                                    <b:headerFacet>
+                                        <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                    </b:headerFacet>
+                                    <b:bodyFacet>
+                                        <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                    </b:bodyFacet>
+                                    <b:footerFacet>
+                                        <b:commandButton value="نعم" severity="danger" action="#{acte_NaissanceController.destroy()}" onclick="#{acte_NaissanceController.prepareList()}"/>
+                                        <h:outputText value="  "/>
+                                        <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                    </b:footerFacet>
+                                </b:modal>
+                            </center>
                         </rich:column>
                         <f:facet name="footer">
                             <rich:dataScroller renderIfSinglePage="false" style="direction: ltr;" maxPages="10" id="scroller" fastControls="hide"  styleClass="wrap-paginacao" boundaryControls="hide" stepControls="show">
