@@ -41,37 +41,206 @@
                     </b:gridRow>
                 </b:alert>
 
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_numActe}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.numActe}" title="#{bundle.ViewJugement_DecesTitle_numActe}"/>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_registre}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.registre}" title="#{bundle.ViewJugement_DecesTitle_registre}"/>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_acte_deces}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.acte_deces}" title="#{bundle.ViewJugement_DecesTitle_acte_deces}"/>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_descrAr}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.descrAr}" title="#{bundle.ViewJugement_DecesTitle_descrAr}"/>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_descrFr}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.descrFr}" title="#{bundle.ViewJugement_DecesTitle_descrFr}"/>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_datesdistr}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.datesdistr}" title="#{bundle.ViewJugement_DecesTitle_datesdistr}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewJugement_DecesLabel_id}"/>
-                    <h:outputText value="#{jugement_DecesController.selected.id}" title="#{bundle.ViewJugement_DecesTitle_id}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{jugement_DecesController.destroyAndView}" value="#{bundle.ViewJugement_DecesDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewJugement_DecesEditLink}"/>
-                <br />
-                <h:commandLink action="#{jugement_DecesController.prepareCreate}" value="#{bundle.ViewJugement_DecesCreateLink}" />
-                <br />
-                <h:commandLink action="#{jugement_DecesController.prepareList}" value="#{bundle.ViewJugement_DecesShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewJugement_DecesIndexLink}"/>
+               <b:gridRow >
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                        <b:gridRow>
+                            <b:gridColumn span="2"> 
+                                <h:panelGrid columns="2"  dir="rtl">                                    
+                                    <h:outputLabel style="font-weight: bold; width: 50px;" value="الجزء :" />
+                                    <h:outputText value="#{jugement_DecesController.selected.registre.numReg}"></h:outputText>                                        
+                                </h:panelGrid>                                 
+                            </b:gridColumn>
+                            <b:gridColumn span="4"> 
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="font-weight: bold; width: 50px;" value="السنة :"/>
+                                    <h:outputText value="#{jugement_DecesController.selected.registre.annee}"></h:outputText>                                        
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="3">                                          
+                                <h:panelGrid columns="2" dir="rtl" >
+                                    <h:outputLabel style="font-weight: bold; width: 60px;" value="رقم الرسم :" />
+                                    <h:outputText value="#{jugement_DecesController.selected.numActe}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>                                    
+                        </b:gridRow>
+                        <br/>
+                    </fieldset>
 
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن المتوفى :</legend>
+                        <b:gridRow>
+                            <b:gridColumn span="4">                                    
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Prenom :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenom_Fr}" />
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Nom :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.nom_Fr}" />
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Lieu de naissance:"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.lieu_de_Naiss_Fr}" />
+                                </h:panelGrid>
+                            </b:gridColumn>                                
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2"  dir="rtl">
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="الإسم :"/>
+                                    <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenom_Ar}" />
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="النسب :"/>
+                                    <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.nom_Ar}"/>
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="مكان الإزدياد"/>
+                                    <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.lieu_de_Naiss_Ar}" />
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="تاريخ الإزدياد"/>
+                                    <h:outputFormat style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" >
+                                        <f:param value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.date_de_naiss_G}" />
+                                    </h:outputFormat>
+                                    <h:outputLabel style="font-weight: bold; width: 103px;" value="الجنس"/>
+                                    <h:outputText value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.sex.libelleAr}" />
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow >
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Prénom père :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomP_Fr}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Prénom mère :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomM_Fr}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Profession :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.profession_Fr}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Adresse :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.adresse_Fr}"/>
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="إسم الأب :"/>
+                                    <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomP_Ar}" />                                            
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="إسم الأم :"/>
+                                    <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomM_Ar}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="المهنة :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.profession_Ar}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="العنوان :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.adresse_Ar}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="البطاقة الوطنية :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.cin}"/>
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value=" الحالة العائلية :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.situation_familiale}"/>
+
+                                </h:panelGrid>
+                            </b:gridColumn>                            
+                        </b:gridRow>
+                    </fieldset>
+
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الوفاة :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="ltr">                                
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Lieu de décés :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.lieuDeces_Fr}"/>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="مكان الوفاة :"/>
+                                    <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.lieuDeces_Ar}" />
+                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="تاريخ الوفاة :"/>
+                                    <h:outputFormat style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                        <f:param value="#{jugement_DecesController.selected.acte_deces.dateDecesG}" />
+                                    </h:outputFormat>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow> 
+                    </fieldset>
+                   <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الحكم : :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="9">
+                                <h:panelGrid columns="2">  
+                                    <h:outputLabel style="font-weight: bold; width: 110px;" value="تاريخ التحرير :"/>
+                                    <h:outputFormat value="{0, date, yyyy-MM-dd}">
+                                        <f:param value="#{jugement_DecesController.selected.acte_deces.dateDecesG}" />
+                                    </h:outputFormat>
+                                    <h:outputLabel style="font-weight: bold; " value="نص الحكم :"/>
+                                    <h:outputLabel  style="width: 550px;" value="#{jugement_DecesController.selected.descrAr}"/>          
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow> 
+                       <b:gridRow >
+                            <b:gridColumn span="8">
+                                <h:panelGrid columns="2" dir="ltr">           
+                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Texte du jugement :"/>
+                                    <h:outputLabel style="width: 550px;" value="#{jugement_DecesController.selected.descrFr}" dir="ltr" />
+                                    
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow> 
+                    </fieldset>
+
+                </b:gridRow>
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                    .docs{
+                        font-size: 14pt !important;
+                    }
+                </style>
+
+                <b:gridRow id="blocBtn">
+                    <b:gridColumn span="10">
+                        <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
+                            <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}"> حذف الرسم</a> 
+
+                            <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    تعديل الرسم"/>
+                            <b:gridRow rendered="#{!jugement_DecesController.selected.checked}" >
+                                <a class="btn btn-primary icon-file" style="font-size: 14pt;"  onclick="#{b:show('customModal2')}">   الوثائق</a>
+                            </b:gridRow >
+                            <b:buttonDropdown rendered="#{jugement_DecesController.selected.checked}" buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                                <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                            </b:buttonDropdown>
+                            <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <b:commandButton value="نعم" severity="danger" action="#{jugement_DecesController.destroyAndView}" onclick="#{jugement_DecesController.prepareList()}"/>
+                                    <h:outputText value="  "/>
+                                    <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                </b:footerFacet>
+                            </b:modal>
+                            <b:modal id="customModal2" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">       مراقبة الرسم</h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;"> الرسم غير مراقب من طرف ضابط الحالة المدنية </p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <b:commandButton value="  إغلاق " mode="client" onclick="#{b:hide('customModal2')}" />
+                                </b:footerFacet>
+                            </b:modal>
+                        </h:panelGrid>
+
+                    </b:gridColumn>
+                </b:gridRow>
             </h:form>
         </ui:define>
     </ui:composition>
