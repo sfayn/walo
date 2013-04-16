@@ -84,13 +84,13 @@
                             </b:gridColumn>                                
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2"  dir="rtl">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="الإسم :"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="الإسم :"/>
                                     <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenom_Ar}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="النسب :"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="النسب :"/>
                                     <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.nom_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="مكان الإزدياد"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="مكان الإزدياد"/>
                                     <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.lieu_de_Naiss_Ar}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="تاريخ الإزدياد"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="تاريخ الإزدياد"/>
                                     <h:outputFormat style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" >
                                         <f:param value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.date_de_naiss_G}" />
                                     </h:outputFormat>
@@ -115,17 +115,17 @@
                             </b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="إسم الأب :"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="إسم الأب :"/>
                                     <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomP_Ar}" />                                            
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="إسم الأم :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="إسم الأم :"/>
                                     <h:outputText style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.acte_Naissance.prenomM_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="المهنة :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="المهنة :"/>
                                     <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.profession_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="العنوان :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="العنوان :"/>
                                     <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.adresse_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="البطاقة الوطنية :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="البطاقة الوطنية :"/>
                                     <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.cin}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value=" الحالة العائلية :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value=" الحالة العائلية :"/>
                                     <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.situation_familiale}"/>
 
                                 </h:panelGrid>
@@ -146,9 +146,9 @@
                             </b:gridColumn>
                             <b:gridColumn span="5">
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="مكان الوفاة :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="مكان الوفاة :"/>
                                     <h:outputLabel style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.lieuDeces_Ar}" />
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="تاريخ الوفاة :"/>
+                                    <h:outputLabel style="font-weight: bold;width: 100px;" value="تاريخ الوفاة :"/>
                                     <h:outputFormat style="width: 150px;" value="#{jugement_DecesController.selected.acte_deces.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                         <f:param value="#{jugement_DecesController.selected.acte_deces.dateDecesG}" />
                                     </h:outputFormat>
@@ -162,7 +162,7 @@
                         <b:gridRow >
                             <b:gridColumn span="9">
                                 <h:panelGrid columns="2">  
-                                    <h:outputLabel style="font-weight: bold; width: 110px;" value="تاريخ التحرير :"/>
+                                    <h:outputLabel style="font-weight: bold; width: 100px;" value="تاريخ التحرير :"/>
                                     <h:outputFormat value="{0, date, yyyy-MM-dd}">
                                         <f:param value="#{jugement_DecesController.selected.acte_deces.dateDecesG}" />
                                     </h:outputFormat>
