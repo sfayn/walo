@@ -7,10 +7,12 @@ import bean.User;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
-import session .Jugement_NaissanceFacade;
+import session.Jugement_NaissanceFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -35,12 +37,22 @@ public class Jugement_NaissanceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String annee;
+    private String annee_jug_Naiss;
     private int numActe;
     private Registre registre;
     private Long numActeFilter;
     private String anneeFilter;
     private Integer primaryRowCount = 10;
 
+    public String getAnnee_jug_Naiss() {
+        return annee_jug_Naiss;
+    }
+
+    public void setAnnee_jug_Naiss(String annee_jug_Naiss) {
+        this.annee_jug_Naiss = annee_jug_Naiss;
+    }
+
+    
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
     }
@@ -76,6 +88,7 @@ public class Jugement_NaissanceController implements Serializable {
             }
         };
     }
+
     public Filter<?> getAnneeFilterImpl() {
         return new Filter<Jugement_Naissance>() {
             public boolean accept(Jugement_Naissance item) {
@@ -87,10 +100,11 @@ public class Jugement_NaissanceController implements Serializable {
             }
         };
     }
+
     public void check() {
         UtilitaireSession us = UtilitaireSession.getInstance();
-        
-        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+
+        if (((User) us.get("auth")).getRole().getLibelle().equals("User")) {
             return;
         }
         if (current.isChecked()) {
@@ -123,23 +137,48 @@ public class Jugement_NaissanceController implements Serializable {
         this.registre = registre;
     }
 
-    
     public Jugement_NaissanceController() {
     }
 
-     public String getAnnee() {
+    public String getAnnee() {
         return annee;
     }
 
     public void setAnnee(String annee) {
         this.annee = annee;
     }
-    
 
-    
+    public boolean findAct() {
+        if (registre != null && numActe != 0) {
+            if (!ejbFacade.findActe_Naissance(numActe, registre).isEmpty()) {
+                current.setActe_Naissance(ejbFacade.findActe_Naissance(numActe, registre).get(0));
+                return true;
+            } else {
+                current.setActe_Naissance(null);
+                return false;
+            }
+        }
+        return false;
+    }
+    public SelectItem[] listReg_Jug_Naiss() {
+        if (annee_jug_Naiss == null && current.getRegistre() != null) {
+            annee_jug_Naiss = current.getRegistre().getAnnee();
+        }
+        return JsfUtil.getSelectItems(ejbFacade.findByDate_Jug_Naissance(annee_jug_Naiss), true);
+    }
+
     public SelectItem[] listReg() {
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
     }
+
+    public SelectItem[] listannee() {
+        List<String> annees = new ArrayList<String>();
+        for (int i = 1900; i < 2060; i++) {
+            annees.add(i + "");
+        }
+        return JsfUtil.getSelectItems(annees, true);
+    }
+
     public Jugement_Naissance getSelected() {
         if (current == null) {
             current = new Jugement_Naissance();
@@ -188,8 +227,8 @@ public class Jugement_NaissanceController implements Serializable {
 
     public String create() {
         try {
-            numActe=0;
-            registre=null;
+            numActe = 0;
+            registre = null;
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));

@@ -4,9 +4,12 @@
  */
 package session;
 
+import bean.Acte_Naissance;
 import bean.Jugement_Naissance;
+import bean.Registre;
 import bean.Registre_jugement_Deces;
 import bean.Registre_jugement_Naissance;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -35,7 +38,27 @@ public class Jugement_NaissanceFacade extends AbstractFacade<Jugement_Naissance>
     public Jugement_NaissanceFacade() {
         super(Jugement_Naissance.class);
     }
-    public List<Registre_jugement_Naissance> findByDate(String annee) {
+    public List<Registre> findByDate(String annee) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Registre.class);
+        Root emp = cq.from(Registre.class);
+        Predicate predicate = cb.equal(emp.get("annee"),annee);
+        cq.where(predicate);
+        cq.select(emp);
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+    public List<Acte_Naissance> findActe_Naissance(int numActe,Registre registre) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Acte_Naissance.class);
+        Root emp = cq.from(Acte_Naissance.class);
+        final List<Predicate> predicates = new ArrayList<Predicate>();
+        predicates.add(cb.equal(emp.get("registre"),registre));
+        predicates.add(cb.equal(emp.get("numActe"),numActe));
+        cq.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        cq.select(emp);
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+    public List<Registre_jugement_Naissance> findByDate_Jug_Naissance(String annee) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery(Registre_jugement_Naissance.class);
         Root emp = cq.from(Registre_jugement_Naissance.class);
