@@ -36,45 +36,45 @@
                 </div>
                 <h:panelGroup >
                     <rich:extendedDataTable style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{jugement_DecesController.items}" var="item" filterVar="filterValue" rows="#{jugement_DecesController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
-                        <rich:column sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
+                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
                                      filterValue="#{jugement_DecesController.numActeFilter == 0? '': jugement_DecesController.numActeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
                             <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
                             <h:outputText value="#{item.numActe}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
+                        <rich:column width="80px" sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
                                      filterValue="#{jugement_DecesController.anneeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value">
                             <f:facet name="header"><h:outputText value="السنة"/></f:facet>
                             <h:outputText value="#{item.registre.annee}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.acte_Deces.acte_Naissance.prenom_Ar}">
+                        <rich:column width="145px" sortBy="#{item.acte_Deces.acte_Naissance.prenom_Ar}">
                             <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
                             <h:outputText value="#{item.acte_deces.acte_Naissance.prenom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.acte_deces.acte_Naissance.nom_Ar}">
+                        <rich:column width="145px" sortBy="#{item.acte_deces.acte_Naissance.nom_Ar}">
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
                             <h:outputText value="#{item.acte_deces.acte_Naissance.nom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.acte_deces.acte_Naissance.date_de_naiss_G}">
+                        <rich:column width="145px" sortBy="#{item.acte_deces.acte_Naissance.date_de_naiss_G}">
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
                             <h:outputFormat value="#{item.acte_deces.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.acte_deces.acte_Naissance.date_de_naiss_G}" />
                             </h:outputFormat>
                         </rich:column>
-                        <rich:column sortBy="#{item.acte_deces.dateDecesG}">
+                        <rich:column width="145px" sortBy="#{item.acte_deces.dateDecesG}">
                             <f:facet name="header"><h:outputText value="تاريخ الوفاة"/></f:facet>
                             <h:outputFormat value="#{item.acte_deces.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.acte_deces.dateDecesG}" />
                             </h:outputFormat>  
                         </rich:column>
-                        <rich:column>
+                        <rich:column width="100px">
                             <f:facet name="header"><h:outputText value="Validé"/></f:facet>
                             <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
                                 <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
                             </font>
                         </rich:column>
-                        <rich:column>
+                        <rich:column width="90px">
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
                             <h:commandLink action="#{jugement_DecesController.prepareView}">
                                 <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
