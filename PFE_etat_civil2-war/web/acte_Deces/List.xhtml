@@ -57,7 +57,7 @@
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
                             <h:outputText value="#{item.acte_Naissance.nom_Ar}"/>
                         </rich:column>
-                        <rich:column sortBy="#{item.acte_Naissance.date_de_naiss_G}">
+                        <rich:column width="110px" sortBy="#{item.acte_Naissance.date_de_naiss_G}">
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
                             <h:outputFormat value="#{item.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.acte_Naissance.date_de_naiss_G}" />

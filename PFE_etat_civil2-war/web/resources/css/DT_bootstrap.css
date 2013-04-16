@@ -367,3 +367,15 @@ input.rf-edt-flt-i:focus{
     color: #000 !important;
     text-decoration: none;
 }
+
+.rf-edt-hdr-c-cnt, .rf-edt-tbl-hdr{
+    font-size: 12pt;
+}
+
+.rf-edt-hdr-c{
+    width: auto !important;
+}
+
+.rf-edt-c-cnt, .rf-edt-ftr-c-cnt, .rf-edt-tbl-ftr{
+    font-size: 10pt;
+}
