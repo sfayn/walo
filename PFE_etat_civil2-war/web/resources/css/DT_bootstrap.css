@@ -293,7 +293,13 @@ table.people tr.even {
 
 
 .rf-edt-ftr{
-    display: none;
+    display: block;
+}
+
+.rf-edt-ftr, .rf-edt-tbl-ftr{
+    background-color: transparent !important;
+    border-top: none;
+    padding-right: 0px;
 }
 
 .odd{

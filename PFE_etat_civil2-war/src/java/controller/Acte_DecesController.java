@@ -26,6 +26,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.richfaces.model.Filter;
 import session.Acte_DecesFacade;
 
 @ManagedBean(name = "acte_DecesController")
@@ -49,6 +50,56 @@ public class Acte_DecesController implements Serializable {
     private Registre registre;
     private int l = 0;
     private int i=0;
+    private Long numActeFilter;
+    private String anneeFilter;
+    private Integer primaryRowCount = 10;
+
+    public Integer getPrimaryRowCount() {
+        return primaryRowCount;
+    }
+
+    public void setPrimaryRowCount(Integer primaryRowCount) {
+        this.primaryRowCount = primaryRowCount;
+    }
+
+    public Long getNumActeFilter() {
+        return numActeFilter;
+    }
+
+    public void setNumActeFilter(Long numActeFilter) {
+        this.numActeFilter = numActeFilter;
+    }
+
+    public String getAnneeFilter() {
+        return anneeFilter;
+    }
+
+    public void setAnneeFilter(String anneeFilter) {
+        this.anneeFilter = anneeFilter;
+    }
+
+    public Filter<?> getNumActeFilterImpl() {
+        return new Filter<Acte_Deces>() {
+            public boolean accept(Acte_Deces item) {
+                Long numActe = getNumActeFilter();
+                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    public Filter<?> getAnneeFilterImpl() {
+        return new Filter<Acte_Deces>() {
+            public boolean accept(Acte_Deces item) {
+                String Annee = getAnneeFilter();
+                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
 
     public int getI() {
         return i;
