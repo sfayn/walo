@@ -10,10 +10,14 @@ import controller.util.UtilitaireSession;
 import session.Jugement_NaissanceFacade;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -224,9 +228,17 @@ public class Jugement_NaissanceController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
-
+    
+    public void encode() {
+        try {
+            current.setDescriptionAr(URLEncoder.encode(current.getDescriptionAr(), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Jugement_DecesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public String create() {
         try {
+            encode();
             numActe = 0;
             registre = null;
             current.setCreatedAt(new Date());
@@ -249,6 +261,7 @@ public class Jugement_NaissanceController implements Serializable {
 
     public String update() {
         try {
+            encode();
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceUpdated"));
             return "View";
