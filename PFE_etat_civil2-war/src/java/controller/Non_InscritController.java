@@ -1,20 +1,13 @@
 package controller;
 
-import bean.Jugement_Deces;
-import bean.Jugement_Naissance;
-import bean.Registre;
-import bean.User;
+import bean.Non_Inscrit;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
-import controller.util.UtilitaireSession;
-import session.Jugement_NaissanceFacade;
+import session.Non_InscritFacade;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,39 +23,35 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import org.richfaces.model.Filter;
 
-@ManagedBean(name = "jugement_NaissanceController")
+@ManagedBean(name = "non_InscritController")
 @SessionScoped
-public class Jugement_NaissanceController implements Serializable {
+public class Non_InscritController implements Serializable {
 
-    private Jugement_Naissance current;
+    private Non_Inscrit current;
     private DataModel items = null;
     @EJB
-    private session.Jugement_NaissanceFacade ejbFacade;
+    private session.Non_InscritFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    private String annee;
-    private String annee_jug_Naiss;
-    private int numActe;
-    private Registre registre;
     private Long numActeFilter;
+    private Long numActeNaissanceFilter;
     private String anneeFilter;
     private Integer primaryRowCount = 10;
 
-    public String getAnnee_jug_Naiss() {
-        return annee_jug_Naiss;
-    }
-
-    public void setAnnee_jug_Naiss(String annee_jug_Naiss) {
-        this.annee_jug_Naiss = annee_jug_Naiss;
-    }
-
-    
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
     }
 
     public void setPrimaryRowCount(Integer primaryRowCount) {
         this.primaryRowCount = primaryRowCount;
+    }
+
+    public Long getNumActeNaissanceFilter() {
+        return numActeNaissanceFilter;
+    }
+
+    public void setNumActeNaissanceFilter(Long numActeNaissanceFilter) {
+        this.numActeNaissanceFilter = numActeNaissanceFilter;
     }
 
     public Long getNumActeFilter() {
@@ -82,10 +71,21 @@ public class Jugement_NaissanceController implements Serializable {
     }
 
     public Filter<?> getNumActeFilterImpl() {
-        return new Filter<Jugement_Naissance>() {
-            public boolean accept(Jugement_Naissance item) {
+        return new Filter<Non_Inscrit>() {
+            public boolean accept(Non_Inscrit item) {
                 Long numActe = getNumActeFilter();
-                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
+                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumCertificat().longValue()) >= 0) {
+                    return true;
+                }
+                return false;
+            }
+        };
+    }
+    public Filter<?> getNumActeNaissanceFilterImpl() {
+        return new Filter<Non_Inscrit>() {
+            public boolean accept(Non_Inscrit item) {
+                Long numActeNaiss = getNumActeNaissanceFilter();
+                if (numActeNaiss == null || numActeNaiss == 0 || numActeNaiss.compareTo(item.getNumActe().longValue()) >= 0) {
                     return true;
                 }
                 return false;
@@ -94,10 +94,10 @@ public class Jugement_NaissanceController implements Serializable {
     }
 
     public Filter<?> getAnneeFilterImpl() {
-        return new Filter<Jugement_Naissance>() {
-            public boolean accept(Jugement_Naissance item) {
+        return new Filter<Non_Inscrit>() {
+            public boolean accept(Non_Inscrit item) {
                 String Annee = getAnneeFilter();
-                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
+                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getAnnee())) {
                     return true;
                 }
                 return false;
@@ -105,93 +105,18 @@ public class Jugement_NaissanceController implements Serializable {
         };
     }
 
-    public void check() {
-        UtilitaireSession us = UtilitaireSession.getInstance();
-
-        if (((User) us.get("auth")).getRole().getLibelle().equals("User")) {
-            return;
-        }
-        if (current.isChecked()) {
-            current.setChecked(false);
-        } else {
-            current.setChecked(true);
-        }
-        try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-
-        }
+    public Non_InscritController() {
     }
 
-    public int getNumActe() {
-        return numActe;
-    }
-
-    public void setNumActe(int numActe) {
-        this.numActe = numActe;
-    }
-
-    public Registre getRegistre() {
-        return registre;
-    }
-
-    public void setRegistre(Registre registre) {
-        this.registre = registre;
-    }
-
-    public Jugement_NaissanceController() {
-    }
-
-    public String getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(String annee) {
-        this.annee = annee;
-    }
-
-    public boolean findAct() {
-        if (registre != null && numActe != 0) {
-            if (!ejbFacade.findActe_Naissance(numActe, registre).isEmpty()) {
-                current.setActe_Naissance(ejbFacade.findActe_Naissance(numActe, registre).get(0));
-                return true;
-            } else {
-                current.setActe_Naissance(null);
-                return false;
-            }
-        }
-        return false;
-    }
-    public SelectItem[] listReg_Jug_Naiss() {
-        if (annee_jug_Naiss == null && current.getRegistre() != null) {
-            annee_jug_Naiss = current.getRegistre().getAnnee();
-        }
-        return JsfUtil.getSelectItems(ejbFacade.findByDate_Jug_Naissance(annee_jug_Naiss), true);
-    }
-
-    public SelectItem[] listReg() {
-        return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
-    }
-
-    public SelectItem[] listannee() {
-        List<String> annees = new ArrayList<String>();
-        for (int i = 1900; i < 2060; i++) {
-            annees.add(i + "");
-        }
-        return JsfUtil.getSelectItems(annees, true);
-    }
-
-    public Jugement_Naissance getSelected() {
+    public Non_Inscrit getSelected() {
         if (current == null) {
-            current = new Jugement_Naissance();
+            current = new Non_Inscrit();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private Jugement_NaissanceFacade getFacade() {
+    private Non_InscritFacade getFacade() {
         return ejbFacade;
     }
 
@@ -218,34 +143,40 @@ public class Jugement_NaissanceController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Jugement_Naissance) getItems().getRowData();
+        current = (Non_Inscrit) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Jugement_Naissance();
+        current = new Non_Inscrit();
         selectedItemIndex = -1;
         return "Create";
     }
-    
+
     public void encode() {
         try {
-            current.setDescriptionAr(URLEncoder.encode(current.getDescriptionAr(), "UTF-8"));
+            current.setNom_Ar(URLEncoder.encode(current.getNom_Ar(), "UTF-8"));
+            current.setPrenom_Ar(URLEncoder.encode(current.getPrenom_Ar(), "UTF-8"));
+            current.setLieu_de_Naiss_Ar(URLEncoder.encode(current.getLieu_de_Naiss_Ar(), "UTF-8"));
+            current.setPrenomP_Ar(URLEncoder.encode(current.getPrenomP_Ar(), "UTF-8"));
+            current.setPrenomM_Ar(URLEncoder.encode(current.getPrenomM_Ar(), "UTF-8"));
+            current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
+            current.setAddressePa_Ar(URLEncoder.encode(current.getAddressePa_Ar(), "UTF-8"));
+            current.setDonnee_Marginal(URLEncoder.encode(current.getDonnee_Marginal(), "UTF-8"));
+            current.setBureau_E_C(URLEncoder.encode(current.getBureau_E_C(), "UTF-8"));
+            current.setOfficier_E_C(URLEncoder.encode(current.getOfficier_E_C(), "UTF-8"));
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Jugement_DecesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
+
     public String create() {
         try {
             encode();
-            numActe = 0;
-            registre = null;
-            current.setCreatedAt(new Date());
-            UtilitaireSession us = UtilitaireSession.getInstance();
-            current.setCreatedBy((User) us.get("auth"));
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Non_InscritCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -254,7 +185,7 @@ public class Jugement_NaissanceController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Jugement_Naissance) getItems().getRowData();
+        current = (Non_Inscrit) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -263,7 +194,7 @@ public class Jugement_NaissanceController implements Serializable {
         try {
             encode();
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Non_InscritUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -272,7 +203,7 @@ public class Jugement_NaissanceController implements Serializable {
     }
 
     public String destroy() {
-        current = (Jugement_Naissance) getItems().getRowData();
+        current = (Non_Inscrit) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -296,7 +227,7 @@ public class Jugement_NaissanceController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Non_InscritDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -352,15 +283,15 @@ public class Jugement_NaissanceController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Jugement_Naissance.class)
-    public static class Jugement_NaissanceControllerConverter implements Converter {
+    @FacesConverter(forClass = Non_Inscrit.class)
+    public static class Non_InscritControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            Jugement_NaissanceController controller = (Jugement_NaissanceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "jugement_NaissanceController");
+            Non_InscritController controller = (Non_InscritController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "non_InscritController");
             return controller.ejbFacade.find(getKey(value));
         }
 
@@ -380,11 +311,11 @@ public class Jugement_NaissanceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Jugement_Naissance) {
-                Jugement_Naissance o = (Jugement_Naissance) object;
+            if (object instanceof Non_Inscrit) {
+                Non_Inscrit o = (Non_Inscrit) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Jugement_Naissance.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Non_Inscrit.class.getName());
             }
         }
     }

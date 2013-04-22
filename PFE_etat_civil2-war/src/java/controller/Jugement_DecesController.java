@@ -264,6 +264,7 @@ public class Jugement_DecesController implements Serializable {
 
     public String update() {
         try {
+            encode();   
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_DecesUpdated"));
             return "View";

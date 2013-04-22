@@ -9,7 +9,6 @@
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="التصرف في أحكام الوفيات: تعديل البيانات"></h:outputText>
-
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -34,13 +33,13 @@
                             <b:gridColumn span="3">
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="الجزء" for="registre" />
-                                    <h:inputText readonly="true" id="registre" class="input-small" value="#{jugement_DecesController.selected.registre.numReg}" />
+                                    <h:inputText readonly="true" id="registre" class="input-small" value="#{jugement_DecesController.selected.acte_deces.registre.numReg}" />
                                 </h:panelGrid>
                             </b:gridColumn>
                             <b:gridColumn span="4">
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="السنة" for="annee" />
-                                    <h:inputText readonly="true" id="annee" class="input-small" value="#{jugement_DecesController.selected.registre.annee}"/>
+                                    <h:inputText readonly="true" id="annee" class="input-small" value="#{jugement_DecesController.selected.acte_deces.registre.annee}"/>
                                 </h:panelGrid>  
                             </b:gridColumn>
                             <b:gridColumn span="4">

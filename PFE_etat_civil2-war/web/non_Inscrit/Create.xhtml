@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateNon_InscritTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_numCertificat}" for="numCertificat" />
+                    <h:inputText id="numCertificat" value="#{non_InscritController.selected.numCertificat}" title="#{bundle.CreateNon_InscritTitle_numCertificat}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_nom_Ar}" for="nom_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="nom_Ar" value="#{non_InscritController.selected.nom_Ar}" title="#{bundle.CreateNon_InscritTitle_nom_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_nom_Fr}" for="nom_Fr" />
+                    <h:inputText id="nom_Fr" value="#{non_InscritController.selected.nom_Fr}" title="#{bundle.CreateNon_InscritTitle_nom_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenom_Ar}" for="prenom_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="prenom_Ar" value="#{non_InscritController.selected.prenom_Ar}" title="#{bundle.CreateNon_InscritTitle_prenom_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenom_Fr}" for="prenom_Fr" />
+                    <h:inputText id="prenom_Fr" value="#{non_InscritController.selected.prenom_Fr}" title="#{bundle.CreateNon_InscritTitle_prenom_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_lieu_de_Naiss_Fr}" for="lieu_de_Naiss_Fr" />
+                    <h:inputText id="lieu_de_Naiss_Fr" value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" title="#{bundle.CreateNon_InscritTitle_lieu_de_Naiss_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_lieu_de_Naiss_Ar}" for="lieu_de_Naiss_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="lieu_de_Naiss_Ar" value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" title="#{bundle.CreateNon_InscritTitle_lieu_de_Naiss_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_date_de_naiss_H}" for="date_de_naiss_H" />
+                    <h:inputText id="date_de_naiss_H" value="#{non_InscritController.selected.date_de_naiss_H}" title="#{bundle.CreateNon_InscritTitle_date_de_naiss_H}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_date_de_naiss_G}" for="date_de_naiss_G" />
+                    <h:inputText id="date_de_naiss_G" value="#{non_InscritController.selected.date_de_naiss_G}" title="#{bundle.CreateNon_InscritTitle_date_de_naiss_G}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_profession_Ar}" for="profession_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="profession_Ar" value="#{non_InscritController.selected.profession_Ar}" title="#{bundle.CreateNon_InscritTitle_profession_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_profession_Fr}" for="profession_Fr" />
+                    <h:inputText id="profession_Fr" value="#{non_InscritController.selected.profession_Fr}" title="#{bundle.CreateNon_InscritTitle_profession_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenomP_Ar}" for="prenomP_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="prenomP_Ar" value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.CreateNon_InscritTitle_prenomP_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenomP_Fr}" for="prenomP_Fr" />
+                    <h:inputText id="prenomP_Fr" value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.CreateNon_InscritTitle_prenomP_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenomM_Ar}" for="prenomM_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="prenomM_Ar" value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.CreateNon_InscritTitle_prenomM_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_prenomM_Fr}" for="prenomM_Fr" />
+                    <h:inputText id="prenomM_Fr" value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.CreateNon_InscritTitle_prenomM_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_addressePa_Ar}" for="addressePa_Ar" />
+                    <h:inputTextarea rows="4" cols="30" id="addressePa_Ar" value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.CreateNon_InscritTitle_addressePa_Ar}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_addressePa_Fr}" for="addressePa_Fr" />
+                    <h:inputTextarea rows="4" cols="30" id="addressePa_Fr" value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.CreateNon_InscritTitle_addressePa_Fr}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_sex}" for="sex" />
+                    <h:selectOneMenu id="sex" value="#{non_InscritController.selected.sex}" title="#{bundle.CreateNon_InscritTitle_sex}" >
+                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_donnee_Marginal}" for="donnee_Marginal" />
+                    <h:inputText id="donnee_Marginal" value="#{non_InscritController.selected.donnee_Marginal}" title="#{bundle.CreateNon_InscritTitle_donnee_Marginal}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_annee}" for="annee" />
+                    <h:inputText id="annee" value="#{non_InscritController.selected.annee}" title="#{bundle.CreateNon_InscritTitle_annee}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_numActe}" for="numActe" />
+                    <h:inputText id="numActe" value="#{non_InscritController.selected.numActe}" title="#{bundle.CreateNon_InscritTitle_numActe}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_bureau_E_C}" for="bureau_E_C" />
+                    <h:inputText id="bureau_E_C" value="#{non_InscritController.selected.bureau_E_C}" title="#{bundle.CreateNon_InscritTitle_bureau_E_C}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_officier_E_C}" for="officier_E_C" />
+                    <h:inputText id="officier_E_C" value="#{non_InscritController.selected.officier_E_C}" title="#{bundle.CreateNon_InscritTitle_officier_E_C}" />
+                    <h:outputLabel value="#{bundle.CreateNon_InscritLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{non_InscritController.selected.id}" title="#{bundle.CreateNon_InscritTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{non_InscritController.create}" value="#{bundle.CreateNon_InscritSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{non_InscritController.prepareList}" value="#{bundle.CreateNon_InscritShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateNon_InscritIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

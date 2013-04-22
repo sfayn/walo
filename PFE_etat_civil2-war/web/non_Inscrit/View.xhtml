@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNon_InscritTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_numCertificat}"/>
+                    <h:outputText value="#{non_InscritController.selected.numCertificat}" title="#{bundle.ViewNon_InscritTitle_numCertificat}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_nom_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.nom_Ar}" title="#{bundle.ViewNon_InscritTitle_nom_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_nom_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.nom_Fr}" title="#{bundle.ViewNon_InscritTitle_nom_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenom_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenom_Ar}" title="#{bundle.ViewNon_InscritTitle_prenom_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenom_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenom_Fr}" title="#{bundle.ViewNon_InscritTitle_prenom_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_lieu_de_Naiss_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewNon_InscritTitle_lieu_de_Naiss_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_lieu_de_Naiss_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewNon_InscritTitle_lieu_de_Naiss_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_date_de_naiss_H}"/>
+                    <h:outputText value="#{non_InscritController.selected.date_de_naiss_H}" title="#{bundle.ViewNon_InscritTitle_date_de_naiss_H}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_date_de_naiss_G}"/>
+                    <h:outputText value="#{non_InscritController.selected.date_de_naiss_G}" title="#{bundle.ViewNon_InscritTitle_date_de_naiss_G}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_profession_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.profession_Ar}" title="#{bundle.ViewNon_InscritTitle_profession_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_profession_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.profession_Fr}" title="#{bundle.ViewNon_InscritTitle_profession_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomP_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.ViewNon_InscritTitle_prenomP_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomP_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.ViewNon_InscritTitle_prenomP_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomM_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.ViewNon_InscritTitle_prenomM_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomM_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.ViewNon_InscritTitle_prenomM_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_addressePa_Ar}"/>
+                    <h:outputText value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.ViewNon_InscritTitle_addressePa_Ar}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_addressePa_Fr}"/>
+                    <h:outputText value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.ViewNon_InscritTitle_addressePa_Fr}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_sex}"/>
+                    <h:outputText value="#{non_InscritController.selected.sex}" title="#{bundle.ViewNon_InscritTitle_sex}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_donnee_Marginal}"/>
+                    <h:outputText value="#{non_InscritController.selected.donnee_Marginal}" title="#{bundle.ViewNon_InscritTitle_donnee_Marginal}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_annee}"/>
+                    <h:outputText value="#{non_InscritController.selected.annee}" title="#{bundle.ViewNon_InscritTitle_annee}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_numActe}"/>
+                    <h:outputText value="#{non_InscritController.selected.numActe}" title="#{bundle.ViewNon_InscritTitle_numActe}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_bureau_E_C}"/>
+                    <h:outputText value="#{non_InscritController.selected.bureau_E_C}" title="#{bundle.ViewNon_InscritTitle_bureau_E_C}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_officier_E_C}"/>
+                    <h:outputText value="#{non_InscritController.selected.officier_E_C}" title="#{bundle.ViewNon_InscritTitle_officier_E_C}"/>
+                    <h:outputText value="#{bundle.ViewNon_InscritLabel_id}"/>
+                    <h:outputText value="#{non_InscritController.selected.id}" title="#{bundle.ViewNon_InscritTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{non_InscritController.destroyAndView}" value="#{bundle.ViewNon_InscritDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNon_InscritEditLink}"/>
+                <br />
+                <h:commandLink action="#{non_InscritController.prepareCreate}" value="#{bundle.ViewNon_InscritCreateLink}" />
+                <br />
+                <h:commandLink action="#{non_InscritController.prepareList}" value="#{bundle.ViewNon_InscritShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNon_InscritIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
