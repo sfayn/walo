@@ -20,10 +20,11 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
+                <h:outputText escape="false" value="قائمة فارغة" rendered="#{non_InscritController.items.rowCount == 0}"/>
                 <div class="row">
                     <div class="span6" dir="rtl" align="left">
-                        عدد البيانات في الصفحة: 
-                        <h:selectOneMenu id="dataPager" value="#{jugement_DecesController.primaryRowCount}" >
+                    <h:outputText rendered="#{non_InscritController.items.rowCount != 0}" value="عدد البيانات في الصفحة:" />
+                        <h:selectOneMenu id="dataPager" rendered="#{non_InscritController.items.rowCount != 0}" value="#{jugement_DecesController.primaryRowCount}" >
                             <f:ajax render="extended" event="change" />
                             <f:selectItem itemLabel="5" itemValue="5"/>  
                             <f:selectItem itemLabel="10" itemValue="10"/>  
@@ -35,34 +36,34 @@
                     </div>
                 </div>
                 <h:panelGroup >
-                    <rich:extendedDataTable style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{non_InscritController.items}" var="item" filterVar="filterValue" rows="#{non_InscritController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
-                        <rich:column width="110px" sortBy="#{item.numCertificat}" filterExpression="#{empty filterValue or item.numCertificat eq filterValue}"
+                    <rich:extendedDataTable style="width: 100%;" rendered="#{non_InscritController.items.rowCount != 0}" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{non_InscritController.items}" var="item" filterVar="filterValue" rows="#{non_InscritController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                        <rich:column width="120px" sortBy="#{item.numCertificat}" filterExpression="#{empty filterValue or item.numCertificat eq filterValue}"
                                      filterValue="#{non_InscritController.numActeFilter == 0? '': non_InscritController.numActeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
                             <f:facet name="header"><h:outputText value="رقم الشهادة"/></f:facet>
                             <h:outputText value="#{item.numCertificat}"/>
                         </rich:column>
-                        <rich:column width="110px" sortBy="#{item.annee}" filterExpression="#{empty filterValue or item.annee eq filterValue}"
+                        <rich:column width="120px" sortBy="#{item.annee}" filterExpression="#{empty filterValue or item.annee eq filterValue}"
                                      filterValue="#{non_InscritController.anneeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value">
                             <f:facet name="header"><h:outputText value="السنة"/></f:facet>
                             <h:outputText value="#{item.annee}"/>
                         </rich:column>
-                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
+                        <rich:column width="120px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
                                      filterValue="#{non_InscritController.numActeNaissanceFilter == 0? '': non_InscritController.numActeNaissanceFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
                             <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
                             <h:outputText value="#{item.numActe}"/>
                         </rich:column>
-                        <rich:column width="155px" sortBy="#{item.prenom_Ar}">
+                        <rich:column width="165px" sortBy="#{item.prenom_Ar}">
                             <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
                             <h:outputText value="#{item.prenom_Ar}"/>
                         </rich:column>
-                        <rich:column width="155px" sortBy="#{item.nom_Ar}">
+                        <rich:column width="165px" sortBy="#{item.nom_Ar}">
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
                             <h:outputText value="#{item.nom_Ar}"/>
                         </rich:column>
-                        <rich:column width="155px" sortBy="#{item.date_de_naiss_G}">
+                        <rich:column width="165px" sortBy="#{item.date_de_naiss_G}">
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
                             <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.date_de_naiss_G}" />
@@ -121,7 +122,7 @@
                     }
                 </style>
                 <br />
-                <h:commandLink  action="#{non_InscritController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة رسم جديد"/>
+                <h:commandLink  action="#{non_InscritController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة بطاقة جديدة"/>
             </h:form>
         </ui:define>
     </ui:composition>
