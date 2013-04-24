@@ -3,84 +3,205 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ViewNon_InscritTitle}"></h:outputText>
+            <h:outputText value=" التصرف في البطاقة الشخصية : مشاهدة البيانات"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_numCertificat}"/>
-                    <h:outputText value="#{non_InscritController.selected.numCertificat}" title="#{bundle.ViewNon_InscritTitle_numCertificat}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_nom_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.nom_Ar}" title="#{bundle.ViewNon_InscritTitle_nom_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_nom_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.nom_Fr}" title="#{bundle.ViewNon_InscritTitle_nom_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenom_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenom_Ar}" title="#{bundle.ViewNon_InscritTitle_prenom_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenom_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenom_Fr}" title="#{bundle.ViewNon_InscritTitle_prenom_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_lieu_de_Naiss_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewNon_InscritTitle_lieu_de_Naiss_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_lieu_de_Naiss_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewNon_InscritTitle_lieu_de_Naiss_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_date_de_naiss_H}"/>
-                    <h:outputText value="#{non_InscritController.selected.date_de_naiss_H}" title="#{bundle.ViewNon_InscritTitle_date_de_naiss_H}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_date_de_naiss_G}"/>
-                    <h:outputText value="#{non_InscritController.selected.date_de_naiss_G}" title="#{bundle.ViewNon_InscritTitle_date_de_naiss_G}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_profession_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.profession_Ar}" title="#{bundle.ViewNon_InscritTitle_profession_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_profession_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.profession_Fr}" title="#{bundle.ViewNon_InscritTitle_profession_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomP_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.ViewNon_InscritTitle_prenomP_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomP_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.ViewNon_InscritTitle_prenomP_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomM_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.ViewNon_InscritTitle_prenomM_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_prenomM_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.ViewNon_InscritTitle_prenomM_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_addressePa_Ar}"/>
-                    <h:outputText value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.ViewNon_InscritTitle_addressePa_Ar}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_addressePa_Fr}"/>
-                    <h:outputText value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.ViewNon_InscritTitle_addressePa_Fr}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_sex}"/>
-                    <h:outputText value="#{non_InscritController.selected.sex}" title="#{bundle.ViewNon_InscritTitle_sex}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_donnee_Marginal}"/>
-                    <h:outputText value="#{non_InscritController.selected.donnee_Marginal}" title="#{bundle.ViewNon_InscritTitle_donnee_Marginal}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_annee}"/>
-                    <h:outputText value="#{non_InscritController.selected.annee}" title="#{bundle.ViewNon_InscritTitle_annee}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_numActe}"/>
-                    <h:outputText value="#{non_InscritController.selected.numActe}" title="#{bundle.ViewNon_InscritTitle_numActe}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_bureau_E_C}"/>
-                    <h:outputText value="#{non_InscritController.selected.bureau_E_C}" title="#{bundle.ViewNon_InscritTitle_bureau_E_C}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_officier_E_C}"/>
-                    <h:outputText value="#{non_InscritController.selected.officier_E_C}" title="#{bundle.ViewNon_InscritTitle_officier_E_C}"/>
-                    <h:outputText value="#{bundle.ViewNon_InscritLabel_id}"/>
-                    <h:outputText value="#{non_InscritController.selected.id}" title="#{bundle.ViewNon_InscritTitle_id}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{non_InscritController.destroyAndView}" value="#{bundle.ViewNon_InscritDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewNon_InscritEditLink}"/>
-                <br />
-                <h:commandLink action="#{non_InscritController.prepareCreate}" value="#{bundle.ViewNon_InscritCreateLink}" />
-                <br />
-                <h:commandLink action="#{non_InscritController.prepareList}" value="#{bundle.ViewNon_InscritShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewNon_InscritIndexLink}"/>
+                <b:gridRow > 
+                    <b:gridColumn span="7">
+                        <b:gridRow >
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عامة :</legend>
+                                <b:gridRow>
+                                    <b:gridColumn span="6">                                          
+                                        <h:panelGrid columns="2"  dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 70px;" value="رقم الشهادة :"/>
+                                            <h:outputText value="#{non_InscritController.selected.numCertificat}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>                                    
+                                </b:gridRow>
+                                <br/>
+                            </fieldset>
 
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عن صاحب الشهادة :</legend>
+
+                                <b:gridColumn span="3">                                    
+                                    <h:panelGrid columns="2" dir="ltr">
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.prenom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_nom_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.nom_Fr}" title="#{bundle.ViewActe_NaissanceTitle_nom_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="Profession"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.profession_Fr}"/>
+
+                                    </h:panelGrid>
+                                </b:gridColumn>                                
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2"  dir="rtl">
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.prenom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenom_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_nom_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.nom_Ar}" title="#{bundle.ViewActe_NaissanceTitle_nom_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_lieu_de_Naiss_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" title="#{bundle.ViewActe_NaissanceTitle_lieu_de_Naiss_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="المهنة"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.profession_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_date_de_naiss}"/>
+                                        <h:outputFormat value="#{non_InscritController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" title="#{bundle.ViewActe_NaissanceTitle_date_de_naiss}">
+                                            <f:param value="#{non_InscritController.selected.date_de_naiss_G}" />
+                                        </h:outputFormat>
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_sex}"/>
+                                        <h:outputText value="#{non_InscritController.selected.sex.libelleAr}" title="#{bundle.ViewActe_NaissanceTitle_sex}"/>
+
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                            </fieldset>
+                        </b:gridRow>
+
+                        <b:gridRow >
+
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عن الأبوين :</legend>
+
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="ltr">
+                                        <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Fr}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Fr}"/>
+                                        <h:outputLabel style="width: 150px;" value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Fr}"/>
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                                <b:gridColumn span="3">
+                                    <h:panelGrid columns="2" dir="rtl">
+                                        <h:outputLabel style="font-weight: bold; width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomP_Ar}"/>
+                                        <h:outputLabel style="font-weight: bold;width: 103px;" value="#{bundle.ViewActe_NaissanceLabel_prenomM_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.ViewActe_NaissanceTitle_prenomM_Ar}"/>             
+                                        <h:outputText style="font-weight: bold;" value="#{bundle.ViewActe_NaissanceLabel_addressePa_Ar}"/>
+                                        <h:outputText value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.ViewActe_NaissanceTitle_addressePa_Ar}"/>
+                                    </h:panelGrid>
+                                </b:gridColumn>                         
+                            </fieldset>
+                        </b:gridRow>
+
+                        <b:gridRow >
+
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">الضابطة :</legend>
+                                <b:gridRow>
+                                    <b:gridColumn span="2"> 
+                                        <h:panelGrid columns="2"  dir="rtl">                                    
+                                            <h:outputLabel style="font-weight: bold; width: 90px;" value="الدفتر العائلي رقم :" for="numCahier" />
+                                            <h:outputLabel   id="numCahier" value="#{non_InscritController.selected.numCahier}" />
+                                        </h:panelGrid>                                 
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2"> 
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 70px;" value="سنة التحرير :" for="annee" />
+                                            <h:outputLabel  id="annee" value="#{non_InscritController.selected.annee}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2">                                          
+                                        <h:panelGrid columns="2" dir="rtl" >
+                                            <h:outputLabel style="font-weight: bold; width: 70px;" value="رقم الرسم :" for="numActe" />
+                                            <h:outputLabel id="numActe" class="input-small" value="#{non_InscritController.selected.numActe}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>                                    
+                                </b:gridRow>
+                                <b:gridRow >
+                                    <b:gridColumn span="6">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel  style="width: 170px; font-weight: bold;" value="مسجل بمكتب الحالة المدنية ل" for="bureau_E_C" />
+                                            <h:outputLabel id="bureau_E_C" value=": #{non_InscritController.selected.bureau_E_C}" />  
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="width: 170px; font-weight: bold;"  value="ضابط الحالة المدنية" for="officier_E_C" />
+                                            <h:outputLabel id="officier_E_C" value=": #{non_InscritController.selected.officier_E_C}" />
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                </b:gridRow>
+                                <br/>
+                            </fieldset>
+                        </b:gridRow>
+                    </b:gridColumn>
+                    <b:gridColumn span="3">
+                        <br/>
+                        <br/>
+                        <b:gridRow >                            
+                            <h:panelGrid bodyrows="3" style="width: 90%;">                            
+                                <h:outputLabel value="#{non_InscritController.selected.donnee_Marginal}" />
+                            </h:panelGrid>
+                        </b:gridRow>
+                    </b:gridColumn>
+
+                </b:gridRow>
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                    .docs{
+                        font-size: 14pt !important;
+                    }
+                </style>
+                <b:modal ></b:modal>
+                <b:gridRow id="blocBtn">
+
+                    <b:gridColumn span="10">
+                        <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
+                            <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
+
+                            <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
+
+                            <b:buttonDropdown buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                                <h:commandLink action="#" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                                <b:separatorFacet />
+                                <h:commandLink action="#" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#" value="شهادة الوفاة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#" value="شهادة الخطوبة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#"  value="ورقة المعلومات" style="font-size: 13pt; color: #000000;"/>                                
+                            </b:buttonDropdown>
+                            <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <b:commandButton value="نعم" severity="danger" action="#{non_InscritController.destroyAndView}" onclick="#{non_InscritController.prepareList()}"/>
+                                    <h:outputText value="  "/>
+                                    <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                </b:footerFacet>
+                            </b:modal>
+
+                        </h:panelGrid>
+
+                    </b:gridColumn>
+                </b:gridRow>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -3,84 +3,281 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.EditNon_InscritTitle}"></h:outputText>
+            <h:outputText value="التصرف في البطاقة الشخصية : تعديل البيانات" />
         </ui:define>
         <ui:define name="body">
+
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_numCertificat}" for="numCertificat" />
-                    <h:inputText id="numCertificat" value="#{non_InscritController.selected.numCertificat}" title="#{bundle.EditNon_InscritTitle_numCertificat}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_nom_Ar}" for="nom_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="nom_Ar" value="#{non_InscritController.selected.nom_Ar}" title="#{bundle.EditNon_InscritTitle_nom_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_nom_Fr}" for="nom_Fr" />
-                    <h:inputText id="nom_Fr" value="#{non_InscritController.selected.nom_Fr}" title="#{bundle.EditNon_InscritTitle_nom_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenom_Ar}" for="prenom_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="prenom_Ar" value="#{non_InscritController.selected.prenom_Ar}" title="#{bundle.EditNon_InscritTitle_prenom_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenom_Fr}" for="prenom_Fr" />
-                    <h:inputText id="prenom_Fr" value="#{non_InscritController.selected.prenom_Fr}" title="#{bundle.EditNon_InscritTitle_prenom_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_lieu_de_Naiss_Fr}" for="lieu_de_Naiss_Fr" />
-                    <h:inputText id="lieu_de_Naiss_Fr" value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" title="#{bundle.EditNon_InscritTitle_lieu_de_Naiss_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_lieu_de_Naiss_Ar}" for="lieu_de_Naiss_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="lieu_de_Naiss_Ar" value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" title="#{bundle.EditNon_InscritTitle_lieu_de_Naiss_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_date_de_naiss_H}" for="date_de_naiss_H" />
-                    <h:inputText id="date_de_naiss_H" value="#{non_InscritController.selected.date_de_naiss_H}" title="#{bundle.EditNon_InscritTitle_date_de_naiss_H}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_date_de_naiss_G}" for="date_de_naiss_G" />
-                    <h:inputText id="date_de_naiss_G" value="#{non_InscritController.selected.date_de_naiss_G}" title="#{bundle.EditNon_InscritTitle_date_de_naiss_G}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_profession_Ar}" for="profession_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="profession_Ar" value="#{non_InscritController.selected.profession_Ar}" title="#{bundle.EditNon_InscritTitle_profession_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_profession_Fr}" for="profession_Fr" />
-                    <h:inputText id="profession_Fr" value="#{non_InscritController.selected.profession_Fr}" title="#{bundle.EditNon_InscritTitle_profession_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenomP_Ar}" for="prenomP_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="prenomP_Ar" value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.EditNon_InscritTitle_prenomP_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenomP_Fr}" for="prenomP_Fr" />
-                    <h:inputText id="prenomP_Fr" value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.EditNon_InscritTitle_prenomP_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenomM_Ar}" for="prenomM_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="prenomM_Ar" value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.EditNon_InscritTitle_prenomM_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_prenomM_Fr}" for="prenomM_Fr" />
-                    <h:inputText id="prenomM_Fr" value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.EditNon_InscritTitle_prenomM_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_addressePa_Ar}" for="addressePa_Ar" />
-                    <h:inputTextarea rows="4" cols="30" id="addressePa_Ar" value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.EditNon_InscritTitle_addressePa_Ar}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_addressePa_Fr}" for="addressePa_Fr" />
-                    <h:inputTextarea rows="4" cols="30" id="addressePa_Fr" value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.EditNon_InscritTitle_addressePa_Fr}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_sex}" for="sex" />
-                    <h:selectOneMenu id="sex" value="#{non_InscritController.selected.sex}" title="#{bundle.EditNon_InscritTitle_sex}" >
-                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_donnee_Marginal}" for="donnee_Marginal" />
-                    <h:inputText id="donnee_Marginal" value="#{non_InscritController.selected.donnee_Marginal}" title="#{bundle.EditNon_InscritTitle_donnee_Marginal}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_annee}" for="annee" />
-                    <h:inputText id="annee" value="#{non_InscritController.selected.annee}" title="#{bundle.EditNon_InscritTitle_annee}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_numActe}" for="numActe" />
-                    <h:inputText id="numActe" value="#{non_InscritController.selected.numActe}" title="#{bundle.EditNon_InscritTitle_numActe}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_bureau_E_C}" for="bureau_E_C" />
-                    <h:inputText id="bureau_E_C" value="#{non_InscritController.selected.bureau_E_C}" title="#{bundle.EditNon_InscritTitle_bureau_E_C}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_officier_E_C}" for="officier_E_C" />
-                    <h:inputText id="officier_E_C" value="#{non_InscritController.selected.officier_E_C}" title="#{bundle.EditNon_InscritTitle_officier_E_C}" />
-                    <h:outputLabel value="#{bundle.EditNon_InscritLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{non_InscritController.selected.id}" title="#{bundle.EditNon_InscritTitle_id}" />
-                </h:panelGrid>
-                <h:commandLink action="#{non_InscritController.update}" value="#{bundle.EditNon_InscritSaveLink}"/>
+            </h:panelGroup> 
+
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/datetimepicker.css" />
+            <!-- <link rel="stylesheet" href="#{request.contextPath}/resources/css/style2.css" /> -->
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/datepicker.css" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.js" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datepicker.js" />
+            <link type="text/css" href="#{request.contextPath}/resources/css/iButton/jquery.ibutton.css" rel="stylesheet" media="all" />
+            <script src="#{request.contextPath}/resources/js/bootstrap-datetimepicker.fr.js" />
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.ibutton.js" ></script>       
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.easing.1.3.js" ></script>       
+            <script src="#{request.contextPath}/resources/js/iButton/jquery.metadata.js" ></script>
+
+
+            <h:form prependId="false" id="formCreate">
+
+                <b:gridRow styleClass="show-grid" fluid="true">
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عامة :</legend>
+                        <b:gridRow >
+
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="width: 103px" value="رقم الشهادة" for="numCertificat" />
+                                    <h:inputText id="numCertificat" class="input-small" value="#{non_InscritController.selected.numCertificat}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
+                                        <f:ajax event="blur" render="@this" />
+                                    </h:inputText>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عن صاحب الشهادة :</legend>
+                        <b:gridRow>
+                            <b:gridColumn span="1">                              
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Prénom" for="prenom_Fr" />
+                                    <h:inputText id="prenom_Fr" value="#{non_InscritController.selected.prenom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Fr}" >
+                                        <f:ajax event="blur" render="prenom_Fr" />
+                                    </h:inputText>
+                                    <h:outputLabel value="Nom" for="nom_Fr" />
+                                    <h:inputText id="nom_Fr" value="#{non_InscritController.selected.nom_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Fr}" >
+                                        <f:ajax event="blur" render="nom_Fr" />
+                                    </h:inputText>
+                                    <h:outputLabel value="lieu de naissance" for="lieu_de_Naiss_Fr" />
+                                    <h:inputText id="lieu_de_Naiss_Fr" value="#{non_InscritController.selected.lieu_de_Naiss_Fr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Fr}">
+                                        <f:ajax event="blur" render="lieu_de_Naiss_Fr" />
+                                    </h:inputText>
+                                    <h:outputLabel value="Prof." for="profession_Fr" />
+                                    <h:inputText id="profession_Fr" value="#{non_InscritController.selected.profession_Fr}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Fr}" />
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الإسم" for="prenom_Ar"  />
+                                    <h:inputText id="prenom_Ar" value="#{non_InscritController.selected.prenom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_prenom_Ar}" >
+                                        <f:ajax event="blur" render="prenom_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="النسب" for="nom_Ar" />
+                                    <h:inputText id="nom_Ar" value="#{non_InscritController.selected.nom_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_nom_Ar}">
+                                        <f:ajax event="blur" render="nom_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="مكان الإزدياد" style="width: 103px" for="lieu_de_Naiss_Ar" />
+                                    <h:inputText id="lieu_de_Naiss_Ar" value="#{non_InscritController.selected.lieu_de_Naiss_Ar}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_lieu_de_Naiss_Ar}"  >
+                                        <f:ajax event="blur" render="lieu_de_Naiss_Ar" />
+                                    </h:inputText>
+                                    <h:outputLabel value="المهنة" for="profession_Ar" />
+                                    <h:inputText id="profession_Ar" value="#{non_InscritController.selected.profession_Ar}" title="#{bundle.CreateActe_NaissanceTitle_professionP_Ar}" />
+
+                                    <h:outputLabel value="الجنس" for="sex" />
+                                    <h:selectOneMenu id="sex" value="#{non_InscritController.selected.sex}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{sexController.itemsAvailableSelectOne}"/>
+                                        <f:ajax event="blur" render="sex" />
+                                    </h:selectOneMenu>
+                                </h:panelGrid>   
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{non_InscritController.selected.noMJ}" >
+                                        <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
+                                    </h:selectBooleanCheckbox>
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJ" />
+                                </h:panelGrid> 
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow id="blocNoMJ">
+                            <b:gridColumn span="1">
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel id="outdate_de_naiss_G2" value="تاريخ الإزدياد الميلادي" rendered="#{non_InscritController.selected.noMJ}" for="date_de_naiss_G2" />
+                                    <h:inputText id="date_de_naiss_G2" rendered="#{non_InscritController.selected.noMJ}" value="#{non_InscritController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naiss_H2" execute="date_de_naiss_G2" listener="#{non_InscritController.GToHAnnee()}"/> 
+                                        <f:convertDateTime pattern="yyyy" />
+                                        <f:ajax event="blur" render="@this" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H2" rendered="#{non_InscritController.selected.noMJ}" />
+                                    <h:inputText id="date_de_naiss_H2" rendered="#{non_InscritController.selected.noMJ}" value="#{non_InscritController.selected.date_de_naiss_H}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                        <f:convertDateTime pattern="yyyy" />
+                                        <f:ajax event="blur" render="@this" />
+                                    </h:inputText>
+                                    <h:outputLabel id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!non_InscritController.selected.noMJ}" for="date_de_naiss_G" />
+                                    <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" rendered="#{!non_InscritController.selected.noMJ}" id="date_de_naiss_G" value="#{non_InscritController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
+                                        <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{non_InscritController.setI(0)}"/> 
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="blur" render="@this" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" rendered="#{!non_InscritController.selected.noMJ}" />
+                                    <h:panelGrid columns="3" class="input-prepend" rendered="#{!non_InscritController.selected.noMJ}">
+                                        <h:inputText readonly="true" id="date_de_naiss_H" value="#{non_InscritController.g_to_h}" title="تاريخ الإزدياد" >
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{non_InscritController.g_to_hplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{non_InscritController.g_to_hmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="width: 103px;" value="البيانات الهامشية" for="donnee_Marginal" />
+                                    <b:input id="donnee_Marginal" scale="xxlarge" value="#{non_InscritController.selected.donnee_Marginal}"/>  
+                                </h:panelGrid>                              
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأبوين :</legend>
+
+                        <b:gridRow >
+                            <b:gridColumn span="1"></b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel style="width: 103px;" value="Prénom père" for="prenomP_Fr" />
+                                    <h:inputText id="prenomP_Fr" value="#{non_InscritController.selected.prenomP_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Fr}" />
+                                    <h:outputLabel style="width: 103px;" value="Prénom mère" for="prenomM_Fr" />
+                                    <h:inputText id="prenomM_Fr" value="#{non_InscritController.selected.prenomM_Fr}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Fr}" />
+
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="width: 103px;" value="إسم الأب" for="prenomP_Ar" />
+                                    <h:inputText id="prenomP_Ar" value="#{non_InscritController.selected.prenomP_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomP_Ar}" />
+                                    <h:outputLabel style="width: 103px;" value="إسم الأم" for="prenomM_Ar" />
+                                    <h:inputText id="prenomM_Ar" value="#{non_InscritController.selected.prenomM_Ar}" title="#{bundle.CreateActe_NaissanceTitle_prenomM_Ar}" />
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow >
+                            <b:gridColumn span="10">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="العنوان" for="addressePa_Ar" />
+                                    <b:input id="addressePa_Ar" scale="xxlarge" value="#{non_InscritController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Adresse" for="addressePa_Fr" />
+                                    <b:input id="addressePa_Fr" scale="xxlarge" value="#{non_InscritController.selected.addressePa_Fr}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Fr}" />
+                                </h:panelGrid>
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+
+
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;"> الضابطة :</legend>
+                        
+                        <b:gridRow >
+                            <b:gridColumn span="5">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="الدفتر العائلي رقم" for="numCahier" />
+                                    <h:inputText id="numCahier" class="input-small" value="#{non_InscritController.selected.numCahier}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:ajax event="blur" render="@this"/>
+                                    </h:inputText>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="3">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="سنة التحرير" for="annee" />
+                                    <h:selectOneMenu id="annee" class="input-small" value="#{non_InscritController.selected.annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                        <f:selectItems value="#{acte_NaissanceController.listannee()}"/>
+                                        <f:ajax event="blur" render="@this"/>
+                                    </h:selectOneMenu>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                            <b:gridColumn span="3">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel value="رقم الرسم" for="numActe" />
+                                    <h:inputText id="numActe" class="input-small" value="#{non_InscritController.selected.numActe}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_numActe}" >
+                                        <f:ajax event="blur" render="numActe" />
+                                    </h:inputText>
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel  style="width: 170px" value="مسجل بمكتب الحالة المدنية ل" for="bureau_E_C" />
+                                    <b:input id="bureau_E_C" scale="xxlarge" value="#{non_InscritController.selected.bureau_E_C}" />  
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="width: 170px"  value="ضابط الحالة المدنية" for="officier_E_C" />
+                                    <b:input id="officier_E_C" scale="xxlarge" value="#{non_InscritController.selected.officier_E_C}" />
+                                </h:panelGrid>
+                            </b:gridColumn>
+                        </b:gridRow>
+
+                    </fieldset>
+
+                </b:gridRow>
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditNon_InscritViewLink}"/>
-                <br />
-                <h:commandLink action="#{non_InscritController.prepareList}" value="#{bundle.EditNon_InscritShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditNon_InscritIndexLink}" />
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+
+                    li>a{
+                        color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                    .inlineRadioButtons { } 
+                    .inlineRadioButtons label {     
+                        display: inline; }
+                    </style>
+
+                <h:commandLink style="font-size: 14pt;" action="#{non_InscritController.update()}" value="تسجيل" class="btn btn-primary" />
+
+                <script type="text/javascript">
+                    $('.form_datetime').datetimepicker({
+                        language:  'fr',
+                        format: 'yyyy-mm-dd hh:ii',
+                        weekStart: 1,
+                        todayBtn:  1,
+                        autoclose: 1,
+                        todayHighlight: 1,
+                        startView: 2,
+                        forceParse: 0
+                    });
+
+                    $('.form_date').datepicker({
+                        format: 'dd-mm-yyyy',
+                        language:  'fr',
+                        autoclose: 1
+                    });
+                </script>
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>

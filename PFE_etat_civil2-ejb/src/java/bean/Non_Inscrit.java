@@ -14,13 +14,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Sfayn
  */
 @Entity
+@Table( 
+        uniqueConstraints=
+            @UniqueConstraint(columnNames={"numCertificat"})
+    )
 public class Non_Inscrit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,11 +65,23 @@ public class Non_Inscrit implements Serializable {
     private String addressePa_Fr;
     @ManyToOne
     private Sex sex;
+    @Lob
     private String donnee_Marginal;
-    private int annee;
+    private Integer annee;
+    private Integer numCahier;
     private Integer numActe;
+    @Lob
     private String bureau_E_C;
+    @Lob
     private String officier_E_C;
+
+    public Integer getNumCahier() {
+        return numCahier;
+    }
+
+    public void setNumCahier(Integer numCahier) {
+        this.numCahier = numCahier;
+    }
 
     public Integer getNumCertificat() {
         return numCertificat;
@@ -225,11 +243,11 @@ public class Non_Inscrit implements Serializable {
         this.donnee_Marginal = donnee_Marginal;
     }
 
-    public int getAnnee() {
+    public Integer getAnnee() {
         return annee;
     }
 
-    public void setAnnee(int annee) {
+    public void setAnnee(Integer annee) {
         this.annee = annee;
     }
 

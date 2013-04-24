@@ -1,6 +1,7 @@
 package controller;
 
 import bean.Non_Inscrit;
+import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import session.Non_InscritFacade;
@@ -8,6 +9,7 @@ import session.Non_InscritFacade;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +39,45 @@ public class Non_InscritController implements Serializable {
     private Long numActeNaissanceFilter;
     private String anneeFilter;
     private Integer primaryRowCount = 10;
+    private int i = 0;
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public void GToHAnnee() {
+        if (current.getDate_de_naiss_G() != null) {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+        }
+    }
+
+    public Date getG_to_h() {
+        if (current.getDate_de_naiss_G() == null) {
+            return null;
+        } else {
+            current.setDate_de_naiss_H(Helper.dateTimeGrToH(current.getDate_de_naiss_G()));
+            return current.getDate_de_naiss_H();
+        }
+
+    }
+
+    public void g_to_hplus() {
+        if (current.getDate_de_naiss_G() != null) {
+            i++;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
+    }
+
+    public void g_to_hmoins() {
+        if (current.getDate_de_naiss_G() != null) {
+            i--;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
+    }
 
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
@@ -81,6 +122,7 @@ public class Non_InscritController implements Serializable {
             }
         };
     }
+
     public Filter<?> getNumActeNaissanceFilterImpl() {
         return new Filter<Non_Inscrit>() {
             public boolean accept(Non_Inscrit item) {
@@ -153,6 +195,9 @@ public class Non_InscritController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    public String prepareCreate2() {        
+        return "View";
+    }
 
     public void encode() {
         try {
@@ -176,10 +221,10 @@ public class Non_InscritController implements Serializable {
         try {
             encode();
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Non_InscritCreated"));
-            return prepareCreate();
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
+            return prepareView();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
