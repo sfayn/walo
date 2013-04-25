@@ -16,7 +16,30 @@
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
             <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
 
-            <h:form prependId="false">
+            <script type="text/javascript">
+                $('.rf-edt-flt-i').bind('keypress', function(e) {
+                    if(e.keyCode==13){
+                        alert("function");
+                    }
+                });
+                $("input").keypress(function(){
+                    alert("function");
+                }); 
+                function filterAllOnEnter(event)
+                {
+                    alert("function");
+                    if(event.keyCode == 13)
+                    {
+                        jQuery(".rf-edt-flt-i").blur();
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            </script>
+            <h:form prependId="false" id="formList">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -36,7 +59,7 @@
                     </div>
                 </div>
                 <h:panelGroup >
-                    <rich:extendedDataTable rendered="#{acte_NaissanceController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                    <rich:extendedDataTable onrowkeypress="filterAllOnEnter(event);" rendered="#{acte_NaissanceController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
                         <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
                                      filterValue="#{acte_NaissanceController.numActeFilter == 0? '': acte_NaissanceController.numActeFilter}"
                                      filterConverterMessage="Error converting the 'Mileage' filter value" >
@@ -83,15 +106,6 @@
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
                             <center>
                                 <h:outputText value="&nbsp;&nbsp;" />
-                                <h:commandLink action="#{acte_NaissanceController.prepareView}">
-                                    <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
-                                </h:commandLink>
-                                <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
-                                    <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
-                                </h:commandLink>
-                                <a title="remove" href="#" onclick="#{b:show('customModal')}">
-                                    <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
-                                </a>
                                 <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
                                     <b:headerFacet>
                                         <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
@@ -105,6 +119,16 @@
                                         <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
                                     </b:footerFacet>
                                 </b:modal>
+                                <h:commandLink action="#{acte_NaissanceController.prepareView}">
+                                    <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
+                                </h:commandLink>
+                                <h:commandLink action="#{acte_NaissanceController.prepareEdit}">
+                                    <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
+                                </h:commandLink>
+                                <a title="remove" href="#" onclick="#{b:show('customModal')}">
+                                    <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
+                                </a>
+
                             </center>
                         </rich:column>
                         <f:facet name="footer">
