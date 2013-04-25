@@ -43,9 +43,9 @@
 
         </style>
     </h:head>
-    <h:body>
+    <h:body onkeypress="if (event.keyCode == 13) { document.getElementById('saveid').click(); return false; }">
         <div class="container">
-            <h:form class="form-signin">
+            <h:form class="form-signin" prependId="false" id="form">          
                 <h2 class="form-signin-heading">Veuillez vous authentifier</h2>
                 <style>
                     table {
@@ -72,7 +72,10 @@
                 </b:label>
                 <br/>
                 <br/>
-                <h:commandLink class="btn btn-large btn-primary" style="color: #fff;" action="#{userController.authentification()}" value="Se connecter" />
+                    <h:commandLink class="btn btn-large btn-primary" id="saveid" action="#{userController.authentification()}" value="Se connecter" style="color: #fff;" />
+                
+                
+                
             </h:form>
         </div> <!-- /container -->
     </h:body>
