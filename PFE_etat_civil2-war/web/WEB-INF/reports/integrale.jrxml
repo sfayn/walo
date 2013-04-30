@@ -2,7 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95b66382-4144-48ee-bee1-6bee4b079750">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="99"/>
+	<property name="ireport.y" value="187"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\YOU$$EF\\Documents\\NetBeansProjects\\walo\\PFE_etat_civil2-war\\web\\WEB-INF\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parameter1" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -49,7 +53,7 @@
 			<textField>
 				<reportElement uuid="e9b85ad9-3364-4ba2-9881-469fef3485b7" x="416" y="36" width="73" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{anneeG}]]></textFieldExpression>
 			</textField>
@@ -80,7 +84,7 @@
 			<textField>
 				<reportElement uuid="495ea58f-bac2-4e79-a6d8-792e42308728" x="416" y="21" width="73" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{anneeH}]]></textFieldExpression>
 			</textField>
@@ -109,14 +113,14 @@
 			<textField>
 				<reportElement uuid="0dd064b2-c748-4ec7-b1da-d035482bc230" x="419" y="6" width="67" height="15"/>
 				<textElement textAlignment="Right">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{numActe}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="7bdad082-858b-4e61-8c48-d4f1b71d0de4" x="113" y="13" width="168" height="20"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="14" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="14" isBold="true" isUnderline="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[نسخة كاملة من رسم الولادة]]></text>
 			</staticText>
@@ -145,24 +149,24 @@
 				<textElement textAlignment="Right">
 					<font fontName="Arial"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[على الساعة]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="3ea2e634-39ad-4d30-b4f2-6808bc74ffe7" x="66" y="30" width="100" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[والدقيقة]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="75f6a52e-5127-48e5-81d8-095743f04f01" x="261" y="45" width="100" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[ولد ب]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="261" y="14" width="70" height="1"/>
+				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="35" y="14" width="296" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dotted"/>
 				</graphicElement>
@@ -172,12 +176,47 @@
 				<textElement textAlignment="Right">
 					<font fontName="Arial"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[من جنس]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6092486c-97ef-4991-a6fa-2357e0a8cb00" x="260" y="76" width="100" height="15"/>
+				<reportElement uuid="6092486c-97ef-4991-a6fa-2357e0a8cb00" x="261" y="69" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[الذي إتخذ الإسم العائلي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4141f6f1-07bf-4828-9f6d-1fdbfa0fb80b" x="261" y="84" width="100" height="16"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[والده هو]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="35" y="24" width="295" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="95c70f47-c012-4103-82dd-babf1081666e" x="261" y="100" width="100" height="20"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[جنسيته]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="03ce413d-88c9-4e49-8ea1-fbeeff4bbd67" x="396" y="75" width="152" height="257"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "integrale_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="be11a5df-67a7-4ad1-817e-54c64dbc088e" x="66" y="100" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[المولود ب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd4eb1dc-1d28-4e21-81b8-3b6e9f5e46c1" x="261" y="120" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[في عام]]></text>
 			</staticText>
 		</band>
 	</detail>
