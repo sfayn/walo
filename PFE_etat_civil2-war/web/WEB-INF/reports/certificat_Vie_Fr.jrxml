@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24e254b5-2b9f-4ef5-aeda-5afab6cf994c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="152"/>
+	<title>
+		<band height="139" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3808f05f-645d-48a7-84fd-f1217d33de0b" x="0" y="0" width="163" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ROYAUME DU MAROC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1c3c0d82-3890-405d-b184-b7d1c4a61820" x="21" y="19" width="142" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Ministère de l'Intérieur
+Province (ou Préfecture)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="89049a6a-146c-4d76-829f-1848ede7037e" x="0" y="65" width="100" height="15"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Commune:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="026ff369-5dfb-48f0-948a-b24e6981dbe4" x="189" y="44" width="140" height="19"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bureau de l'Etat Civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fa057b6-b12f-48b2-971c-77f6592d7bae" x="189" y="63" width="140" height="26"/>
+				<textElement/>
+				<text><![CDATA[Extrait des registres du bureau de l'Etat Civil de........................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="857ac3c3-b588-43ba-bf07-df0e42c317fe" x="0" y="103" width="35" height="14"/>
+				<textElement/>
+				<text><![CDATA[Année]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39837824-928e-4fa7-88fd-371fa07c0ab6" x="35" y="97" width="100" height="27"/>
+				<textElement/>
+				<text><![CDATA[Hégirienne
+Grégorienne]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="89049a6a-146c-4d76-829f-1848ede7037e" x="0" y="80" width="100" height="15"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Acte N°:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="55" y="79" width="100" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="42" y="94" width="113" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="97" y="107" width="58" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="97" y="121" width="58" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="0" y="62" width="155" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8d507407-7c95-4029-a350-c535ed3f0120" x="85" y="8" width="244" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Certificat de vie]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="222" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3011624e-dada-4c27-8e8e-82baebc5b02f" x="0" y="25" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Prenom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b09ecb7-8cd8-4d45-b366-d5d62060dfe5" x="0" y="45" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Nom de Famille:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80fce387-48b5-4e03-ac16-8fa560af9eaa" x="0" y="65" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Lieu de Naissance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="732998d0-c28d-4df4-9fe3-7f4f8c644102" x="0" y="85" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Né(e) le:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2342045-7da2-4be9-b1d6-cf49672994f9" x="0" y="105" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Correspondant au:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac1c1a9f-17be-4ae1-bf77-647d5b580151" x="0" y="125" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Fils ou Fille de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58acf8f9-58d0-4ad5-a638-f3ba9ff4e077" x="0" y="145" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Et de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58acf8f9-58d0-4ad5-a638-f3ba9ff4e077" x="0" y="176" width="381" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[est vivant à ce jour pour s'être présenté - m'avoir été présenté]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58acf8f9-58d0-4ad5-a638-f3ba9ff4e077" x="0" y="196" width="381" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[En foi de quoi, le présent certificat est délivré pour servir et valoir ce que le droit ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="42" y="44" width="339" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="85" y="64" width="296" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="97" y="84" width="284" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="42" y="104" width="339" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="31" y="164" width="350" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="85" y="124" width="296" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="75" y="144" width="306" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b83772fe-4ba3-4d9e-b8e2-3e2d7d2ebfb6" x="0" y="50" width="147" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Sceau du Bureau de l'Etat Civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d8e2485-f10e-45b2-baa5-d2ed0a1afc7f" x="97" y="20" width="92" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Correspondant au:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="10063528-6fb0-4dab-9148-c9f69de6a126" x="267" y="50" width="114" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[L'Officier de l'état Civil
+Signé:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d8e2485-f10e-45b2-baa5-d2ed0a1afc7f" x="0" y="0" width="21" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d8e2485-f10e-45b2-baa5-d2ed0a1afc7f" x="97" y="0" width="92" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Le]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="11" y="19" width="86" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="113" y="18" width="198" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b541fcd0-946d-4de4-a04b-4d7d431a3ec5" x="183" y="39" width="128" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>
