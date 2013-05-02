@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ba9c96ce-a473-485f-b6e5-97582e065c6d" x="321" y="0" width="60" height="26"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[المملكة المغربية وزارة الداخلية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6078e06-3756-48bd-ac22-63e7b4643d8f" x="321" y="26" width="60" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[عمالة أو إقليم :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ccf37ae-67b1-482d-a409-ad35386383d7" x="321" y="39" width="60" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[جماعة :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1771269e-ce1e-49a9-bba5-0f5a8ebf2977" x="309" y="52" width="72" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[مكتب الحالة المدنية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9be8abd0-60bd-4964-a398-4dce8c18e316" x="321" y="65" width="60" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[رسم الرقم :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b525ec6e-5be8-40a7-bbb0-bbfe110c169b" x="321" y="78" width="60" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[لسنة ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c2cc7882-bc14-4837-8cac-969ebad9fe02" x="312" y="87" width="52" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="10595ef3-1d4c-404f-bf58-fb56d155525d" x="284" y="78" width="25" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[هجرية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e72407e4-33c0-4632-920c-de2d0ebd8238" x="136" y="132" width="108" height="20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[نسخة موجزة من رسم الوفاة]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c2cc7882-bc14-4837-8cac-969ebad9fe02" x="312" y="100" width="52" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="10595ef3-1d4c-404f-bf58-fb56d155525d" x="284" y="91" width="25" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[ميلادية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7555900d-d4f0-4f72-b8c7-e291da263466" x="281" y="180" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[توفي(ت) ب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="200" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[عام ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="220" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[الإسم الشخصي :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="241" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[الإسم العائلي :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="261" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[المولود (ة) في يوم ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="281" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[ب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="301" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[مهنته (ها) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="321" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[الساكن (ة) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="341" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[والده (ها) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="361" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[والدته (ها) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="229" y="381" width="152" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[نشهد بصفتنا ضابطا للحالة المدنية نحن :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="112" y="401" width="269" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[بأن هذه النسخة مطابقة لما هو مضمن في سجلات الحالة المدنية بالمكتب المذكور.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="178" y="436" width="34" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[في :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="178" y="451" width="34" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[الموافق :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="481" width="83" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[طابع مكتب الحالة المدنية ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="330" y="496" width="34" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[توقيع]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="89" y="481" width="69" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[ضابط الحالة المدنية]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="212" y="38" width="120" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="212" y="51" width="137" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="212" y="64" width="100" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="312" y="77" width="28" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="199" width="330" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="219" width="364" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="236" width="321" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="2" y="260" width="330" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="280" width="321" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="300" width="364" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="320" width="340" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="340" width="340" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="360" width="340" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="380" width="340" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="0" y="400" width="252" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="43" y="450" width="148" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="43" y="465" width="135" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
