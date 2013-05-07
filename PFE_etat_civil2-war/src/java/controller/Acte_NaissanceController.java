@@ -684,7 +684,7 @@ public class Acte_NaissanceController implements Serializable {
             params.put("prenomAr", current.getPrenom_Ar());
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
             params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
-            params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+            params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
             params.put("nationnaliteAr", "مغربية");
             params.put("pereAr", current.getPrenomP_Ar());
             params.put("mereAr", current.getPrenomM_Ar());

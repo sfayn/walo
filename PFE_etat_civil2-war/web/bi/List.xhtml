@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
+
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+               
+
+                <style>
+                    a:visited{
+                        color: #ffffff ;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
+                    a:hover{
+                        color: #ffffff !important;
+                    }
+                    .inlineRadioButtons { } 
+                    .inlineRadioButtons label {     
+                        display: inline; }
+                    </style>
+                    <br />
+                    <b:buttonDropdown title="Actions" severity="primary" vertical="top" horizontal="right">
+                        <h:commandLink action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}" style="font-size: 13pt; color: #000000;"/>
+                        <h:commandLink action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" style="font-size: 13pt; color: #000000;"/>
+                    </b:buttonDropdown>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

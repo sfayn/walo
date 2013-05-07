@@ -52,6 +52,10 @@
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/faces/donnees_Marginales/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/faces/bi/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
