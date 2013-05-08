@@ -3,7 +3,6 @@ package controller;
 import bean.Acte_Naissance;
 import bean.Donnees_Marginales;
 import bean.User;
-import com.google.common.collect.Maps;
 import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
@@ -42,6 +41,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.util.JRProperties;
 import org.ini4j.Wini;
 import org.richfaces.model.Filter;
@@ -766,7 +766,7 @@ public class Acte_NaissanceController implements Serializable {
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-
+        
     }
 
     public String destroy() {
