@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -36,6 +37,7 @@ import javax.faces.model.SelectItem;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -110,6 +112,7 @@ public class Acte_NaissanceController implements Serializable {
             }
         };
     }
+
     public Filter<?> getAnneeFilterImpl() {
         return new Filter<Acte_Naissance>() {
             public boolean accept(Acte_Naissance item) {
@@ -121,10 +124,10 @@ public class Acte_NaissanceController implements Serializable {
             }
         };
     }
-    
+
     public Acte_NaissanceController() {
     }
-    
+
     public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
@@ -138,14 +141,14 @@ public class Acte_NaissanceController implements Serializable {
                     current.getDonnees_Marginaless().get(i).setDescAr("حصل تقارر بالزوجية بين " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " ب   بناء على شهادة التقارر الصادرة تحت  المخاطب عليها من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 4) {
-                    current.getDonnees_Marginaless().get(i).setDescAr("طلاق "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" من   بناء على الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
-                
+                    current.getDonnees_Marginaless().get(i).setDescAr("طلاق " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " من   بناء على الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 5) {
-                    current.getDonnees_Marginaless().get(i).setDescAr("راجع "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" زوجته   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                    current.getDonnees_Marginaless().get(i).setDescAr("راجع " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " زوجته   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 6) {
-                    current.getDonnees_Marginaless().get(i).setDescAr("قام "+current.getNom_Ar() + " " + current.getPrenom_Ar() +" بمراجعة   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                    current.getDonnees_Marginaless().get(i).setDescAr("قام " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " بمراجعة   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 7) {
                     current.getDonnees_Marginaless().get(i).setDescAr("تعوض كلمة         في السطر         ب               لدينا نحن ضابط الحالة المدنية ");
@@ -154,11 +157,11 @@ public class Acte_NaissanceController implements Serializable {
                     current.getDonnees_Marginaless().get(i).setDescAr("أصلح      ليصبح     عوض       بمقتضى الحكم عدد       الصادر عن المحكمة الإبتدائية ب        بتاريخ       الموفق ل        و المنقول في سجل الأحكام لسنة         تحت عدد       و حرر بتاريخ      الموفق ل         لدينا نحن ضابط الحالة المدنية ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 9) {
-                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم العائلي لصاحب الرسم ليصبح       عوض "+current.getNom_Ar() +" بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ " );
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم العائلي لصاحب الرسم ليصبح       عوض " + current.getNom_Ar() + " بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ ");
                 }
-               
+
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 10) {
-                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم الشخصي الأجنبي  لصاحب الرسم ليصبح       عوض "+current.getPrenom_Ar() +" بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ " );
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم الشخصي الأجنبي  لصاحب الرسم ليصبح       عوض " + current.getPrenom_Ar() + " بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 11) {
                     current.getDonnees_Marginaless().get(i).setDescAr("أدخل الإسم العائلي أو الشخصي        بالأحرف اللاتينية في صلب الرسم، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
@@ -167,13 +170,13 @@ public class Acte_NaissanceController implements Serializable {
                     current.getDonnees_Marginaless().get(i).setDescAr("أصلح الإسم العائلي أو الشخصي بالأحرف اللاتينية و ذلك بجعله من  ، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 13) {
-                    current.getDonnees_Marginaless().get(i).setDescAr("اكتسب صاحب الرسم الجنسية المغربية بموجب (وثيقة التجنيس ظهير أو مرسوم أو مقرر لوزير العدل  )      عدد       الصادر عن   بتاريخ        الموافق لـ    وحرر بتاريخ");                
+                    current.getDonnees_Marginaless().get(i).setDescAr("اكتسب صاحب الرسم الجنسية المغربية بموجب (وثيقة التجنيس ظهير أو مرسوم أو مقرر لوزير العدل  )      عدد       الصادر عن   بتاريخ        الموافق لـ    وحرر بتاريخ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 14) {
-                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() +"بتاريخ       بجماعة أو مدينة        وقد سجلت وفاته تحت عدد      سنة     وحرر بتاريخ      موافق    لدينا نحن ضابط الحالة المدنية ");
+                    current.getDonnees_Marginaless().get(i).setDescAr("توفي " + current.getNom_Ar() + " " + current.getPrenom_Ar() + "بتاريخ       بجماعة أو مدينة        وقد سجلت وفاته تحت عدد      سنة     وحرر بتاريخ      موافق    لدينا نحن ضابط الحالة المدنية ");
                 }
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
-                current.getDonnees_Marginaless().get(i).setDescAr("توفي "+current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح ");
+                    current.getDonnees_Marginaless().get(i).setDescAr("توفي " + current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح ");
                 }
             }
         }
@@ -235,7 +238,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public SelectItem[] listReg() {
-        if(annee==null && current.getRegistre() !=null){
+        if (annee == null && current.getRegistre() != null) {
             annee = current.getRegistre().getAnnee();
         }
         return JsfUtil.getSelectItems(ejbFacade.findByDate(annee), true);
@@ -330,7 +333,6 @@ public class Acte_NaissanceController implements Serializable {
     public void setDatetasM_Fr(String datetasM_Fr) {
         this.datetasM_Fr = datetasM_Fr;
     }
-
 
     public void changeDeclaration() {
 
@@ -511,6 +513,7 @@ public class Acte_NaissanceController implements Serializable {
         }
 
     }
+
     public String create() {
         try {
             encode();
@@ -533,6 +536,7 @@ public class Acte_NaissanceController implements Serializable {
             return null;
         }
     }
+
     public String prepareEdit() {
         current = (Acte_Naissance) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -561,8 +565,8 @@ public class Acte_NaissanceController implements Serializable {
 
     public void check() {
         UtilitaireSession us = UtilitaireSession.getInstance();
-        
-        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+
+        if (((User) us.get("auth")).getRole().getLibelle().equals("User")) {
             return;
         }
         if (current.isChecked()) {
@@ -620,55 +624,149 @@ public class Acte_NaissanceController implements Serializable {
 
     public void PDF() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
+        Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
+        acts.add(current);
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        JRBeanCollectionDataSource beanCollectionDataSource2 = new JRBeanCollectionDataSource(acts);
+        Map params = new HashMap();
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
+        System.out.println("config "+ini.get("config", "format"));
+        if (!ini.get("config", "format").equals("2")) {
+            SimpleDateFormat y = new SimpleDateFormat("yyyy");
+            params.put("numActe", "" + current.getNumActe());
+            params.put("anneeH", "" + y.format(current.getDateTah_H()));
+            params.put("anneeG", "" + y.format(current.getDateTah_G()));
+
+            params.put("province", ini.get("commune", "province"));
+            params.put("commune", ini.get("commune", "commune"));
+            params.put("communeAr", ini.get("commune", "communeAr"));
+            System.out.println("commune: ---> " + ini.get("commune", "communeAr"));
+            params.put("provinceAr", ini.get("commune", "provinceAr"));
+
+            params.put("nom", current.getNom_Fr());
+            params.put("prenom", current.getPrenom_Fr());
+            params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
+            params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("nationnalite", "Marocaine");
+            params.put("pere", current.getPrenomP_Fr());
+            params.put("mere", current.getPrenomM_Fr());
+            params.put("deces", "Néant");
+
+            params.put("nomAr", current.getNom_Ar());
+            params.put("prenomAr", current.getPrenom_Ar());
+            params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
+            params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("nationnaliteAr", "مغربية");
+            params.put("pereAr", current.getPrenomP_Ar());
+            params.put("mereAr", current.getPrenomM_Ar());
+            params.put("decesAr", "لا شيء");
+
+            InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait.jasper");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+            HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            httpServletResponse.setContentType("application/pdf");
+            //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+            ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+        } else {
+            SimpleDateFormat y = new SimpleDateFormat("yyyy");
+            params.put("numActe", "" + current.getNumActe());
+            params.put("anneeH", "" + y.format(current.getDateTah_H()));
+            params.put("anneeG", "" + y.format(current.getDateTah_G()));
+
+            params.put("communeAr", ini.get("commune", "communeAr"));
+            params.put("provinceAr", ini.get("commune", "provinceAr"));
+
+            params.put("nomAr", current.getNom_Ar());
+            params.put("prenomAr", current.getPrenom_Ar());
+            params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
+            params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+            params.put("nationnaliteAr", "مغربية");
+            params.put("pereAr", current.getPrenomP_Ar());
+            params.put("mereAr", current.getPrenomM_Ar());
+            params.put("decesAr", "لا شيء");
+
+            InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait-ar.jasper");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+
+            params = new HashMap();
+            params.put("numActe", "" + current.getNumActe());
+            params.put("anneeH", "" + y.format(current.getDateTah_H()));
+            params.put("anneeG", "" + y.format(current.getDateTah_G()));
+
+            params.put("province", ini.get("commune", "province"));
+            params.put("commune", ini.get("commune", "commune"));
+
+            params.put("nom", current.getNom_Fr());
+            params.put("prenom", current.getPrenom_Fr());
+            params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
+            params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("correspondant", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+            params.put("nationnalite", "Marocaine");
+            params.put("pere", current.getPrenomP_Fr());
+            params.put("mere", current.getPrenomM_Fr());
+            params.put("deces", "Néant");
+
+
+            JasperPrint jasperPrint2;
+            InputStream reportSource2 = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait-fr.jasper");
+            jasperPrint2 = JasperFillManager.fillReport(reportSource2, params, beanCollectionDataSource2);
+            List pages = jasperPrint2.getPages();
+            for (Iterator i = pages.iterator(); i.hasNext();) {
+                System.out.println("+page");
+                JRPrintPage jRPrintPage = (JRPrintPage) i.next();
+                jasperPrint.addPage(jRPrintPage);
+            }
+
+
+
+            HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            httpServletResponse.setContentType("application/pdf");
+            //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+            ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+        }
+    }
+
+    public void integrale() throws JRException, IOException {
+        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        params.put("numActe", "" + current.getNumActe());
         params.put("anneeH", "" + y.format(current.getDateTah_H()));
         params.put("anneeG", "" + y.format(current.getDateTah_G()));
         //Wini ini = new Wini(new File("C:\\jars\\conf.ini"));
         File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
-        System.out.println("length " + f1.length());
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
-        System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
-        System.out.println("" + ini.size());
         params.put("province", ini.get("commune", "province"));
         params.put("commune", ini.get("commune", "commune"));
         params.put("communeAr", ini.get("commune", "communeAr"));
-        System.out.println("commune: ---> " + ini.get("commune", "communeAr"));
         params.put("provinceAr", ini.get("commune", "provinceAr"));
-
-        params.put("nom", current.getNom_Fr());
-        params.put("prenom", current.getPrenom_Fr());
-        params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
-        params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
-        params.put("nationnalite", "Marocaine");
-        params.put("pere", current.getPrenomP_Fr());
-        params.put("mere", current.getPrenomM_Fr());
-        params.put("deces", "Néant");
-
-        params.put("nomAr", current.getNom_Ar());
-        params.put("prenomAr", current.getPrenom_Ar());
-        params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
-        params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
-        params.put("nationnaliteAr", "مغربية");
-        params.put("pereAr", current.getPrenomP_Ar());
-        params.put("mereAr", current.getPrenomM_Ar());
-        params.put("decesAr", "لا شيء");
+        params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        System.out.println(params.get("dateNaissanceGAr"));
+        params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
+        params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
+        params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
+        params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
 
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
-        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait.jasper");
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integrale.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-        
+
     }
 
     public String destroy() {

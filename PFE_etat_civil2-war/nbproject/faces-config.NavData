@@ -2,8 +2,8 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Profile.xhtml" x="454" y="518" zoom="false"/>
         <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/acte_Naissance/List.xhtml" x="355" y="442" zoom="true"/>
+        <Node id="C:/Users/YOU$$EF/Documents/NetBeansProjects/walo/PFE_etat_civil2-war/web/user/Profile.xhtml" x="454" y="518" zoom="false"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
