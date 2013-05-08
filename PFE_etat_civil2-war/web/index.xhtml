@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:jsflot="http://www.jsflot.org/taglib/jsflot">
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:composition template="/template.xhtml" >
 
@@ -101,7 +100,7 @@
                                 };*/
 
                                 // Draw the graph
-                                Flotr.draw(container, [d1, d2], {
+                                Flotr.draw(container, [{data:d1, label:"الولادات"}, {data:d2, label:"الوفيات"}], {
                                     bars : {
                                         show : true,
                                         horizontal : horizontal,
@@ -109,6 +108,7 @@
                                         barWidth : 0.5
                                     },
                                     mouse : {
+                                        trackFormatter: function(obj){ return obj.y; },
                                         track : true,
                                         relative : true
                                     },
@@ -123,7 +123,7 @@
                                         min : 0,
                                         autoscaleMargin : 1
                                     },
-                                    legend: { show: false }
+                                    legend: { show: true }
                                 });
                             })(document.getElementById("graph"));
                             // ]]> 

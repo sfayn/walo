@@ -18,6 +18,7 @@ public class BIController implements Serializable {
     @EJB
     private session.Acte_NaissanceFacade acte_NaissanceFacade;
     private Integer anneeGeneral = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
+    private Integer mois = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
     private List<Integer> data = new ArrayList<Integer>();
 
     public Integer getAnneeGeneral() {
@@ -27,6 +28,16 @@ public class BIController implements Serializable {
     public void setAnneeGeneral(Integer anneeGeneral) {
         this.anneeGeneral = anneeGeneral;
     }
+
+    public Integer getMois() {
+        return mois;
+    }
+
+    public void setMois(Integer mois) {
+        this.mois = mois;
+    }
+    
+    
     
     public List<Integer> getData() {
         data = new ArrayList<Integer>();
