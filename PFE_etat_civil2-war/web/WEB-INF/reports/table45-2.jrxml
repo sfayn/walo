@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32fcfeb3-9e1b-47d4-99f4-9e485269abe9">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="340"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -88,7 +88,7 @@
 	<detail>
 		<band height="802" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="123" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="0" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.25"/>
@@ -98,10 +98,10 @@
 				<textElement textAlignment="Center">
 					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[أنثى]]></text>
+				<text><![CDATA[عدد الإناث]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="123" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="0" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.0"/>
@@ -111,10 +111,10 @@
 				<textElement textAlignment="Center">
 					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[ذكر]]></text>
+				<text><![CDATA[عدد الذكور]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="123" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="0" width="352" height="15"/>
 				<box>
 					<topPen lineWidth="0.25"/>
 					<leftPen lineWidth="0.0"/>
@@ -124,10 +124,10 @@
 				<textElement textAlignment="Center">
 					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[الحدث]]></text>
+				<text><![CDATA[العمالة أو الإقليم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="143" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="15" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -140,7 +140,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="143" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="15" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -153,7 +153,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="143" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="15" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -161,12 +161,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[ولادات  داخل الأجل القانوني]]></text>
+				<text><![CDATA[مولاي رشيد ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="163" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="30" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -179,7 +179,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="163" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="30" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -192,7 +192,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="163" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="30" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -200,51 +200,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[أحكام الولادات للسنة الجارية]]></text>
+				<text><![CDATA[مولاي يعقوب]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="183" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="183" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="183" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[أحكام الولادات للسنوات الفارطة]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="203" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="45" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -255,7 +216,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="203" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="45" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -268,7 +229,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="203" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="45" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -276,12 +237,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[مجموع الولادات]]></text>
+				<text><![CDATA[الناضور]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="223" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="60" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -294,7 +255,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="223" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="60" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -307,7 +268,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="223" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="60" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -315,12 +276,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[وفيات داخل الأجل القانوني]]></text>
+				<text><![CDATA[النواصر]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="243" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="75" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -333,7 +294,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="243" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="75" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -346,7 +307,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="243" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="75" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -354,12 +315,337 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[أحكام الوفيات للسنة الجارية]]></text>
+				<text><![CDATA[وارزازات]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="380" width="100" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="90" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[واد الذهب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="150" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="90" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="90" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="150" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="150" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[سلا]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="105" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="105" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[وجدة أنجاد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="105" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="120" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="120" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الرباط]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="120" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="135" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[أسفي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="135" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="135" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="165" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="180" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="285" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="285" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="300" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="240" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="165" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[صفرو]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="255" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="270" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تاونات]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="210" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="195" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -370,10 +656,10 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="380" width="103" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="255" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
@@ -383,7 +669,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="380" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="225" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -391,38 +677,25 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[الزوجات]]></text>
+				<text><![CDATA[الصخيرات -تمارة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="360" width="100" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="180" width="103" height="15"/>
 				<box>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[أنثى]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="360" width="352" height="20"/>
-				<box>
-					<topPen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[الحدث]]></text>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="511" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="270" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -435,8 +708,8 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="571" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="210" width="103" height="15"/>
+				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.25"/>
@@ -445,23 +718,10 @@
 				<textElement textAlignment="Center">
 					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[34-30]]></text>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="511" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[19-18]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="491" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="300" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -474,7 +734,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="591" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="270" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -487,85 +747,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="531" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="511" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="491" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="551" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[29-25]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="491" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[أقل من 18]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="571" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="571" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="165" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -578,124 +760,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="551" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="471" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[عدد المواليد الإناث]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="531" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="471" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[عدد المواليد الذكور]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="591" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="591" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[39-35]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="551" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="531" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[24-20]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="471" width="352" height="20"/>
-				<box>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الفئات العمرية لسن الأم]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="263" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="255" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -703,64 +768,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[أحكام الوفيات  للسنوات الفارطة ]]></text>
+				<text><![CDATA[طنطان]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="283" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="263" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="263" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="283" width="100" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="283" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="285" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -768,12 +781,38 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[مجموع الوفيات]]></text>
+				<text><![CDATA[تاوريرت]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="611" width="100" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="195" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="195" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[سيدي البرنوصي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="240" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -786,59 +825,46 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="611" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="180" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[44-40]]></text>
+				<text><![CDATA[سطات]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="631" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="611" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="631" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="210" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[49-45]]></text>
+				<text><![CDATA[سيدي قاسم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="631" width="100" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="240" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[طنجة -أصيلة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="225" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -851,7 +877,33 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="651" width="100" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="300" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تارودانت]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="225" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="315" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -864,20 +916,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="651" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[50+]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="671" width="103" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="315" width="103" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -890,33 +929,20 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="651" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="671" width="352" height="20"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="315" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.25"/>
 					<rightPen lineWidth="0.25"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[غير مصرح به]]></text>
+				<text><![CDATA[طاطا]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="671" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="330" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -929,7 +955,59 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="691" width="100" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="330" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="330" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تازة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="345" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تطوان]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="345" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="345" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -942,7 +1020,163 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="691" width="352" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="360" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="360" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[تزنيت]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="360" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="375" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="375" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[زاكورة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="375" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="390" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="390" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الخارج]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="390" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="405" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="405" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="405" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[غير مصرح بها]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="420" width="352" height="15"/>
 				<box leftPadding="0" rightPadding="8">
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -950,51 +1184,12 @@
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المجموع]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="691" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="400" width="352" height="20"/>
-				<box leftPadding="0" rightPadding="8">
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Right">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الطلاقات]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="400" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="400" width="100" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="420" width="100" height="15"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.25"/>
@@ -1007,122 +1202,162 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="227" y="0" width="100" height="20"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="420" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[جدادة الفرز رقم 1/5]]></text>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="517" y="20" width="38" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[جهة]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="500" y="35" width="55" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[عمالة إقليم]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="500" y="62" width="55" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[جماعة]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="474" y="77" width="81" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[مكتب الحالة المدنية]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="426" y="103" width="112" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الولادات و الوفيات :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b5142dca-8351-48f5-ab86-b0f3b3fc56ff" x="529" y="103" width="26" height="20"/>
+				<reportElement uuid="b5142dca-8351-48f5-ab86-b0f3b3fc56ff" x="529" y="465" width="26" height="20"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[-01]]></text>
+				<text><![CDATA[-08]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b5142dca-8351-48f5-ab86-b0f3b3fc56ff" x="529" y="340" width="26" height="20"/>
-				<textElement textAlignment="Right">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[-02]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="426" y="340" width="112" height="20"/>
+				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="426" y="465" width="112" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="12" isBold="true" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[الزواجات والطلاقات :]]></text>
+				<text><![CDATA[إحصائيات أخرى :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="373" y="451" width="165" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="511" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[الولادات حسب الفئات العمرية لسن الأم :]]></text>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b5142dca-8351-48f5-ab86-b0f3b3fc56ff" x="529" y="451" width="26" height="20"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="511" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="526" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="496" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الإناث]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="496" width="103" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[الذكور]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="526" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[-03]]></text>
+				<text><![CDATA[الأطفال المتكفل بهم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="116" y="35" width="60" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="496" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[شهر التصريح ]]></text>
+				<text><![CDATA[عدد]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="138" y="62" width="38" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				<reportElement uuid="ccf4e8a0-2809-4d61-b027-f7814e261575" x="203" y="511" width="352" height="15"/>
+				<box leftPadding="0" rightPadding="8">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="12" isBold="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[سنة ]]></text>
+				<text><![CDATA[الأطفال المتخلى عنهم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="100" y="716" width="16" height="15"/>
+				<reportElement uuid="a8663230-0e8e-4e77-acf8-4b5fa1f4e639" x="0" y="526" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="100" y="573" width="16" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[في]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="48" y="731" width="112" height="15"/>
+				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="48" y="588" width="112" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" isBold="false" isUnderline="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[إمضاء : ضابط الحالة المدنية]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9971dac9-6854-487a-9a83-68209ac67b01" x="100" y="360" width="103" height="20"/>
-				<box>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="true" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[ذكر]]></text>
 			</staticText>
 		</band>
 	</detail>
