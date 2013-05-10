@@ -1,9 +1,12 @@
 package controller;
 
+import bean.Donnees_Marginales;
+import bean.Donnees_Marginales_J_N;
 import bean.Jugement_Deces;
 import bean.Jugement_Naissance;
 import bean.Registre;
 import bean.User;
+import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
@@ -38,6 +41,8 @@ public class Jugement_NaissanceController implements Serializable {
     private DataModel items = null;
     @EJB
     private session.Jugement_NaissanceFacade ejbFacade;
+    @EJB
+    private session.Donnees_Marginales_J_NFacade ejbFacade2;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String annee;
@@ -47,11 +52,143 @@ public class Jugement_NaissanceController implements Serializable {
     private Long numActeFilter;
     private String anneeFilter;
     private Integer primaryRowCount = 10;
+    private int i = 0;
+    private int j = 0;
+    private int k = 0;
+    private int l = 0;
 
+    
+    public void changetext(){
+    current.setDescriptionAr("بعد اخبارنا بتاريخ    هجرية موافق   بالحكم تحت عدد:          الصادر من المحكمة الابتدائية   بتاريخ   هجرية موافق  و المتعلق بولادة    ننقل مضمون هدا الحكم   ـــــــــــــــــــــــــــ لهده الاسباب ـــــــــــــــــــــــــــــــ    فقد صدر الحكم انه بتاريخ  هجرية موافق   ميلادية    ولد ب     من ابيه  المولود ب                في           هجرية موافق                ميلادية        المغربي الجنسية حرفته       و من والدته    المولودة ب           في          هجرية موافق         ميلادية جنسيتها مغربية حرفتها               و الساكنان   كما امرت المحكمة بتسجيل مضمون هدا الحكم في سجلات الحالة المدنية للسنة الجارية بالاشارة الموجزة لمضمونه في سجلات السنة التي كان من الواجب ان يسجل فيها قانونيا ـــــــــ  و نقلناه بتاريخ  تاني رجب  سنة   ألف و أربعمائة و أربعة و ثلاثين هجرية موافق ثاني عشر ماي  سنة   ألفين  و ثلاثة عشر ميلادية  لدينا نحن ");
+    }
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;       
+    }
+    
     public String getAnnee_jug_Naiss() {
         return annee_jug_Naiss;
     }
+    public Date getG_to_h() {
+        if (current.getDate_de_naiss_G() == null) {
+            return null;
+        } else {
+            current.setDate_de_naiss_H(Helper.dateTimeGrToH(current.getDate_de_naiss_G()));
+            return current.getDate_de_naiss_H();
+        }
 
+    }
+    public Date getDeclarationG_to_h() {
+        if (current.getDateDeclaration() == null) {
+            return null;
+        } else {
+            current.setDateDeclaration_H(Helper.dateTimeGrToH(current.getDateDeclaration()));
+            return current.getDateDeclaration_H();
+        }
+
+    }
+    public void declarationg_to_hplus() {
+        if (current.getDateDeclaration() != null) {
+            j++;
+            current.getDateDeclaration().setDate(current.getDateDeclaration().getDate() + j);
+        }
+    }
+
+    public void declarationg_to_hmoins() {
+        if (current.getDateDeclaration() != null) {
+            j--;
+            current.getDateDeclaration().setDate(current.getDateDeclaration().getDate() + j);
+        }
+    }
+    public Date getDistrG_to_h() {
+        if (current.getDatesdistr() == null) {
+            return null;
+        } else {
+            current.setDatesdistr_H(Helper.dateTimeGrToH(current.getDatesdistr()));
+            return current.getDatesdistr_H();
+        }
+
+    }
+    public void distrg_to_hplus() {
+        if (current.getDatesdistr() != null) {
+            l++;
+            current.getDatesdistr().setDate(current.getDatesdistr().getDate() + l);
+        }
+    }
+
+    public void distrg_to_hmoins() {
+        if (current.getDatesdistr() != null) {
+            l--;
+            current.getDatesdistr().setDate(current.getDatesdistr().getDate() + l);
+        }
+    }
+     public Date getJugG_to_h() {
+        if (current.getDateJug() == null) {
+            return null;
+        } else {
+            current.setDateJug_H(Helper.dateTimeGrToH(current.getDateJug()));
+            return current.getDateJug_H();
+        }
+
+    }
+    public void jugg_to_hplus() {
+        if (current.getDateJug() != null) {
+            k++;
+            current.getDateJug().setDate(current.getDateJug().getDate() + k);
+        }
+    }
+
+    public void jugg_to_hmoins() {
+        if (current.getDateJug() != null) {
+            k--;
+            current.getDateJug().setDate(current.getDateJug().getDate() + k);
+        }
+    }
+    
+    
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+         changetext();
+    }
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
+         changetext();
+    }
+
+    public int getL() {
+        return l;
+    }
+
+    public void setL(int l) {
+        this.l = l;
+         changetext();
+    }
+
+    public void g_to_hplus() {
+        if (current.getDate_de_naiss_G() != null) {
+            i++;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
+    }
+
+    public void g_to_hmoins() {
+        if (current.getDate_de_naiss_G() != null) {
+            i--;
+            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+        }
+    }
     public void setAnnee_jug_Naiss(String annee_jug_Naiss) {
         this.annee_jug_Naiss = annee_jug_Naiss;
     }
@@ -80,7 +217,71 @@ public class Jugement_NaissanceController implements Serializable {
     public void setAnneeFilter(String anneeFilter) {
         this.anneeFilter = anneeFilter;
     }
+ public void changeDonnees_MarginalesRemove(Donnees_Marginales_J_N donnee_Marginale) {
+        for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+            if (current.getDonnees_Marginaless().get(i) == donnee_Marginale) {
+                current.getDonnees_Marginaless().remove(i);
+            }
+        }
+    }
+ public void changeDescDM(Donnees_Marginales_J_N dm) throws UnsupportedEncodingException {
+        for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+            if (current.getDonnees_Marginaless().get(i) == dm) {
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("تزوج " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " ب    بمقتضى الرسم رقم     بثاريخ                   المخاطب عليه من طرف قاظي المحكمة الإبتدائية ل         حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 2) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(current.getNom_Ar() + " " + current.getPrenom_Ar() + "متزوج ب  بناء على شهادة الثبوت الصادرة تحت   المخاطب عليها من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدني  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 3) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("حصل تقارر بالزوجية بين " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " ب   بناء على شهادة التقارر الصادرة تحت  المخاطب عليها من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 4) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("طلاق " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " من   بناء على الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
 
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 5) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("راجع " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " زوجته   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 6) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("قام " + current.getNom_Ar() + " " + current.getPrenom_Ar() + " بمراجعة   بمقتضى الرسم عدد   بتاريخ    المخاطب عليه من طرف قاضي المحكمة الإبتدائية ل   حرر بتاريخ   لدينا نحن ضابط الحالة المدنية  ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 7) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("تعوض كلمة         في السطر         ب               لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 8) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أصلح      ليصبح     عوض       بمقتضى الحكم عدد       الصادر عن المحكمة الإبتدائية ب        بتاريخ       الموفق ل        و المنقول في سجل الأحكام لسنة         تحت عدد       و حرر بتاريخ      الموفق ل         لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 9) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم العائلي لصاحب الرسم ليصبح       عوض " + current.getNom_Ar() + " بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ ");
+                }
+
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 10) {
+                    current.getDonnees_Marginaless().get(i).setDescAr(" أذن في تغيير الإسم الشخصي الأجنبي  لصاحب الرسم ليصبح       عوض " + current.getPrenom_Ar() + " بموجب المرسوم عدد       الصادر عن الوزير الأول بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق لـ ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 11) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أدخل الإسم العائلي أو الشخصي        بالأحرف اللاتينية في صلب الرسم، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 12) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("أصلح الإسم العائلي أو الشخصي بالأحرف اللاتينية و ذلك بجعله من  ، بناء على القرار عدد       الصادر عن وزير الداخلية أو عن عامل عمالة أو إقليم  بتاريخ        الموافق لـ  وحرر بتاريخ       الموافق ل");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 13) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("اكتسب صاحب الرسم الجنسية المغربية بموجب (وثيقة التجنيس ظهير أو مرسوم أو مقرر لوزير العدل  )      عدد       الصادر عن   بتاريخ        الموافق لـ    وحرر بتاريخ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 14) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("توفي " + current.getNom_Ar() + " " + current.getPrenom_Ar() + "بتاريخ       بجماعة أو مدينة        وقد سجلت وفاته تحت عدد      سنة     وحرر بتاريخ      موافق    لدينا نحن ضابط الحالة المدنية ");
+                }
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
+                    current.getDonnees_Marginaless().get(i).setDescAr("توفي " + current.getNom_Ar() + " " + current.getPrenom_Ar() + "سجلت وفاته تحت عدد   سنة    وضعنا هدا البيان بناء على الإعلام  الوارد علينا بتاريخ     موافق    من ضابط الحالة المدنية ل    وحرر بتاريح ");
+                }
+            }
+        }
+    }
+    public void changeDonnees_Marginales() {
+        Donnees_Marginales_J_N dm = new Donnees_Marginales_J_N();
+        current.getDonnees_Marginaless().add(dm);
+    }
+ 
     public Filter<?> getNumActeFilterImpl() {
         return new Filter<Jugement_Naissance>() {
             public boolean accept(Jugement_Naissance item) {
@@ -152,18 +353,6 @@ public class Jugement_NaissanceController implements Serializable {
         this.annee = annee;
     }
 
-    public boolean findAct() {
-        if (registre != null && numActe != 0) {
-            if (!ejbFacade.findActe_Naissance(numActe, registre).isEmpty()) {
-                current.setActe_Naissance(ejbFacade.findActe_Naissance(numActe, registre).get(0));
-                return true;
-            } else {
-                current.setActe_Naissance(null);
-                return false;
-            }
-        }
-        return false;
-    }
     public SelectItem[] listReg_Jug_Naiss() {
         if (annee_jug_Naiss == null && current.getRegistre() != null) {
             annee_jug_Naiss = current.getRegistre().getAnnee();
@@ -244,11 +433,19 @@ public class Jugement_NaissanceController implements Serializable {
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
+            for (Donnees_Marginales_J_N dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceCreated"));
+            for (Donnees_Marginales_J_N dm : current.getDonnees_Marginaless()) {
+                dm.setJugement(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                ejbFacade2.edit(dm);
+            }
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
@@ -258,11 +455,23 @@ public class Jugement_NaissanceController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
-
+    public void GToHAnnee() {
+        if (current.getDate_de_naiss_G() != null) {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
+        }
+    }
     public String update() {
         try {
             encode();
+            for (Donnees_Marginales_J_N dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().edit(current);
+            for (Donnees_Marginales_J_N dm : current.getDonnees_Marginaless()) {
+                dm.setJugement(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                ejbFacade2.edit(dm);
+            }
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Jugement_NaissanceUpdated"));
             return "View";
         } catch (Exception e) {

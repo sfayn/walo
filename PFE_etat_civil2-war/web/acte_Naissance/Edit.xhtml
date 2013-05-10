@@ -44,7 +44,7 @@
                             <b:gridColumn span="4">
                                 <h:panelGrid columns="2" dir="rtl">
                                     <h:outputLabel value="السنة" for="annee" />
-                                    <h:selectOneMenu id="annee" class="input-small" value="#{acte_NaissanceController.annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
+                                    <h:selectOneMenu id="annee" class="input-small" value="#{acte_NaissanceController.selected.registre.annee}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="#{bundle.CreateActe_NaissanceTitle_sex}">
                                         <f:selectItems value="#{acte_NaissanceController.listannee()}"/>
                                         <f:ajax event="change" render="registre" execute="@this"/> 
                                         <f:ajax event="blur" render="@this"/>

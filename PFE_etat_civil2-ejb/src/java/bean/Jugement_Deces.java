@@ -8,13 +8,16 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
@@ -29,6 +32,8 @@ import javax.persistence.UniqueConstraint;
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )
 public class Jugement_Deces implements Serializable {
+    @OneToMany(mappedBy = "jugement", targetEntity=Donnees_Marginales_J_D.class, fetch = FetchType.EAGER,orphanRemoval=true)
+    private List<Donnees_Marginales_J_D> donnees_Marginaless;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,6 +55,14 @@ public class Jugement_Deces implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
 
+    public List<Donnees_Marginales_J_D> getDonnees_Marginaless() {
+        return donnees_Marginaless;
+    }
+
+    public void setDonnees_Marginaless(List<Donnees_Marginales_J_D> donnees_Marginaless) {
+        this.donnees_Marginaless = donnees_Marginaless;
+    }
+    
     public User getCreatedBy() {
         return createdBy;
     }
