@@ -26,7 +26,7 @@
                 <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                     <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                             margin-left:16px; border-bottom: 0px; width: auto;">الإحصائيات الشهرية:</legend>
-                    <b:gridRow >
+                    <b:gridRow id="flot" >
                         <div class="span5">
                             <div id="graph" style="height: 500px;"> </div>
                             <h:outputScript library="js" name="flotr2.min.js" />
@@ -34,35 +34,10 @@
                                 // <![CDATA[ 
                                 (function basic_bars(container, horizontal) {
 
-                                    var
-                                    horizontal = (horizontal ? true : false),
+                                    //var horizontal = (horizontal ? true : false),
                                     // Show horizontal bars
-                                    d1 = [],
-                                    // First data series
-                                    d2 = [],
-                                    // Second data series
-                                    point, // Data point variable declaration
-                                    i;
-
-                                    for (i = 1; i < 5; i++) {
-
-                                        if (horizontal) {
-                                            point = [Math.ceil(Math.random() * 10), i];
-                                        } else {
-                                            point = [i, Math.ceil(Math.random() * 10)];
-                                        }
-
-                                        d1.push(point);
-
-                                        if (horizontal) {
-                                            point = [Math.ceil(Math.random() * 10), i + 0.5];
-                                        } else {
-                                            point = [i + 0.5, Math.ceil(Math.random() * 10)];
-                                        }
-
-                                        d2.push(point);
-                                    };
-
+                                    d1 = [[1, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}],[2, #{bIController.countHommeDec+bIController.countFemmeDec}],[3, 0],[4, 0]],
+                                    
                                     // Draw the graph
                                     Flotr.draw(
                                     container, [d1], {
@@ -81,7 +56,7 @@
                                             title : '',
                                             tickSize : 1,
                                             min: 1,
-                                            ticks: [[1, 'Naissances'],[2, 'Deces'],[3, 'jug Naiss'],[4, 'jug dec']]
+                                            ticks: [[1, 'الولادات'],[2, 'الوفيات'],[3, 'jug Naiss'],[4, 'jug dec']]
                                         },
                                         yaxis: {
                                             min: 0,
@@ -96,13 +71,15 @@
                             <h:panelGrid columns="2" dir="rtl">
                                 <h:outputText value="السنة:" />
                                 <h:selectOneMenu styleClass="input-medium" id="annee" value="#{bIController.anneeGeneral}" >
-                                    <f:selectItem itemLabel="2010" itemValue="2010"/>  
-                                    <f:selectItem itemLabel="2011" itemValue="2011"/>  
-                                    <f:selectItem itemLabel="2012" itemValue="2012"/>  
-                                    <f:selectItem itemLabel="2013" itemValue="2013"/>  
+                                    <f:ajax execute="annee" event="change" render="flot" listener="#{bIController.table1()}" />
+                                    <f:selectItem itemLabel="1990" itemValue="1990"/>  
+                                    <f:selectItem itemLabel="1991" itemValue="1991"/>  
+                                    <f:selectItem itemLabel="1992" itemValue="1992"/>  
+                                    <f:selectItem itemLabel="1993" itemValue="1993"/>  
                                 </h:selectOneMenu>
                                 <h:outputText value="الشهر:" />
                                 <h:selectOneMenu styleClass="input-medium" id="mois" value="#{bIController.mois}" >
+                                    <f:ajax execute="mois" render="flot" listener="#{bIController.table1()}" />
                                     <f:selectItem itemLabel="01" itemValue="01"/>
                                     <f:selectItem itemLabel="02" itemValue="02"/>
                                     <f:selectItem itemLabel="03" itemValue="03"/>
@@ -116,7 +93,7 @@
                                     <f:selectItem itemLabel="11" itemValue="11"/>
                                     <f:selectItem itemLabel="12" itemValue="12"/>
                                 </h:selectOneMenu>
-                                <h:commandLink action="#" value="جذاذة الفرز 1" styleClass="btn btn-primary span2" />
+                                <h:commandLink actionListener="#{bIController.DOCX}" target="_blank" value="جذاذة الفرز 1" styleClass="btn btn-primary span2" />
                                 <h:commandLink action="#" value="جذاذة الفرز 2" styleClass="btn btn-primary span2" />
                                 <h:commandLink action="#" value="جذاذة الفرز 3" styleClass="btn btn-primary span2" />
                                 <h:commandLink action="#" value="جذاذة الفرز 4 و 5" styleClass="btn btn-primary span2" />
@@ -124,28 +101,7 @@
                         </b:gridColumn>
                     </b:gridRow>
                 </fieldset>
-                <style>
-                    a:visited{
-                        color: #ffffff ;
-                    }
-                    li>a{
-                        color: #000000;
-                    }
-                    a:hover{
-                        color: #ffffff !important;
-                    }
-                    .inlineRadioButtons { } 
-                    .inlineRadioButtons label {     
-                        display: inline; }
-                    </style>
-                    <br />
-                    <b:buttonDropdown title="Actions" severity="primary" vertical="top" horizontal="right">
-                        <h:commandLink action="#{userController.prepareCreate}" value="#{bundle.ListUserCreateLink}" style="font-size: 13pt; color: #000000;"/>
-                    <h:commandLink action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" style="font-size: 13pt; color: #000000;"/>
-                </b:buttonDropdown>
-
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>

@@ -13,8 +13,12 @@ import java.util.Date;
 public class Helper {
 
     public static void main(String[] args) {
+        Date d = new Date(90, 5, 30);
+        d.setYear(1434);
+        d.setMonth(6);
+        params();
         /*
-         * Date d = new Date(90, 5, 30);
+         * 
          * System.out.println(dateToStrG(d));
          * System.out.println(dateToStrH(d));
          * System.out.println(""+dateToStrArG(dateGrToH(d)));
@@ -27,12 +31,29 @@ public class Helper {
          */
     }
 
+    public static void params() {
+        // homme
+        System.out.println("<parameter name=\"h1\" class=\"java.lang.String\"/>");
+        System.out.println("<parameter name=\"h14\" class=\"java.lang.String\"/>");
+        for (int i = 5; i < 80; i += 5) {
+            System.out.println("<parameter name=\"h" + i + (i + 4) + "\" class=\"java.lang.String\"/>");
+        }
+        System.out.println("<parameter name=\"h80\" class=\"java.lang.String\"/>");
+        // femme
+        System.out.println("<parameter name=\"f1\" class=\"java.lang.String\"/>");
+        System.out.println("<parameter name=\"f14\" class=\"java.lang.String\"/>");
+        for (int i = 5; i < 80; i += 5) {
+            System.out.println("<parameter name=\"f" + i + (i + 4) + "\" class=\"java.lang.String\"/>");
+        }
+        System.out.println("<parameter name=\"f80\" class=\"java.lang.String\"/>");
+    }
+
     /*
      * @param date: Date Grégorian
      * @return String: Date Gregorian
      */
     public static String dateToStrG(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -64,7 +85,7 @@ public class Helper {
      * @return String: Date Héjirian
      */
     public static String dateHToStrH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -86,7 +107,7 @@ public class Helper {
      * @return String: Date Héjirian Ar
      */
     public static String dateHToStrArH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -115,7 +136,7 @@ public class Helper {
     }
 
     public static String dateToStrArG(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -143,7 +164,7 @@ public class Helper {
     }
 
     public static String dateToStrH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -156,7 +177,7 @@ public class Helper {
     }
 
     public static String dateToStrArH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -284,7 +305,7 @@ public class Helper {
     }
 
     public static Date dateTimeGrToH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
@@ -304,7 +325,7 @@ public class Helper {
     }
 
     public static Date dateGrToH(Date date) {
-        if(date == null) {
+        if (date == null) {
             return null;
         }
         SimpleDateFormat d = new SimpleDateFormat("dd");
