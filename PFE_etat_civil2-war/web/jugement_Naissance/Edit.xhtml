@@ -129,7 +129,7 @@
                                         <f:convertDateTime pattern="yyyy" />
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
-                                    <h:outputLabel style="width: 103px;text-align: right;" id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!jugement_NaissanceController.selected.noMJ}" for="date_de_naiss_G" />
+                                    <h:outputLabel id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!jugement_NaissanceController.selected.noMJ}" for="date_de_naiss_G" />
                                     <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" rendered="#{!jugement_NaissanceController.selected.noMJ}" id="date_de_naiss_G" value="#{jugement_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naiss_H" execute="date_de_naiss_G" listener="#{jugement_NaissanceController.setI(0)}"/> 
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
@@ -137,7 +137,7 @@
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H" rendered="#{!jugement_NaissanceController.selected.noMJ}" />
                                     <h:panelGrid columns="3" class="input-prepend" rendered="#{!jugement_NaissanceController.selected.noMJ}">
-                                        <h:inputText readonly="true" id="date_de_naiss_H" value="#{jugement_NaissanceController.g_to_h}" title="تاريخ الإزدياد" >
+                                        <h:inputText readonly="true" id="date_de_naiss_H" value="#{jugement_NaissanceController.selected.date_de_naiss_H}" title="تاريخ الإزدياد" >
                                             <f:convertDateTime pattern="dd-MM-yyyy" />
                                         </h:inputText>
                                         <h:commandLink class="btn btn-primary add-on" value="+">
@@ -189,31 +189,73 @@
                         <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                                 margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التصريح :</legend>
                         <b:gridRow >
-                            <b:gridColumn span="5">
+                            <b:gridColumn span="4" >
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="تاريخ الإخبار" for="dateDeclaration" />
-                                    <h:inputText styleClass="input-small" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateDeclaration" value="#{jugement_NaissanceController.selected.dateDeclaration}" title="تاريخ الإخبار" >
+                                    <h:outputLabel style="width: 90px" for="dateDeclaration" value="تاريخ الإخبار" />
+                                    <h:inputText styleClass="input-small" id="dateDeclaration" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" value="#{jugement_NaissanceController.selected.dateDeclaration}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="change" render="dateDeclaration_H descrAr" execute="dateDeclaration" listener="#{jugement_NaissanceController.setJ(0)}"/>                                              
                                     </h:inputText>
+                                    <h:outputLabel value="تاريخ الإخبار الهجري" for="dateDeclaration_H" />
+                                    <h:panelGrid columns="3" class="input-prepend" >
+                                        <h:inputText styleClass="input-small" readonly="true" id="dateDeclaration_H" value="#{jugement_NaissanceController.selected.dateDeclaration_H}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateDeclaration_H descrAr" execute="dateDeclaration dateDeclaration_H" listener="#{jugement_NaissanceController.declarationg_to_hplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateDeclaration_H descrAr" execute="dateDeclaration dateDeclaration_H" listener="#{jugement_NaissanceController.declarationg_to_hmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
-                            <b:gridColumn span="3">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="تاريخ الحكم" for="dateJug" />
-                                    <h:inputText styleClass="input-small" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateJug" value="#{jugement_NaissanceController.selected.dateJug}" title="تاريخ الحكم" >
+                            <b:gridColumn span="4">
+                                <h:panelGrid columns="2" dir="rtl">                        
+                                    <h:outputLabel for="dateJug" style="width: 90px" value="تاريخ الحكم" />
+                                    <h:inputText styleClass="input-small" id="dateJug" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" value="#{jugement_NaissanceController.selected.dateJug}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                        <f:ajax event="change" render="dateJug_H descrAr" execute="dateJug" listener="#{jugement_NaissanceController.setK(0)}"/> 
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="blur" render="@this" />
                                     </h:inputText>
+                                    <h:outputLabel value="تاريخ الحكم الهجري" for="dateJug_H" />
+                                    <h:panelGrid columns="3" class="input-prepend" >
+                                        <h:inputText styleClass="input-small" readonly="true" id="dateJug_H" value="#{jugement_NaissanceController.selected.dateJug_H}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateJug_H descrAr" execute="dateJug" listener="#{jugement_NaissanceController.jugg_to_hplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateJug_H descrAr" execute="dateJug" listener="#{jugement_NaissanceController.jugg_to_hmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
-                            <b:gridColumn span="3">
+                            <b:gridColumn span="4">
                                 <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="تاريخ التحرير" for="datesdistr" />
-                                    <h:inputText styleClass="input-small" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="datesdistr" value="#{jugement_NaissanceController.selected.datesdistr}" title="تاريخ التحرير" >
+                                    <h:outputLabel for="dateDistr" style="width: 100px" value="تاريخ التحرير" />
+                                    <h:inputText styleClass="input-small" id="dateDistr" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" value="#{jugement_NaissanceController.selected.datesdistr}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                        <f:ajax event="change" render="dateDistr_H descrAr" execute="dateDistr" listener="#{jugement_NaissanceController.setL(0)}"/> 
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="blur" render="@this" />
                                     </h:inputText>
+                                    <h:outputLabel value="تاريخ التحرير الهجري" for="dateDistr_H" />
+                                    <h:panelGrid columns="3" class="input-prepend" >
+                                        <h:inputText styleClass="input-small" readonly="true" id="dateDistr_H" value="#{jugement_NaissanceController.selected.datesdistr_H}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateDistr_H descrAr" execute="dateDistr" listener="#{jugement_NaissanceController.distrg_to_hplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateDistr_H descrAr" execute="dateDistr" listener="#{jugement_NaissanceController.distrg_to_hmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
+                        <hr/>
                         <b:gridRow >
                             <b:gridColumn span="11">
                                 <h:panelGrid columns="2" dir="rtl">                                         

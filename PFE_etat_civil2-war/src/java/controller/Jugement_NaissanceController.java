@@ -57,105 +57,120 @@ public class Jugement_NaissanceController implements Serializable {
     private int k = 0;
     private int l = 0;
 
-    
-    public void changetext(){
-    current.setDescriptionAr("بعد اخبارنا بتاريخ    هجرية موافق   بالحكم تحت عدد:          الصادر من المحكمة الابتدائية   بتاريخ   هجرية موافق  و المتعلق بولادة    ننقل مضمون هدا الحكم   ـــــــــــــــــــــــــــ لهده الاسباب ـــــــــــــــــــــــــــــــ    فقد صدر الحكم انه بتاريخ  هجرية موافق   ميلادية    ولد ب     من ابيه  المولود ب                في           هجرية موافق                ميلادية        المغربي الجنسية حرفته       و من والدته    المولودة ب           في          هجرية موافق         ميلادية جنسيتها مغربية حرفتها               و الساكنان   كما امرت المحكمة بتسجيل مضمون هدا الحكم في سجلات الحالة المدنية للسنة الجارية بالاشارة الموجزة لمضمونه في سجلات السنة التي كان من الواجب ان يسجل فيها قانونيا ـــــــــ  و نقلناه بتاريخ  تاني رجب  سنة   ألف و أربعمائة و أربعة و ثلاثين هجرية موافق ثاني عشر ماي  سنة   ألفين  و ثلاثة عشر ميلادية  لدينا نحن ");
+    public void changetext() {
+//    current.setDescriptionAr("بعد اخبارنا بتاريخ    هجرية موافق   بالحكم تحت عدد:          الصادر من المحكمة الابتدائية   بتاريخ   هجرية موافق  و المتعلق بولادة    ننقل مضمون هدا الحكم   ـــــــــــــــــــــــــــ لهده الاسباب ـــــــــــــــــــــــــــــــ    فقد صدر الحكم انه بتاريخ  هجرية موافق   ميلادية    ولد ب     من ابيه  المولود ب                في           هجرية موافق                ميلادية        المغربي الجنسية حرفته       و من والدته    المولودة ب           في          هجرية موافق         ميلادية جنسيتها مغربية حرفتها               و الساكنان   كما امرت المحكمة بتسجيل مضمون هدا الحكم في سجلات الحالة المدنية للسنة الجارية بالاشارة الموجزة لمضمونه في سجلات السنة التي كان من الواجب ان يسجل فيها قانونيا ـــــــــ  و نقلناه بتاريخ  تاني رجب  سنة   ألف و أربعمائة و أربعة و ثلاثين هجرية موافق ثاني عشر ماي  سنة   ألفين  و ثلاثة عشر ميلادية  لدينا نحن ");
+        current.setDescriptionAr("بعد اخبارنا بتاريخ  " + Helper.dateHToStrArH(current.getDateDeclaration_H()) + "هجرية موافق " + Helper.dateToStrArG(current.getDateDeclaration()) + " بالحكم تحت عدد:          الصادر من المحكمة الابتدائية   بتاريخ" + Helper.dateHToStrArH(current.getDateJug_H()) + "هجرية موافق " + Helper.dateToStrArG(current.getDateJug()) + "و المتعلق بولادة " + current.getNom_Ar() + " " + current.getPrenom_Ar() + "ننقل مضمون هدا الحكم   ـــــــــــــــــــــــــــ لهده الاسباب ـــــــــــــــــــــــــــــــ    فقد صدر الحكم انه بتاريخ " + Helper.dateHToStrArH(current.getDate_de_naiss_H()) + "هجرية موافق " + Helper.dateToStrArG(current.getDate_de_naiss_G()) + "ولد ب " + current.getLieu_de_Naiss_Ar() + " من ابيه " + current.getPrenomP_Ar() + " المولود ب                في           هجرية موافق                ميلادية        المغربي الجنسية حرفته       و من والدته " + current.getPrenomM_Ar() + " المولودة ب           في          هجرية موافق         ميلادية جنسيتها مغربية حرفتها               و الساكنان   كما امرت المحكمة بتسجيل مضمون هدا الحكم في سجلات الحالة المدنية للسنة الجارية بالاشارة الموجزة لمضمونه في سجلات السنة التي كان من الواجب ان يسجل فيها قانونيا ـــــــــ  و نقلناه بتاريخ " + Helper.dateHToStrArH(current.getDatesdistr_H()) + "هجرية موافق " + Helper.dateToStrArG(current.getDatesdistr()));
     }
+
     public int getI() {
         return i;
     }
 
     public void setI(int i) {
-        this.i = i;       
+        this.i = i;
+        getG_to_h();
     }
-    
+
     public String getAnnee_jug_Naiss() {
         return annee_jug_Naiss;
     }
-    public Date getG_to_h() {
-        if (current.getDate_de_naiss_G() == null) {
-            return null;
-        } else {
-            current.setDate_de_naiss_H(Helper.dateTimeGrToH(current.getDate_de_naiss_G()));
-            return current.getDate_de_naiss_H();
+
+    public void getG_to_h() {
+        if (current.getDate_de_naiss_G() != null) {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
 
     }
-    public Date getDeclarationG_to_h() {
-        if (current.getDateDeclaration() == null) {
-            return null;
-        } else {
-            current.setDateDeclaration_H(Helper.dateTimeGrToH(current.getDateDeclaration()));
-            return current.getDateDeclaration_H();
+
+    public void getDeclarationG_to_h() {
+        if (current.getDateDeclaration() != null) {
+            current.setDateDeclaration_H(Helper.dateGrToH(current.getDateDeclaration()));
         }
 
     }
+
     public void declarationg_to_hplus() {
         if (current.getDateDeclaration() != null) {
             j++;
-            current.getDateDeclaration().setDate(current.getDateDeclaration().getDate() + j);
+            Date tmp = new Date(current.getDateDeclaration().getYear(), current.getDateDeclaration().getMonth(), current.getDateDeclaration().getDate());
+            tmp.setDate(tmp.getDate() + j);
+            current.setDateDeclaration_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
 
     public void declarationg_to_hmoins() {
         if (current.getDateDeclaration() != null) {
             j--;
-            current.getDateDeclaration().setDate(current.getDateDeclaration().getDate() + j);
+            Date tmp = new Date(current.getDateDeclaration().getYear(), current.getDateDeclaration().getMonth(), current.getDateDeclaration().getDate());
+            tmp.setDate(tmp.getDate() + j);
+            current.setDateDeclaration_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
-    public Date getDistrG_to_h() {
-        if (current.getDatesdistr() == null) {
-            return null;
-        } else {
-            current.setDatesdistr_H(Helper.dateTimeGrToH(current.getDatesdistr()));
-            return current.getDatesdistr_H();
+
+    public void getDistrG_to_h() {
+        if (current.getDatesdistr() != null) {
+            current.setDatesdistr_H(Helper.dateGrToH(current.getDatesdistr()));
         }
 
     }
+
     public void distrg_to_hplus() {
         if (current.getDatesdistr() != null) {
             l++;
-            current.getDatesdistr().setDate(current.getDatesdistr().getDate() + l);
+            Date tmp = new Date(current.getDatesdistr().getYear(), current.getDatesdistr().getMonth(), current.getDatesdistr().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDatesdistr_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
 
     public void distrg_to_hmoins() {
         if (current.getDatesdistr() != null) {
             l--;
-            current.getDatesdistr().setDate(current.getDatesdistr().getDate() + l);
+            Date tmp = new Date(current.getDatesdistr().getYear(), current.getDatesdistr().getMonth(), current.getDatesdistr().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDatesdistr_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
-     public Date getJugG_to_h() {
-        if (current.getDateJug() == null) {
-            return null;
-        } else {
-            current.setDateJug_H(Helper.dateTimeGrToH(current.getDateJug()));
-            return current.getDateJug_H();
+
+    public void getJugG_to_h() {
+        if (current.getDateJug() != null) {
+            current.setDateJug_H(Helper.dateGrToH(current.getDateJug()));
         }
 
     }
+
     public void jugg_to_hplus() {
         if (current.getDateJug() != null) {
             k++;
-            current.getDateJug().setDate(current.getDateJug().getDate() + k);
+            Date tmp = new Date(current.getDateJug().getYear(), current.getDateJug().getMonth(), current.getDateJug().getDate());
+            tmp.setDate(tmp.getDate() + k);
+            current.setDateJug_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
 
     public void jugg_to_hmoins() {
         if (current.getDateJug() != null) {
             k--;
-            current.getDateJug().setDate(current.getDateJug().getDate() + k);
+            Date tmp = new Date(current.getDateJug().getYear(), current.getDateJug().getMonth(), current.getDateJug().getDate());
+            tmp.setDate(tmp.getDate() + k);
+            current.setDateJug_H(Helper.dateGrToH(tmp));
+            changetext();
         }
     }
-    
-    
+
     public int getJ() {
         return j;
     }
 
     public void setJ(int j) {
         this.j = j;
-         changetext();
+        getDeclarationG_to_h();
+        changetext();
     }
 
     public int getK() {
@@ -164,7 +179,8 @@ public class Jugement_NaissanceController implements Serializable {
 
     public void setK(int k) {
         this.k = k;
-         changetext();
+        getJugG_to_h();
+        changetext();
     }
 
     public int getL() {
@@ -173,27 +189,33 @@ public class Jugement_NaissanceController implements Serializable {
 
     public void setL(int l) {
         this.l = l;
-         changetext();
+        getDistrG_to_h();
+        changetext();
     }
 
     public void g_to_hplus() {
         if (current.getDate_de_naiss_G() != null) {
             i++;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            Date tmp = new Date(current.getDate_de_naiss_G().getYear(), current.getDate_de_naiss_G().getMonth(), current.getDate_de_naiss_G().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDate_de_naiss_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hmoins() {
         if (current.getDate_de_naiss_G() != null) {
-            i--;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            i--; 
+            Date tmp = new Date(current.getDate_de_naiss_G().getYear(), current.getDate_de_naiss_G().getMonth(), current.getDate_de_naiss_G().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDate_de_naiss_H(Helper.dateGrToH(tmp));
+
         }
     }
+
     public void setAnnee_jug_Naiss(String annee_jug_Naiss) {
         this.annee_jug_Naiss = annee_jug_Naiss;
     }
 
-    
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
     }
@@ -217,14 +239,16 @@ public class Jugement_NaissanceController implements Serializable {
     public void setAnneeFilter(String anneeFilter) {
         this.anneeFilter = anneeFilter;
     }
- public void changeDonnees_MarginalesRemove(Donnees_Marginales_J_N donnee_Marginale) {
+
+    public void changeDonnees_MarginalesRemove(Donnees_Marginales_J_N donnee_Marginale) {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == donnee_Marginale) {
                 current.getDonnees_Marginaless().remove(i);
             }
         }
     }
- public void changeDescDM(Donnees_Marginales_J_N dm) throws UnsupportedEncodingException {
+
+    public void changeDescDM(Donnees_Marginales_J_N dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
@@ -277,11 +301,12 @@ public class Jugement_NaissanceController implements Serializable {
             }
         }
     }
+
     public void changeDonnees_Marginales() {
         Donnees_Marginales_J_N dm = new Donnees_Marginales_J_N();
         current.getDonnees_Marginaless().add(dm);
     }
- 
+
     public Filter<?> getNumActeFilterImpl() {
         return new Filter<Jugement_Naissance>() {
             public boolean accept(Jugement_Naissance item) {
@@ -417,7 +442,7 @@ public class Jugement_NaissanceController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
-    
+
     public void encode() {
         try {
             current.setDescriptionAr(URLEncoder.encode(current.getDescriptionAr(), "UTF-8"));
@@ -425,6 +450,7 @@ public class Jugement_NaissanceController implements Serializable {
             Logger.getLogger(Jugement_DecesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public String create() {
         try {
             encode();
@@ -455,11 +481,13 @@ public class Jugement_NaissanceController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
+
     public void GToHAnnee() {
         if (current.getDate_de_naiss_G() != null) {
             current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
     }
+
     public String update() {
         try {
             encode();

@@ -5,6 +5,8 @@
 package bean;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -60,12 +62,13 @@ public class Donnees_Marginales_J_D implements Serializable {
         this.jugement = jugement;
     }
 
-    public String getDescAr() {
-        return descAr;
+    public String getDescAr() throws UnsupportedEncodingException {
+        return descAr == null ? "" : URLDecoder.decode(descAr, "UTF-8");
     }
 
     public void setDescAr(String descAr) {
         this.descAr = descAr;
+        
     }
 
     public String getDescFr() {
