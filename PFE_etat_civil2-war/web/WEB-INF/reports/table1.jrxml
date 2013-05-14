@@ -106,6 +106,9 @@
 	<parameter name="countFemmeDec" class="java.lang.String"/>
 	<parameter name="mois" class="java.lang.String"/>
 	<parameter name="annee" class="java.lang.String"/>
+	<parameter name="provinceAr" class="java.lang.String"/>
+	<parameter name="communeAr" class="java.lang.String"/>
+	<parameter name="regionAr" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1122,7 +1125,7 @@
 				<text><![CDATA[سنة ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="100" y="716" width="38" height="25"/>
+				<reportElement uuid="15ef0ad6-8b46-4614-98b2-8b699bf75fe3" x="116" y="716" width="22" height="25"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font size="12" isBold="false" isUnderline="false" pdfFontName="arial.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -1397,6 +1400,41 @@
 				</textElement>
 				<text><![CDATA[ 1/5]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="47dd5ac8-2249-411e-af6e-db1cbb9fc696" x="417" y="17" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{regionAr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6d35d2a6-0a81-4ec9-8cd7-4c8d01d685c1" x="400" y="37" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3766e9e-15a7-49eb-823b-8fc18ca9ac80" x="400" y="57" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3766e9e-15a7-49eb-823b-8fc18ca9ac80" x="138" y="716" width="100" height="25"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cf6b25b1-4f7c-442e-a49d-21019fa6df88" x="16" y="716" width="100" height="25"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy/MM/dd").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="989f1734-7132-4234-862e-326dab514125" x="38" y="50" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{annee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="65375465-c33f-4f1e-b832-b1f04c2b13f4" x="16" y="26" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{mois}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
