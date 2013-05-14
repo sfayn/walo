@@ -237,9 +237,9 @@ public class BIController implements Serializable {
             Acte_Deces acte_Deces = (Acte_Deces) it.next();
             tmpAnnee = acte_Deces.getDateTah_G() != null ? new Integer(y.format(acte_Deces.getDateTah_G())) : 0;
             tmpMois = acte_Deces.getDateTah_G() != null ? new Integer(m.format(acte_Deces.getDateTah_G())) : 0;
-            tmpNaiss = acte_Deces.getActe_Naissance().getDate_de_naiss_G() != null ? new Integer(m.format(acte_Deces.getActe_Naissance().getDate_de_naiss_G())) : 0;
+            tmpNaiss = acte_Deces.getDate_de_naiss_G() != null ? new Integer(m.format(acte_Deces.getDate_de_naiss_G())) : 0;
             if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(mois)) {
-                if (acte_Deces.getActe_Naissance().getSex().getLibelleFr().equals("Masculin")) {
+                if (acte_Deces.getSex().getLibelleFr().equals("Masculin")) {
                     countHommeDec++;
                     int age = anneeGeneral.intValue() - tmpNaiss.intValue();
                     if (age < 1) {

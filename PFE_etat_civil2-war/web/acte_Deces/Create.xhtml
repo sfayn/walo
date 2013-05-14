@@ -319,7 +319,7 @@
                                             <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" rendered="#{acte_DecesController.selected.typeT}"/>
                                             <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateHo" value="#{acte_DecesController.selected.dateHo}" title="تاريخ الحكم" rendered="#{acte_DecesController.selected.typeT}">
                                                 <f:convertDateTime pattern="dd-MM-yyyy" />
-                                                <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="dateHo typeT" listener="#{acte_DecesController.changeDeclaration()}"/>
+                                                <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="@this typeT" listener="#{acte_DecesController.changeDeclaration()}"/>
                                             </h:inputText>
                                         </h:panelGrid>  
                                     </b:gridColumn>
@@ -329,7 +329,7 @@
                                             <h:selectOneRadio id="typeT" value="#{acte_DecesController.selected.typeT}" styleClass="inlineRadioButtons">
                                                 <f:selectItem  itemValue="true"  itemLabel="حكم" />
                                                 <f:selectItem itemValue="false" itemLabel="تصريح" />
-                                                <f:ajax event="click" execute="@this" render="blocho"/>
+                                                <f:ajax event="click" execute="@this" render=":formCreate:blocho"/>
                                             </h:selectOneRadio>                                  
                                         </h:panelGrid>
                                     </b:gridColumn>
