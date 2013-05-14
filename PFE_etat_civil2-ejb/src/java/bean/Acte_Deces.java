@@ -105,7 +105,7 @@ public class Acte_Deces implements Serializable {
     @Lob
     private String lieuDeces_Ar;
     private String lieuDeces_Fr;
-     private boolean typeT = true;
+    private boolean typeT = true;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTah_H;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -504,7 +504,6 @@ public class Acte_Deces implements Serializable {
     }
 
     public String getDeclaration_Ar() throws UnsupportedEncodingException {
-        System.out.println("hani f: getDeclaration_Ar");
         return declaration_Ar == null ? "" : URLDecoder.decode(declaration_Ar, "UTF-8");
     }
 
