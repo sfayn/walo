@@ -40,122 +40,139 @@
 
                     </b:gridRow>
                 </b:alert>
+                <b:gridRow > 
+                    <b:gridColumn span="7">
+                        <b:gridRow >
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
+                                <b:gridRow>
+                                    <b:gridColumn span="3"> 
+                                        <h:panelGrid columns="2"  dir="rtl">                                    
+                                            <h:outputLabel style="font-weight: bold; width: 50px;" value="الجزء :" />
+                                            <h:outputText value="#{acte_DecesController.selected.registre.numReg}"></h:outputText>                                        
+                                        </h:panelGrid>                                 
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2"> 
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 50px;" value="السنة :"/>
+                                            <h:outputText value="#{acte_DecesController.selected.registre.annee}"></h:outputText>                                        
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="2">                                          
+                                        <h:panelGrid columns="2" dir="rtl" >
+                                            <h:outputLabel style="font-weight: bold; width: 60px;" value="رقم الرسم :" />
+                                            <h:outputText value="#{acte_DecesController.selected.numActe}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>                                    
+                                </b:gridRow>
+                                <br/>
+                            </fieldset>
 
-                <b:gridRow >
-                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن السجل :</legend>
-                        <b:gridRow>
-                            <b:gridColumn span="2"> 
-                                <h:panelGrid columns="2"  dir="rtl">                                    
-                                    <h:outputLabel style="font-weight: bold; width: 50px;" value="الجزء :" />
-                                    <h:outputText value="#{acte_DecesController.selected.registre.numReg}"></h:outputText>                                        
-                                </h:panelGrid>                                 
-                            </b:gridColumn>
-                            <b:gridColumn span="4"> 
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel style="font-weight: bold; width: 50px;" value="السنة :"/>
-                                    <h:outputText value="#{acte_DecesController.selected.registre.annee}"></h:outputText>                                        
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="3">                                          
-                                <h:panelGrid columns="2" dir="rtl" >
-                                    <h:outputLabel style="font-weight: bold; width: 60px;" value="رقم الرسم :" />
-                                    <h:outputText value="#{acte_DecesController.selected.numActe}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>                                    
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن المتوفى :</legend>
+                                <b:gridRow>
+                                    <b:gridColumn span="4">                                    
+                                        <h:panelGrid columns="2" dir="ltr">
+                                            <h:outputLabel style="font-weight: bold; width: 140px;" value="Prenom :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.prenom_Fr}" />
+                                            <h:outputLabel style="font-weight: bold; width: 140px;" value="Nom :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.nom_Fr}" />
+                                            <h:outputLabel style="font-weight: bold; width: 140px;" value="Lieu de naissance:"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.lieu_de_Naiss_Fr}" />
+                                        </h:panelGrid>
+                                    </b:gridColumn>                                
+                                    <b:gridColumn span="3">
+                                        <h:panelGrid columns="2"  dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 100px;" value="الإسم :"/>
+                                            <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.prenom_Ar}" />
+                                            <h:outputLabel style="font-weight: bold; width: 100px;" value="النسب :"/>
+                                            <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.nom_Ar}"/>
+                                            <h:outputLabel style="font-weight: bold; width: 100px;" value="مكان الإزدياد"/>
+                                            <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.lieu_de_Naiss_Ar}" />
+                                            <h:outputLabel style="font-weight: bold; width: 100px;" value="تاريخ الإزدياد"/>
+                                            <h:outputFormat style="width: 150px;" value="#{acte_DecesController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" >
+                                                <f:param value="#{acte_DecesController.selected.date_de_naiss_G}" />
+                                            </h:outputFormat>
+                                            <h:outputLabel style="font-weight: bold; width: 103px;" value="الجنس"/>
+                                            <h:outputText value="#{acte_DecesController.selected.sex.libelleAr}" />
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                </b:gridRow>
+                                <b:gridRow >
+                                    <b:gridColumn span="4">
+                                        <h:panelGrid columns="2" dir="ltr">
+                                            <h:outputLabel style="font-weight: bold; width: 140px;" value="Prénom père :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.prenomP_Fr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="Prénom mère :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.prenomM_Fr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="Profession :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.profession_Fr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="Adresse :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.adresse_Fr}"/>
+
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="3">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="font-weight: bold; width: 100px;" value="إسم الأب :"/>
+                                            <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.prenomP_Ar}" />                                            
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="إسم الأم :"/>
+                                            <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.prenomM_Ar}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="المهنة :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.profession_Ar}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="العنوان :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.adresse_Ar}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="البطاقة الوطنية :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.cin}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value=" الحالة العائلية :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.situation_familiale}"/>
+
+                                        </h:panelGrid>
+                                    </b:gridColumn>                            
+                                </b:gridRow>
+                            </fieldset>
+
+
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الوفاة :</legend>
+                                <b:gridRow >
+                                    <b:gridColumn span="4">
+                                        <h:panelGrid columns="2" dir="ltr">                                
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="Lieu de décés :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.lieuDeces_Fr}"/>
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                    <b:gridColumn span="3">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="مكان الوفاة :"/>
+                                            <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.lieuDeces_Ar}" />
+                                            <h:outputLabel style="font-weight: bold;width: 100px;" value="تاريخ الوفاة :"/>
+                                            <h:outputFormat style="width: 150px;" value="#{acte_DecesController.selected.noMJD == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                                <f:param value="#{acte_DecesController.selected.dateDecesG}" />
+                                            </h:outputFormat>
+                                        </h:panelGrid>
+                                    </b:gridColumn>
+                                </b:gridRow> 
+                            </fieldset>
+                            
                         </b:gridRow>
+                    </b:gridColumn>
+                    <b:gridColumn span="3">
                         <br/>
-                    </fieldset>
-
-                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن المتوفى :</legend>
-                        <b:gridRow>
-                            <b:gridColumn span="4">                                    
-                                <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Prenom :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenom_Fr}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Nom :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.nom_Fr}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Lieu de naissance:"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.lieu_de_Naiss_Fr}" />
-                                </h:panelGrid>
-                            </b:gridColumn>                                
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2"  dir="rtl">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="الإسم :"/>
-                                    <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenom_Ar}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="النسب :"/>
-                                    <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.nom_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="مكان الإزدياد"/>
-                                    <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.lieu_de_Naiss_Ar}" />
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="تاريخ الإزدياد"/>
-                                    <h:outputFormat style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}" >
-                                        <f:param value="#{acte_DecesController.selected.acte_Naissance.date_de_naiss_G}" />
-                                    </h:outputFormat>
-                                    <h:outputLabel style="font-weight: bold; width: 103px;" value="الجنس"/>
-                                    <h:outputText value="#{acte_DecesController.selected.acte_Naissance.sex.libelleAr}" />
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </b:gridRow>
+                        <br/>
                         <b:gridRow >
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="Prénom père :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenomP_Fr}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Prénom mère :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenomM_Fr}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Profession :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.profession_Fr}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Adresse :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.adresse_Fr}"/>
-
+                            <ui:repeat var="donnee_Marginale"  value="#{acte_DecesController.selected.donnees_Marginaless}" >
+                                <h:panelGrid bodyrows="3" style="width: 90%;">                            
+                                    <h:outputLabel value="#{donnee_Marginale.type.libelleAr} :" style="font-weight: bold;text-decoration: underline;"  for="Dm"/>
+                                    <h:outputText id="Dm" value="#{donnee_Marginale.descAr}"/>
+                                    <h:outputText value=""/>
                                 </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel style="font-weight: bold; width: 140px;" value="إسم الأب :"/>
-                                    <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenomP_Ar}" />                                            
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="إسم الأم :"/>
-                                    <h:outputText style="width: 150px;" value="#{acte_DecesController.selected.acte_Naissance.prenomM_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="المهنة :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.profession_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="العنوان :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.adresse_Ar}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="البطاقة الوطنية :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.cin}"/>
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value=" الحالة العائلية :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.situation_familiale}"/>
-
-                                </h:panelGrid>
-                            </b:gridColumn>                            
+                            </ui:repeat>
                         </b:gridRow>
-                    </fieldset>
-
-
-                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                margin-left:16px; border-bottom: 0px; width: auto;">  معلومات عن الوفاة :</legend>
-                        <b:gridRow >
-                            <b:gridColumn span="4">
-                                <h:panelGrid columns="2" dir="ltr">                                
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="Lieu de décés :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.lieuDeces_Fr}"/>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                            <b:gridColumn span="5">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="مكان الوفاة :"/>
-                                    <h:outputLabel style="width: 150px;" value="#{acte_DecesController.selected.lieuDeces_Ar}" />
-                                    <h:outputLabel style="font-weight: bold;width: 140px;" value="تاريخ الوفاة :"/>
-                                    <h:outputFormat style="width: 150px;" value="#{acte_DecesController.selected.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
-                                        <f:param value="#{acte_DecesController.selected.dateDecesG}" />
-                                    </h:outputFormat>
-                                </h:panelGrid>
-                            </b:gridColumn>
-                        </b:gridRow> 
-                    </fieldset>
+                    </b:gridColumn>
 
                 </b:gridRow>
                 <style>
@@ -185,9 +202,6 @@
                             <b:buttonDropdown rendered="#{acte_DecesController.selected.checked}" buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
-                                <b:separatorFacet />
-                                <h:commandLink action="#" value="شهادة الوفاة" style="font-size: 13pt; color: #000000;"/>
-
                             </b:buttonDropdown>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
