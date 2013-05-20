@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +28,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
-import org.ini4j.InvalidFileFormatException;
 import org.ini4j.Wini;
 
 @ManagedBean(name = "bIController")
@@ -40,6 +40,8 @@ public class BIController implements Serializable {
     private session.Acte_NaissanceFacade acte_NaissanceFacade;
     private Integer anneeGeneral = 1990;//Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private Integer mois = 01;//Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
+    private List<Integer> dataH = new ArrayList<Integer>();
+    private List<Integer> dataF = new ArrayList<Integer>();
     private List<Integer> data = new ArrayList<Integer>();
     Integer countHommeNaiss = 0;
     Integer countFemmeNaiss = 0;
@@ -312,8 +314,8 @@ public class BIController implements Serializable {
             "نونبر",
             "دجنبر"
         };
-        params.put("annee", ""+anneeGeneral);
-        params.put("mois", month[this.mois-1]);
+        params.put("annee", "" + anneeGeneral);
+        params.put("mois", month[this.mois - 1]);
     }
 
     public void DOCX1(ActionEvent actionEvent) throws JRException, IOException {
@@ -324,7 +326,8 @@ public class BIController implements Serializable {
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/table1.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table1.docx");
+        String file = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table1-" + file + ".docx");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JRDocxExporter docxExporter = new JRDocxExporter();
         docxExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
@@ -341,7 +344,8 @@ public class BIController implements Serializable {
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/table2.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table2.docx");
+        String file = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table2-" + file + ".docx");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JRDocxExporter docxExporter = new JRDocxExporter();
         docxExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
@@ -351,26 +355,30 @@ public class BIController implements Serializable {
     }
 
     public List<Integer> getData() {
-        /*SimpleDateFormat y = new SimpleDateFormat("yyyy");
-         SimpleDateFormat m = new SimpleDateFormat("MM");
-         Integer tmpAnnee;
-         Integer tmpMois;
-         countHommeNaiss = 0;
-         countFemmeNaiss = 0;
-         countHommeDec = 0;
-         countFemmeDec = 0;
-         for (Iterator it = acte_NaissanceFacade.findAll().iterator(); it.hasNext();) {
-         Acte_Naissance acte_Naissance = (Acte_Naissance) it.next();
-         tmpAnnee = acte_Naissance.getDateTah_G() != null ? new Integer(y.format(acte_Naissance.getDateTah_G())) : 0;
-         tmpMois = acte_Naissance.getDateTah_G() != null ? new Integer(m.format(acte_Naissance.getDateTah_G())) : 0;
-         if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(mois)) {
-         if (acte_Naissance.getSex().getLibelleFr().equals("Masculin")) {
-         countHommeNaiss++;
-         } else {
-         countFemmeNaiss++;
-         }
-         }
-         }*/
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        SimpleDateFormat m = new SimpleDateFormat("MM");
+        Integer tmpAnnee;
+        Integer tmpMois;
+        countHommeNaiss = 0;
+        countFemmeNaiss = 0;
+        countHommeDec = 0;
+        countFemmeDec = 0;
+        for (int i = 1; i <= 12; i++) {
+            for (Iterator it = acte_NaissanceFacade.findAll().iterator(); it.hasNext();) {
+                Acte_Naissance acte_Naissance = (Acte_Naissance) it.next();
+                tmpAnnee = acte_Naissance.getDateTah_G() != null ? new Integer(y.format(acte_Naissance.getDateTah_G())) : 0;
+                tmpMois = acte_Naissance.getDateTah_G() != null ? new Integer(m.format(acte_Naissance.getDateTah_G())) : 0;
+                if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(i)) {
+                    if (acte_Naissance.getSex().getLibelleFr().equals("Masculin")) {
+                        countHommeNaiss++;
+                    } else {
+                        countFemmeNaiss++;
+                    }
+                }
+            }
+            dataH.add(countHommeNaiss);
+            dataH.add(countFemmeNaiss);
+        }
         data = new ArrayList<Integer>();
         data.add((int) (Math.random() * 80));
         data.add((int) (Math.random() * 80));

@@ -286,6 +286,7 @@ public class Acte_DecesController implements Serializable {
         params.put("pereAr", current.getPrenomP_Ar());
         params.put("mereAr", current.getPrenomM_Ar());
         params.put("adresseAr", current.getAdresse_Ar());
+        params.put("professionAr", current.getProfession_Ar());
 
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extraitDecesAr.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
