@@ -9,12 +9,19 @@ import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +35,16 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRPrintPage;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRProperties;
+import org.ini4j.Wini;
 import org.richfaces.model.Filter;
 import session.Acte_DecesFacade;
 
@@ -37,7 +54,7 @@ public class Acte_DecesController implements Serializable {
 
     private Acte_Deces current;
     private DataModel items = null;
-    private boolean render=false;
+    private boolean render = false;
     @EJB
     private session.Acte_DecesFacade ejbFacade;
     @EJB
@@ -54,14 +71,12 @@ public class Acte_DecesController implements Serializable {
     private int numActe;
     private Registre registre;
     private int l = 0;
-    private int i=0;
-    private int k=0;
+    private int i = 0;
+    private int k = 0;
     private Long numActeFilter;
     private String anneeFilter;
     private Integer primaryRowCount = 10;
 
-    
-    
     public int getK() {
         return k;
     }
@@ -74,7 +89,6 @@ public class Acte_DecesController implements Serializable {
         this.render = render;
     }
 
-    
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
     }
@@ -110,6 +124,7 @@ public class Acte_DecesController implements Serializable {
             }
         };
     }
+
     public Filter<?> getAnneeFilterImpl() {
         return new Filter<Acte_Deces>() {
             public boolean accept(Acte_Deces item) {
@@ -140,15 +155,17 @@ public class Acte_DecesController implements Serializable {
         }
 
     }
+
     public void GToHAnneeD() {
         if (current.getDateDecesG() != null) {
             current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
         }
     }
+
     public void check() {
         UtilitaireSession us = UtilitaireSession.getInstance();
-        
-        if(((User)us.get("auth")).getRole().getLibelle().equals("User")){
+
+        if (((User) us.get("auth")).getRole().getLibelle().equals("User")) {
             return;
         }
         if (current.isChecked()) {
@@ -165,6 +182,7 @@ public class Acte_DecesController implements Serializable {
 
         }
     }
+
     public void g_to_hDplus() {
         if (current.getDateDecesG() != null) {
             i++;
@@ -178,6 +196,7 @@ public class Acte_DecesController implements Serializable {
             current.getDateDecesG().setDate(current.getDateDecesG().getDate() + i);
         }
     }
+
     public String getDatetasH_Ar() {
         if (current.getDateTah_H() == null) {
             return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
@@ -234,11 +253,56 @@ public class Acte_DecesController implements Serializable {
             return current.getDateTah_H();
         }
     }
-     
+
+    public void PDF() throws JRException, IOException {
+        List<Acte_Deces> acts = new ArrayList<Acte_Deces>();
+        Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
+        acts.add(current);
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        Map params = new HashMap();
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
+        System.out.println("config " + ini.get("config", "format"));
+
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        params.put("numActe", "" + current.getNumActe());
+        params.put("anneeH", "" + y.format(current.getDateTah_H()));
+        params.put("anneeG", "" + y.format(current.getDateTah_G()));
+
+        params.put("communeAr", ini.get("commune", "communeAr"));
+        params.put("provinceAr", ini.get("commune", "provinceAr"));
+
+        params.put("nomAr", current.getNom_Ar());
+        params.put("prenomAr", current.getPrenom_Ar());
+        params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
+        params.put("lieuDecesAr", current.getLieuDeces_Ar());
+        params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        params.put("dateDecesGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateDecesHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        params.put("nationnaliteAr", "مغربية");
+        params.put("pereAr", current.getPrenomP_Ar());
+        params.put("mereAr", current.getPrenomM_Ar());
+        params.put("adresseAr", current.getAdresse_Ar());
+
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extraitDecesAr.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.setContentType("application/pdf");
+        //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+
+    }
+
     public void changeDonnees_Marginales() {
         Donnees_Marginales_A_D dm = new Donnees_Marginales_A_D();
         current.getDonnees_Marginaless().add(dm);
     }
+
     public void changeDescDM(Donnees_Marginales_A_D dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
@@ -292,6 +356,7 @@ public class Acte_DecesController implements Serializable {
             }
         }
     }
+
     public void changeDonnees_MarginalesRemove(Donnees_Marginales_A_D donnee_Marginale) {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == donnee_Marginale) {
@@ -299,6 +364,7 @@ public class Acte_DecesController implements Serializable {
             }
         }
     }
+
     public void g_to_hTahmoins() {
         if (current.getDateTah_G() != null) {
             l--;
@@ -384,21 +450,25 @@ public class Acte_DecesController implements Serializable {
             current.setDeclaration_Fr("test");
         }
     }
+
     public void GToHAnnee() {
         if (current.getDate_de_naiss_G() != null) {
             current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
     }
+
     public void getG_to_h() {
         if (current.getDate_de_naiss_G() != null) {
             current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
 
     }
+
     public void setK(int k) {
         this.k = k;
         getG_to_h();
     }
+
     public void g_to_hplus() {
         if (current.getDate_de_naiss_G() != null) {
             k++;
@@ -417,30 +487,30 @@ public class Acte_DecesController implements Serializable {
 
         }
     }
-    
+
     public void load() {
         if (registre != null && numActe != 0) {
             if (!ejbFacade.findActe_Naiss(numActe, registre).isEmpty()) {
                 try {
-                    Acte_Naissance acteN=ejbFacade.findActe_Naiss(numActe, registre).get(0);
+                    Acte_Naissance acteN = ejbFacade.findActe_Naiss(numActe, registre).get(0);
                     current.setPrenom_Fr(acteN.getPrenom_Fr());
                     current.setPrenom_Ar(acteN.getPrenom_Ar());
                     current.setNom_Fr(acteN.getNom_Fr());
                     current.setNom_Ar(acteN.getNom_Ar());
                     current.setLieu_de_Naiss_Ar(acteN.getLieu_de_Naiss_Ar());
-                    current.setLieu_de_Naiss_Fr(acteN.getLieu_de_Naiss_Fr());                    
+                    current.setLieu_de_Naiss_Fr(acteN.getLieu_de_Naiss_Fr());
                     current.setSex(acteN.getSex());
-                    current.setDate_de_naiss_G(acteN.getDate_de_naiss_G());                    
+                    current.setDate_de_naiss_G(acteN.getDate_de_naiss_G());
                     current.setDate_de_naiss_H(acteN.getDate_de_naiss_H());
                     current.setPrenomP_Fr(acteN.getPrenomP_Fr());
                     current.setPrenomP_Ar(acteN.getPrenomP_Ar());
                     current.setPrenomP_Fr(acteN.getPrenomM_Fr());
                     current.setPrenomP_Ar(acteN.getPrenomM_Ar());
-                    
+
                 } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(Acte_DecesController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } 
+            }
         }
     }
 
@@ -518,11 +588,12 @@ public class Acte_DecesController implements Serializable {
     public String create() {
         try {
             encode();
-            numActe=0;
-            registre=null;
+            numActe = 0;
+            registre = null;
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
-            current.setCreatedBy((User) us.get("auth"));for (Donnees_Marginales_A_D dm : current.getDonnees_Marginaless()) {
+            current.setCreatedBy((User) us.get("auth"));
+            for (Donnees_Marginales_A_D dm : current.getDonnees_Marginaless()) {
                 ejbFacade2.create(dm);
             }
             getFacade().create(current);

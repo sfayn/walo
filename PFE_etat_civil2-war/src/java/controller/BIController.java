@@ -2,6 +2,7 @@ package controller;
 
 import bean.Acte_Deces;
 import bean.Acte_Naissance;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -11,6 +12,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,6 +27,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
+import org.ini4j.InvalidFileFormatException;
+import org.ini4j.Wini;
 
 @ManagedBean(name = "bIController")
 @SessionScoped
@@ -229,7 +234,7 @@ public class BIController implements Serializable {
         }
         params.put("f80", "" + 0);
 
-        
+
         params.put("countHommeDec", "" + 0);
         params.put("countFemmeDec", "" + 0);
 
@@ -285,6 +290,30 @@ public class BIController implements Serializable {
         }
         params.put("countHommeDec", "" + countHommeDec);
         params.put("countFemmeDec", "" + countFemmeDec);
+        try {
+            Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
+            params.put("communeAr", ini.get("commune", "communeAr"));
+            params.put("provinceAr", ini.get("commune", "provinceAr"));
+            params.put("regionAr", ini.get("commune", "regionAr"));
+        } catch (IOException ex) {
+            Logger.getLogger(BIController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String[] month = {
+            "يناير",
+            "فبراير",
+            "مارس",
+            "ابريل",
+            "ماي",
+            "يونيو",
+            "يوليوز",
+            "غشت",
+            "شتنبر",
+            "أكتوبر",
+            "نونبر",
+            "دجنبر"
+        };
+        params.put("annee", ""+anneeGeneral);
+        params.put("mois", month[this.mois-1]);
     }
 
     public void DOCX1(ActionEvent actionEvent) throws JRException, IOException {
@@ -303,7 +332,7 @@ public class BIController implements Serializable {
         docxExporter.exportReport();
         FacesContext.getCurrentInstance().responseComplete();
     }
-    
+
     public void DOCX2(ActionEvent actionEvent) throws JRException, IOException {
         deces();
         List items = new ArrayList<Acte_Naissance>();
