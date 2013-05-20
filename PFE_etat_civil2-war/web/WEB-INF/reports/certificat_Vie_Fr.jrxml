@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24e254b5-2b9f-4ef5-aeda-5afab6cf994c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="152"/>
+	<property name="ireport.y" value="249"/>
 	<title>
 		<band height="139" splitType="Stretch">
 			<staticText>
@@ -134,7 +134,7 @@ Grégorienne]]></text>
 			<staticText>
 				<reportElement uuid="58acf8f9-58d0-4ad5-a638-f3ba9ff4e077" x="0" y="176" width="381" height="20"/>
 				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[est vivant à ce jour pour s'être présenté - m'avoir été présenté]]></text>
+				<text><![CDATA[est vivant à ce jour pour s'être présenté - m'avoir été présenté.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="58acf8f9-58d0-4ad5-a638-f3ba9ff4e077" x="0" y="196" width="381" height="20"/>
