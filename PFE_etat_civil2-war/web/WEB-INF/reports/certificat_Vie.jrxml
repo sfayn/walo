@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="500"/>
+	<property name="ireport.y" value="276"/>
 	<parameter name="anneeH" class="java.lang.String"/>
 	<parameter name="anneeG" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
@@ -12,113 +12,11 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="addressePa_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[addressePa_Ar]]></fieldDescription>
-	</field>
-	<field name="addressePa_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[addressePa_Fr]]></fieldDescription>
-	</field>
-	<field name="checked" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[checked]]></fieldDescription>
-	</field>
-	<field name="class" class="java.lang.Class">
-		<fieldDescription><![CDATA[class]]></fieldDescription>
-	</field>
-	<field name="createdAt" class="java.util.Date">
-		<fieldDescription><![CDATA[createdAt]]></fieldDescription>
-	</field>
-	<field name="createdBy" class="bean.User">
-		<fieldDescription><![CDATA[createdBy]]></fieldDescription>
-	</field>
-	<field name="dateHo" class="java.util.Date">
-		<fieldDescription><![CDATA[dateHo]]></fieldDescription>
-	</field>
-	<field name="dateTah_G" class="java.util.Date">
-		<fieldDescription><![CDATA[dateTah_G]]></fieldDescription>
-	</field>
-	<field name="dateTah_H" class="java.util.Date">
-		<fieldDescription><![CDATA[dateTah_H]]></fieldDescription>
-	</field>
-	<field name="date_de_naissM_G" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naissM_G]]></fieldDescription>
-	</field>
-	<field name="date_de_naissM_H" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naissM_H]]></fieldDescription>
-	</field>
-	<field name="date_de_naissP_G" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naissP_G]]></fieldDescription>
-	</field>
-	<field name="date_de_naissP_H" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naissP_H]]></fieldDescription>
-	</field>
-	<field name="date_de_naiss_G" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naiss_G]]></fieldDescription>
-	</field>
-	<field name="date_de_naiss_H" class="java.util.Date">
-		<fieldDescription><![CDATA[date_de_naiss_H]]></fieldDescription>
-	</field>
-	<field name="decesM" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[decesM]]></fieldDescription>
-	</field>
-	<field name="decesP" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[decesP]]></fieldDescription>
-	</field>
-	<field name="declaration_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[declaration_Ar]]></fieldDescription>
-	</field>
-	<field name="declaration_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[declaration_Fr]]></fieldDescription>
-	</field>
-	<field name="donnees_Marginaless" class="java.util.List">
-		<fieldDescription><![CDATA[donnees_Marginaless]]></fieldDescription>
-	</field>
-	<field name="id" class="java.lang.Long">
-		<fieldDescription><![CDATA[id]]></fieldDescription>
-	</field>
-	<field name="lieu_de_NaissM_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[lieu_de_NaissM_Ar]]></fieldDescription>
-	</field>
-	<field name="lieu_de_NaissM_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[lieu_de_NaissM_Fr]]></fieldDescription>
-	</field>
-	<field name="lieu_de_NaissP_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[lieu_de_NaissP_Ar]]></fieldDescription>
-	</field>
-	<field name="lieu_de_NaissP_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[lieu_de_NaissP_Fr]]></fieldDescription>
-	</field>
 	<field name="lieu_de_Naiss_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[lieu_de_Naiss_Ar]]></fieldDescription>
 	</field>
-	<field name="lieu_de_Naiss_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[lieu_de_Naiss_Fr]]></fieldDescription>
-	</field>
-	<field name="nationalteM_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[nationalteM_Ar]]></fieldDescription>
-	</field>
-	<field name="nationalteM_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[nationalteM_Fr]]></fieldDescription>
-	</field>
-	<field name="nationalteP_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[nationalteP_Ar]]></fieldDescription>
-	</field>
-	<field name="nationalteP_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[nationalteP_Fr]]></fieldDescription>
-	</field>
-	<field name="noMJ" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[noMJ]]></fieldDescription>
-	</field>
-	<field name="noMJM" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[noMJM]]></fieldDescription>
-	</field>
-	<field name="noMJP" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[noMJP]]></fieldDescription>
-	</field>
 	<field name="nom_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[nom_Ar]]></fieldDescription>
-	</field>
-	<field name="nom_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[nom_Fr]]></fieldDescription>
 	</field>
 	<field name="numActe" class="java.lang.Integer">
 		<fieldDescription><![CDATA[numActe]]></fieldDescription>
@@ -126,41 +24,11 @@
 	<field name="prenomM_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[prenomM_Ar]]></fieldDescription>
 	</field>
-	<field name="prenomM_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[prenomM_Fr]]></fieldDescription>
-	</field>
 	<field name="prenomP_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[prenomP_Ar]]></fieldDescription>
 	</field>
-	<field name="prenomP_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[prenomP_Fr]]></fieldDescription>
-	</field>
 	<field name="prenom_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[prenom_Ar]]></fieldDescription>
-	</field>
-	<field name="prenom_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[prenom_Fr]]></fieldDescription>
-	</field>
-	<field name="professionM_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[professionM_Ar]]></fieldDescription>
-	</field>
-	<field name="professionM_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[professionM_Fr]]></fieldDescription>
-	</field>
-	<field name="professionP_Ar" class="java.lang.String">
-		<fieldDescription><![CDATA[professionP_Ar]]></fieldDescription>
-	</field>
-	<field name="professionP_Fr" class="java.lang.String">
-		<fieldDescription><![CDATA[professionP_Fr]]></fieldDescription>
-	</field>
-	<field name="registre" class="bean.Registre">
-		<fieldDescription><![CDATA[registre]]></fieldDescription>
-	</field>
-	<field name="sex" class="bean.Sex">
-		<fieldDescription><![CDATA[sex]]></fieldDescription>
-	</field>
-	<field name="typeT" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[typeT]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>

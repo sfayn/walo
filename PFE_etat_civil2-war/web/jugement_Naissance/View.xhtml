@@ -26,7 +26,7 @@
                         <b:gridColumn span="4" >
                             <h:panelGrid columns="2" dir="ltr">
                                 <h:outputText value="Créé par :" style="font-weight: bold"/>
-                                <h:outputText  value="#{jugement_NaissanceController.selected.createdBy.prenom}&nbsp;#{jugement_DecesController.selected.createdBy.nom.toUpperCase()}" />
+                                <h:outputText  value="#{jugement_NaissanceController.selected.createdBy.prenom}&nbsp;#{jugement_NaissanceController.selected.createdBy.nom.toUpperCase()}" />
                             </h:panelGrid>
                         </b:gridColumn>                    
                         <b:gridColumn span="3" >
@@ -228,9 +228,40 @@
                                 <a class="btn btn-primary icon-file" style="font-size: 14pt;"  onclick="#{b:show('customModal2')}">   الوثائق</a>
                             </b:gridRow >
                             <b:buttonDropdown rendered="#{jugement_NaissanceController.selected.checked}" buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
-                                <h:commandLink action="#" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
-                                <h:commandLink action="#" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#{jugement_NaissanceController.integrale()}" target="_blank" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#{jugement_NaissanceController.PDF()}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                                <b:separatorFacet />
+                                <h:commandLink action="#{jugement_NaissanceController.pdfVie()}" target="_blank" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
+                                <a onclick="#{b:show('DonnSupp')}" style="font-size: 13pt; cursor: pointer; color: #000000;">شهادة الخطوبة</a>                
                             </b:buttonDropdown>
+                            
+                            
+                            <b:modal id="DonnSupp" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">  معلومات إضافية عن صاحب الرسم : </h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;">                                        
+                                        <h:panelGrid columns="2" dir="rlt"> 
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="العنوان :" for="adresseAr"/>
+                                            <h:inputText id="adresseAr" value="#{jugement_NaissanceController.adresseAr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="المهنة :" for="professionAr"/>
+                                            <h:inputText id="professionAr" value="#{jugement_NaissanceController.professionAr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="الحالة العائلية" for="situation_familiale" />                                            
+                                            <h:selectOneMenu id="situation_familiale" value="#{jugement_NaissanceController.etatFamilleAr}"  title="الحالة العائلية">
+                                                <f:selectItems value="#{acte_DecesController.listSituationFam()}"/>
+                                                <f:ajax event="blur" render="@this" />
+                                            </h:selectOneMenu>
+                                        </h:panelGrid>
+                                    </p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <h:commandLink value="طباعة" class="btn btn-danger" action="#{jugement_NaissanceController.pdffiancaille()}" onclick="#{b:hide('DonnSupp')}" target="_blank"/>
+                                    <h:outputText value="  "/>
+                                    <b:commandButton value="إلغاء" mode="client" onclick="#{b:hide('DonnSupp')}" />
+                                </b:footerFacet>
+                            </b:modal>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
                                 <b:headerFacet>
