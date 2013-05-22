@@ -71,7 +71,7 @@
                             <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                                 <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                                         margin-left:16px; border-bottom: 0px; width: auto;"> معلومات شخصية :</legend>
-                                
+
                                 <b:gridColumn span="3">                                    
                                     <h:panelGrid columns="2" dir="ltr">
                                         <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenom_Fr}"/>
@@ -103,11 +103,11 @@
                         </b:gridRow>
 
                         <b:gridRow >
-                            
+
                             <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                                 <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                                         margin-left:16px; border-bottom: 0px; width: auto;"> معلومات عن الأب :</legend>
-                                
+
                                 <b:gridColumn span="3">
                                     <h:panelGrid columns="2" dir="ltr">
                                         <h:outputLabel style="font-weight: bold; width: 140px;" value="#{bundle.ViewActe_NaissanceLabel_prenomP_Fr}"/>
@@ -240,9 +240,10 @@
                                 <h:commandLink action="#{acte_NaissanceController.integrale()}" target="_blank" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#{acte_NaissanceController.PDF}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
                                 <b:separatorFacet />
-                                <h:commandLink action="#" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
-                                <h:commandLink action="#" value="شهادة الخطوبة" style="font-size: 13pt; color: #000000;"/>
-                                <h:commandLink action="#"  value="ورقة المعلومات" style="font-size: 13pt; color: #000000;"/>                                
+                                <h:commandLink action="#{acte_NaissanceController.pdfVie()}" target="_blank" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
+                                <a onclick="#{b:show('DonnSupp')}" style="font-size: 13pt; cursor: pointer; color: #000000;">شهادة الخطوبة</a>
+                                
+
                             </b:buttonDropdown>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
@@ -258,6 +259,33 @@
                                     <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
                                 </b:footerFacet>
                             </b:modal>
+                            <b:modal id="DonnSupp" style="width: 400px; margin: -200px;" closeable="false">
+
+                                <b:headerFacet>
+                                    <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">  معلومات إضافية عن صاحب الرسم : </h3>
+                                </b:headerFacet>
+                                <b:bodyFacet>
+                                    <p style="text-align: right; direction: rtl;">                                        
+                                        <h:panelGrid columns="2" dir="rlt"> 
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="العنوان :" for="adresseAr"/>
+                                            <h:inputText id="adresseAr" value="#{acte_NaissanceController.adresseAr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="المهنة :" for="professionAr"/>
+                                            <h:inputText id="professionAr" value="#{acte_NaissanceController.professionAr}"/>
+                                            <h:outputLabel style="font-weight: bold;width: 140px;" value="الحالة العائلية" for="situation_familiale" />                                            
+                                            <h:selectOneMenu id="situation_familiale" value="#{acte_NaissanceController.etatFamilleAr}"  title="الحالة العائلية">
+                                                <f:selectItems value="#{acte_DecesController.listSituationFam()}"/>
+                                                <f:ajax event="blur" render="@this" />
+                                            </h:selectOneMenu>
+                                        </h:panelGrid>
+                                    </p>
+                                </b:bodyFacet>
+                                <b:footerFacet>
+                                    <h:commandLink value="طباعة" class="btn btn-danger" action="#{acte_NaissanceController.pdffiancaille()}" onclick="#{b:hide('DonnSupp')}" target="_blank"/>
+                                    <h:outputText value="  "/>
+                                    <b:commandButton value="إلغاء" mode="client" onclick="#{b:hide('DonnSupp')}" />
+                                </b:footerFacet>
+                            </b:modal>
+
                             <b:modal id="customModal2" style="width: 400px; margin: -200px;" closeable="false">
 
                                 <b:headerFacet>

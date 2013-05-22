@@ -176,8 +176,7 @@
                             <fieldset style="border:2px solid rgb(58,135,173); margin-left: 80px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                                 <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                                         margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن الأبوين :</legend>
-
-                                <b:gridRow >
+<b:gridRow >
                                     <b:gridColumn span="1"></b:gridColumn>
                                     <b:gridColumn span="5">
                                         <h:panelGrid columns="2" dir="ltr">
@@ -185,10 +184,15 @@
                                             <h:inputText id="prenomP_Fr" value="#{acte_DecesController.selected.prenomP_Fr}" />
                                             <h:outputLabel style="width: 103px;" value="Nationalité père" for="nationaliteP" />
                                             <h:inputText id="nationaliteP" value="#{acte_DecesController.selected.nationaliteP_Fr}"  />
+                                            <h:outputLabel style="width: 103px;" value="Profession père" for="professionP" />
+                                            <h:inputText id="professionP" value="#{acte_DecesController.selected.professionP_Fr}"  />                                            
                                             <h:outputLabel style="width: 103px;" value="Prénom mère" for="prenomM_Fr" />
                                             <h:inputText id="prenomM_Fr" value="#{acte_DecesController.selected.prenomM_Fr}"  />
                                             <h:outputLabel style="width: 103px;" value="Nationalité mère" for="nationaliteM" />
                                             <h:inputText id="nationaliteM" value="#{acte_DecesController.selected.nationaliteM_Fr}"  />
+                                            <h:outputLabel style="width: 103px;" value="Profession mère" for="professionM" />
+                                            <h:inputText id="professionM" value="#{acte_DecesController.selected.professionM_Fr}"  />
+                                            
 
                                         </h:panelGrid>
                                     </b:gridColumn>
@@ -198,10 +202,15 @@
                                             <h:inputText id="prenomP_Ar" value="#{acte_DecesController.selected.prenomP_Ar}"/>
                                             <h:outputLabel style="width: 103px;" value="جنسية الأب" for="nationaliteP_ar" />
                                             <h:inputText id="nationaliteP_ar" value="#{acte_DecesController.selected.nationaliteP_Ar}"  />
+                                            <h:outputLabel style="width: 103px;" value="حرفة الأب" for="professionP_Ar" />
+                                            <h:inputText id="professionP_Ar" value="#{acte_DecesController.selected.professionP_Ar}"  />                                            
                                             <h:outputLabel style="width: 103px;" value="إسم الأم" for="prenomM_Ar" />
                                             <h:inputText id="prenomM_Ar" value="#{acte_DecesController.selected.prenomM_Ar}"/>
                                             <h:outputLabel style="width: 103px;" value="جنسية الأم" for="nationaliteM_ar" />
                                             <h:inputText id="nationaliteM_ar" value="#{acte_DecesController.selected.nationaliteM_Ar}"  />
+                                            <h:outputLabel style="width: 103px;" value="حرفة الأم" for="professionM_Ar" />
+                                            <h:inputText id="professionM_Ar" value="#{acte_DecesController.selected.professionM_Ar}"  />                                            
+                                            
                                         </h:panelGrid>
                                     </b:gridColumn>
                                 </b:gridRow>
