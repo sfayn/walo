@@ -41,8 +41,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.util.JRProperties;
+import net.sf.jasperreports.governors.MaxPagesGovernor;
 import org.ini4j.Wini;
 import org.richfaces.model.Filter;
 import session.Acte_NaissanceFacade;
@@ -661,7 +661,7 @@ public class Acte_NaissanceController implements Serializable {
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
-        System.out.println("config "+ini.get("config", "format"));
+        System.out.println("config " + ini.get("config", "format"));
         if (!ini.get("config", "format").equals("2")) {
             SimpleDateFormat y = new SimpleDateFormat("yyyy");
             params.put("numActe", "" + current.getNumActe());
@@ -782,6 +782,8 @@ public class Acte_NaissanceController implements Serializable {
         params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
         params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
         params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
+        params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
+        params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
 
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
@@ -794,8 +796,9 @@ public class Acte_NaissanceController implements Serializable {
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-        
+
     }
+
     public void pdfVie() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
         acts.add(current);
@@ -830,8 +833,9 @@ public class Acte_NaissanceController implements Serializable {
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-        
+
     }
+
     public void pdffiancaille() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
         acts.add(current);
@@ -851,7 +855,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
         System.out.println(params.get("dateNaissanceGAr"));
         params.put("professionAr", professionAr);
-        params.put("etatFamilleAr",etatFamilleAr);
+        params.put("etatFamilleAr", etatFamilleAr);
         params.put("adresseAr", adresseAr);
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
@@ -864,7 +868,7 @@ public class Acte_NaissanceController implements Serializable {
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-        
+
     }
 
     public String destroy() {
