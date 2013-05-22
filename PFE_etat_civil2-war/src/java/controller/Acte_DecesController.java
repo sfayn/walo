@@ -620,6 +620,15 @@ public void PDFIntegD() throws JRException, IOException {
 
     public void encode() {
         try {
+            current.setNom_Ar(URLEncoder.encode(current.getNom_Ar(), "UTF-8"));
+            current.setPrenom_Ar(URLEncoder.encode(current.getPrenom_Ar(), "UTF-8"));
+            current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
+            current.setLieu_de_Naiss_Ar(URLEncoder.encode(current.getLieu_de_Naiss_Ar(), "UTF-8"));
+            current.setPrenomP_Ar(URLEncoder.encode(current.getPrenomP_Ar(), "UTF-8"));
+            current.setPrenomM_Ar(URLEncoder.encode(current.getPrenomM_Ar(), "UTF-8"));
+            current.setProfessionM_Ar(URLEncoder.encode(current.getProfessionM_Ar(), "UTF-8"));
+            current.setProfessionP_Ar(URLEncoder.encode(current.getProfessionP_Ar(), "UTF-8"));            
+            current.setOfficierAr(URLEncoder.encode(current.getOfficierAr(), "UTF-8"));
             current.setAdresse_Ar(URLEncoder.encode(current.getAdresse_Ar(), "UTF-8"));
             current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
             current.setSituation_familiale(URLEncoder.encode(current.getSituation_familiale(), "UTF-8"));

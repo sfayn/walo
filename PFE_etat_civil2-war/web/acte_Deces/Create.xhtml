@@ -230,7 +230,7 @@
                                             <h:inputText id="nationaliteM" value="#{acte_DecesController.selected.nationaliteM_Fr}"  />
                                             <h:outputLabel style="width: 103px;" value="Profession mère" for="professionM" />
                                             <h:inputText id="professionM" value="#{acte_DecesController.selected.professionM_Fr}"  />
-                                            
+
 
                                         </h:panelGrid>
                                     </b:gridColumn>
@@ -248,7 +248,7 @@
                                             <h:inputText id="nationaliteM_ar" value="#{acte_DecesController.selected.nationaliteM_Ar}"  />
                                             <h:outputLabel style="width: 103px;" value="حرفة الأم" for="professionM_Ar" />
                                             <h:inputText id="professionM_Ar" value="#{acte_DecesController.selected.professionM_Ar}"  />                                            
-                                            
+
                                         </h:panelGrid>
                                     </b:gridColumn>
                                 </b:gridRow>
@@ -438,6 +438,23 @@
                                         <h:commandLink class="btn btn-primary" style="font-size: 14pt;" value="إضافة بيان هامشي">
                                             <f:ajax event="click" execute="donnees_marginales" render="donnees_marginales" listener="#{acte_DecesController.changeDonnees_Marginales()}"/>
                                         </h:commandLink>
+                                    </b:gridColumn>
+                                </b:gridRow>
+                            </fieldset>
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 80px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">ضابط الحالة المدنية :</legend>
+                                <b:gridRow >
+                                    <b:gridColumn span="10">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel value="من طرفنا نحن" for="officierAr" />
+                                            <b:input id="officierAr" scale="xxlarge" value="#{acte_DecesController.selected.officierAr}" />  
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" dir="ltr">
+                                            <h:outputLabel value="Par nous" for="officierFr" />
+                                            <b:input id="officierFr" scale="xxlarge" value="#{acte_DecesController.selected.officierFr}"/>
+                                        </h:panelGrid>
+
                                     </b:gridColumn>
                                 </b:gridRow>
                             </fieldset>

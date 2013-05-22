@@ -121,6 +121,28 @@ public class Acte_Naissance implements Serializable {
     private Date createdAt;
     @ManyToOne
     private Registre registre;
+    @Lob
+    private String officierAr;
+    private String officierFr;
+
+    public String getOfficierAr() throws UnsupportedEncodingException {
+        return officierAr == null ? "" : URLDecoder.decode(officierAr, "UTF-8");
+    }
+
+    public void setOfficierAr(String officierAr) {
+        this.officierAr = officierAr;
+    }
+
+    public String getOfficierFr() {
+        return officierFr;
+    }
+
+    public void setOfficierFr(String officierFr) {
+        this.officierFr = officierFr;
+    }
+    
+    
+    
 
     public boolean isNoMJ() {
         return noMJ;

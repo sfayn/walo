@@ -535,6 +535,7 @@ public class Acte_NaissanceController implements Serializable {
             current.setNationalteM_Ar(URLEncoder.encode(current.getNationalteM_Ar(), "UTF-8"));
             current.setNationalteP_Ar(URLEncoder.encode(current.getNationalteP_Ar(), "UTF-8"));
             current.setAddressePa_Ar(URLEncoder.encode(current.getAddressePa_Ar(), "UTF-8"));
+            current.setOfficierAr(URLEncoder.encode(current.getOfficierAr(), "UTF-8"));
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -348,6 +348,25 @@
                                     </b:gridColumn>
                                 </b:gridRow>
                             </fieldset>
+                            <fieldset style="border:2px solid rgb(58,135,173); margin-left: 80px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                                <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                        margin-left:16px; border-bottom: 0px; width: auto;">ضابط الحالة المدنية :  </legend>
+                                            
+                                <b:gridRow >
+                                    <b:gridColumn span="10">
+                                        <h:panelGrid columns="2" dir="rtl">
+                                            <h:outputLabel value="من طرفنا نحن" for="officierAr" />
+                                            <b:input id="officierAr" scale="xxlarge" value="#{jugement_DecesController.selected.officierAr}" />  
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" dir="ltr">
+                                            <h:outputLabel value="Par nous" for="officierFr" />
+                                            <b:input id="officierFr" scale="xxlarge" value="#{jugement_DecesController.selected.officierFr}"/>
+                                        </h:panelGrid>
+                                            
+                                    </b:gridColumn>
+                                </b:gridRow>
+                            </fieldset>
+                            <br />
                             <br />
                             <h:commandLink style="font-size: 14pt;" class="btn btn-primary" action="#{jugement_DecesController.create}" value="تسجيل" />
 

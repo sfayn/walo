@@ -101,6 +101,27 @@ public class Jugement_Deces implements Serializable {
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
+    @Lob
+    private String officierAr;
+    private String officierFr;
+
+    public String getOfficierFr() {
+        return officierFr;
+    }
+
+    public void setOfficierFr(String officierFr) {
+        this.officierFr = officierFr;
+    }
+    
+
+    public String getOfficierAr() throws UnsupportedEncodingException {
+        return officierAr == null ? "" : URLDecoder.decode(officierAr, "UTF-8");
+    }
+
+    public void setOfficierAr(String officierAr) {
+        this.officierAr = officierAr;
+    }
+
 
     public Jugement_Deces() {
         donnees_Marginaless=new ArrayList<Donnees_Marginales_J_D>();
