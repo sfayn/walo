@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="309"/>
+	<property name="ireport.y" value="352"/>
 	<parameter name="anneeH" class="java.lang.String"/>
 	<parameter name="anneeG" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
@@ -11,6 +11,7 @@
 	<parameter name="professionAr" class="java.lang.String"/>
 	<parameter name="etatFamilleAr" class="java.lang.String"/>
 	<parameter name="adresseAr" class="java.lang.String"/>
+	<parameter name="annee" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -404,7 +405,7 @@
 			<textField>
 				<reportElement uuid="8cda33cb-6046-4deb-b6c2-c3f355f899d2" x="32" y="296" width="159" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[""+$F{registre}.getAnnee()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{annee}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="249" y="355" width="100" height="13"/>

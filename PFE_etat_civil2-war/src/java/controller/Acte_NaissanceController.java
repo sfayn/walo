@@ -851,6 +851,7 @@ public class Acte_NaissanceController implements Serializable {
         params.put("commune", ini.get("commune", "commune"));
         params.put("communeAr", ini.get("commune", "communeAr"));
         params.put("provinceAr", ini.get("commune", "provinceAr"));
+        params.put("annee", current.getRegistre().getAnnee());
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
         System.out.println(params.get("dateNaissanceGAr"));
