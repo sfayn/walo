@@ -40,8 +40,8 @@ public class BIController implements Serializable {
     private session.Acte_NaissanceFacade acte_NaissanceFacade;
     private Integer anneeGeneral = 1990;//Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private Integer mois = 01;//Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
-    private List<Integer> dataH = new ArrayList<Integer>();
-    private List<Integer> dataF = new ArrayList<Integer>();
+    private List<Integer> dataD = new ArrayList<Integer>();
+    private List<Integer> dataN = new ArrayList<Integer>();
     private List<Integer> data = new ArrayList<Integer>();
     Integer countHommeNaiss = 0;
     Integer countFemmeNaiss = 0;
@@ -102,114 +102,179 @@ public class BIController implements Serializable {
         deces();
     }
 
+    public void naissanceOld() {
+        /*SimpleDateFormat y = new SimpleDateFormat("yyyy");
+         SimpleDateFormat m = new SimpleDateFormat("MM");
+         Integer tmpAnnee;
+         Integer tmpMois;
+         Integer tmpMere;
+         int i;
+         countHommeNaiss = 0;
+         countFemmeNaiss = 0;
+         params.put("h18", "" + 0);
+         params.put("h1819", "" + 0);
+         params.put("h2024", "" + 0);
+         params.put("h2529", "" + 0);
+         params.put("h3034", "" + 0);
+         params.put("h3539", "" + 0);
+         params.put("h4044", "" + 0);
+         params.put("h4549", "" + 0);
+         params.put("h50", "" + 0);
+         params.put("f18", "" + 0);
+         params.put("f1819", "" + 0);
+         params.put("f2024", "" + 0);
+         params.put("f2529", "" + 0);
+         params.put("f3034", "" + 0);
+         params.put("f3539", "" + 0);
+         params.put("f4044", "" + 0);
+         params.put("f4549", "" + 0);
+         params.put("f50", "" + 0);
+         params.put("countHommeNaiss", "" + 0);
+         params.put("countFemmeNaiss", "" + 0);
+         params.put("countHommeDec", "" + 0);
+         params.put("countFemmeDec", "" + 0);
+         for (Iterator it = acte_NaissanceFacade.findAll().iterator(); it.hasNext();) {
+         Acte_Naissance acte_Naissance = (Acte_Naissance) it.next();
+         tmpAnnee = acte_Naissance.getDateTah_G() != null ? new Integer(y.format(acte_Naissance.getDateTah_G())) : 0;
+         tmpMois = acte_Naissance.getDateTah_G() != null ? new Integer(m.format(acte_Naissance.getDateTah_G())) : 0;
+         tmpMere = acte_Naissance.getDate_de_naissM_G() != null ? new Integer(y.format(acte_Naissance.getDate_de_naissM_G())) : 0;
+         if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(mois)) {
+         if (acte_Naissance.getSex().getLibelleFr().equals("Masculin")) {
+         int age = anneeGeneral.intValue() - tmpMere.intValue();
+         countHommeNaiss++;
+         if (tmpMere.compareTo(0) > 0) {
+         if (age < 18) {
+         i = new Integer(params.get("h18").toString());
+         params.put("h18", "" + (i + 1));
+         } else if (age >= 18 && age <= 19) {
+         i = new Integer(params.get("h1819").toString());
+         params.put("h1819", "" + (i + 1));
+         } else if (age >= 20 && age <= 24) {
+         i = new Integer(params.get("h2024").toString());
+         params.put("h2024", "" + (i + 1));
+         } else if (age >= 25 && age <= 29) {
+         i = new Integer(params.get("h2529").toString());
+         params.put("h2529", "" + (i + 1));
+         } else if (age >= 30 && age <= 34) {
+         i = new Integer(params.get("h3034").toString());
+         params.put("h3034", "" + (i + 1));
+         } else if (age >= 35 && age <= 39) {
+         i = new Integer(params.get("h3539").toString());
+         params.put("h3539", "" + (i + 1));
+         } else if (age >= 40 && age <= 44) {
+         i = new Integer(params.get("h4044").toString());
+         params.put("h4044", "" + (i + 1));
+         } else if (age >= 45 && age <= 49) {
+         i = new Integer(params.get("h4549").toString());
+         params.put("h4549", "" + (i + 1));
+         } else {
+         i = new Integer(params.get("h50").toString());
+         params.put("h50", "" + (i + 1));
+         }
+         }
+         } else {
+         int age = anneeGeneral.intValue() - tmpMere.intValue();
+         countFemmeNaiss++;
+         if (tmpMere.compareTo(0) > 0) {
+         if (age < 18) {
+         i = new Integer(params.get("f18").toString());
+         params.put("f18", "" + (i + 1));
+         } else if (age >= 18 && age <= 19) {
+         i = new Integer(params.get("f1819").toString());
+         params.put("f1819", "" + (i + 1));
+         } else if (age >= 20 && age <= 24) {
+         i = new Integer(params.get("f2024").toString());
+         params.put("f2024", "" + (i + 1));
+         } else if (age >= 25 && age <= 29) {
+         i = new Integer(params.get("f2529").toString());
+         params.put("f2529", "" + (i + 1));
+         } else if (age >= 30 && age <= 34) {
+         i = new Integer(params.get("f3034").toString());
+         params.put("f3034", "" + (i + 1));
+         } else if (age >= 35 && age <= 39) {
+         i = new Integer(params.get("f3539").toString());
+         params.put("f3539", "" + (i + 1));
+         } else if (age >= 40 && age <= 44) {
+         i = new Integer(params.get("f4044").toString());
+         params.put("f4044", "" + (i + 1));
+         } else if (age >= 45 && age <= 49) {
+         i = new Integer(params.get("f4549").toString());
+         params.put("f4549", "" + (i + 1));
+         } else {
+         i = new Integer(params.get("f50").toString());
+         params.put("f50", "" + (i + 1));
+         }
+         }
+         }
+         }
+         }
+         params.put("countHommeNaiss", "" + countHommeNaiss);
+         params.put("countFemmeNaiss", "" + countFemmeNaiss);*/
+    }
+
     public void naissance() {
-        SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        SimpleDateFormat m = new SimpleDateFormat("MM");
-        Integer tmpAnnee;
-        Integer tmpMois;
-        Integer tmpMere;
-        int i;
         countHommeNaiss = 0;
         countFemmeNaiss = 0;
-        params.put("h18", "" + 0);
-        params.put("h1819", "" + 0);
-        params.put("h2024", "" + 0);
-        params.put("h2529", "" + 0);
-        params.put("h3034", "" + 0);
-        params.put("h3539", "" + 0);
-        params.put("h4044", "" + 0);
-        params.put("h4549", "" + 0);
-        params.put("h50", "" + 0);
-        params.put("f18", "" + 0);
-        params.put("f1819", "" + 0);
-        params.put("f2024", "" + 0);
-        params.put("f2529", "" + 0);
-        params.put("f3034", "" + 0);
-        params.put("f3539", "" + 0);
-        params.put("f4044", "" + 0);
-        params.put("f4549", "" + 0);
-        params.put("f50", "" + 0);
+
+        List<Object[]> results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 0, 17);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("18 --> sex: "+sex+", count: "+count);
+            if (sex.equals("Masculin")) {
+                params.put("h18", "" + count);
+            } else {
+                params.put("f18", "" + count);
+            }
+        }
+        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 18, 19);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("1819 --> sex: "+sex+", count: "+count);
+            if (sex.equals("Masculin")) {
+                params.put("h1819", "" + count);
+            } else {
+                params.put("f1819", "" + count);
+            }
+        }
+
+        for (int i = 20; i < 50; i += 5) {
+            results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, i, i+4);
+            for (Object[] result : results) {
+                String sex = ((String) result[1]);
+                int count = ((Number) result[0]).intValue();
+                System.out.println(i +""+ (i + 4)+" --> sex: "+sex+", count: "+count);
+                if (sex.equals("Masculin")) {
+                    params.put("h" + i +""+ (i + 4), "" + count);
+                } else {
+                    params.put("f" + i +""+ (i + 4), "" + count);
+                }
+            }
+        }
+
+        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 50, 1900);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("50 --> sex: "+sex+", count: "+count);
+            if (sex.equals("Masculin")) {
+                
+                params.put("h50", "" + count);
+            } else {
+                
+                params.put("f50", "" + count);
+            }
+        }
+
         params.put("countHommeNaiss", "" + 0);
         params.put("countFemmeNaiss", "" + 0);
         params.put("countHommeDec", "" + 0);
         params.put("countFemmeDec", "" + 0);
-        for (Iterator it = acte_NaissanceFacade.findAll().iterator(); it.hasNext();) {
-            Acte_Naissance acte_Naissance = (Acte_Naissance) it.next();
-            tmpAnnee = acte_Naissance.getDateTah_G() != null ? new Integer(y.format(acte_Naissance.getDateTah_G())) : 0;
-            tmpMois = acte_Naissance.getDateTah_G() != null ? new Integer(m.format(acte_Naissance.getDateTah_G())) : 0;
-            tmpMere = acte_Naissance.getDate_de_naissM_G() != null ? new Integer(y.format(acte_Naissance.getDate_de_naissM_G())) : 0;
-            if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(mois)) {
-                if (acte_Naissance.getSex().getLibelleFr().equals("Masculin")) {
-                    int age = anneeGeneral.intValue() - tmpMere.intValue();
-                    countHommeNaiss++;
-                    if (tmpMere.compareTo(0) > 0) {
-                        if (age < 18) {
-                            i = new Integer(params.get("h18").toString());
-                            params.put("h18", "" + (i + 1));
-                        } else if (age >= 18 && age <= 19) {
-                            i = new Integer(params.get("h1819").toString());
-                            params.put("h1819", "" + (i + 1));
-                        } else if (age >= 20 && age <= 24) {
-                            i = new Integer(params.get("h2024").toString());
-                            params.put("h2024", "" + (i + 1));
-                        } else if (age >= 25 && age <= 29) {
-                            i = new Integer(params.get("h2529").toString());
-                            params.put("h2529", "" + (i + 1));
-                        } else if (age >= 30 && age <= 34) {
-                            i = new Integer(params.get("h3034").toString());
-                            params.put("h3034", "" + (i + 1));
-                        } else if (age >= 35 && age <= 39) {
-                            i = new Integer(params.get("h3539").toString());
-                            params.put("h3539", "" + (i + 1));
-                        } else if (age >= 40 && age <= 44) {
-                            i = new Integer(params.get("h4044").toString());
-                            params.put("h4044", "" + (i + 1));
-                        } else if (age >= 45 && age <= 49) {
-                            i = new Integer(params.get("h4549").toString());
-                            params.put("h4549", "" + (i + 1));
-                        } else {
-                            i = new Integer(params.get("h50").toString());
-                            params.put("h50", "" + (i + 1));
-                        }
-                    }
-                } else {
-                    int age = anneeGeneral.intValue() - tmpMere.intValue();
-                    countFemmeNaiss++;
-                    if (tmpMere.compareTo(0) > 0) {
-                        if (age < 18) {
-                            i = new Integer(params.get("f18").toString());
-                            params.put("f18", "" + (i + 1));
-                        } else if (age >= 18 && age <= 19) {
-                            i = new Integer(params.get("f1819").toString());
-                            params.put("f1819", "" + (i + 1));
-                        } else if (age >= 20 && age <= 24) {
-                            i = new Integer(params.get("f2024").toString());
-                            params.put("f2024", "" + (i + 1));
-                        } else if (age >= 25 && age <= 29) {
-                            i = new Integer(params.get("f2529").toString());
-                            params.put("f2529", "" + (i + 1));
-                        } else if (age >= 30 && age <= 34) {
-                            i = new Integer(params.get("f3034").toString());
-                            params.put("f3034", "" + (i + 1));
-                        } else if (age >= 35 && age <= 39) {
-                            i = new Integer(params.get("f3539").toString());
-                            params.put("f3539", "" + (i + 1));
-                        } else if (age >= 40 && age <= 44) {
-                            i = new Integer(params.get("f4044").toString());
-                            params.put("f4044", "" + (i + 1));
-                        } else if (age >= 45 && age <= 49) {
-                            i = new Integer(params.get("f4549").toString());
-                            params.put("f4549", "" + (i + 1));
-                        } else {
-                            i = new Integer(params.get("f50").toString());
-                            params.put("f50", "" + (i + 1));
-                        }
-                    }
-                }
-            }
-        }
         params.put("countHommeNaiss", "" + countHommeNaiss);
         params.put("countFemmeNaiss", "" + countFemmeNaiss);
+
+
     }
 
     public void deces() {
@@ -354,45 +419,27 @@ public class BIController implements Serializable {
         FacesContext.getCurrentInstance().responseComplete();
     }
 
-    public List<Integer> getData() {
-        SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        SimpleDateFormat m = new SimpleDateFormat("MM");
-        Integer tmpAnnee;
-        Integer tmpMois;
-        countHommeNaiss = 0;
-        countFemmeNaiss = 0;
-        countHommeDec = 0;
-        countFemmeDec = 0;
-        for (int i = 1; i <= 12; i++) {
-            for (Iterator it = acte_NaissanceFacade.findAll().iterator(); it.hasNext();) {
-                Acte_Naissance acte_Naissance = (Acte_Naissance) it.next();
-                tmpAnnee = acte_Naissance.getDateTah_G() != null ? new Integer(y.format(acte_Naissance.getDateTah_G())) : 0;
-                tmpMois = acte_Naissance.getDateTah_G() != null ? new Integer(m.format(acte_Naissance.getDateTah_G())) : 0;
-                if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(i)) {
-                    if (acte_Naissance.getSex().getLibelleFr().equals("Masculin")) {
-                        countHommeNaiss++;
-                    } else {
-                        countFemmeNaiss++;
-                    }
+    public List<Integer> getDataN() {
+        data = new ArrayList<Integer>();
+        dataD = new ArrayList<Integer>();
+        dataN = new ArrayList<Integer>();
+        List<Object[]> results = acte_NaissanceFacade.countByDate(anneeGeneral);
+        System.out.println("year: " + anneeGeneral);
+        for (int i = 0; i < 12; i++) {
+            boolean flag = false;
+            for (Object[] result : results) {
+                int month = ((Number) result[1]).intValue();
+                if (month == i) {
+                    dataN.add(((Number) result[0]).intValue());
+                    flag = true;
+                    System.out.println("Mois: " + month + ", count: " + ((Number) result[0]).intValue());
                 }
             }
-            dataH.add(countHommeNaiss);
-            dataH.add(countFemmeNaiss);
+            if (!flag) {
+                dataN.add(0);
+            }
         }
-        data = new ArrayList<Integer>();
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        data.add((int) (Math.random() * 80));
-        return data;
+        return dataN;
     }
 
     public void setData(List<Integer> data) {

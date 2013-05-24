@@ -29,17 +29,6 @@
                         <h:outputText value="لسنة" />
                         <h:outputText id="title" value=" #{bIController.anneeGeneral}" />
                     </div>
-                    <table style="float: right;">
-                        <tr>
-                            <td width="30px" height="30px"><div style="width: 26px;height: 26px;background-color: #8FD2EF;border: 2px solid #2FB6F0;"></div></td>
-                            <td style="padding-right: 10px;">الولادات</td>
-                        </tr>
-                        <tr ><td height="10px"></td></tr>
-                        <tr>
-                            <td width="30px" height="30px"><div style="width: 26px;height: 26px;background-color: #DCE58F;border: 2px solid #C9DC2C;"></div></td>
-                            <td style="padding-right: 10px;">الوفيات</td>
-                        </tr>
-                    </table>
                     <div style="float: left; vertical-align: middle;" dir="rtl" align="left">
                         <h:outputText value="السنة:" />
                         <h:selectOneMenu styleClass="input-medium" id="annees" value="#{bIController.anneeGeneral}" >
@@ -57,12 +46,20 @@
                         <div id="graph" style="height: 500px;"> </div>
                         <h:outputScript library="js" name="flotr2.min.js" />
                         <script type="text/javascript">
-                            d1 = [], d2 = [], i = 1
+                            d1 = [], i = 1
                         </script>
-                        <ui:repeat value="#{bIController.data}" var="data">
+                        <ui:repeat value="#{bIController.dataN}" var="data">
                             <script type="text/javascript">
                                 point = [i-0.25, #{data}];
                                 d1.push(point);
+                                i++;
+                            </script>
+                        </ui:repeat>
+                        <script type="text/javascript">
+                            d2 = [], i = 1
+                        </script>
+                        <ui:repeat value="#{bIController.dataN}" var="data">
+                            <script type="text/javascript">
                                 point = [i+0.25, #{data}];
                                 d2.push(point);
                                 i++;
