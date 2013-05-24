@@ -777,14 +777,12 @@ public class Acte_NaissanceController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-        System.out.println(params.get("dateNaissanceGAr"));
         params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
         params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
         params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
         params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
         params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
         params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
-
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
