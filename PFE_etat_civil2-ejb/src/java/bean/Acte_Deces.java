@@ -120,6 +120,26 @@ public class Acte_Deces implements Serializable {
     private User createdBy;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date createdAt;
+    @Lob
+    private String officierAr;
+    private String officierFr;
+
+    public String getOfficierFr() {
+        return officierFr;
+    }
+
+    public void setOfficierFr(String officierFr) {
+        this.officierFr = officierFr;
+    }
+
+    public String getOfficierAr() throws UnsupportedEncodingException {
+        return officierAr == null ? "" : URLDecoder.decode(officierAr, "UTF-8");
+    }
+
+    public void setOfficierAr(String officierAr) {
+        this.officierAr = officierAr;
+    }
+
 
     public void setNationaliteP_Ar(String nationaliteP_Ar) {
         this.nationaliteP_Ar = nationaliteP_Ar;
@@ -155,8 +175,8 @@ public class Acte_Deces implements Serializable {
         this.donnees_Marginaless = donnees_Marginaless;
     }
 
-    public String getNom_Ar() {
-        return nom_Ar;
+    public String getNom_Ar() throws UnsupportedEncodingException {
+        return nom_Ar == null ? "" : URLDecoder.decode(nom_Ar, "UTF-8");
     }
 
     public void setNom_Ar(String nom_Ar) {

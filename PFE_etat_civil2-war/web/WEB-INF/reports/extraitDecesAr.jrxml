@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="126"/>
+	<property name="ireport.y" value="605"/>
 	<parameter name="numActe" class="java.lang.String"/>
 	<parameter name="anneeH" class="java.lang.String"/>
 	<parameter name="anneeG" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
 	<parameter name="provinceAr" class="java.lang.String"/>
 	<parameter name="nomAr" class="java.lang.String"/>
+	<parameter name="dateDecesAr" class="java.lang.String"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="lieuNaissanceAr" class="java.lang.String"/>
 	<parameter name="lieuDecesAr" class="java.lang.String"/>
@@ -53,15 +54,6 @@
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[جماعة :
-                
-                ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1771269e-ce1e-49a9-bba5-0f5a8ebf2977" x="309" y="52" width="72" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[مكتب الحالة المدنية
                 
                 ]]></text>
 			</staticText>
@@ -136,9 +128,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[عام 
-                
-                ]]></text>
+				<text><![CDATA[في]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="309" y="220" width="72" height="20"/>
@@ -240,15 +230,6 @@
                 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="178" y="451" width="34" height="15"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[الموافق :
-                
-                ]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="281" y="481" width="83" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
@@ -258,7 +239,7 @@
                 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="330" y="496" width="34" height="15"/>
+				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="102" y="496" width="34" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -283,12 +264,6 @@
 			</line>
 			<line>
 				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="212" y="51" width="137" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="212" y="64" width="100" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dotted"/>
 				</graphicElement>
@@ -371,12 +346,6 @@
 					<pen lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
-			<line>
-				<reportElement uuid="b5550643-8e9f-4df7-bec7-942107405529" x="43" y="465" width="135" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
 			<textField>
 				<reportElement uuid="23b63dc3-a61e-4975-aac0-699073474cee" x="78" y="436" width="100" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
@@ -411,7 +380,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{lieuNaissanceAr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{lieuDecesAr}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="43cb38bf-6e2c-4fcd-90a8-e6bb33cdedef" x="147" y="241" width="174" height="20"/>
@@ -490,6 +459,13 @@
                 
                 ]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="6ba761c0-54c5-4083-8201-5482a00fbdea" x="253" y="199" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDecesAr}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

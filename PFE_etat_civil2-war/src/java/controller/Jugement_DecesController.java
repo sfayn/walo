@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Acte_Deces;
 import bean.Acte_Naissance;
 import bean.Donnees_Marginales_J_D;
 import bean.Jugement_Deces;
@@ -9,12 +10,18 @@ import controller.util.Helper;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import controller.util.UtilitaireSession;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +35,15 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRProperties;
+import org.ini4j.Wini;
 import org.richfaces.model.Filter;
 import session.Jugement_DecesFacade;
 
@@ -52,6 +68,47 @@ public class Jugement_DecesController implements Serializable {
     private Integer primaryRowCount = 10;
     private int i = 0;
     private int j = 0;
+    private int l = 0;
+
+    public int getL() {
+        return l;
+    }
+
+    public void getDistrG_to_h() {
+        if (current.getDateTah_G() != null) {
+            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
+        }
+
+    }
+
+    public void setL(int l) {
+        this.l = l;
+        getDistrG_to_h();
+        changeText();
+    }
+
+    public void distrg_to_hplus() {
+        if (current.getDateTah_G() != null) {
+            l++;
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
+            changeText();
+        }
+    }
+
+    public void distrg_to_hmoins() {
+        if (current.getDateTah_G() != null) {
+            l--;
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
+            changeText();
+        }
+    }
+    public void changeText(){
+        current.setDescrAr("test");
+    }
 
     public Integer getPrimaryRowCount() {
         return primaryRowCount;
@@ -369,6 +426,33 @@ public class Jugement_DecesController implements Serializable {
         current = new Jugement_Deces();
         selectedItemIndex = -1;
         return "Create";
+    }
+
+    public void pdfIntegD() throws JRException, IOException {
+        List<Jugement_Deces> acts = new ArrayList<Jugement_Deces>();
+        Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
+        acts.add(current);
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        Map params = new HashMap();
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
+        System.out.println("config " + ini.get("config", "format"));
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        params.put("numActe", "" + current.getNumActe());
+        params.put("anneeH", "" + y.format(current.getDateTah_H()));
+        params.put("anneeG", "" + y.format(current.getDateTah_G()));
+        params.put("communeAr", ini.get("commune", "communeAr"));
+        params.put("provinceAr", ini.get("commune", "provinceAr"));
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integrale_J_D.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.setContentType("application/pdf");
+        //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+
     }
 
     public void encode() {
