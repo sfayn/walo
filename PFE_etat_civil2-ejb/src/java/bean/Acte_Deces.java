@@ -175,8 +175,8 @@ public class Acte_Deces implements Serializable {
         this.donnees_Marginaless = donnees_Marginaless;
     }
 
-    public String getNom_Ar() {
-        return nom_Ar;
+    public String getNom_Ar() throws UnsupportedEncodingException {
+        return nom_Ar == null ? "" : URLDecoder.decode(nom_Ar, "UTF-8");
     }
 
     public void setNom_Ar(String nom_Ar) {

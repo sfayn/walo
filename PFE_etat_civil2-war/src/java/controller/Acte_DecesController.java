@@ -334,6 +334,8 @@ public void PDFIntegD() throws JRException, IOException {
         params.put("mereAr", current.getPrenomM_Ar());
         params.put("adresseAr", current.getAdresse_Ar());
         params.put("professionAr", current.getProfession_Ar());
+        params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
+        params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
 
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integralDecesAr.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
