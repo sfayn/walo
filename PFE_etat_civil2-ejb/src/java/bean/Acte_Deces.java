@@ -17,8 +17,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
@@ -32,6 +33,12 @@ import javax.persistence.UniqueConstraint;
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )
+@NamedQueries({
+    @NamedQuery(name="Acte_Deces.countBySex",
+                query="SELECT COUNT(c),s.libelleFr FROM Acte_Deces c, Sex s WHERE s = c.sex AND FUNC('YEAR',c.dateDecesG)=:year AND FUNC('MONTH',c.dateDecesG)=:month GROUP BY c.sex"),
+    @NamedQuery(name="Acte_Deces.countByAge",
+                query="SELECT COUNT(c), s.libelleFr FROM Acte_Deces c, Sex s WHERE :year-FUNC('YEAR',c.date_de_naiss_G)<=:max AND :year-FUNC('YEAR',c.date_de_naiss_G)>=:min AND FUNC('YEAR',c.dateDecesG)=:year AND FUNC('MONTH',c.dateDecesG)=:month AND c.sex=s GROUP BY c.sex"),
+})
 public class Acte_Deces implements Serializable {
     @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales_A_D.class, fetch = FetchType.EAGER,orphanRemoval=true)
     private List<Donnees_Marginales_A_D> donnees_Marginaless;

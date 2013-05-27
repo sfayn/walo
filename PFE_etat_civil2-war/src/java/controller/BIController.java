@@ -101,11 +101,11 @@ public class BIController implements Serializable {
     public void table1() {
         naissance();
         /*for (Object key : params.keySet()) {
-            System.out.println("key: " + key.toString() + ", value: " + params.get(key));
-        }*/
+         System.out.println("key: " + key.toString() + ", value: " + params.get(key));
+         }*/
         //deces();
     }
-    
+
     public void naissance() {
         countHommeNaiss = 0;
         countFemmeNaiss = 0;
@@ -179,9 +179,7 @@ public class BIController implements Serializable {
 
         params.put("countHommeNaiss", "0");
         params.put("countFemmeNaiss", "0");
-        params.put("countHommeDec", "" + 0);
-        params.put("countFemmeDec", "" + 0);
-        
+
         results = acte_NaissanceFacade.countBySex(anneeGeneral, mois);
         for (Object[] result : results) {
             String sex = ((String) result[1]);
@@ -190,94 +188,93 @@ public class BIController implements Serializable {
                 countHommeNaiss += count;
                 params.put("countHommeNaiss", "" + count);
             } else {
-                countHommeNaiss += count;
+                countFemmeNaiss += count;
                 params.put("countFemmeNaiss", "" + count);
             }
         }
-        //params.put("countHommeNaiss", "" + countHommeNaiss);
-        //params.put("countFemmeNaiss", "" + countFemmeNaiss);
     }
 
     public void deces() {
-        SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        SimpleDateFormat m = new SimpleDateFormat("MM");
-        Integer tmpAnnee;
-        Integer tmpMois;
-        Integer tmpNaiss;
-        int i;
         countHommeDec = 0;
         countFemmeDec = 0;
-
-        params.put("h1", "" + 0);
-        params.put("h14", "" + 0);
-        for (int j = 5; j < 80; j += 5) {
-            params.put("h" + j + (j + 4), "" + 0);
-        }
-        params.put("h80", "" + 0);
-
-        params.put("f1", "" + 0);
-        params.put("f14", "" + 0);
-        for (int j = 5; j < 80; j += 5) {
-            params.put("f" + j + (j + 4), "" + 0);
-        }
-        params.put("f80", "" + 0);
-
-
         params.put("countHommeDec", "" + 0);
         params.put("countFemmeDec", "" + 0);
 
-        for (Iterator it = acte_DecesFacade.findAll().iterator(); it.hasNext();) {
-            Acte_Deces acte_Deces = (Acte_Deces) it.next();
-            tmpAnnee = acte_Deces.getDateTah_G() != null ? new Integer(y.format(acte_Deces.getDateTah_G())) : 0;
-            tmpMois = acte_Deces.getDateTah_G() != null ? new Integer(m.format(acte_Deces.getDateTah_G())) : 0;
-            tmpNaiss = acte_Deces.getDate_de_naiss_G() != null ? new Integer(m.format(acte_Deces.getDate_de_naiss_G())) : 0;
-            if (tmpAnnee.equals(anneeGeneral) && tmpMois.equals(mois)) {
-                if (acte_Deces.getSex().getLibelleFr().equals("Masculin")) {
-                    countHommeDec++;
-                    int age = anneeGeneral.intValue() - tmpNaiss.intValue();
-                    if (age < 1) {
-                        i = new Integer(params.get("h1").toString());
-                        params.put("h1", "" + (i + 1));
-                    } else if (age >= 1 && age <= 4) {
-                        i = new Integer(params.get("h14").toString());
-                        params.put("h14", "" + (i + 1));
-                    }
-                    for (int j = 5; j < 80; j += 5) {
-                        if (age >= j && age <= j + 4) {
-                            i = new Integer(params.get("h" + j + (j + 4)).toString());
-                            params.put("h" + j + (j + 4), "" + (i + 1));
-                        }
-                    }
-                    if (age >= 80) {
-                        i = new Integer(params.get("h80").toString());
-                        params.put("h80", "" + (i + 1));
-                    }
+        params.put("h1", "0");
+        params.put("h14", "0");
+        for (int j = 5; j < 80; j += 5) {
+            params.put("h" + j + (j + 4), "0");
+        }
+        params.put("h80", "0");
 
+        params.put("f1", "0");
+        params.put("f14", "0");
+        for (int j = 5; j < 80; j += 5) {
+            params.put("f" + j + (j + 4), "0");
+        }
+        params.put("f80", "0");
+        params.put("countHommeDec", "" + 0);
+        params.put("countFemmeDec", "" + 0);
+
+        List<Object[]> results = acte_DecesFacade.countByAge(anneeGeneral, mois, 0, 1);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            if (sex.equals("Masculin")) {
+                params.put("h1", "" + count);
+            } else {
+                params.put("f1", "" + count);
+            }
+        }
+
+        results = acte_DecesFacade.countByAge(anneeGeneral, mois, 2, 4);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            if (sex.equals("Masculin")) {
+                params.put("h14", "" + count);
+            } else {
+                params.put("f14", "" + count);
+            }
+        }
+
+        for (int i = 5; i < 80; i += 5){
+            results = acte_DecesFacade.countByAge(anneeGeneral, mois, i, i + (i + 4));
+            for (Object[] result : results) {
+                String sex = ((String) result[1]);
+                int count = ((Number) result[0]).intValue();
+                if (sex.equals("Masculin")) {
+                    params.put("h" + i + "" + (i + 4), "" + count);
                 } else {
-                    countFemmeDec++;
-                    int age = anneeGeneral.intValue() - tmpNaiss.intValue();
-                    if (age < 1) {
-                        i = new Integer(params.get("f1").toString());
-                        params.put("f1", "" + (i + 1));
-                    } else if (age >= 1 && age <= 4) {
-                        i = new Integer(params.get("f14").toString());
-                        params.put("f14", "" + (i + 1));
-                    }
-                    for (int j = 5; j < 80; j += 5) {
-                        if (age >= j && age <= j + 4) {
-                            i = new Integer(params.get("f" + j + (j + 4)).toString());
-                            params.put("f" + j + (j + 4), "" + (i + 1));
-                        }
-                    }
-                    if (age >= 80) {
-                        i = new Integer(params.get("f80").toString());
-                        params.put("f80", "" + (i + 1));
-                    }
+                    params.put("f" + i + "" + (i + 4), "" + count);
                 }
             }
         }
-        params.put("countHommeDec", "" + countHommeDec);
-        params.put("countFemmeDec", "" + countFemmeDec);
+        
+        results = acte_DecesFacade.countByAge(anneeGeneral, mois, 80, 4000);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            if (sex.equals("Masculin")) {
+                params.put("h80", "" + count);
+            } else {
+                params.put("f80", "" + count);
+            }
+        }
+
+        results = acte_DecesFacade.countBySex(anneeGeneral, mois);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            if (sex.equals("Masculin")) {
+                countHommeDec += count;
+                params.put("countHommeDec", "" + count);
+            } else {
+                countFemmeDec += count;
+                params.put("countFemmeDec", "" + count);
+            }
+        }
+        
         try {
             Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
             params.put("communeAr", ini.get("commune", "communeAr"));
