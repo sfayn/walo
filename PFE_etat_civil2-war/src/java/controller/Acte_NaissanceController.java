@@ -681,8 +681,6 @@ public class Acte_NaissanceController implements Serializable {
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
             params.put("mere", current.getPrenomM_Fr());
-            params.put("deces", "Néant");
-
             params.put("nomAr", current.getNom_Ar());
             params.put("prenomAr", current.getPrenom_Ar());
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
@@ -690,8 +688,26 @@ public class Acte_NaissanceController implements Serializable {
             params.put("nationnaliteAr", "مغربية");
             params.put("pereAr", current.getPrenomP_Ar());
             params.put("mereAr", current.getPrenomM_Ar());
-            params.put("decesAr", "لا شيء");
+            boolean trouve = false;
+            for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 14 || current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
+                    trouve = true;
+                    break;
+                }
+            }
+            if (trouve) {
+                if (current.getSex().getId() == 1) {
+                    params.put("decesAr", "متوفى");
+                    params.put("deces", "Décédé");
+                } else {
+                    params.put("decesAr", "متوفية");
+                    params.put("deces", "Décédée");
+                }
 
+            } else {
+                params.put("decesAr", "لا شيء");
+                params.put("deces", "Néant");
+            }
             InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait.jasper");
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
             HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
@@ -737,7 +753,7 @@ public class Acte_NaissanceController implements Serializable {
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
             params.put("mere", current.getPrenomM_Fr());
-            params.put("deces", "Néant");
+
 
 
             JasperPrint jasperPrint2;
@@ -803,8 +819,7 @@ public class Acte_NaissanceController implements Serializable {
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
         SimpleDateFormat y = new SimpleDateFormat("yyyy");
-        params.put("anneeH", "" + y.format(current.getDateTah_H()));
-        params.put("anneeG", "" + y.format(current.getDateTah_G()));
+        params.put("annee", "" + current.getRegistre().getAnnee());
         //Wini ini = new Wini(new File("C:\\jars\\conf.ini"));
         File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));

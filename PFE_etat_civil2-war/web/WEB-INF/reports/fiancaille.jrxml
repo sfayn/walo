@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="352"/>
+	<property name="ireport.y" value="567"/>
 	<parameter name="anneeH" class="java.lang.String"/>
 	<parameter name="anneeG" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
@@ -32,9 +32,6 @@
 	</field>
 	<field name="prenom_Ar" class="java.lang.String">
 		<fieldDescription><![CDATA[prenom_Ar]]></fieldDescription>
-	</field>
-	<field name="registre" class="bean.Registre">
-		<fieldDescription><![CDATA[registre]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -140,7 +137,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[و قد سلمت لها هذه الشهادة قصد ابرام عقد الزواج :]]></text>
+				<text><![CDATA[و قد سلمت له(ا) هذه الشهادة قصد ابرام عقد الزواج :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="a536daad-fc5e-44c8-b272-ef5a4987bbae" x="123" y="452" width="34" height="15"/>
