@@ -108,6 +108,8 @@ public class Acte_NaissanceController implements Serializable {
         return primaryRowCount;
     }
 
+    
+    
     public void setPrimaryRowCount(Integer primaryRowCount) {
         this.primaryRowCount = primaryRowCount;
     }
