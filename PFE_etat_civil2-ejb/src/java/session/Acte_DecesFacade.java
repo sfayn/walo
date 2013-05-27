@@ -14,6 +14,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -65,5 +66,35 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         cq.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         cq.select(emp);
         return getEntityManager().createQuery(cq).getResultList();
+    }
+    
+    public List<Object[]> countByAge(Integer annee, Integer month, Integer min, Integer max) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByAge");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        queryProductsByName.setParameter("min", min);
+        queryProductsByName.setParameter("max", max);
+        List<Object[]> results = queryProductsByName.getResultList();
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("sex: "+sex+", count: "+count);
+        }
+        
+        return results;
+    }
+    
+    public List<Object[]> countBySex(Integer annee, Integer month) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countBySex");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        List<Object[]> results = queryProductsByName.getResultList();
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("sex: "+sex+", count: "+count);
+        }
+        
+        return results;
     }
 }

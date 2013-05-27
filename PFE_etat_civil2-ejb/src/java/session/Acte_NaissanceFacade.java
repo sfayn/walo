@@ -66,6 +66,20 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
 
         return results;
     }
+    
+    public List<Object[]> countBySex(Integer annee, Integer month) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countBySex");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        List<Object[]> results = queryProductsByName.getResultList();
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("sex: "+sex+", count: "+count);
+        }
+        
+        return results;
+    }
 
     public List<Object[]> countByAgeMere(Integer annee, Integer month, Integer min, Integer max) {
         Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByAgeMere");
@@ -77,7 +91,7 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         for (Object[] result : results) {
             String sex = ((String) result[1]);
             int count = ((Number) result[0]).intValue();
-            System.out.println(min+""+max+" --> sex: "+sex+", count: "+count);
+            //System.out.println(min+""+max+" --> sex: "+sex+", count: "+count);
         }
         return results;
     }
