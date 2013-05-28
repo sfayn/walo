@@ -108,8 +108,6 @@ public class Acte_NaissanceController implements Serializable {
         return primaryRowCount;
     }
 
-    
-    
     public void setPrimaryRowCount(Integer primaryRowCount) {
         this.primaryRowCount = primaryRowCount;
     }
@@ -669,13 +667,10 @@ public class Acte_NaissanceController implements Serializable {
             params.put("numActe", "" + current.getNumActe());
             params.put("anneeH", "" + y.format(current.getDateTah_H()));
             params.put("anneeG", "" + y.format(current.getDateTah_G()));
-
             params.put("province", ini.get("commune", "province"));
             params.put("commune", ini.get("commune", "commune"));
             params.put("communeAr", ini.get("commune", "communeAr"));
-            System.out.println("commune: ---> " + ini.get("commune", "communeAr"));
             params.put("provinceAr", ini.get("commune", "provinceAr"));
-
             params.put("nom", current.getNom_Fr());
             params.put("prenom", current.getPrenom_Fr());
             params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
@@ -722,19 +717,34 @@ public class Acte_NaissanceController implements Serializable {
             params.put("numActe", "" + current.getNumActe());
             params.put("anneeH", "" + y.format(current.getDateTah_H()));
             params.put("anneeG", "" + y.format(current.getDateTah_G()));
-
             params.put("communeAr", ini.get("commune", "communeAr"));
             params.put("provinceAr", ini.get("commune", "provinceAr"));
-
             params.put("nomAr", current.getNom_Ar());
             params.put("prenomAr", current.getPrenom_Ar());
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
             params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-            params.put("nationnaliteAr", "مغربية");
+            params.put("nationnaliteAr", "مغربية");            
+            params.put("officierAr", current.getOfficierAr());
             params.put("pereAr", current.getPrenomP_Ar());
             params.put("mereAr", current.getPrenomM_Ar());
-            params.put("decesAr", "لا شيء");
+            boolean trouve = false;
+            for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 14 || current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
+                    trouve = true;
+                    break;
+                }
+            }
+            if (trouve) {
+                if (current.getSex().getId() == 1) {
+                    params.put("decesAr", "متوفى");
+                } else {
+                    params.put("decesAr", "متوفية");
+                }
+
+            } else {
+                params.put("decesAr", "لا شيء");
+            }
 
             InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait-ar.jasper");
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
@@ -743,10 +753,8 @@ public class Acte_NaissanceController implements Serializable {
             params.put("numActe", "" + current.getNumActe());
             params.put("anneeH", "" + y.format(current.getDateTah_H()));
             params.put("anneeG", "" + y.format(current.getDateTah_G()));
-
             params.put("province", ini.get("commune", "province"));
             params.put("commune", ini.get("commune", "commune"));
-
             params.put("nom", current.getNom_Fr());
             params.put("prenom", current.getPrenom_Fr());
             params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
@@ -754,9 +762,26 @@ public class Acte_NaissanceController implements Serializable {
             params.put("correspondant", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
-            params.put("mere", current.getPrenomM_Fr());
+            params.put("mere", current.getPrenomM_Fr());             
+            params.put("officierFr", current.getOfficierFr());
 
+            boolean trouve2 = false;
+            for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
+                if (current.getDonnees_Marginaless().get(i).getType().getId() == 14 || current.getDonnees_Marginaless().get(i).getType().getId() == 15) {
+                    trouve = true;
+                    break;
+                }
+            }
+            if (trouve2) {
+                if (current.getSex().getId() == 1) {
+                    params.put("deces", "Décédé");
+                } else {
+                    params.put("deces", "Décédée");
+                }
 
+            } else {
+                params.put("deces", "Néant");
+            }
 
             JasperPrint jasperPrint2;
             InputStream reportSource2 = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait-fr.jasper");

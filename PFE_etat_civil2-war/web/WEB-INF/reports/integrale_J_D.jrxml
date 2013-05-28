@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95b66382-4144-48ee-bee1-6bee4b079750">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="114"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="e4238793-2086-43fc-865a-f602c89a58e3">
 		<queryString>
 			<![CDATA[]]>
@@ -180,7 +180,7 @@
 			<staticText>
 				<reportElement uuid="c6ae66bf-4e12-4036-983a-ad974d6f68f9" x="429" y="0" width="98" height="31"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="13" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المملكة المغربية
 وزارة الداخلية
