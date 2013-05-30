@@ -259,6 +259,7 @@ public class Acte_DecesController implements Serializable {
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        JRBeanCollectionDataSource beanCollectionDataSource2 = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
@@ -270,13 +271,11 @@ public class Acte_DecesController implements Serializable {
         params.put("numActe", "" + current.getNumActe());
         params.put("anneeH", "" + y.format(current.getDateTah_H()));
         params.put("anneeG", "" + y.format(current.getDateTah_G()));
-
         params.put("communeAr", ini.get("commune", "communeAr"));
         params.put("provinceAr", ini.get("commune", "provinceAr"));
-
         params.put("nomAr", current.getNom_Ar());
-        params.put("prenomAr", current.getPrenom_Ar());        
-        params.put("dateDecesAr", Helper.dateToStrArG(current.getDateDecesG()));        
+        params.put("prenomAr", current.getPrenom_Ar());
+        params.put("dateDecesAr", Helper.dateToStrArG(current.getDateDecesG()));
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
         params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
@@ -288,11 +287,45 @@ public class Acte_DecesController implements Serializable {
         params.put("pereAr", current.getPrenomP_Ar());
         params.put("mereAr", current.getPrenomM_Ar());
         params.put("adresseAr", current.getAdresse_Ar());
-        params.put("professionAr", current.getProfession_Ar());
+        params.put("professionAr", current.getProfession_Ar());        
+        params.put("officierAr", current.getOfficierAr());
 
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extraitDecesAr.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
 
+        params = new HashMap();
+        params.put("numActe", "" + current.getNumActe());
+        params.put("anneeH", "" + y.format(current.getDateTah_H()));
+        params.put("anneeG", "" + y.format(current.getDateTah_G()));
+
+        params.put("communeFr", ini.get("commune", "commune"));
+        params.put("provinceFr", ini.get("commune", "province"));
+
+        params.put("nomFr", current.getNom_Fr());
+        params.put("prenomFr", current.getPrenom_Fr());
+        params.put("dateDecesFr", Helper.dateToStrG(current.getDateDecesG()));
+        params.put("lieuDecesFr", current.getLieuDeces_Fr());
+        params.put("lieuNaissanceFr", current.getLieu_de_Naiss_Fr());
+        params.put("lieuDecesFr", current.getLieuDeces_Fr());
+        params.put("dateNaissanceGFr", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateNaissanceHFr", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        params.put("dateDecesGFr", current.isNoMJD() == false ? Helper.dateToStrG(current.getDateDecesG()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateDecesHFr", current.isNoMJD() == false ? Helper.dateHToStrH(current.getDateDecesH()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        params.put("nationnaliteFr", "Marocaine");
+        params.put("pereFr", current.getPrenomP_Fr());
+        params.put("mereFr", current.getPrenomM_Fr());
+        params.put("adresseFr", current.getAdresse_Fr());
+        params.put("professionFr", current.getProfession_Fr());
+        params.put("officierFr", current.getOfficierFr());
+        JasperPrint jasperPrint2;
+        InputStream reportSource2 = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extraitDecesFr.jasper");
+        jasperPrint2 = JasperFillManager.fillReport(reportSource2, params, beanCollectionDataSource2);
+        List pages = jasperPrint2.getPages();
+        for (Iterator i = pages.iterator(); i.hasNext();) {
+            System.out.println("+page");
+            JRPrintPage jRPrintPage = (JRPrintPage) i.next();
+            jasperPrint.addPage(jRPrintPage);
+        }
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
@@ -300,7 +333,8 @@ public class Acte_DecesController implements Serializable {
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
 
     }
-public void PDFIntegD() throws JRException, IOException {
+
+    public void PDFIntegD() throws JRException, IOException {
         List<Acte_Deces> acts = new ArrayList<Acte_Deces>();
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
         acts.add(current);
@@ -320,8 +354,8 @@ public void PDFIntegD() throws JRException, IOException {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
 
         params.put("nomAr", current.getNom_Ar());
-        params.put("prenomAr", current.getPrenom_Ar());        
-        params.put("dateDecesAr", Helper.dateToStrArG(current.getDateDecesG()));        
+        params.put("prenomAr", current.getPrenom_Ar());
+        params.put("dateDecesAr", Helper.dateToStrArG(current.getDateDecesG()));
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
         params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
@@ -347,6 +381,7 @@ public void PDFIntegD() throws JRException, IOException {
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
 
     }
+
     public void changeDonnees_Marginales() {
         Donnees_Marginales_A_D dm = new Donnees_Marginales_A_D();
         current.getDonnees_Marginaless().add(dm);
@@ -553,8 +588,8 @@ public void PDFIntegD() throws JRException, IOException {
                     current.setDate_de_naiss_H(acteN.getDate_de_naiss_H());
                     current.setPrenomP_Fr(acteN.getPrenomP_Fr());
                     current.setPrenomP_Ar(acteN.getPrenomP_Ar());
-                    current.setPrenomP_Fr(acteN.getPrenomM_Fr());
-                    current.setPrenomP_Ar(acteN.getPrenomM_Ar());
+                    current.setPrenomM_Fr(acteN.getPrenomM_Fr());
+                    current.setPrenomM_Ar(acteN.getPrenomM_Ar());
 
                 } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(Acte_DecesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -629,7 +664,7 @@ public void PDFIntegD() throws JRException, IOException {
             current.setPrenomP_Ar(URLEncoder.encode(current.getPrenomP_Ar(), "UTF-8"));
             current.setPrenomM_Ar(URLEncoder.encode(current.getPrenomM_Ar(), "UTF-8"));
             current.setProfessionM_Ar(URLEncoder.encode(current.getProfessionM_Ar(), "UTF-8"));
-            current.setProfessionP_Ar(URLEncoder.encode(current.getProfessionP_Ar(), "UTF-8"));            
+            current.setProfessionP_Ar(URLEncoder.encode(current.getProfessionP_Ar(), "UTF-8"));
             current.setOfficierAr(URLEncoder.encode(current.getOfficierAr(), "UTF-8"));
             current.setAdresse_Ar(URLEncoder.encode(current.getAdresse_Ar(), "UTF-8"));
             current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));

@@ -2,294 +2,416 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ea32504-5e83-484d-9c36-d319b5099d60">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="304"/>
 	<subDataset name="dataset1" uuid="853b1469-31b3-46cb-9722-20d078f7a9ac"/>
+	<parameter name="numActe" class="java.lang.String"/>
+	<parameter name="anneeH" class="java.lang.String"/>
+	<parameter name="anneeG" class="java.lang.String"/>
+	<parameter name="communeFr" class="java.lang.String"/>
+	<parameter name="provinceFr" class="java.lang.String"/>
+	<parameter name="nomFr" class="java.lang.String"/>
+	<parameter name="dateDecesFr" class="java.lang.String"/>
+	<parameter name="prenomFr" class="java.lang.String"/>
+	<parameter name="lieuNaissanceFr" class="java.lang.String"/>
+	<parameter name="lieuDecesFr" class="java.lang.String"/>
+	<parameter name="pereFr" class="java.lang.String"/>
+	<parameter name="mereFr" class="java.lang.String"/>
+	<parameter name="nationnaliteFr" class="java.lang.String"/>
+	<parameter name="dateNaissanceGFr" class="java.lang.String"/>
+	<parameter name="dateNaissanceHFr" class="java.lang.String"/>
+	<parameter name="dateDecesGFr" class="java.lang.String"/>
+	<parameter name="dateDecesHFr" class="java.lang.String"/>
+	<parameter name="adresseFr" class="java.lang.String"/>
+	<parameter name="professionFr" class="java.lang.String"/>
+	<parameter name="officierFr" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
 		<band height="531" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="9c3a1870-145f-47f3-8253-0bfd2ab6ba09" x="0" y="0" width="145" height="14"/>
+				<reportElement uuid="9c3a1870-145f-47f3-8253-0bfd2ab6ba09" x="0" y="-14" width="145" height="14"/>
 				<textElement textAlignment="Center">
 					<font isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ROYAUME DU MAROC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a2a2d641-6b78-418a-a7c0-74c641d5d385" x="0" y="69" width="45" height="15"/>
+				<reportElement uuid="a2a2d641-6b78-418a-a7c0-74c641d5d385" x="0" y="55" width="45" height="15"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Acte N° ]]></text>
 			</staticText>
-			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="33" y="83" width="112" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
 			<staticText>
-				<reportElement uuid="7547ec95-8856-480d-b8e1-24cc02157eda" x="0" y="95" width="45" height="15"/>
+				<reportElement uuid="7547ec95-8856-480d-b8e1-24cc02157eda" x="0" y="81" width="45" height="15"/>
 				<textElement/>
 				<text><![CDATA[Année :	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="1f4fcc4f-7169-45e4-81b4-2730585348f5" x="45" y="87" width="43" height="15"/>
+				<reportElement uuid="1f4fcc4f-7169-45e4-81b4-2730585348f5" x="45" y="75" width="43" height="15"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Hijrienne]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c47857b1-fa1b-445e-a726-38ef0d40ad15" x="45" y="105" width="65" height="15"/>
+				<reportElement uuid="c47857b1-fa1b-445e-a726-38ef0d40ad15" x="45" y="89" width="65" height="15"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Grégorienne]]></text>
 			</staticText>
-			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="88" y="101" width="77" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="105" y="118" width="60" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
 			<staticText>
-				<reportElement uuid="d4b56c70-28fa-4683-b649-b228403ebe06" x="108" y="147" width="164" height="20"/>
+				<reportElement uuid="d4b56c70-28fa-4683-b649-b228403ebe06" x="102" y="120" width="177" height="20"/>
 				<textElement textAlignment="Center">
-					<font isBold="true" isUnderline="true"/>
+					<font size="12" isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[EXTRAIT D'ACTE DE Décès]]></text>
+				<text><![CDATA[Extrait d'Acte de décès]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="7bfe936a-4414-4f5b-b2cc-67f110187a6e" x="0" y="186" width="100" height="20"/>
+				<reportElement uuid="7bfe936a-4414-4f5b-b2cc-67f110187a6e" x="0" y="160" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Décédé (e) à :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="be53f94f-c586-4252-a52e-5754d02b1e5b" x="0" y="226" width="100" height="20"/>
+				<reportElement uuid="be53f94f-c586-4252-a52e-5754d02b1e5b" x="0" y="200" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Prénom :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="526e7dc9-55e4-4b28-a209-2527818df7fe" x="0" y="246" width="100" height="20"/>
+				<reportElement uuid="526e7dc9-55e4-4b28-a209-2527818df7fe" x="0" y="220" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Nom :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="de83eb91-1b8e-459f-b7f5-ef8b013426e6" x="0" y="266" width="100" height="20"/>
+				<reportElement uuid="de83eb91-1b8e-459f-b7f5-ef8b013426e6" x="0" y="240" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Né(e) le :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="248fe3a6-d6a9-4ebd-b02c-8ac3719b82f2" x="0" y="284" width="100" height="20"/>
+				<reportElement uuid="248fe3a6-d6a9-4ebd-b02c-8ac3719b82f2" x="0" y="258" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[A :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="175235d1-67a6-4243-9b62-9a7bc1be9a20" x="0" y="304" width="100" height="20"/>
+				<reportElement uuid="175235d1-67a6-4243-9b62-9a7bc1be9a20" x="0" y="278" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Profession :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="39dd655e-2c6c-46d9-9e5f-50539615a03f" x="0" y="324" width="100" height="20"/>
+				<reportElement uuid="39dd655e-2c6c-46d9-9e5f-50539615a03f" x="0" y="298" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Lieu de résidence :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="62ec269b-5388-41e6-aab5-552552ec46e3" x="0" y="344" width="100" height="20"/>
+				<reportElement uuid="62ec269b-5388-41e6-aab5-552552ec46e3" x="0" y="318" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Fils ou fille de :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e8d27c2a-8ff3-4e4f-b546-5a46ddbcfabc" x="0" y="364" width="100" height="20"/>
+				<reportElement uuid="e8d27c2a-8ff3-4e4f-b546-5a46ddbcfabc" x="0" y="338" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Et de :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c5b1938f-d9e8-4537-8cf4-ff1815a33e25" x="0" y="384" width="214" height="20"/>
+				<reportElement uuid="c5b1938f-d9e8-4537-8cf4-ff1815a33e25" x="0" y="358" width="223" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
-				<text><![CDATA[Extrait certifié conforme au registre de l'Etat civil par nous]]></text>
+				<text><![CDATA[Extrait certifié conforme au registre de l'Etat civil par nous :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2af25738-3912-4a18-ab45-9fde677cd7ca" x="0" y="451" width="31" height="15"/>
+				<reportElement uuid="2af25738-3912-4a18-ab45-9fde677cd7ca" x="0" y="425" width="31" height="15"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[A :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="213fb0d2-e71e-40d4-a36b-38f026469e8e" x="0" y="436" width="33" height="15"/>
+				<reportElement uuid="213fb0d2-e71e-40d4-a36b-38f026469e8e" x="0" y="410" width="33" height="15"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Le :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ad7e314e-2e44-41d2-83cd-754fc739f232" x="0" y="471" width="143" height="15"/>
+				<reportElement uuid="ad7e314e-2e44-41d2-83cd-754fc739f232" x="0" y="445" width="143" height="15"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[L'Officier de l'état civil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8991001f-650e-4dea-b4e9-ed758321fc45" x="0" y="206" width="100" height="20"/>
+				<reportElement uuid="8991001f-650e-4dea-b4e9-ed758321fc45" x="0" y="180" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Le :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="31570206-add7-4b5a-a2d5-428c368f988a" x="368" y="389" width="13" height="15"/>
-				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[et]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="c5b1938f-d9e8-4537-8cf4-ff1815a33e25" x="0" y="406" width="214" height="20"/>
+				<reportElement uuid="c5b1938f-d9e8-4537-8cf4-ff1815a33e25" x="0" y="380" width="100" height="20"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
-				<text><![CDATA[Officier de l'état civil]]></text>
+				<text><![CDATA[Officier de l'état civil de]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="28adb04c-5f2d-454f-b6ae-1dbd9453fd8e" x="0" y="502" width="100" height="15"/>
+				<reportElement uuid="28adb04c-5f2d-454f-b6ae-1dbd9453fd8e" x="0" y="476" width="100" height="15"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Signé :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0e287e15-bf7c-47f4-a8a6-574ee842e440" x="231" y="482" width="137" height="15"/>
+				<reportElement uuid="0e287e15-bf7c-47f4-a8a6-574ee842e440" x="231" y="456" width="137" height="15"/>
 				<textElement verticalAlignment="Bottom">
-					<font size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[Sceau du bureau de l'état civil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="3e650c3a-8178-4baa-8645-6750d49be7be" x="0" y="14" width="145" height="13"/>
+				<reportElement uuid="3e650c3a-8178-4baa-8645-6750d49be7be" x="0" y="0" width="145" height="13"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Ministère de l'intérieur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c4cc6abd-8484-462d-be78-86e01be4289d" x="0" y="27" width="145" height="14"/>
+				<reportElement uuid="c4cc6abd-8484-462d-be78-86e01be4289d" x="0" y="13" width="145" height="14"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Province (Préfecture)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="98d94ca9-d017-4195-9a8c-57c2db4569d4" x="0" y="54" width="48" height="15"/>
+				<reportElement uuid="98d94ca9-d017-4195-9a8c-57c2db4569d4" x="0" y="40" width="48" height="15"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Commune]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="48" y="68" width="97" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="53" y="179" width="328" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="2" y="54" width="143" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="199" width="361" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="53" y="205" width="328" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="40" y="219" width="341" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="225" width="361" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="33" y="239" width="348" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="40" y="245" width="341" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="40" y="257" width="341" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="33" y="265" width="348" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="277" width="361" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="40" y="283" width="341" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="45" y="297" width="336" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="303" width="361" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="74" y="317" width="307" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="45" y="323" width="336" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="64" y="337" width="317" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="74" y="343" width="307" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="31" y="357" width="350" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="64" y="363" width="317" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="212" y="377" width="156" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="31" y="383" width="350" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="424" width="123" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="212" y="403" width="156" height="1"/>
+				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="439" width="123" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25" lineStyle="Dotted"/>
 				</graphicElement>
 			</line>
-			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="450" width="123" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="511dddcd-da11-4333-9208-088e5542bc93" x="20" y="465" width="123" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
+			<textField>
+				<reportElement uuid="8b0ad5e5-3af4-460b-af07-f9e11825cb71" x="106" y="90" width="100" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{anneeG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="84bd6c35-7d57-448a-9b94-138280a310c0" x="106" y="75" width="100" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{anneeH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f9d45bdc-41b3-4b08-b8ce-8b6b98ffde11" x="31" y="425" width="103" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b4dfe8b0-ab0f-4b15-8913-909bc28ba12d" x="45" y="200" width="244" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prenomFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="23b63dc3-a61e-4975-aac0-699073474cee" x="31" y="405" width="122" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd\\MM\\yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="43cb38bf-6e2c-4fcd-90a8-e6bb33cdedef" x="45" y="220" width="256" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="448dfa2d-6bed-46ff-bf3a-89eb1ae32658" x="20" y="260" width="341" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieuNaissanceFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c4aa6c94-4de5-4648-9e3e-9ab8cf3426d6" x="231" y="360" width="150" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{officierFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="588a2ce6-4b27-4537-8e89-bb1000182dc0" x="40" y="240" width="341" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateNaissanceGFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c4aa6c94-4de5-4648-9e3e-9ab8cf3426d6" x="33" y="338" width="252" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mereFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ac4bb066-f5cf-4de3-8d95-7cdcc237737f" x="74" y="297" width="251" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresseFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="867f9e35-4e20-4074-9f73-043c5d6cdfe0" x="48" y="278" width="256" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{professionFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ba761c0-54c5-4083-8201-5482a00fbdea" x="64" y="160" width="247" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieuDecesFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="730c5606-6c71-4398-b9ba-1cb24827c42a" x="64" y="318" width="267" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pereFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ba761c0-54c5-4083-8201-5482a00fbdea" x="20" y="179" width="288" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDecesFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="53" y="42" width="100" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="70bd4ca0-8c56-41a1-9198-e6530de9c9dc" x="0" y="27" width="145" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{provinceFr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="30aeb0ac-891a-4fa3-a313-d53cec1f3ef1" x="45" y="56" width="100" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{numActe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f9d45bdc-41b3-4b08-b8ce-8b6b98ffde11" x="100" y="385" width="103" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeFr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8da0586a-c210-48df-ad31-d72269146461" x="36" y="76" width="22" height="29"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[{]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>
