@@ -95,4 +95,24 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         }
         return results;
     }
+    
+    public Integer countByTriMonths(Integer annee, Integer month1, Integer month2, Integer month3) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByTriMonths");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month1", month1);
+        queryProductsByName.setParameter("month2", month2);
+        queryProductsByName.setParameter("month3", month3);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
+    }
+    
+    public Integer countByMonth(Integer annee, Integer month) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByTriMonths");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
+    }
 }

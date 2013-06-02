@@ -15,6 +15,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -66,5 +67,25 @@ public class Jugement_NaissanceFacade extends AbstractFacade<Jugement_Naissance>
         cq.where(predicate);
         cq.select(emp);
         return getEntityManager().createQuery(cq).getResultList();
+    }
+    
+    public Integer countByTriMonths(Integer annee, Integer month1, Integer month2, Integer month3) {
+        Query queryProductsByName = em.createNamedQuery("Jugement_Naissance.countByTriMonths");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month1", month1);
+        queryProductsByName.setParameter("month2", month2);
+        queryProductsByName.setParameter("month3", month3);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
+    }
+    
+    public Integer countByMonth(Integer annee, Integer month) {
+        Query queryProductsByName = em.createNamedQuery("Jugement_Naissance.countByMonth");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
     }
 }

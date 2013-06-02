@@ -39,15 +39,37 @@ public class BIController implements Serializable {
     private session.Acte_DecesFacade acte_DecesFacade;
     @EJB
     private session.Acte_NaissanceFacade acte_NaissanceFacade;
+    @EJB
+    private session.Jugement_NaissanceFacade jugement_NaissanceFacade;
+    @EJB
+    private session.Jugement_DecesFacade jugement_DecesFacade;
     private Integer anneeGeneral = 1990;//Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private Integer mois = 01;//Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
     private List<Integer> dataD = new ArrayList<Integer>();
     private List<Integer> dataN = new ArrayList<Integer>();
-    private List<Integer> data = new ArrayList<Integer>();
+    
+    /*
+     * count d'un mois
+     */
     Integer countHommeNaiss = 0;
     Integer countFemmeNaiss = 0;
+    Integer countNaiss = 0;
+    Integer countJugNaiss = 0;
     Integer countHommeDec = 0;
     Integer countFemmeDec = 0;
+    Integer countDec = 0;
+    Integer countJugDec = 0;
+    /*
+     * count de trois mois
+     */
+    Integer countTriHommeNaiss = 0;
+    Integer countTriFemmeNaiss = 0;
+    Integer countTriNaiss = 0;
+    Integer countTriJugNaiss = 0;
+    Integer countTriHommeDec = 0;
+    Integer countTriFemmeDec = 0;
+    Integer countTriDec = 0;
+    Integer countTriJugDec = 0;
     Map params = new HashMap();
 
     public Integer getAnneeGeneral() {
@@ -57,6 +79,26 @@ public class BIController implements Serializable {
     public void setAnneeGeneral(Integer anneeGeneral) {
         this.anneeGeneral = anneeGeneral;
     }
+
+    public Integer getCountJugNaiss() {
+        countJugNaiss = jugement_NaissanceFacade.countByMonth(anneeGeneral, mois);
+        return countJugNaiss;
+    }
+
+    public void setCountJugNaiss(Integer countJugNaiss) {
+        this.countJugNaiss = countJugNaiss;
+    }
+
+    public Integer getCountJugDec() {
+        countJugDec = jugement_DecesFacade.countByMonth(anneeGeneral, mois);
+        return countJugDec;
+    }
+
+    public void setCountJugDec(Integer countJugDec) {
+        this.countJugDec = countJugDec;
+    }
+    
+    
 
     public Integer getMois() {
         return mois;
@@ -358,6 +400,27 @@ public class BIController implements Serializable {
             }
         }
         return dataN;
+    }
+    
+    public List<Integer> getDataD() {
+        dataD = new ArrayList<Integer>();
+        List<Object[]> results = acte_DecesFacade.countByDate(anneeGeneral);
+        System.out.println("year: " + anneeGeneral);
+        for (int i = 1; i < 13; i++) {
+            boolean flag = false;
+            for (Object[] result : results) {
+                int month = ((Number) result[1]).intValue();
+                if (month == i) {
+                    dataD.add(((Number) result[0]).intValue());
+                    flag = true;
+                    System.out.println("Mois: " + month + ", count: " + ((Number) result[0]).intValue());
+                }
+            }
+            if (!flag) {
+                dataD.add(0);
+            }
+        }
+        return dataD;
     }
 
     public void setData(List<Integer> data) {

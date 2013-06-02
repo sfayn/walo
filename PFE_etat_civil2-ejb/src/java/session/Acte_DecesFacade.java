@@ -97,4 +97,37 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         
         return results;
     }
+    
+    public List<Object[]> countByDate(Integer annee) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByDate");
+        queryProductsByName.setParameter("year", annee);
+        List<Object[]> results = queryProductsByName.getResultList();
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("sex: "+sex+", count: "+count);
+        }
+        
+        return results;
+    }
+    
+    public Integer countByTriMonths(Integer annee, Integer month1, Integer month2, Integer month3) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByTriMonths");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month1", month1);
+        queryProductsByName.setParameter("month2", month2);
+        queryProductsByName.setParameter("month3", month3);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
+    }
+    
+    public Integer countByMonth(Integer annee, Integer month) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByTriMonths");
+        queryProductsByName.setParameter("year", annee);
+        queryProductsByName.setParameter("month", month);
+        Integer results = queryProductsByName.getFirstResult();
+        
+        return results;
+    }
 }
