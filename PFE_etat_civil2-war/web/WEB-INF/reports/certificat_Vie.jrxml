@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="156"/>
+	<property name="ireport.y" value="12"/>
 	<parameter name="annee" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
 	<parameter name="provinceAr" class="java.lang.String"/>
@@ -33,83 +33,23 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="135" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="248" y="55" width="133" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[جماعة ]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="204" y="67" width="156" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
+		<band height="121" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="c6ae66bf-4e12-4036-983a-ad974d6f68f9" x="283" y="0" width="98" height="31"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="11" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المملكة المغربية
 وزارة الداخلية
          ]]></text>
 			</staticText>
-			<line>
-				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="204" y="54" width="150" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="343" y="42" width="38" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[عمالة ]]></text>
-			</staticText>
 			<textField>
-				<reportElement uuid="70bd4ca0-8c56-41a1-9198-e6530de9c9dc" x="243" y="42" width="100" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="248" y="55" width="100" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="193" y="69" width="97" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="290" y="69" width="91" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[مكتب الحالة المدنية لجماعة ]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="204" y="96" width="139" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<textField>
-				<reportElement uuid="8cda33cb-6046-4deb-b6c2-c3f355f899d2" x="243" y="82" width="100" height="15"/>
+				<reportElement uuid="8cda33cb-6046-4deb-b6c2-c3f355f899d2" x="239" y="88" width="100" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{numActe}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="7e88722e-6424-41d7-9745-268e99470171" x="341" y="82" width="40" height="15"/>
+				<reportElement uuid="7e88722e-6424-41d7-9745-268e99470171" x="337" y="88" width="40" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -118,12 +58,12 @@
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="84bd6c35-7d57-448a-9b94-138280a310c0" x="254" y="97" width="100" height="15"/>
+				<reportElement uuid="84bd6c35-7d57-448a-9b94-138280a310c0" x="250" y="103" width="100" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$P{annee}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="c19e1f46-44a8-4f24-84c1-75ab046139f8" x="354" y="97" width="27" height="15"/>
+				<reportElement uuid="c19e1f46-44a8-4f24-84c1-75ab046139f8" x="350" y="103" width="27" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -131,16 +71,61 @@
                 
                 ]]></text>
 			</staticText>
-			<line>
-				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="204" y="81" width="86" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
+			<textField>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="240" y="49" width="100" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1ccf37ae-67b1-482d-a409-ad35386383d7" x="345" y="49" width="32" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[جماعة :
+                ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="349" y="75" width="28" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[لجماعة  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="253" y="75" width="97" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c6078e06-3756-48bd-ac22-63e7b4643d8f" x="317" y="36" width="60" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[عمالة أو إقليم :
+                ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="286" y="62" width="91" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[مكتب الحالة المدنية لجماعة ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="70bd4ca0-8c56-41a1-9198-e6530de9c9dc" x="229" y="35" width="100" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>
-		<band height="258" splitType="Stretch">
+		<band height="346" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="570028a8-9ff1-40a8-9096-0be2f0b3b0bf" x="320" y="77" width="61" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
@@ -207,116 +192,68 @@
 			<staticText>
 				<reportElement uuid="964246f1-6e24-42cb-94ab-86f4783e4e5f" x="101" y="13" width="147" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[شهادة الحياة الفردية]]></text>
 			</staticText>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="85" y="61" width="160" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="94" width="330" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="113" width="337" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="131" width="337" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="149" width="330" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="167" width="346" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="185" width="351" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="203" width="346" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
 			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="110" y="67" width="94" height="13"/>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="164" y="63" width="94" height="13"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[مكتب الحالة المدنية لجماعة ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="77" width="100" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="77" width="258" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="95" width="100" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="95" width="258" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="114" width="100" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="114" width="258" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lieu_de_Naiss_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="0" y="137" width="320" height="13"/>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="0" y="132" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{dateNaissanceHAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="0" y="154" width="320" height="13"/>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="0" y="149" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{dateNaissanceGAr}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="168" width="100" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenomP_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="186" width="100" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenomM_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="10" y="67" width="100" height="13"/>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="64" y="63" width="100" height="13"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -336,69 +273,48 @@
 				</textElement>
 				<text><![CDATA[الموقع أسفله]]></text>
 			</staticText>
-		</band>
-	</detail>
-	<pageFooter>
-		<band height="124" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="e52b8974-2fbf-4d67-a50a-a5437c7133e2" x="260" y="32" width="100" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[طابع مكتب الحالة المدنية]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ac9987d4-197b-47a6-857c-e3f7db176705" x="9" y="32" width="100" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[ ضابط الحالة المدنية]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="0ffd6add-da21-4d12-bc22-04cab56303f1" x="281" y="0" width="100" height="18"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[حرر ب]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="0ffd6add-da21-4d12-bc22-04cab56303f1" x="131" y="0" width="43" height="18"/>
+				<reportElement uuid="0ffd6add-da21-4d12-bc22-04cab56303f1" x="150" y="272" width="43" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[بتاريخ]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="ac9987d4-197b-47a6-857c-e3f7db176705" x="9" y="52" width="100" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-				</textElement>
-				<text><![CDATA[توقيع]]></text>
-			</staticText>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="176" y="17" width="180" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement uuid="43164088-b894-4480-afc2-d7ce2169f351" x="0" y="16" width="151" height="1"/>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
 			<textField>
-				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="233" y="5" width="100" height="13"/>
+				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="202" y="272" width="100" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
-					<font fontName="Arial" size="10" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="ac9987d4-197b-47a6-857c-e3f7db176705" x="28" y="304" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[إمضاء : ضابط الحالة المدنية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e52b8974-2fbf-4d67-a50a-a5437c7133e2" x="229" y="304" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[طابع مكتب الحالة المدنية]]></text>
+			</staticText>
 			<textField>
-				<reportElement uuid="8b0ad5e5-3af4-460b-af07-f9e11825cb71" x="0" y="3" width="131" height="13"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<reportElement uuid="8b0ad5e5-3af4-460b-af07-f9e11825cb71" x="19" y="272" width="131" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy\\MM\\dd").format(new Date())]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="0ffd6add-da21-4d12-bc22-04cab56303f1" x="250" y="272" width="100" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[حرر ب]]></text>
+			</staticText>
 		</band>
-	</pageFooter>
+	</detail>
 </jasperReport>
