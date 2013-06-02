@@ -17,6 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,6 +33,12 @@ import javax.persistence.UniqueConstraint;
 @Table( 
         uniqueConstraints =
 @UniqueConstraint(columnNames = {"numActe", "registre_id"}))
+@NamedQueries({
+    @NamedQuery(name="Jugement_Naissance.countByMonth",
+                query="SELECT COUNT(c) FROM Jugement_Naissance c WHERE FUNC('YEAR',c.dateJug)=:year AND FUNC('MONTH',c.dateJug)=:month"),
+    @NamedQuery(name="Jugement_Naissance.countByTriMonths",
+                query="SELECT COUNT(c) FROM Jugement_Naissance c WHERE FUNC('YEAR',c.dateJug)=:year AND (FUNC('MONTH',c.dateJug)=:month1 OR FUNC('MONTH',c.dateJug)=:month2 OR FUNC('MONTH',c.dateJug)=:month3)"),
+})
 public class Jugement_Naissance implements Serializable {
     @OneToMany(mappedBy = "jugement", targetEntity=Donnees_Marginales_J_N.class, fetch = FetchType.EAGER,orphanRemoval=true)
     private List<Donnees_Marginales_J_N> donnees_Marginaless;

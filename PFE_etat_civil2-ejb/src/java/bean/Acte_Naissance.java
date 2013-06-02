@@ -36,12 +36,16 @@ import javax.persistence.UniqueConstraint;
     )
 
 @NamedQueries({
+    @NamedQuery(name="Acte_Naissance.countByMonth",
+                query="SELECT COUNT(c) FROM Acte_Naissance c WHERE FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month"),
     @NamedQuery(name="Acte_Naissance.countBySex",
                 query="SELECT COUNT(c),s.libelleFr FROM Acte_Naissance c, Sex s WHERE s = c.sex AND FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month GROUP BY c.sex, FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G)"),
     @NamedQuery(name="Acte_Naissance.countByDateAndSex",
                 query="SELECT COUNT(c),FUNC('MONTH',c.dateTah_G),s.libelleFr FROM Acte_Naissance c, Sex s WHERE s = c.sex AND FUNC('YEAR',c.dateTah_G)=:year GROUP BY c.sex, FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G) ORDER BY FUNC('MONTH',c.dateTah_G) ASC"),
     @NamedQuery(name="Acte_Naissance.countByDate",
                 query="SELECT COUNT(c),FUNC('MONTH',c.dateTah_G) FROM Acte_Naissance c WHERE FUNC('YEAR',c.dateTah_G)=:year GROUP BY FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G) ORDER BY FUNC('MONTH',c.dateTah_G) ASC"),
+    @NamedQuery(name="Acte_Naissance.countByTriMonths",
+                query="SELECT COUNT(c) FROM Acte_Naissance c WHERE FUNC('YEAR',c.dateTah_G)=:year AND (FUNC('MONTH',c.dateTah_G)=:month1 OR FUNC('MONTH',c.dateTah_G)=:month2 OR FUNC('MONTH',c.dateTah_G)=:month3)"),
     @NamedQuery(name="Acte_Naissance.countByAgeMere",
                 query="SELECT COUNT(c),s.libelleFr FROM Acte_Naissance c, Sex s WHERE :year-FUNC('YEAR',c.date_de_naissM_G)<=:max AND :year-FUNC('YEAR',c.date_de_naissM_G)>=:min AND c.sex=s AND FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month GROUP BY s.libelleFr"),
 })

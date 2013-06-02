@@ -34,8 +34,14 @@ import javax.persistence.UniqueConstraint;
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )
 @NamedQueries({
+    @NamedQuery(name="Acte_Deces.countByTriMonths",
+                query="SELECT COUNT(c) FROM Acte_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year AND (FUNC('MONTH',c.dateTah_G)=:month1 OR FUNC('MONTH',c.dateTah_G)=:month2 OR FUNC('MONTH',c.dateTah_G)=:month3)"),
     @NamedQuery(name="Acte_Deces.countBySex",
                 query="SELECT COUNT(c),s.libelleFr FROM Acte_Deces c, Sex s WHERE s = c.sex AND FUNC('YEAR',c.dateDecesG)=:year AND FUNC('MONTH',c.dateDecesG)=:month GROUP BY c.sex"),
+    @NamedQuery(name="Acte_Deces.countByDate",
+                query="SELECT COUNT(c),FUNC('MONTH',c.dateTah_G) FROM Acte_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year GROUP BY FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G) ORDER BY FUNC('MONTH',c.dateTah_G) ASC"),
+    @NamedQuery(name="Acte_Deces.countByMonth",
+                query="SELECT COUNT(c) FROM Acte_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month"),
     @NamedQuery(name="Acte_Deces.countByAge",
                 query="SELECT COUNT(c), s.libelleFr FROM Acte_Deces c, Sex s WHERE :year-FUNC('YEAR',c.date_de_naiss_G)<=:max AND :year-FUNC('YEAR',c.date_de_naiss_G)>=:min AND FUNC('YEAR',c.dateDecesG)=:year AND FUNC('MONTH',c.dateDecesG)=:month AND c.sex=s GROUP BY c.sex"),
 })

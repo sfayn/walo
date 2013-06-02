@@ -22,7 +22,6 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-
                 <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                     <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                             margin-left:16px; border-bottom: 0px; width: auto;">الإحصائيات الشهرية:</legend>
@@ -31,6 +30,68 @@
                             <div id="graph" style="height: 500px;"> </div>
                             <h:outputScript library="js" name="flotr2.min.js" />
                             <script type="text/javascript">
+                                // <![CDATA[ 
+                                (function basic_pie(container) {
+
+                                    var
+                                    d1 = [
+                                        [0, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}]
+                                    ],
+                                    d2 = [
+                                        [0, #{bIController.countHommeDec+bIController.countFemmeDec}]
+                                    ],
+                                    d3 = [
+                                        [0, #{bIController.countJugNaiss}]
+                                    ],
+                                    d4 = [
+                                        [0, #{bIController.countJugDec}]
+                                    ],
+                                    graph;
+
+                                    graph = Flotr.draw(container, [{
+                                            data: d1,
+                                            label: 'الولادات',
+                                            pie: {
+                                                explode: 20
+                                            }
+                                        }, {
+                                            data: d2,
+                                            label: 'الوفيات'
+                                        }, {
+                                            data: d3,
+                                            label: 'jug Naiss'
+                                        }, {
+                                            data: d4,
+                                            label: 'jug dec'
+                                        }], {
+                                        HtmlText: false,
+                                        grid: {
+                                            verticalLines: false,
+                                            horizontalLines: false
+                                        },
+                                        xaxis: {
+                                            showLabels: false
+                                        },
+                                        yaxis: {
+                                            showLabels: false
+                                        },
+                                        pie: {
+                                            show: true,
+                                            explode: 6
+                                        },
+                                        mouse: {
+                                            trackFormatter: function(obj){ return obj.y; },
+                                            track: true
+                                        },
+                                        legend: {
+                                            position: 'se',
+                                            backgroundColor: '#D2E8FF'
+                                        }
+                                    });
+                                })(document.getElementById("graph"));
+                                // ]]> 
+                            </script>
+                            <!--<script type="text/javascript">
                                 // <![CDATA[ 
                                 (function basic_bars(container, horizontal) {
 
@@ -65,7 +126,7 @@
                                     });
                                 })(document.getElementById("graph"));
                                 // ]]> 
-                            </script>
+                            </script>-->
                         </div>
                         <b:gridColumn span="4">
                             <h:panelGrid columns="2" dir="rtl">
@@ -95,6 +156,39 @@
                                 <h:commandLink action="#" value="جذاذة الفرز 3" styleClass="btn btn-primary span2" />
                                 <h:commandLink action="#" value="جذاذة الفرز 4 و 5" styleClass="btn btn-primary span2" />
                             </h:panelGrid>
+                        </b:gridColumn>
+                    </b:gridRow>
+                </fieldset>
+                <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                    <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                            margin-left:16px; border-bottom: 0px; width: auto;">الإحصائيات الثلاث شهرية</legend>
+                    <b:gridRow id="flot-tri" >
+                        <div class="span5">
+                            <div id="graph-tri" style="height: 500px;"> </div>
+                            <h:outputScript library="js" name="flotr2.min.js" />
+                            <script type="text/javascript">
+                                // <![CDATA[ 
+                                
+                                // ]]> 
+                            </script>
+                        </div>
+                        <b:gridColumn span="4">
+                            <h:panelGrid columns="2" dir="rtl">
+                                <h:outputText styleClass="span2" value="السنة:" />
+                                <h:selectOneMenu styleClass="input-large" id="annee-tri" value="#{bIController.anneeGeneral}" >
+                                    <f:ajax execute="annee" event="change" render="flot" listener="#{bIController.table1()}" />
+                                    <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="الأشهر:" />
+                                <h:selectOneMenu styleClass="input-large" id="mois-tri" value="#{bIController.mois}" >
+                                    <f:ajax execute="mois" render="flot" listener="#{bIController.table1()}" />
+                                    <f:selectItem itemLabel="01-02-03" itemValue="01"/>
+                                    <f:selectItem itemLabel="04-05-06" itemValue="02"/>
+                                    <f:selectItem itemLabel="07-08-09" itemValue="03"/>
+                                    <f:selectItem itemLabel="10-11-12" itemValue="04"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                            <h:commandLink actionListener="#{bIController.DOCX1}" target="_blank" value="طباعة الإحصائيات" styleClass="btn btn-primary span4" />
                         </b:gridColumn>
                     </b:gridRow>
                 </fieldset>
