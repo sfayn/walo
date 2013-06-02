@@ -451,8 +451,7 @@ public class Jugement_DecesController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
 
         params.put("nomAr", current.getNom_Ar());
-        params.put("prenomAr", current.getPrenom_Ar());        
-        params.put("dateDecesAr", Helper.dateToStrArG(current.getDateDecesG()));        
+        params.put("prenomAr", current.getPrenom_Ar());               
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
         params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
         params.put("lieuDecesAr", current.getLieuDeces_Ar());
@@ -481,14 +480,13 @@ public class Jugement_DecesController implements Serializable {
 
         params.put("nomFr", current.getNom_Fr());
         params.put("prenomFr", current.getPrenom_Fr());
-        params.put("dateDecesFr", Helper.dateToStrG(current.getDateDecesG()));
         params.put("lieuDecesFr", current.getLieuDeces_Fr());
         params.put("lieuNaissanceFr", current.getLieu_de_Naiss_Fr());
         params.put("lieuDecesFr", current.getLieuDeces_Fr());
         params.put("dateNaissanceGFr", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHFr", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-        params.put("dateDecesGFr", current.isNoMJD() == false ? Helper.dateToStrG(current.getDateDecesG()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
-        params.put("dateDecesHFr", current.isNoMJD() == false ? Helper.dateHToStrH(current.getDateDecesH()) : "سنة " + Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+        params.put("dateDecesGFr", current.isNoMJD() == false ? Helper.dateToStrG(current.getDateDecesG()) :  Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateDecesHFr", current.isNoMJD() == false ? Helper.dateHToStrH(current.getDateDecesH()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
         params.put("nationnaliteFr", "Marocaine");
         params.put("pereFr", current.getPrenomP_Fr());
         params.put("mereFr", current.getPrenomM_Fr());

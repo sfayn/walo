@@ -171,8 +171,59 @@ public class Non_InscritController implements Serializable {
             }
         };
     }
-    
-    
+    public void pdfCarteIdentite() throws JRException, IOException {
+        List<Non_Inscrit> acts = new ArrayList<Non_Inscrit>();
+        acts.add(current);
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        Map params = new HashMap();
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
+        Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));        
+        params.put("communeAr", ini.get("commune", "communeAr"));
+        params.put("provinceAr", ini.get("commune", "provinceAr"));
+        params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+        params.put("nationnalitePAr", "مغربية");
+        params.put("nationnaliteMAr", "مغربية");
+        params.put("nationnaliteP", "Marocaine");
+        params.put("nationnaliteM", "Marocaine");
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/carte_identite_NI.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.setContentType("application/pdf");
+        //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+
+    }
+    public void pdfNaissance() throws JRException, IOException {
+        List<Non_Inscrit> acts = new ArrayList<Non_Inscrit>();
+        acts.add(current);
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
+        Map params = new HashMap();
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        File f1 = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini"));
+        Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));        
+        params.put("communeAr", ini.get("commune", "communeAr"));
+        params.put("provinceAr", ini.get("commune", "provinceAr"));
+        params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));        
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
+        JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extrait_A_N_NI.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        httpServletResponse.setContentType("application/pdf");
+        //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+
+    }
     
     public void pdfVie() throws JRException, IOException {
         List<Non_Inscrit> acts = new ArrayList<Non_Inscrit>();

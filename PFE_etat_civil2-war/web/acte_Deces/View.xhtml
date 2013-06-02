@@ -202,6 +202,7 @@
                             <b:buttonDropdown rendered="#{acte_DecesController.selected.checked}" buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
                                 <h:commandLink action="#{acte_DecesController.PDFIntegD}" target="_blank" value="النسخة الكاملة" style="font-size: 13pt; color: #000000;"/>
                                 <h:commandLink action="#{acte_DecesController.PDFextrD}" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
+                                <h:commandLink action="#{acte_DecesController.PDFDeclarD()}" target="_blank" value="إعلام بيان الوفاة" style="font-size: 13pt; color: #000000;"/>
                             </b:buttonDropdown>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 

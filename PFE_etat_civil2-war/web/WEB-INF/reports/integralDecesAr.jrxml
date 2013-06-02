@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95b66382-4144-48ee-bee1-6bee4b079750">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="229"/>
+	<property name="ireport.y" value="65"/>
 	<subDataset name="dataset1" uuid="e4238793-2086-43fc-865a-f602c89a58e3">
 		<queryString>
 			<![CDATA[]]>
@@ -215,7 +215,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[في يوم]]></text>
+				<text><![CDATA[في ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="333" y="179" width="28" height="20"/>
