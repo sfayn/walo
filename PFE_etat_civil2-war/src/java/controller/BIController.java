@@ -98,8 +98,6 @@ public class BIController implements Serializable {
         this.countJugDec = countJugDec;
     }
     
-    
-
     public Integer getMois() {
         return mois;
     }
