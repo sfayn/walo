@@ -142,9 +142,6 @@ public class BIController implements Serializable {
 
     public void table1() {
         naissance();
-        /*for (Object key : params.keySet()) {
-         System.out.println("key: " + key.toString() + ", value: " + params.get(key));
-         }*/
         //deces();
     }
 
@@ -380,7 +377,6 @@ public class BIController implements Serializable {
     }
 
     public List<Integer> getDataN() {
-        data = new ArrayList<Integer>();
         dataD = new ArrayList<Integer>();
         dataN = new ArrayList<Integer>();
         List<Object[]> results = acte_NaissanceFacade.countByDate(anneeGeneral);
@@ -423,7 +419,4 @@ public class BIController implements Serializable {
         return dataD;
     }
 
-    public void setData(List<Integer> data) {
-        this.data = data;
-    }
 }
