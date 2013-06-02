@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDonnees_Marginales_TranscriptionEmpty}" rendered="#{donnees_Marginales_TranscriptionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{donnees_Marginales_TranscriptionController.items.rowCount > 0}">
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.pagination.pageFirstItem + 1}..#{donnees_Marginales_TranscriptionController.pagination.pageLastItem + 1}/#{donnees_Marginales_TranscriptionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{donnees_Marginales_TranscriptionController.previous}" value="#{bundle.Previous} #{donnees_Marginales_TranscriptionController.pagination.pageSize}" rendered="#{donnees_Marginales_TranscriptionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{donnees_Marginales_TranscriptionController.next}" value="#{bundle.Next} #{donnees_Marginales_TranscriptionController.pagination.pageSize}" rendered="#{donnees_Marginales_TranscriptionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{donnees_Marginales_TranscriptionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_acte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.acte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_descAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descAr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_descFr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descFr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDonnees_Marginales_TranscriptionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{donnees_Marginales_TranscriptionController.prepareView}" value="#{bundle.ListDonnees_Marginales_TranscriptionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{donnees_Marginales_TranscriptionController.prepareEdit}" value="#{bundle.ListDonnees_Marginales_TranscriptionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{donnees_Marginales_TranscriptionController.destroy}" value="#{bundle.ListDonnees_Marginales_TranscriptionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{donnees_Marginales_TranscriptionController.prepareCreate}" value="#{bundle.ListDonnees_Marginales_TranscriptionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDonnees_Marginales_TranscriptionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

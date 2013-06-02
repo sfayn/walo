@@ -2,14 +2,13 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="408"/>
+	<property name="ireport.y" value="207"/>
 	<parameter name="numActe" class="java.lang.String"/>
 	<parameter name="anneeH" class="java.lang.String"/>
 	<parameter name="anneeG" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
 	<parameter name="provinceAr" class="java.lang.String"/>
 	<parameter name="nomAr" class="java.lang.String"/>
-	<parameter name="dateDecesAr" class="java.lang.String"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="lieuNaissanceAr" class="java.lang.String"/>
 	<parameter name="lieuDecesAr" class="java.lang.String"/>
@@ -443,7 +442,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{dateDecesAr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{dateDecesGAr}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="171" y="422" width="21" height="15"/>

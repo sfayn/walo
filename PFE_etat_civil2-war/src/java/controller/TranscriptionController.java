@@ -1,7 +1,7 @@
 package controller;
 
-import bean.Acte_Naissance;
-import bean.Donnees_Marginales;
+import bean.Donnees_Marginales_Transcription;
+import bean.Transcription;
 import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
@@ -42,25 +42,16 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
-import net.sf.jasperreports.governors.MaxPagesGovernor;
 import org.ini4j.Wini;
 import org.richfaces.model.Filter;
-import session.Acte_NaissanceFacade;
+import session.TranscriptionFacade;
 
-@ManagedBean(name = "acte_NaissanceController")
+@ManagedBean(name = "transcriptionController")
 @SessionScoped
-public class Acte_NaissanceController implements Serializable {
+public class TranscriptionController implements Serializable {
 
-    private Acte_Naissance current;
+    private Transcription current;
     private DataModel items = null;
-    private String datetasH_Ar;
-    private String datetasH_Fr;
-    private String datetasM_Ar;
-    private String datetasM_Fr;
-    private Date g_to_h;
-    private Date g_to_hTah;
-    private Date g_to_hP;
-    private Date g_to_hM;
     private int i = 0;
     private int j = 0;
     private int k = 0;
@@ -68,9 +59,9 @@ public class Acte_NaissanceController implements Serializable {
     public String annee;
     public int numReg;
     @EJB
-    private session.Acte_NaissanceFacade ejbFacade;
+    private session.TranscriptionFacade ejbFacade;
     @EJB
-    private session.Donnees_MarginalesFacade ejbFacade2;
+    private session.Donnees_Marginales_TranscriptionFacade ejbFacade2;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private Long numActeFilter;
@@ -79,7 +70,19 @@ public class Acte_NaissanceController implements Serializable {
     private String etatFamilleAr;
     private String adresseAr;
     private String professionAr;
+    private Date g_to_hTah;
+    private Date g_to_hM;
+    private Date g_to_hP;
+    private Date g_to_h;
+    private String datetasH_Ar;
+    private String datetasH_Fr;
+    private String datetasM_Ar;
+    private String datetasM_Fr;
 
+    public TranscriptionController() {
+    }
+
+    
     public String getEtatFamilleAr() {
         return etatFamilleAr;
     }
@@ -129,20 +132,19 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Filter<?> getNumActeFilterImpl() {
-        return new Filter<Acte_Naissance>() {
-            public boolean accept(Acte_Naissance item) {
+        return new Filter<Transcription>() {
+            public boolean accept(Transcription item) {
                 Long numActe = getNumActeFilter();
                 if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
                     return true;
                 }
                 return false;
             }
-        };
+        };        
     }
-
     public Filter<?> getAnneeFilterImpl() {
-        return new Filter<Acte_Naissance>() {
-            public boolean accept(Acte_Naissance item) {
+        return new Filter<Transcription>() {
+            public boolean accept(Transcription item) {
                 String Annee = getAnneeFilter();
                 if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
                     return true;
@@ -152,10 +154,7 @@ public class Acte_NaissanceController implements Serializable {
         };
     }
 
-    public Acte_NaissanceController() {
-    }
-
-    public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
+   public void changeDescDM(Donnees_Marginales_Transcription dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
@@ -210,7 +209,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void changeDonnees_Marginales() {
-        Donnees_Marginales dm = new Donnees_Marginales();
+        Donnees_Marginales_Transcription dm = new Donnees_Marginales_Transcription();
         current.getDonnees_Marginaless().add(dm);
     }
 
@@ -225,14 +224,13 @@ public class Acte_NaissanceController implements Serializable {
             current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
         }
     }
-
     public void GToHAnneeM() {
         if (current.getDate_de_naissM_G() != null) {
             current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
         }
     }
 
-    public void changeDonnees_MarginalesRemove(Donnees_Marginales donnee_Marginale) {
+    public void changeDonnees_MarginalesRemove(Donnees_Marginales_Transcription donnee_Marginale) {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == donnee_Marginale) {
                 current.getDonnees_Marginaless().remove(i);
@@ -376,16 +374,16 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
-    public Acte_Naissance getSelected() {
+    public Transcription getSelected() {
         recreateModel();
         if (current == null) {
-            current = new Acte_Naissance();
+            current = new Transcription();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private Acte_NaissanceFacade getFacade() {
+    private TranscriptionFacade getFacade() {
         return ejbFacade;
     }
 
@@ -412,13 +410,13 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (Transcription) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Acte_Naissance();
+        current = new Transcription();
         selectedItemIndex = -1;
         recreatePagination();
         recreateModel();
@@ -491,7 +489,6 @@ public class Acte_NaissanceController implements Serializable {
             current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
         }
     }
-
     public void g_to_hPplus() {
         if (current.getDate_de_naissP_G() != null) {
             j++;
@@ -548,11 +545,11 @@ public class Acte_NaissanceController implements Serializable {
             current.setCreatedAt(new Date());
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+            for (Donnees_Marginales_Transcription dm : current.getDonnees_Marginaless()) {
                 ejbFacade2.create(dm);
             }
             getFacade().create(current);
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+            for (Donnees_Marginales_Transcription dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
                 ejbFacade2.edit(dm);
@@ -566,7 +563,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (Transcription) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -574,11 +571,11 @@ public class Acte_NaissanceController implements Serializable {
     public String update() {
         try {
             encode();
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+            for (Donnees_Marginales_Transcription dm : current.getDonnees_Marginaless()) {
                 ejbFacade2.create(dm);
             }
             getFacade().edit(current);
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+            for (Donnees_Marginales_Transcription dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
                 ejbFacade2.edit(dm);
@@ -651,7 +648,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void PDF() throws JRException, IOException {
-        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
+        List<Transcription> acts = new ArrayList<Transcription>();
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
@@ -804,7 +801,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void integrale() throws JRException, IOException {
-        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
+        List<Transcription> acts = new ArrayList<Transcription>();
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
@@ -820,11 +817,23 @@ public class Acte_NaissanceController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
+       if(current.isDecesP()){
+        params.put("dateNaissanceGArP", "متوفي");
+        params.put("dateNaissanceHArP", "متوفي");
+        }
+        else{
         params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
         params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
+        }
+        if(current.isDecesM()){
+        params.put("dateNaissanceGArM", "متوفية");
+        params.put("dateNaissanceHArM", "متوفية");
+        }
+        else{
         params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
         params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
-        params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
+        }
+         params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
         params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
@@ -841,7 +850,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void pdfVie() throws JRException, IOException {
-        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
+        List<Transcription> acts = new ArrayList<Transcription>();
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
@@ -856,23 +865,11 @@ public class Acte_NaissanceController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-        
-        if(current.isDecesP()){
-        params.put("dateNaissanceGArP", "متوفي");
-        params.put("dateNaissanceHArP", "متوفي");
-        }
-        else{
         params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
         params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
-        }
-        if(current.isDecesM()){
-        params.put("dateNaissanceGArM", "متوفية");
-        params.put("dateNaissanceHArM", "متوفية");
-        }
-        else{
         params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
         params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
-        }
+
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbi.ttf"));
@@ -888,7 +885,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public void pdffiancaille() throws JRException, IOException {
-        List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
+        List<Transcription> acts = new ArrayList<Transcription>();
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);
         Map params = new HashMap();
@@ -924,7 +921,7 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public String destroy() {
-        current = (Acte_Naissance) getItems().getRowData();
+        current = (Transcription) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -998,15 +995,15 @@ public class Acte_NaissanceController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Acte_Naissance.class)
+    @FacesConverter(forClass = Transcription.class)
     public static class Acte_NaissanceControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            Acte_NaissanceController controller = (Acte_NaissanceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "acte_NaissanceController");
+            TranscriptionController controller = (TranscriptionController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "transcriptionController");
             return controller.ejbFacade.find(getKey(value));
         }
 
@@ -1026,11 +1023,11 @@ public class Acte_NaissanceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Acte_Naissance) {
-                Acte_Naissance o = (Acte_Naissance) object;
+            if (object instanceof Transcription) {
+                Transcription o = (Transcription) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Acte_Naissance.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Transcription.class.getName());
             }
         }
     }

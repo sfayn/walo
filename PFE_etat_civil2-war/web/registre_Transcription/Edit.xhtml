@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRegistre_TranscriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_numReg}" for="numReg" />
+                    <h:inputText id="numReg" value="#{registre_TranscriptionController.selected.numReg}" title="#{bundle.EditRegistre_TranscriptionTitle_numReg}" />
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_annee}" for="annee" />
+                    <h:inputText id="annee" value="#{registre_TranscriptionController.selected.annee}" title="#{bundle.EditRegistre_TranscriptionTitle_annee}" />
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_numPreAct}" for="numPreAct" />
+                    <h:inputText id="numPreAct" value="#{registre_TranscriptionController.selected.numPreAct}" title="#{bundle.EditRegistre_TranscriptionTitle_numPreAct}" />
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_nbrAct}" for="nbrAct" />
+                    <h:inputText id="nbrAct" value="#{registre_TranscriptionController.selected.nbrAct}" title="#{bundle.EditRegistre_TranscriptionTitle_nbrAct}" />
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_dateEnr}" for="dateEnr" />
+                    <h:inputText id="dateEnr" value="#{registre_TranscriptionController.selected.dateEnr}" title="#{bundle.EditRegistre_TranscriptionTitle_dateEnr}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRegistre_TranscriptionLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{registre_TranscriptionController.selected.id}" title="#{bundle.EditRegistre_TranscriptionTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{registre_TranscriptionController.update}" value="#{bundle.EditRegistre_TranscriptionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRegistre_TranscriptionViewLink}"/>
+                <br />
+                <h:commandLink action="#{registre_TranscriptionController.prepareList}" value="#{bundle.EditRegistre_TranscriptionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRegistre_TranscriptionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

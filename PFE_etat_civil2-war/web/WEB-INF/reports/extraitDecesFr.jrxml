@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ea32504-5e83-484d-9c36-d319b5099d60">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="304"/>
+	<property name="ireport.y" value="161"/>
 	<subDataset name="dataset1" uuid="853b1469-31b3-46cb-9722-20d078f7a9ac"/>
 	<parameter name="numActe" class="java.lang.String"/>
 	<parameter name="anneeH" class="java.lang.String"/>
@@ -377,7 +377,7 @@
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{dateDecesFr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{dateDecesGFr}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="cde94a6e-fa82-444e-8165-2e3dc861d8b4" x="53" y="42" width="100" height="13"/>

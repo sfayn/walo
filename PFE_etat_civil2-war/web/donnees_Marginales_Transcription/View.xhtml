@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_date}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.date}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_acte}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.acte}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_acte}"/>
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_type}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.type}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_type}"/>
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_descAr}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.descAr}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_descAr}"/>
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_descFr}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.descFr}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_descFr}"/>
+                    <h:outputText value="#{bundle.ViewDonnees_Marginales_TranscriptionLabel_id}"/>
+                    <h:outputText value="#{donnees_Marginales_TranscriptionController.selected.id}" title="#{bundle.ViewDonnees_Marginales_TranscriptionTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{donnees_Marginales_TranscriptionController.destroyAndView}" value="#{bundle.ViewDonnees_Marginales_TranscriptionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDonnees_Marginales_TranscriptionEditLink}"/>
+                <br />
+                <h:commandLink action="#{donnees_Marginales_TranscriptionController.prepareCreate}" value="#{bundle.ViewDonnees_Marginales_TranscriptionCreateLink}" />
+                <br />
+                <h:commandLink action="#{donnees_Marginales_TranscriptionController.prepareList}" value="#{bundle.ViewDonnees_Marginales_TranscriptionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDonnees_Marginales_TranscriptionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

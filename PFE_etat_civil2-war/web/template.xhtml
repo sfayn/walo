@@ -63,8 +63,8 @@
                             <li class="#{view.viewId == '/acte_Deces/List.xhtml' ? 'active' : ''}">
                                 <a href="#{request.contextPath}/faces/acte_Deces/#{acte_DecesController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">الوفيات</a>
                             </li>
-                            <li class="">
-                                <a href="#" style="font-size: 12pt; font-weight: bold;">نقل التصاريح</a>
+                            <li class="#{view.viewId == '/transcription/List.xhtml' ? 'active' : ''}">
+                                <a href="#{request.contextPath}/faces/transcription/#{transcriptionController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">نقل التصاريح</a>
                             </li>
                             <li class="#{view.viewId == '/jugement_Naissance/List.xhtml' ? 'active' : ''}">
                                 <a href="#{request.contextPath}/faces/jugement_Naissance/#{jugement_NaissanceController.prepareList()}.xhtml" style="font-size: 12pt; font-weight: bold;">  أحكام الولادات </a>
