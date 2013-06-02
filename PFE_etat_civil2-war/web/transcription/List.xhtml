@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="التصرف في رسوم نقل التصاريح : قائمة الرسوم"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
+            <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
+            <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
+
+            <script type="text/javascript">
+                $('.rf-edt-flt-i').bind('keypress', function(e) {
+                    if(e.keyCode==13){
+                        alert("function");
+                    }
+                });
+                $("input").keypress(function(){
+                    alert("function");
+                }); 
+                function filterAllOnEnter(event)
+                {
+                    alert("function");
+                    if(event.keyCode == 13)
+                    {
+                        jQuery(".rf-edt-flt-i").blur();
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            </script>
+            <h:form prependId="false" id="formList">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="قائمة فارغة" rendered="#{transcriptionController.items.rowCount == 0}"/>
+                <div class="row">
+                    <div class="span6" dir="rtl" align="left">
+                        <h:outputText rendered="#{transcriptionController.items.rowCount != 0}" value="عدد البيانات في الصفحة:" />
+                        <h:selectOneMenu rendered="#{transcriptionController.items.rowCount != 0}" id="dataPager" value="#{transcriptionController.primaryRowCount}" >
+                            <f:ajax render="extended" event="change" />
+                            <f:selectItem itemLabel="5" itemValue="5"/>  
+                            <f:selectItem itemLabel="10" itemValue="10"/>  
+                            <f:selectItem itemLabel="25" itemValue="25"/>  
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="span6" >
+
+                    </div>
+                </div>
+                <h:panelGroup >
+                    <rich:extendedDataTable onrowkeypress="filterAllOnEnter(event);" rendered="#{transcriptionController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{transcriptionController.items}" var="item" filterVar="filterValue" rows="#{transcriptionController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
+                                     filterValue="#{transcriptionController.numActeFilter == 0? '': transcriptionController.numActeFilter}"
+                                     filterConverterMessage="Error converting the 'Mileage' filter value" >
+                            <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
+                            <h:outputText value="#{item.numActe}"/>
+                        </rich:column>
+                        <rich:column width="80px" sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
+                                     filterValue="#{transcriptionController.anneeFilter}"  filterEvent="onkeyup"
+                                     filterConverterMessage="Error converting the 'Mileage' filter value">
+                            <f:facet name="header"><h:outputText value="السنة"/></f:facet>
+                            <h:outputText value="#{item.registre.annee}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{item.prenom_Ar}">
+                            <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
+                            <h:outputText value="#{item.prenom_Ar}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{car.nom_Ar}">
+                            <f:facet name="header"><h:outputText value="النسب"/></f:facet>
+                            <h:outputText value="#{item.nom_Ar}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{item.nom_Fr}">
+                            <f:facet name="header"><h:outputText value="Nom"/></f:facet>
+                            <h:outputText value="#{item.nom_Fr}"/>
+                        </rich:column>
+                        <rich:column width="110px" sortBy="#{item.prenom_Fr}">
+                            <f:facet name="header"><h:outputText value="Prénom"/></f:facet>
+                            <h:outputText value="#{item.prenom_Fr}"/>
+                        </rich:column>
+                        <rich:column width="110px" sortBy="#{item.date_de_naiss_G}">
+                            <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
+                            <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                <f:param value="#{item.date_de_naiss_G}" />
+                            </h:outputFormat>
+                        </rich:column>
+                        <rich:column width="60px">
+                            <f:facet name="header"><h:outputText value="Validé"/></f:facet>
+                            <center>
+                                <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
+                                    <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
+                                </font>
+                            </center>
+                        </rich:column>
+                        <rich:column style="text-align: center;" width="90px">
+                            <f:facet name="header"><h:outputText value="action"/></f:facet>
+                            <center>
+                                <h:outputText value="&nbsp;&nbsp;" />
+                                <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
+                                    <b:headerFacet>
+                                        <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">      تأكيد الحذف</h3>
+                                    </b:headerFacet>
+                                    <b:bodyFacet>
+                                        <p style="text-align: right; direction: rtl;">هل تريد حقاً حذف الرسم؟</p>
+                                    </b:bodyFacet>
+                                    <b:footerFacet>
+                                        <b:commandButton value="نعم" severity="danger" action="#{transcriptionController.destroy()}" onclick="#{transcriptionController.prepareList()}"/>
+                                        <h:outputText value="  "/>
+                                        <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
+                                    </b:footerFacet>
+                                </b:modal>
+                                <h:commandLink action="#{transcriptionController.prepareView}">
+                                    <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
+                                </h:commandLink>
+                                <h:commandLink action="#{transcriptionController.prepareEdit}">
+                                    <font size="+1" title="تعديل"><i class="icon-edit" style="color: orange"> </i></font>
+                                </h:commandLink>
+                                <a title="remove" href="#" onclick="#{b:show('customModal')}">
+                                    <font size="+1" title="حذف"><i class="icon-remove" style="color: red"></i></font>
+                                </a>
+
+                            </center>
+                        </rich:column>
+                        <f:facet name="footer">
+                            <rich:dataScroller renderIfSinglePage="false" style="direction: ltr;" maxPages="10" id="scroller" fastControls="hide"  styleClass="wrap-paginacao" boundaryControls="hide" stepControls="show">
+                                <f:facet name="previous">
+                                    <h:outputText value="السابق &larr;"/>
+                                </f:facet>
+                                <f:facet name="next">
+                                    <h:outputText value="&rarr; التالي"/>
+                                </f:facet>
+                            </rich:dataScroller>
+                        </f:facet>
+                    </rich:extendedDataTable>
+                </h:panelGroup>
+                <style>
+                    a:visited{
+                        color: #ffffff;
+                    }
+                    li>a{
+                        color: #000000;
+                    }
+                </style>
+                <br />
+                <h:commandLink  action="#{transcriptionController.prepareCreate}" class="btn btn-primary" style="font-size: 14pt; " value="إضافة رسم جديد"/>
+                <a  href="#{request.contextPath}/faces/registre_Transcription/#{registre_TranscriptionController.prepareCreate()}.xhtml" class="btn btn-primary" style="font-size: 14pt; " >إضافة سجل جديد</a>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
