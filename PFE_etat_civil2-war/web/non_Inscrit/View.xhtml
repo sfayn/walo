@@ -175,12 +175,14 @@
 
                             <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
 
-                            <b:buttonDropdown buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">                                
-                                <h:commandLink action="#{non_InscritController.pdfNaissance()}" target="_blank" value="شهادة الولادة" style="font-size: 13pt; color: #000000;"/>
-                                <h:commandLink action="#{non_InscritController.pdfCarteIdentite()}" target="_blank" value="البطاقة الشخصية" style="font-size: 13pt; color: #000000;"/>
+                            <b:buttonDropdown buttonStyle="icon-file docs" title="  الوثائق" severity="primary" vertical="top" horizontal="right">
+                                
+                                <h:commandLink action="#" target="_blank" value="النسخة الموجزة" style="font-size: 13pt; color: #000000;"/>
                                 <b:separatorFacet />
                                 <h:commandLink action="#{non_InscritController.pdfVie()}" target="_blank" value="شهادة الحياة" style="font-size: 13pt; color: #000000;"/>
-                                <a onclick="#{b:show('DonnSupp')}" style="font-size: 13pt; cursor: pointer; color: #000000;">شهادة الخطوبة</a>                               
+                                <a onclick="#{b:show('DonnSupp')}" style="font-size: 13pt; cursor: pointer; color: #000000;">شهادة الخطوبة</a>
+                                
+
                             </b:buttonDropdown>
                             <b:modal id="customModal" style="width: 400px; margin: -200px;" closeable="false">
 
