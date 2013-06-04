@@ -340,7 +340,8 @@
 
                         <b:gridRow >
                             <b:gridColumn span="10">
-                                <h:panelGrid columns="2" dir="rtl">
+                                <h:panelGrid columns="2" dir="rtl">                                    
+                                    <h:outputLabel value="العنوان" for="addressePa_Ar" />
                                     <b:input id="addressePa_Ar" scale="xxlarge" value="#{transcriptionController.selected.addressePa_Ar}" title="#{bundle.CreateActe_NaissanceTitle_addressePa_Ar}" />  
                                 </h:panelGrid>
                                 <h:panelGrid columns="2" dir="ltr">
@@ -352,40 +353,27 @@
                         </b:gridRow>
                     </fieldset>
 
-                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 80px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                         <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
                                 margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التصريح :</legend>
-
                         <b:gridRow >
                             <b:gridColumn span="7">
-                                <h:panelGrid columns="2" dir="rtl">  
-                                    <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" />
-                                    <h:inputText class="form_date" id="dateHo" value="#{transcriptionController.selected.dateHo}" title="تاريخ الحكم" >
+                                <h:panelGrid columns="2" dir="rtl" id="blocho">  
+                                    <h:outputLabel value="تاريخ الحكم" id="dateHoOut" for="dateHo" rendered="#{transcriptionController.selected.typeT}"/>
+                                    <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateHo" value="#{transcriptionController.selected.dateHo}" title="تاريخ الحكم" rendered="#{transcriptionController.selected.typeT}">
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
-                                        <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="dateHo typeT" listener="#{transcriptionController.changeDeclaration()}"/>
+                                        <f:ajax event="change" render="declaration_Ar declaration_Fr" execute="@this" listener="#{transcriptionController.changeDeclaration()}"/>
                                     </h:inputText>
                                 </h:panelGrid>  
                             </b:gridColumn>
 
                             <b:gridColumn span="4">
-                                <h:panelGrid columns="2" dir="ltr">
-                                    <script>
-                                        function display(obj){
-                                            var obj = obj == 'true'? true: false;
-                                            if(!obj){
-                                                document.getElementById("dateHo").style.display = "none";
-                                                document.getElementById("dateHoOut").style.display = "none";
-                                            }else{
-                                                document.getElementById("dateHo").style.display = "block";
-                                                document.getElementById("dateHoOut").style.display = "block";
-                                            }
-                                        }
-                                    </script>
-                                    <h:selectOneRadio id="typeT" value="#{transcriptionController.selected.typeT}" styleClass="inlineRadioButtons" onclick="display(this.value);"  >
+                                <h:panelGrid columns="2" dir="ltr">                                            
+                                    <h:selectOneRadio id="typeT" value="#{transcriptionController.selected.typeT}" styleClass="inlineRadioButtons">
                                         <f:selectItem  itemValue="true"  itemLabel="حكم" />
-                                        <f:selectItem itemValue="false" itemLabel="تصريح" />                                        
-                                    </h:selectOneRadio>
-                                    <!--<h:selectBooleanCheckbox  id="typeT" onchange="display(this.checked);" class="checkbox {labelOn: 'حكم', labelOff: 'تصريح', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{transcriptionController.selected.typeT}" />-->
+                                        <f:selectItem itemValue="false" itemLabel="تصريح" />
+                                        <f:ajax event="click" execute="@this" render="blocho"/>
+                                    </h:selectOneRadio>                                  
                                 </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
@@ -393,9 +381,9 @@
                             <b:gridColumn span="6">
                                 <h:panelGrid columns="2" dir="rtl"> 
                                     <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
-                                    <h:inputText class="form_date" id="dateTah_G" value="#{transcriptionController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
+                                    <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateTah_G" value="#{transcriptionController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
-                                        <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G typeT prenomP_Ar professionP_Ar addressePa_Ar nationalteP_Ar prenomP_Fr professionP_Fr addressePa_Fr nationalteP_Fr numActe" listener="#{transcriptionController.setL(0)}"/> 
+                                        <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G" listener="#{transcriptionController.setL(0)}"/> 
                                     </h:inputText>
                                     <h:outputLabel value=" "/>
                                     <h:inputText readonly="true" id="dateTh_G_textAr" value="#{transcriptionController.datetasM_Ar}"/>
@@ -403,9 +391,7 @@
                                     <h:inputText readonly="true" id="dateTh_G_textFr" dir="ltr" value="#{transcriptionController.datetasM_Fr}"/>
                                     <h:outputLabel value=" "/>
                                     <h:inputTextarea cols="30" rows="5" id="declaration_Fr" dir="ltr" value="#{transcriptionController.selected.declaration_Fr}" >
-
                                     </h:inputTextarea>
-
                                 </h:panelGrid>
 
                             </b:gridColumn>
@@ -429,12 +415,98 @@
                                     <h:inputText readonly="true" id="dateTh_H_textFr" dir="ltr" value="#{transcriptionController.datetasH_Fr}"/>
                                     <h:outputLabel value=" "/>
                                     <h:inputTextarea cols="30" rows="5"  id="declaration_Ar" value="#{transcriptionController.selected.declaration_Ar}" >
-
                                     </h:inputTextarea>
+                                </h:panelGrid>                                    
+
+                            </b:gridColumn>
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن النقل :</legend>
+
+
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel value="رقم النقل" for="numtrans" />
+                                    <h:inputText id="numtrans" class="input-small" value="#{transcriptionController.selected.numTrans}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" >
+                                        <f:ajax event="blur" render="@this" />
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ النقل الميلادي" for="dateTransG" />
+                                    <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateTransG" value="#{transcriptionController.selected.dateTransG}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="blur" render="@this" />
+                                        <f:ajax event="change" render="dateTransH" execute="dateTransG" listener="#{transcriptionController.setM(0)}"/> 
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ النقل الهجري" for="dateTransH" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="dateTransH" value="#{transcriptionController.selected.dateTransH}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />                                            
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateTransH" execute="dateTransG dateTransH" listener="#{transcriptionController.dateTrHplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateTransH" execute="dateTransG dateTransH" listener="#{transcriptionController.dateTrHmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
+                                    <h:outputLabel value="من طرف" style="width: 120px" for="delapartAr"/>
+                                    <b:input id="delapartAr" dir="ltr" scale="xxlarge" value="#{transcriptionController.selected.delapartAr}"/>
 
                                 </h:panelGrid>
+
                                 <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
 
+                            </b:gridColumn>
+
+                        </b:gridRow>
+                    </fieldset>
+                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                                margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن التحرير :</legend>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl"> 
+                                    <h:outputLabel style="width: 120px" value="تاريخ التحرير الميلادي" for="dateTahrirG" />
+                                    <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateTahrirG" value="#{transcriptionController.selected.dateTahrirG}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}">
+                                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        <f:ajax event="blur" render="@this" />
+                                        <f:ajax event="change" render="dateTahrirH" execute="dateTahrirG" listener="#{transcriptionController.setN(0)}"/> 
+                                    </h:inputText>
+                                    <h:outputLabel value="تاريخ التحرير الهجري" for="dateTahrirH" />
+                                    <h:panelGrid columns="3" class="input-prepend">
+                                        <h:inputText readonly="true" id="dateTahrirH" value="#{transcriptionController.selected.dateTahrirH}">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />                                            
+                                        </h:inputText>
+                                        <h:commandLink class="btn btn-primary add-on" value="+">
+                                            <f:ajax event="click" render="dateTahrirH" execute="dateTahrirG dateTahrirH" listener="#{transcriptionController.dateTahrirHplus()}"/> 
+                                        </h:commandLink>
+                                        <h:commandLink class="btn btn-danger add-on" value="-">
+                                            <f:ajax event="click" render="dateTransH" execute="dateTransG dateTransH" listener="#{transcriptionController.dateTahrirHmoins()}"/> 
+                                        </h:commandLink>
+                                    </h:panelGrid>
+
+                                </h:panelGrid>
+
+                                <!--                                <h:commandButton value="Login" type="button" onclick="jsf.ajax.request(this, event, {execute: 'dateTah_G dateTah_H', render: 'dateTh_H_textAr'}); return false;"/>-->
+
+                            </b:gridColumn>
+
+                        </b:gridRow>
+                        <b:gridRow >
+                            <b:gridColumn span="11">
+                                <h:panelGrid columns="2" dir="rtl">
+                                    <h:outputLabel style="width: 120px" value="من طرفنا نحن" for="officierAr" />
+                                    <b:input id="officierAr" scale="xxlarge" value="#{transcriptionController.selected.officierAr}" />  
+                                </h:panelGrid>                            
+
+                            </b:gridColumn>
+                            <b:gridColumn span="9">
+                                <h:panelGrid columns="2" dir="ltr">
+                                    <h:outputLabel value="Par nous"  style="width: 120px" for="officierFr" />
+                                    <b:input id="officierFr" scale="xxlarge" value="#{transcriptionController.selected.officierFr}"/>
+                                </h:panelGrid>
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>
@@ -488,24 +560,6 @@
                                 <h:commandLink class="btn btn-primary" style="font-size: 14pt;" value="إضافة بيان هامشي">
                                     <f:ajax event="click" execute="donnees_marginales" render="donnees_marginales" listener="#{transcriptionController.changeDonnees_Marginales()}"/>
                                 </h:commandLink>
-                            </b:gridColumn>
-                        </b:gridRow>
-                    </fieldset>
-                    <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
-                        <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                                margin-left:16px; border-bottom: 0px; width: auto;">ضابط الحالة المدنية :  </legend>
-
-                        <b:gridRow >
-                            <b:gridColumn span="10">
-                                <h:panelGrid columns="2" dir="rtl">
-                                    <h:outputLabel value="من طرفنا نحن" for="officierAr" />
-                                    <b:input id="officierAr" scale="xxlarge" value="#{transcriptionController.selected.officierAr}" />  
-                                </h:panelGrid>
-                                <h:panelGrid columns="2" dir="ltr">
-                                    <h:outputLabel value="Par nous" for="officierFr" />
-                                    <b:input id="officierFr" scale="xxlarge" value="#{transcriptionController.selected.officierFr}"/>
-                                </h:panelGrid>
-
                             </b:gridColumn>
                         </b:gridRow>
                     </fieldset>

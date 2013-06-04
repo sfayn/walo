@@ -56,6 +56,8 @@ public class TranscriptionController implements Serializable {
     private int j = 0;
     private int k = 0;
     private int l = 0;
+    private int m = 0;
+    private int n = 0;
     public String annee;
     public int numReg;
     @EJB
@@ -79,10 +81,74 @@ public class TranscriptionController implements Serializable {
     private String datetasM_Ar;
     private String datetasM_Fr;
 
+    public void getdatTrGtoH() {
+        if (current.getDateTransG() != null) {
+            current.setDateTransH(Helper.dateGrToH(current.getDateTransG()));
+        }
+    }
+
+    public void dateTrHplus() {
+        if (current.getDateTransG() != null) {
+            m++;
+            Date tmp = new Date(current.getDateTransG().getYear(), current.getDateTransG().getMonth(), current.getDateTransG().getDate());
+            tmp.setDate(tmp.getDate() + m);
+            current.setDateTransH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void dateTrHmoins() {
+        if (current.getDateTransG() != null) {
+            m--;
+            Date tmp = new Date(current.getDateTransG().getYear(), current.getDateTransG().getMonth(), current.getDateTransG().getDate());
+            tmp.setDate(tmp.getDate() + m);
+            current.setDateTransH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public int getM() {
+        return m;
+    }
+
+    public void setM(int m) {
+        this.m = m;
+        getdatTrGtoH();
+    }
+
+    public void getdatTahGtoH() {
+        if (current.getDateTahrirG() != null) {
+            current.setDateTahrirH(Helper.dateGrToH(current.getDateTahrirG()));
+        }
+    }
+
+    public void dateTahrirHplus() {
+        if (current.getDateTahrirG() != null) {
+            n++;
+            Date tmp = new Date(current.getDateTahrirG().getYear(), current.getDateTahrirG().getMonth(), current.getDateTahrirG().getDate());
+            tmp.setDate(tmp.getDate() + n);
+            current.setDateTahrirH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void dateTahrirHmoins() {
+        if (current.getDateTahrirG() != null) {
+            m--;
+            Date tmp = new Date(current.getDateTahrirG().getYear(), current.getDateTahrirG().getMonth(), current.getDateTahrirG().getDate());
+            tmp.setDate(tmp.getDate() + m);
+            current.setDateTahrirH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+        getdatTahGtoH();
+    }
     public TranscriptionController() {
     }
 
-    
     public String getEtatFamilleAr() {
         return etatFamilleAr;
     }
@@ -140,8 +206,9 @@ public class TranscriptionController implements Serializable {
                 }
                 return false;
             }
-        };        
+        };
     }
+
     public Filter<?> getAnneeFilterImpl() {
         return new Filter<Transcription>() {
             public boolean accept(Transcription item) {
@@ -154,7 +221,7 @@ public class TranscriptionController implements Serializable {
         };
     }
 
-   public void changeDescDM(Donnees_Marginales_Transcription dm) throws UnsupportedEncodingException {
+    public void changeDescDM(Donnees_Marginales_Transcription dm) throws UnsupportedEncodingException {
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
@@ -224,6 +291,7 @@ public class TranscriptionController implements Serializable {
             current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
         }
     }
+
     public void GToHAnneeM() {
         if (current.getDate_de_naissM_G() != null) {
             current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
@@ -489,6 +557,7 @@ public class TranscriptionController implements Serializable {
             current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
         }
     }
+
     public void g_to_hPplus() {
         if (current.getDate_de_naissP_G() != null) {
             j++;
@@ -721,7 +790,7 @@ public class TranscriptionController implements Serializable {
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
             params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-            params.put("nationnaliteAr", "مغربية");            
+            params.put("nationnaliteAr", "مغربية");
             params.put("officierAr", current.getOfficierAr());
             params.put("pereAr", current.getPrenomP_Ar());
             params.put("mereAr", current.getPrenomM_Ar());
@@ -759,7 +828,7 @@ public class TranscriptionController implements Serializable {
             params.put("correspondant", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
-            params.put("mere", current.getPrenomM_Fr());             
+            params.put("mere", current.getPrenomM_Fr());
             params.put("officierFr", current.getOfficierFr());
 
             boolean trouve2 = false;
@@ -817,23 +886,21 @@ public class TranscriptionController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-       if(current.isDecesP()){
-        params.put("dateNaissanceGArP", "متوفي");
-        params.put("dateNaissanceHArP", "متوفي");
+        if (current.isDecesP()) {
+            params.put("dateNaissanceGArP", "متوفي");
+            params.put("dateNaissanceHArP", "متوفي");
+        } else {
+            params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
+            params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
         }
-        else{
-        params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
-        params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
+        if (current.isDecesM()) {
+            params.put("dateNaissanceGArM", "متوفية");
+            params.put("dateNaissanceHArM", "متوفية");
+        } else {
+            params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
+            params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
         }
-        if(current.isDecesM()){
-        params.put("dateNaissanceGArM", "متوفية");
-        params.put("dateNaissanceHArM", "متوفية");
-        }
-        else{
-        params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
-        params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
-        }
-         params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
+        params.put("dateTahH", Helper.dateHToStrArH(current.getDateTah_H()));
         params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));
