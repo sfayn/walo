@@ -126,7 +126,7 @@ public class Transcription implements Serializable {
     private String signatureAr;
     private String signatureFr;
     //info transcription
-    private int numTrans;
+    private Integer numTrans;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTransG;        
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -175,13 +175,11 @@ public class Transcription implements Serializable {
         this.delapartFr = delapartFr;
     }
 
-    
-
-    public int getNumTrans() {
+    public Integer getNumTrans() {
         return numTrans;
     }
 
-    public void setNumTrans(int numTrans) {
+    public void setNumTrans(Integer numTrans) {
         this.numTrans = numTrans;
     }
 
