@@ -45,6 +45,7 @@ public class BIController implements Serializable {
     private session.Jugement_DecesFacade jugement_DecesFacade;
     private Integer anneeGeneral = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private Integer mois = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
+    private Integer triMois = 2;
     private List<Integer> dataD = new ArrayList<Integer>();
     private List<Integer> dataN = new ArrayList<Integer>();
     
@@ -106,6 +107,14 @@ public class BIController implements Serializable {
         this.mois = mois;
     }
 
+    public Integer getTriMois() {
+        return triMois;
+    }
+
+    public void setTriMois(Integer triMois) {
+        this.triMois = triMois;
+    }
+
     public Integer getCountHommeNaiss() {
         return countHommeNaiss;
     }
@@ -144,6 +153,95 @@ public class BIController implements Serializable {
     }
 
     public void naissance() {
+        countHommeNaiss = 0;
+        countFemmeNaiss = 0;
+        params = new HashMap();
+        params.put("h18", "0");
+        params.put("f18", "0");
+        params.put("h1819", "0");
+        params.put("f1819", "0");
+        for (int i = 20; i < 50; i += 5) {
+            params.put("h" + i + "" + (i + 4), "0");
+            params.put("f" + i + "" + (i + 4), "0");
+        }
+        params.put("h50", "0");
+        params.put("f50", "0");
+        List<Object[]> results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 0, 17);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("18 --> sex: " + sex + ", count: " + count);
+            if (sex.equals("Masculin")) {
+                System.out.println("h18");
+                params.put("h18", "" + count);
+            } else {
+                System.out.println("f18");
+                params.put("f18", "" + count);
+            }
+        }
+        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 18, 19);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("1819 --> sex: " + sex + ", count: " + count);
+            if (sex.equals("Masculin")) {
+                System.out.println("h1819");
+                params.put("h1819", "" + count);
+            } else {
+                System.out.println("f1819");
+                params.put("f1819", "" + count);
+            }
+        }
+
+        for (int i = 20; i < 50; i += 5) {
+            results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, i, i + 4);
+            for (Object[] result : results) {
+                String sex = ((String) result[1]);
+                int count = ((Number) result[0]).intValue();
+                System.out.println(i + "" + (i + 4) + " --> sex: " + sex + ", count: " + count);
+                if (sex.equals("Masculin")) {
+                    System.out.println("h" + i + "" + (i + 4));
+                    params.put("h" + i + "" + (i + 4), "" + count);
+                } else {
+                    System.out.println("f" + i + "" + (i + 4));
+                    params.put("f" + i + "" + (i + 4), "" + count);
+                }
+            }
+        }
+
+        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 50, 1900);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            System.out.println("50 --> sex: " + sex + ", count: " + count);
+            if (sex.equals("Masculin")) {
+                System.out.println("h50");
+                params.put("h50", "" + count);
+            } else {
+                System.out.println("h50");
+                params.put("f50", "" + count);
+            }
+        }
+
+        params.put("countHommeNaiss", "0");
+        params.put("countFemmeNaiss", "0");
+
+        results = acte_NaissanceFacade.countBySex(anneeGeneral, mois);
+        for (Object[] result : results) {
+            String sex = ((String) result[1]);
+            int count = ((Number) result[0]).intValue();
+            if (sex.equals("Masculin")) {
+                countHommeNaiss += count;
+                params.put("countHommeNaiss", "" + count);
+            } else {
+                countFemmeNaiss += count;
+                params.put("countFemmeNaiss", "" + count);
+            }
+        }
+    }
+    
+    
+    public void naissanceTri() {
         countHommeNaiss = 0;
         countFemmeNaiss = 0;
         params = new HashMap();
