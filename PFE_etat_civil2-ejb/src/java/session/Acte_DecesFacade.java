@@ -103,7 +103,7 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         queryProductsByName.setParameter("year", annee);
         List<Object[]> results = queryProductsByName.getResultList();
         for (Object[] result : results) {
-            String sex = ((String) result[1]);
+            int sex = ((Number) result[1]).intValue();
             int count = ((Number) result[0]).intValue();
             System.out.println("sex: "+sex+", count: "+count);
         }

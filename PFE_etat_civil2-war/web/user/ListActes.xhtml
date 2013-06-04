@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://richfaces.org/sandbox/bootstrap">
+      xmlns:b="http://richfaces.org/sandbox/bootstrap"
+      xmlns:rich="http://richfaces.org/rich">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -19,60 +20,84 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-<!--                <h:outputText escape="false" value="قائمة فارغة" rendered="#{userController.selected.acte_Naissances.size() == 0}"/>-->
-                <h:panelGroup >
-                    <table  cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-                        <thead>
-                            <tr>
-                                <th><h:outputText value="تاريخ الإزدياد"/></th>
-                                <th><h:outputText value="الإسم"/></th>
-                                <th><h:outputText value="النسب"/></th>
-                                <th><h:outputText value="Nom"/></th>
-                                <th><h:outputText value="Prénom"/></th>
-                                <th><h:outputText value="رقم الرسم"/></th>
-                                <th><h:outputText value="Validé"/></th>
-                                <!--<th><h:outputText value="action"/></th>-->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ui:repeat value="#{userController.selected.acte_Naissances}" var="item" >
+                <h:outputText escape="false" value="قائمة فارغة" rendered="#{acte_NaissanceController.items.rowCount == 0}"/>
+                <div class="row">
+                    <div class="span6" dir="rtl" align="left">
+                        <h:outputText rendered="#{userController.selected.acte_Naissances.size() != 0}" value="عدد البيانات في الصفحة:" />
+                        <h:selectOneMenu rendered="#{userController.selected.acte_Naissances.size() != 0}" id="dataPager" value="#{acte_NaissanceController.primaryRowCount}" >
+                            <f:ajax render="extended" event="change" />
+                            <f:selectItem itemLabel="5" itemValue="5"/>  
+                            <f:selectItem itemLabel="10" itemValue="10"/>  
+                            <f:selectItem itemLabel="25" itemValue="25"/>  
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="span6" >
 
-                                <tr>
-                                    <td>
-                                        <h:outputText value="#{item.date_de_naiss_G}">
-                                            <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
-                                        </h:outputText>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.prenom_Ar}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.nom_Ar}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.nom_Fr}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.prenom_Fr}"/>
-                                    </td>
-                                    <td>
-                                        <h:outputText value="#{item.numActe}"/>
-                                    </td>
-                                    <td>
-                                        <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
-                                            <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
-                                        </font>
-                                    </td>
-                                   <!-- <td>
-                                        <h:commandLink action="#{acte_NaissanceController.prepareView}">
-                                            <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
-                                        </h:commandLink>
-                                    </td>-->
-                                </tr>
-                            </ui:repeat>
-                        </tbody>
-                    </table>
+                    </div>
+                </div>
+                <h:panelGroup >
+                    <rich:extendedDataTable rendered="#{userController.selected.acte_Naissances.size() != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{userController.selected.acte_Naissances}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
+                                     filterValue="#{acte_NaissanceController.numActeFilter == 0? '': acte_NaissanceController.numActeFilter}"
+                                     filterConverterMessage="Error converting the 'Mileage' filter value" >
+                            <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
+                            <h:outputText value="#{item.numActe}"/>
+                        </rich:column>
+                        <rich:column width="80px" sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
+                                     filterValue="#{acte_NaissanceController.anneeFilter}"  filterEvent="onkeyup"
+                                     filterConverterMessage="Error converting the 'Mileage' filter value">
+                            <f:facet name="header"><h:outputText value="السنة"/></f:facet>
+                            <h:outputText value="#{item.registre.annee}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{item.prenom_Ar}">
+                            <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
+                            <h:outputText value="#{item.prenom_Ar}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{car.nom_Ar}">
+                            <f:facet name="header"><h:outputText value="النسب"/></f:facet>
+                            <h:outputText value="#{item.nom_Ar}"/>
+                        </rich:column>
+                        <rich:column width="130px" sortBy="#{item.nom_Fr}">
+                            <f:facet name="header"><h:outputText value="Nom"/></f:facet>
+                            <h:outputText value="#{item.nom_Fr}"/>
+                        </rich:column>
+                        <rich:column width="110px" sortBy="#{item.prenom_Fr}">
+                            <f:facet name="header"><h:outputText value="Prénom"/></f:facet>
+                            <h:outputText value="#{item.prenom_Fr}"/>
+                        </rich:column>
+                        <rich:column width="110px" sortBy="#{item.date_de_naiss_G}">
+                            <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
+                            <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
+                                <f:param value="#{item.date_de_naiss_G}" />
+                            </h:outputFormat>
+                        </rich:column>
+                        <rich:column width="60px">
+                            <f:facet name="header"><h:outputText value="Validé"/></f:facet>
+                            <center>
+                                <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
+                                    <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
+                                </font>
+                            </center>
+                        </rich:column>
+                        <f:facet name="footer">
+                            <rich:dataScroller renderIfSinglePage="false" style="direction: ltr;" maxPages="10" id="scroller" fastControls="hide"  styleClass="wrap-paginacao" boundaryControls="hide" stepControls="show">
+                                <f:facet name="previous">
+                                    <h:outputText value="السابق &larr;"/>
+                                </f:facet>
+                                <f:facet name="next">
+                                    <h:outputText value="&rarr; التالي"/>
+                                </f:facet>
+                            </rich:dataScroller>
+                        </f:facet>
+                    </rich:extendedDataTable>
                 </h:panelGroup>
+                
+                
+                
+                
+                
+                
+                
                 <style>
                     a:visited{
                         color: #ffffff;

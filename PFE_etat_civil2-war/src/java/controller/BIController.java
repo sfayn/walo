@@ -43,8 +43,8 @@ public class BIController implements Serializable {
     private session.Jugement_NaissanceFacade jugement_NaissanceFacade;
     @EJB
     private session.Jugement_DecesFacade jugement_DecesFacade;
-    private Integer anneeGeneral = 1990;//Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
-    private Integer mois = 01;//Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
+    private Integer anneeGeneral = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
+    private Integer mois = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
     private List<Integer> dataD = new ArrayList<Integer>();
     private List<Integer> dataN = new ArrayList<Integer>();
     
@@ -98,8 +98,6 @@ public class BIController implements Serializable {
         this.countJugDec = countJugDec;
     }
     
-    
-
     public Integer getMois() {
         return mois;
     }

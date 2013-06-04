@@ -15,9 +15,6 @@
             <script src="#{request.contextPath}/resources/js/jquery.dataTables.js" ></script>
             <link rel="stylesheet" href="#{request.contextPath}/resources/css/DT_bootstrap.css" />
             <script src="#{request.contextPath}/resources/js/DT_bootstrap.js" ></script>
-
-
-
             <h:form prependId="false">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -91,43 +88,9 @@
                                 })(document.getElementById("graph"));
                                 // ]]> 
                             </script>
-                            <!--<script type="text/javascript">
-                                // <![CDATA[ 
-                                (function basic_bars(container, horizontal) {
-
-                                    //var horizontal = (horizontal ? true : false),
-                                    // Show horizontal bars
-                                    d1 = [[1, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}],[2, #{bIController.countHommeDec+bIController.countFemmeDec}],[3, 0],[4, 0]],
-                                    
-                                    // Draw the graph
-                                    Flotr.draw(
-                                    container, [d1], {
-                                        bars: {
-                                            show: true,
-                                            horizontal: horizontal,
-                                            shadowSize: 0,
-                                            barWidth: 0.5
-                                        },
-                                        mouse: {
-                                            trackFormatter: function(obj){ return obj.y; },
-                                            track: true,
-                                            relative: true
-                                        },
-                                        xaxis:{
-                                            title : '',
-                                            tickSize : 1,
-                                            min: 1,
-                                            ticks: [[1, 'الولادات'],[2, 'الوفيات'],[3, 'jug Naiss'],[4, 'jug dec']]
-                                        },
-                                        yaxis: {
-                                            min: 0,
-                                            autoscaleMargin: 1
-                                        }
-                                    });
-                                })(document.getElementById("graph"));
-                                // ]]> 
-                            </script>-->
+                            
                         </div>
+                        #{bIController.table1()}
                         <b:gridColumn span="4">
                             <h:panelGrid columns="2" dir="rtl">
                                 <h:outputText value="السنة:" />
