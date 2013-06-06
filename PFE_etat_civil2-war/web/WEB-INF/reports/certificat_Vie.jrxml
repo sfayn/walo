@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9e49a1-3622-42db-a9ff-0086b8c21147">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="12"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="annee" class="java.lang.String"/>
 	<parameter name="communeAr" class="java.lang.String"/>
 	<parameter name="provinceAr" class="java.lang.String"/>
@@ -204,21 +204,21 @@
 				<text><![CDATA[مكتب الحالة المدنية لجماعة ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="77" width="258" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="0" y="77" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="95" width="258" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="0" y="95" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="62" y="114" width="258" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="0" y="114" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -239,14 +239,14 @@
 				<textFieldExpression><![CDATA[$P{dateNaissanceGAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="168" width="100" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="0" y="168" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenomP_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="220" y="186" width="100" height="18"/>
+				<reportElement uuid="5452cacd-ea4d-48e7-8dc7-ffb9ae1b4fb1" x="0" y="186" width="320" height="18"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

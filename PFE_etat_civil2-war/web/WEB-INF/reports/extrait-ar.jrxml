@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="587c0fd9-b0b9-4ed3-aafd-c21a3c311274">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="344"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="nomAr" class="java.lang.String"/>
 	<parameter name="lieuNaissanceAr" class="java.lang.String"/>
@@ -289,7 +289,7 @@
 				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ab3a7457-a7be-484e-a5b1-7b8a60f18410" x="10" y="180" width="238" height="20"/>
+				<reportElement uuid="ab3a7457-a7be-484e-a5b1-7b8a60f18410" x="0" y="180" width="248" height="20"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

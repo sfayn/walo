@@ -59,7 +59,8 @@ public class Jugement_NaissanceFacade extends AbstractFacade<Jugement_Naissance>
         cq.select(emp);
         return getEntityManager().createQuery(cq).getResultList();
     }
-    public List<Registre_jugement_Naissance> findByDate_Jug_Naissance(String annee) {
+
+    public List<Registre_jugement_Deces> findByDate_Jug_Naissance(String annee) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery(Registre_jugement_Naissance.class);
         Root emp = cq.from(Registre_jugement_Naissance.class);
