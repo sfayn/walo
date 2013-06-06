@@ -164,31 +164,6 @@ public class Acte_DecesController implements Serializable {
         };
     }
 
-    public int getI() {
-        return i;
-    }
-
-    public void setI(int i) {
-        this.i = i;
-        getG_to_h();
-    }
-
-    public Date getG_to_hD() {
-        if (current.getDateDecesG() == null) {
-            return null;
-        } else {
-            current.setDateDecesH(Helper.dateTimeGrToH(current.getDateDecesG()));
-            return current.getDateDecesH();
-        }
-
-    }
-
-    public void GToHAnneeD() {
-        if (current.getDateDecesG() != null) {
-            current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
-        }
-    }
-
     public void check() {
         UtilitaireSession us = UtilitaireSession.getInstance();
 
@@ -208,41 +183,6 @@ public class Acte_DecesController implements Serializable {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
 
         }
-    }
-
-    public void g_to_hDplus() {
-        if (current.getDateDecesG() != null) {
-            i++;
-            current.getDateDecesG().setDate(current.getDateDecesG().getDate() + i);
-        }
-    }
-
-    public void g_to_hDmoins() {
-        if (current.getDateDecesG() != null) {
-            i--;
-            current.getDateDecesG().setDate(current.getDateDecesG().getDate() + i);
-        }
-    }
-
-    public String getDatetasH_Ar() {
-        if (current.getDateTah_H() == null) {
-            return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
-        } else {
-            return current.getDateTah_H() == null ? "" : Helper.dateHToStrArH(current.getDateTah_H());
-        }
-    }
-
-    public void setDatetasH_Ar(String datetasH_Ar) {
-        this.datetasH_Ar = datetasH_Ar;
-    }
-
-    public String getDatetasH_Fr() {
-        if (current.getDateTah_H() == null) {
-            return current.getDateTah_G() == null ? "" : Helper.dateToStrH(current.getDateTah_G());
-        } else {
-            return current.getDateTah_H() == null ? "" : Helper.dateHToStrH(current.getDateTah_H());
-        }
-
     }
 
     public void setDatetasH_Fr(String datetasH_Fr) {
@@ -265,20 +205,25 @@ public class Acte_DecesController implements Serializable {
         this.datetasM_Fr = datetasM_Fr;
     }
 
-    public void g_to_hTahplus() {
-        if (current.getDateTah_G() != null) {
-            l++;
-            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+    public String getDatetasH_Ar() {
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "" : Helper.dateHToStrArH(current.getDateTah_G());
+        } else {
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrArH(current.getDateTah_H());
         }
     }
 
-    public Date getG_to_hTah() {
-        if (current.getDateTah_G() == null) {
-            return null;
+    public void setDatetasH_Ar(String datetasH_Ar) {
+        this.datetasH_Ar = datetasH_Ar;
+    }
+
+    public String getDatetasH_Fr() {
+        if (current.getDateTah_H() == null) {
+            return current.getDateTah_G() == null ? "" : Helper.dateToStrH(current.getDateTah_G());
         } else {
-            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
-            return current.getDateTah_H();
+            return current.getDateTah_H() == null ? "" : Helper.dateHToStrH(current.getDateTah_H());
         }
+
     }
 
     public void PDFextrD() throws JRException, IOException {
@@ -314,7 +259,7 @@ public class Acte_DecesController implements Serializable {
         params.put("pereAr", current.getPrenomP_Ar());
         params.put("mereAr", current.getPrenomM_Ar());
         params.put("adresseAr", current.getAdresse_Ar());
-        params.put("professionAr", current.getProfession_Ar());        
+        params.put("professionAr", current.getProfession_Ar());
         params.put("officierAr", current.getOfficierAr());
 
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/extraitDecesAr.jasper");
@@ -401,7 +346,7 @@ public class Acte_DecesController implements Serializable {
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
 
     }
-    
+
     public void PDFDeclarD() throws JRException, IOException {
         List<Acte_Deces> acts = new ArrayList<Acte_Deces>();
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
@@ -414,12 +359,12 @@ public class Acte_DecesController implements Serializable {
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
         System.out.println("config " + ini.get("config", "format"));
 
-        SimpleDateFormat y = new SimpleDateFormat("yyyy");        
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
         params.put("anneeH", "" + y.format(current.getDateTah_H()));
         params.put("anneeG", "" + y.format(current.getDateTah_G()));
         params.put("anneeN", anneeN);
         params.put("communeN", communeN);
-        params.put("numActeN",""+ numActeN);
+        params.put("numActeN", "" + numActeN);
         params.put("communeAr", ini.get("commune", "communeAr"));
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
@@ -438,7 +383,6 @@ public class Acte_DecesController implements Serializable {
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
 
     }
-
 
     public void changeDonnees_Marginales() {
         Donnees_Marginales_A_D dm = new Donnees_Marginales_A_D();
@@ -505,22 +449,6 @@ public class Acte_DecesController implements Serializable {
                 current.getDonnees_Marginaless().remove(i);
             }
         }
-    }
-
-    public void g_to_hTahmoins() {
-        if (current.getDateTah_G() != null) {
-            l--;
-            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
-        }
-    }
-
-    public int getL() {
-        return l;
-    }
-
-    public void setL(int l) {
-        this.l = l;
-        changeDeclaration();
     }
 
     public void setG_to_hTah(Date g_to_hTah) {
@@ -591,6 +519,79 @@ public class Acte_DecesController implements Serializable {
             }
             current.setDeclaration_Fr("test");
         }
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+        getG_to_hD();
+    }
+
+    public void getG_to_hD() {
+        if (current.getDateDecesG() != null) {
+            current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
+        }
+    }
+
+    public void GToHAnneeD() {
+        if (current.getDateDecesG() != null) {
+            current.setDateDecesH(Helper.dateGrToH(current.getDateDecesG()));
+        }
+    }
+
+    public void g_to_hDplus() {
+        if (current.getDateDecesG() != null) {
+            i++;
+            Date tmp = new Date(current.getDateDecesG().getYear(), current.getDateDecesG().getMonth(), current.getDateDecesG().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDateDecesH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void g_to_hDmoins() {
+        if (current.getDateDecesG() != null) {
+            i--;
+            Date tmp = new Date(current.getDateDecesG().getYear(), current.getDateDecesG().getMonth(), current.getDateDecesG().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDateDecesH(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void g_to_hTahplus() {
+        if (current.getDateTah_G() != null) {
+            l++;
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void g_to_hTahmoins() {
+        if (current.getDateTah_G() != null) {
+            l--;
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
+        }
+    }
+
+    public void getG_to_hTah() {
+        if (current.getDateTah_G() != null) {
+            current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
+        }
+    }
+
+    public int getL() {
+        return l;
+    }
+
+    public void setL(int l) {
+        this.l = l;
+        getG_to_hTah();
+        changeDeclaration();
     }
 
     public void GToHAnnee() {

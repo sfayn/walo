@@ -281,6 +281,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void setL(int l) {
         this.l = l;
+        getG_to_hTah();
         changeDeclaration();
     }
 
@@ -290,6 +291,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void setK(int k) {
         this.k = k;
+        getG_to_hM();
     }
 
     public int getI() {
@@ -298,6 +300,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void setI(int i) {
         this.i = i;
+        getG_to_h();
     }
 
     public int getJ() {
@@ -306,6 +309,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void setJ(int j) {
         this.j = j;
+        getG_to_hP();
     }
 
     public void setG_to_hM(Date g_to_hM) {
@@ -425,98 +429,102 @@ public class Acte_NaissanceController implements Serializable {
         return "Create";
     }
 
-    public Date getG_to_h() {
-        if (current.getDate_de_naiss_G() == null) {
-            return null;
-        } else {
-            current.setDate_de_naiss_H(Helper.dateTimeGrToH(current.getDate_de_naiss_G()));
-            return current.getDate_de_naiss_H();
+    public void getG_to_h() {
+        if (current.getDate_de_naiss_G() != null) {
+            current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
-
     }
 
-    public Date getG_to_hP() {
-        if (current.getDate_de_naissP_G() == null) {
-            return null;
-        } else {
+    public void getG_to_hP() {
+        if (current.getDate_de_naissP_G() != null) {
             current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
-            return current.getDate_de_naissP_H();
         }
 
     }
 
-    public Date getG_to_hTah() {
-        if (current.getDateTah_G() == null) {
-            return null;
-        } else {
+    public void getG_to_hTah() {
+        if (current.getDateTah_G() != null) {
             current.setDateTah_H(Helper.dateGrToH(current.getDateTah_G()));
-            return current.getDateTah_H();
         }
     }
 
-    public Date getG_to_hM() {
-        if (current.getDate_de_naissM_G() == null) {
-            return null;
-        } else {
+    public void getG_to_hM() {
+        if (current.getDate_de_naissM_G() != null) {
             current.setDate_de_naissM_H(Helper.dateGrToH(current.getDate_de_naissM_G()));
-            return current.getDate_de_naissM_H();
         }
-
     }
 
     public void g_to_hTahplus() {
         if (current.getDateTah_G() != null) {
             l++;
-            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
         }
+
     }
 
     public void g_to_hTahmoins() {
         if (current.getDateTah_G() != null) {
             l--;
-            current.getDateTah_G().setDate(current.getDateTah_G().getDate() + l);
+            Date tmp = new Date(current.getDateTah_G().getYear(), current.getDateTah_G().getMonth(), current.getDateTah_G().getDate());
+            tmp.setDate(tmp.getDate() + l);
+            current.setDateTah_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hplus() {
         if (current.getDate_de_naiss_G() != null) {
             i++;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            Date tmp = new Date(current.getDate_de_naiss_G().getYear(), current.getDate_de_naiss_G().getMonth(), current.getDate_de_naiss_G().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDate_de_naiss_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hmoins() {
         if (current.getDate_de_naiss_G() != null) {
             i--;
-            current.getDate_de_naiss_G().setDate(current.getDate_de_naiss_G().getDate() + i);
+            Date tmp = new Date(current.getDate_de_naiss_G().getYear(), current.getDate_de_naiss_G().getMonth(), current.getDate_de_naiss_G().getDate());
+            tmp.setDate(tmp.getDate() + i);
+            current.setDate_de_naiss_H(Helper.dateGrToH(tmp));
+
         }
     }
 
     public void g_to_hPplus() {
         if (current.getDate_de_naissP_G() != null) {
             j++;
-            current.getDate_de_naissP_G().setDate(current.getDate_de_naissP_G().getDate() + j);
+            Date tmp = new Date(current.getDate_de_naissP_G().getYear(), current.getDate_de_naissP_G().getMonth(), current.getDate_de_naissP_G().getDate());
+            tmp.setDate(tmp.getDate() + j);
+            current.setDate_de_naissP_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hPmoins() {
         if (current.getDate_de_naissP_G() != null) {
             j--;
-            current.getDate_de_naissP_G().setDate(current.getDate_de_naissP_G().getDate() + j);
+            Date tmp = new Date(current.getDate_de_naissP_G().getYear(), current.getDate_de_naissP_G().getMonth(), current.getDate_de_naissP_G().getDate());
+            tmp.setDate(tmp.getDate() + j);
+            current.setDate_de_naissP_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hMplus() {
         if (current.getDate_de_naissM_G() != null) {
             k++;
-            current.getDate_de_naissM_G().setDate(current.getDate_de_naissM_G().getDate() + k);
+            Date tmp = new Date(current.getDate_de_naissM_G().getYear(), current.getDate_de_naissM_G().getMonth(), current.getDate_de_naissM_G().getDate());
+            tmp.setDate(tmp.getDate() + k);
+            current.setDate_de_naissM_H(Helper.dateGrToH(tmp));
         }
     }
 
     public void g_to_hMmoins() {
         if (current.getDate_de_naissM_G() != null) {
             k--;
-            current.getDate_de_naissM_G().setDate(current.getDate_de_naissM_G().getDate() + k);
+            Date tmp = new Date(current.getDate_de_naissM_G().getYear(), current.getDate_de_naissM_G().getMonth(), current.getDate_de_naissM_G().getDate());
+            tmp.setDate(tmp.getDate() + k);
+            current.setDate_de_naissM_H(Helper.dateGrToH(tmp));
         }
     }
 
@@ -724,7 +732,7 @@ public class Acte_NaissanceController implements Serializable {
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
             params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-            params.put("nationnaliteAr", "مغربية");            
+            params.put("nationnaliteAr", "مغربية");
             params.put("officierAr", current.getOfficierAr());
             params.put("pereAr", current.getPrenomP_Ar());
             params.put("mereAr", current.getPrenomM_Ar());
@@ -762,7 +770,7 @@ public class Acte_NaissanceController implements Serializable {
             params.put("correspondant", current.isNoMJ() == false ? Helper.dateHToStrH(current.getDate_de_naiss_H()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
-            params.put("mere", current.getPrenomM_Fr());             
+            params.put("mere", current.getPrenomM_Fr());
             params.put("officierFr", current.getOfficierFr());
 
             boolean trouve2 = false;
@@ -856,22 +864,20 @@ public class Acte_NaissanceController implements Serializable {
         params.put("provinceAr", ini.get("commune", "provinceAr"));
         params.put("dateNaissanceGAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
         params.put("dateNaissanceHAr", current.isNoMJ() == false ? Helper.dateHToStrArH(current.getDate_de_naiss_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_H()))));
-        
-        if(current.isDecesP()){
-        params.put("dateNaissanceGArP", "متوفي");
-        params.put("dateNaissanceHArP", "متوفي");
+
+        if (current.isDecesP()) {
+            params.put("dateNaissanceGArP", "متوفي");
+            params.put("dateNaissanceHArP", "متوفي");
+        } else {
+            params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
+            params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
         }
-        else{
-        params.put("dateNaissanceGArP", current.isNoMJP() == false ? Helper.dateToStrArG(current.getDate_de_naissP_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_G()))));
-        params.put("dateNaissanceHArP", current.isNoMJP() == false ? Helper.dateHToStrArH(current.getDate_de_naissP_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissP_H()))));
-        }
-        if(current.isDecesM()){
-        params.put("dateNaissanceGArM", "متوفية");
-        params.put("dateNaissanceHArM", "متوفية");
-        }
-        else{
-        params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
-        params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
+        if (current.isDecesM()) {
+            params.put("dateNaissanceGArM", "متوفية");
+            params.put("dateNaissanceHArM", "متوفية");
+        } else {
+            params.put("dateNaissanceGArM", current.isNoMJM() == false ? Helper.dateToStrArG(current.getDate_de_naissM_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_G()))));
+            params.put("dateNaissanceHArM", current.isNoMJM() == false ? Helper.dateHToStrArH(current.getDate_de_naissM_H()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naissM_H()))));
         }
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arial.ttf"));
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/ariali.ttf"));

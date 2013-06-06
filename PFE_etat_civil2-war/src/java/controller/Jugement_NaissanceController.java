@@ -428,7 +428,7 @@ public class Jugement_NaissanceController implements Serializable {
     public SelectItem[] listReg_Jug_Naiss() {
         if (annee_jug_Naiss == null && current.getRegistre() != null) {
             annee_jug_Naiss = current.getRegistre().getAnnee();
-        }
+        }        
         return JsfUtil.getSelectItems(ejbFacade.findByDate_Jug_Naissance(annee_jug_Naiss), true);
     }
 

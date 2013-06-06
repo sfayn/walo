@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="extrait" pageWidth="630" pageHeight="421" orientation="Landscape" columnWidth="590" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dec0617-bc67-4840-a631-577a85c01589">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="72"/>
 	<parameter name="prenom" class="java.lang.String"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="nom" class="java.lang.String"/>
@@ -277,7 +277,7 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="349587d2-2fc5-4ae1-a979-50f449d08687" x="82" y="21" width="198" height="15"/>
+				<reportElement uuid="349587d2-2fc5-4ae1-a979-50f449d08687" x="82" y="21" width="251" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -293,21 +293,21 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="4c0000af-d56a-475b-b1ac-809939f0af70" x="50" y="6" width="198" height="15"/>
+				<reportElement uuid="4c0000af-d56a-475b-b1ac-809939f0af70" x="50" y="6" width="283" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{prenom}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ecd1f3a6-d973-43ca-9a77-b797475461fb" x="29" y="96" width="198" height="15"/>
+				<reportElement uuid="ecd1f3a6-d973-43ca-9a77-b797475461fb" x="29" y="96" width="304" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mere}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9e3517c9-ae84-469d-89b3-c1774abfd02e" x="149" y="111" width="74" height="15"/>
+				<reportElement uuid="9e3517c9-ae84-469d-89b3-c1774abfd02e" x="149" y="111" width="85" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -349,7 +349,7 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="ad5e6caa-7f81-4827-8c68-10f499482c04" x="100" y="36" width="198" height="15"/>
+				<reportElement uuid="ad5e6caa-7f81-4827-8c68-10f499482c04" x="100" y="36" width="233" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -365,14 +365,14 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="22542526-6506-44ec-9432-ce4f93b283d2" x="63" y="66" width="198" height="15"/>
+				<reportElement uuid="22542526-6506-44ec-9432-ce4f93b283d2" x="63" y="66" width="270" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nationnalite}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2b99a007-6786-4a63-a22f-02679eb320d5" x="82" y="81" width="198" height="15"/>
+				<reportElement uuid="2b99a007-6786-4a63-a22f-02679eb320d5" x="82" y="81" width="251" height="15"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -474,49 +474,49 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="17d66c9f-4170-4275-a167-f5f2de113206" x="389" y="81" width="157" height="15"/>
+				<reportElement uuid="17d66c9f-4170-4275-a167-f5f2de113206" x="333" y="81" width="213" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pereAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ab3a7457-a7be-484e-a5b1-7b8a60f18410" x="367" y="111" width="93" height="15"/>
+				<reportElement uuid="ab3a7457-a7be-484e-a5b1-7b8a60f18410" x="349" y="111" width="111" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{decesAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="21004f32-87e4-4034-8188-9f71da0fbafa" x="383" y="36" width="157" height="15"/>
+				<reportElement uuid="21004f32-87e4-4034-8188-9f71da0fbafa" x="333" y="36" width="207" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{lieuNaissanceAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7ff445d4-24f6-4e47-956f-1bb5562e0ef3" x="383" y="21" width="157" height="15"/>
+				<reportElement uuid="7ff445d4-24f6-4e47-956f-1bb5562e0ef3" x="333" y="21" width="207" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nomAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7ff445d4-24f6-4e47-956f-1bb5562e0ef3" x="373" y="6" width="157" height="15"/>
+				<reportElement uuid="7ff445d4-24f6-4e47-956f-1bb5562e0ef3" x="333" y="6" width="197" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{prenomAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e561d4fe-0274-4990-93af-149203402862" x="389" y="96" width="157" height="15"/>
+				<reportElement uuid="e561d4fe-0274-4990-93af-149203402862" x="333" y="96" width="213" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{mereAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="141b9549-9e04-4455-889a-d3dc13f39b0d" x="392" y="66" width="157" height="15"/>
+				<reportElement uuid="141b9549-9e04-4455-889a-d3dc13f39b0d" x="333" y="66" width="216" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

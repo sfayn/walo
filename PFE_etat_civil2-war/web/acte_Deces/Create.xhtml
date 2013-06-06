@@ -313,7 +313,7 @@
                                             </h:inputText>
                                             <h:outputLabel value="تاريخ الوفاة الهجري" style="width: 103px" for="dateDecesH" rendered="#{!acte_DecesController.selected.noMJD}" />
                                             <h:panelGrid columns="3" class="input-prepend" rendered="#{!acte_DecesController.selected.noMJD}">
-                                                <h:inputText readonly="true" id="dateDecesH" value="#{acte_DecesController.g_to_hD}" >
+                                                <h:inputText readonly="true" id="dateDecesH" value="#{acte_DecesController.selected.dateDecesH}" >
                                                     <f:convertDateTime pattern="dd-MM-yyyy" />
                                                 </h:inputText>
                                                 <h:commandLink class="btn btn-primary add-on" value="+">
@@ -376,7 +376,7 @@
                                         <h:panelGrid columns="2" dir="rtl"> 
                                             <h:outputLabel value="تاريخ التصريح الهجري" for="dateTah_H" />
                                             <h:panelGrid columns="3" class="input-prepend">
-                                                <h:inputText readonly="true" id="dateTah_H" value="#{acte_DecesController.g_to_hTah}" title="تاريخ التصريح الهجري" >
+                                                <h:inputText readonly="true" id="dateTah_H" value="#{acte_DecesController.selected.dateTah_H}" title="تاريخ التصريح الهجري" >
                                                     <f:convertDateTime pattern="dd-MM-yyyy" />                                            
                                                 </h:inputText>
                                                 <h:commandLink class="btn btn-primary add-on" value="+">
