@@ -74,11 +74,12 @@ public class Acte_NaissanceController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private Long numActeFilter;
-    private String anneeFilter;
+    private Long anneeFilter;
     private Integer primaryRowCount = 10;
     private String etatFamilleAr;
     private String adresseAr;
     private String professionAr;
+    private boolean test = false;
 
     public String getEtatFamilleAr() {
         return etatFamilleAr;
@@ -120,38 +121,24 @@ public class Acte_NaissanceController implements Serializable {
         this.numActeFilter = numActeFilter;
     }
 
-    public String getAnneeFilter() {
+    public Long getAnneeFilter() {
         return anneeFilter;
     }
 
-    public void setAnneeFilter(String anneeFilter) {
+    public void setAnneeFilter(Long anneeFilter) {
         this.anneeFilter = anneeFilter;
     }
 
-    public Filter<?> getNumActeFilterImpl() {
-        return new Filter<Acte_Naissance>() {
-            public boolean accept(Acte_Naissance item) {
-                Long numActe = getNumActeFilter();
-                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
-                    return true;
-                }
-                return false;
-            }
-        };
+    public void numActeFilterImpl() {
+        if ((numActeFilter != null && numActeFilter > 0) || (anneeFilter != null && anneeFilter > 0)) {
+            test = true;
+        } else {
+            test = false;
+        }
+        System.out.println(test);
+        this.destroyModel();
     }
-
-    public Filter<?> getAnneeFilterImpl() {
-        return new Filter<Acte_Naissance>() {
-            public boolean accept(Acte_Naissance item) {
-                String Annee = getAnneeFilter();
-                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
-                    return true;
-                }
-                return false;
-            }
-        };
-    }
-
+    
     public Acte_NaissanceController() {
     }
 
@@ -378,36 +365,6 @@ public class Acte_NaissanceController implements Serializable {
             }
             current.setDeclaration_Fr("Selon la déclaration du père " + current.getPrenomP_Fr() + " sous numéro " + current.getNumActe() + " sa nationalité est " + current.getNationalteP_Fr() + " sa fonction est " + current.getProfessionP_Fr() + " residant à " + current.getAddressePa_Fr());
         }
-    }
-
-    public Acte_Naissance getSelected() {
-        recreateModel();
-        if (current == null) {
-            current = new Acte_Naissance();
-            selectedItemIndex = -1;
-        }
-        return current;
-    }
-
-    private Acte_NaissanceFacade getFacade() {
-        return ejbFacade;
-    }
-
-    public PaginationHelper getPagination() {
-        if (pagination == null) {
-            pagination = new PaginationHelper(4000) {
-                @Override
-                public int getItemsCount() {
-                    return getFacade().count();
-                }
-
-                @Override
-                public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
-                }
-            };
-        }
-        return pagination;
     }
 
     public String prepareList() {
@@ -969,11 +926,61 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
+    public Acte_Naissance getSelected() {
+        recreateModel();
+        if (current == null) {
+            current = new Acte_Naissance();
+            selectedItemIndex = -1;
+        }
+        return current;
+    }
+
+    private Acte_NaissanceFacade getFacade() {
+        return ejbFacade;
+    }
+
+    public PaginationHelper getPagination() {
+        if (pagination == null) {
+            pagination = new PaginationHelper(primaryRowCount) {
+                @Override
+                public int getItemsCount() {
+                    return getFacade().count();
+                }
+
+                @Override
+                public DataModel createPageDataModel() {
+                    if (test) {
+                        Long a = new Long(0);
+                        Long b = new Long(0);
+                        if (anneeFilter != null && anneeFilter > 0) {
+                            b = anneeFilter;
+                        }
+                        if (numActeFilter != null && numActeFilter > 0) {
+                            a = numActeFilter;
+                        }
+
+                        return new ListDataModel(getFacade().findByAnnee(a, b));
+                    } else {
+                        return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    }
+                }
+            };
+        }
+        return pagination;
+    }
+
     public DataModel getItems() {
         if (items == null) {
             items = getPagination().createPageDataModel();
         }
         return items;
+    }
+
+    public void destroyModel() {
+        items = null;
+        System.out.println("destroyModel");
+        pagination = null;
+        items = getPagination().createPageDataModel();
     }
 
     private void recreateModel() {
@@ -1002,6 +1009,10 @@ public class Acte_NaissanceController implements Serializable {
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+
+
+
+
     }
 
     @FacesConverter(forClass = Acte_Naissance.class)
