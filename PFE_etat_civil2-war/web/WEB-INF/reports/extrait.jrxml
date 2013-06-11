@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="extrait" pageWidth="630" pageHeight="421" orientation="Landscape" columnWidth="590" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dec0617-bc67-4840-a631-577a85c01589">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="72"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="prenom" class="java.lang.String"/>
 	<parameter name="prenomAr" class="java.lang.String"/>
 	<parameter name="nom" class="java.lang.String"/>
@@ -77,21 +77,21 @@ Ministère de l'Intérieur
                 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="536" y="40" width="53" height="15"/>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="535" y="26" width="55" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[عمالة أو إقليم ]]></text>
+				<text><![CDATA[عمالة أو إقليم :]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="2a11acdc-5f0b-4bc0-9797-f0808522e5f4" x="479" y="27" width="82" height="14"/>
+				<reportElement uuid="2a11acdc-5f0b-4bc0-9797-f0808522e5f4" x="452" y="26" width="82" height="14"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f15a8e67-8645-4a4a-b56d-0d9e7759170f" x="444" y="40" width="92" height="15"/>
+				<reportElement uuid="f15a8e67-8645-4a4a-b56d-0d9e7759170f" x="459" y="42" width="92" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -128,11 +128,11 @@ Ministère de l'Intérieur
                 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="561" y="27" width="28" height="13"/>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="551" y="42" width="38" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[جماعة  
+				<text><![CDATA[جماعة  :
                 
                 ]]></text>
 			</staticText>
@@ -226,14 +226,14 @@ Grégorienne
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="495ea58f-bac2-4e79-a6d8-792e42308728" x="103" y="67" width="71" height="15"/>
+				<reportElement uuid="495ea58f-bac2-4e79-a6d8-792e42308728" x="104" y="70" width="71" height="15"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{anneeH}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e9b85ad9-3364-4ba2-9881-469fef3485b7" x="103" y="82" width="73" height="15"/>
+				<reportElement uuid="e9b85ad9-3364-4ba2-9881-469fef3485b7" x="104" y="85" width="73" height="15"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>

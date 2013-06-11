@@ -5,10 +5,17 @@
 package bean;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -16,15 +23,51 @@ import javax.persistence.Id;
  */
 @Entity
 public class Type_Donnees_Marginales implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Lob
     private String libelleAr;
     private String libelleFr;
+    @Lob
+    private String descrAr;
+    @Lob
+    private String descrFr;
+    @Lob
+    private String attrs;
 
-    public String getLibelleAr() {
-        return libelleAr;
+    public String getAttrs() throws UnsupportedEncodingException {
+        return attrs == null ? "" : URLDecoder.decode(attrs, "UTF-8");
+    }
+
+    public void setAttrs(String attrs) {
+        this.attrs = attrs;        
+    }
+
+    
+
+    public String getDescrAr() throws UnsupportedEncodingException {
+        return descrAr == null ? "" : URLDecoder.decode(descrAr, "UTF-8");
+    }
+
+    public void setDescrAr(String descrAr) {
+        this.descrAr = descrAr;
+    }
+
+    public String getDescrFr() {
+        return descrFr;
+    }
+
+    public void setDescrFr(String descrFr) {
+        this.descrFr = descrFr;
+    }
+
+
+    
+    public String getLibelleAr()  throws UnsupportedEncodingException {
+        return libelleAr == null ? "" : URLDecoder.decode(libelleAr, "UTF-8");
     }
 
     public void setLibelleAr(String libelleAr) {

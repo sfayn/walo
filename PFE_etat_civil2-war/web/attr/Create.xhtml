@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAttrTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAttrLabel_tdm}" for="tdm" />
+                    <h:selectOneMenu id="tdm" value="#{attrController.selected.tdm}" title="#{bundle.CreateAttrTitle_tdm}" >
+                        <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAttrLabel_attr}" for="attr" />
+                    <h:inputText id="attr" value="#{attrController.selected.attr}" title="#{bundle.CreateAttrTitle_attr}" />
+                    <h:outputLabel value="#{bundle.CreateAttrLabel_libelle}" for="libelle" />
+                    <h:inputText id="libelle" value="#{attrController.selected.libelle}" title="#{bundle.CreateAttrTitle_libelle}" />
+                    <h:outputLabel value="#{bundle.CreateAttrLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{attrController.selected.id}" title="#{bundle.CreateAttrTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{attrController.create}" value="#{bundle.CreateAttrSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{attrController.prepareList}" value="#{bundle.CreateAttrShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAttrIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

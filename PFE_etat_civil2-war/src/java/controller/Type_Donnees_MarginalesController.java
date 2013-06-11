@@ -1,10 +1,23 @@
 package controller;
 
+import bean.Attr;
 import bean.Type_Donnees_Marginales;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
+import session.Type_Donnees_MarginalesFacade;
+
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,7 +28,6 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
-import session.Type_Donnees_MarginalesFacade;
 
 @ManagedBean(name = "type_Donnees_MarginalesController")
 @SessionScoped
@@ -27,8 +39,38 @@ public class Type_Donnees_MarginalesController implements Serializable {
     private session.Type_Donnees_MarginalesFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    List<Attr> attrs;
+    Map m = new HashMap();
+
+    public List<Attr> getAttrs() {
+        return attrs;
+    }
+
+    public Map getM() {
+        return m;
+    }
+
+    public void setM(Map m) {
+        this.m = m;
+    }
+
+    public void setAttrs(List<Attr> attrs) {
+        this.attrs = attrs;
+    }
+
+    public void changeDonnees_Marginales() {
+        Attr a = new Attr();
+        attrs.add(a);
+    }
 
     public Type_Donnees_MarginalesController() {
+        Set s = new HashSet();
+        s = ResourceBundle.getBundle("attrs").keySet();
+        for (Iterator it = s.iterator(); it.hasNext();) {
+            String object = it.next().toString();
+            m.put(object, ResourceBundle.getBundle("attrs").getString(object));
+        }
+        attrs = new ArrayList<Attr>();
     }
 
     public Type_Donnees_Marginales getSelected() {
@@ -37,6 +79,10 @@ public class Type_Donnees_MarginalesController implements Serializable {
             selectedItemIndex = -1;
         }
         return current;
+    }
+
+    public SelectItem[] getListAttrs() {
+        return JsfUtil.getSelectItems(attrs, true);
     }
 
     private Type_Donnees_MarginalesFacade getFacade() {
@@ -74,12 +120,23 @@ public class Type_Donnees_MarginalesController implements Serializable {
     public String prepareCreate() {
         current = new Type_Donnees_Marginales();
         selectedItemIndex = -1;
+        attrs.clear();
         return "Create";
     }
 
     public String create() {
         try {
+            if (!attrs.isEmpty()) {
+                for (int i = 0; i < attrs.size(); i++) {
+                    if (current.getAttrs().equals("")) {
+                        current.setAttrs(attrs.get(i).getLibelle() + ":");
+                    } else {
+                        current.setAttrs(current.getAttrs() + attrs.get(i).getLibelle() + ":");
+                    }
+                }
+            }
             getFacade().create(current);
+            attrs.clear();
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Type_Donnees_MarginalesCreated"));
             return prepareCreate();
         } catch (Exception e) {
@@ -89,14 +146,37 @@ public class Type_Donnees_MarginalesController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Type_Donnees_Marginales) getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        try {
+            attrs.clear();
+            current = (Type_Donnees_Marginales) getItems().getRowData();
+            selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+            if (!current.getAttrs().isEmpty()) {
+                String[] arr = current.getAttrs().split(":");
+                System.out.println("haniiiiiiiiii arr:" + arr.length);
+                for (int i = 0; i < arr.length; i++) {
+                    attrs.add(new Attr(arr[i]));
+                }
+            }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Type_Donnees_MarginalesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return "Edit";
     }
 
     public String update() {
         try {
+            if (!attrs.isEmpty()) {
+                current.setAttrs("");
+                for (int i = 0; i < attrs.size(); i++) {
+                    if (current.getAttrs().equals("")) {
+                        current.setAttrs(attrs.get(i).getLibelle() + ":");
+                    } else {
+                        current.setAttrs(current.getAttrs() + attrs.get(i).getLibelle() + ":");
+                    }
+                }
+            }
             getFacade().edit(current);
+            attrs.clear();
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Type_Donnees_MarginalesUpdated"));
             return "View";
         } catch (Exception e) {

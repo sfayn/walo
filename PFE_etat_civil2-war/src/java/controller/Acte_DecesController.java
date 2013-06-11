@@ -771,14 +771,23 @@ public class Acte_DecesController implements Serializable {
     public String update() {
         try {
             encode();
+            for (Donnees_Marginales_A_D dm : current.getDonnees_Marginaless()) {
+                ejbFacade2.create(dm);
+            }
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_DecesUpdated"));
+            for (Donnees_Marginales_A_D dm : current.getDonnees_Marginaless()) {
+                dm.setActe(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                ejbFacade2.edit(dm);
+            }
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
+
 
     public String destroy() {
         current = (Acte_Deces) getItems().getRowData();

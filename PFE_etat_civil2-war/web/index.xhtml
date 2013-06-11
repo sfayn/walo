@@ -14,11 +14,12 @@
             <h:form>
                 <script src="#{request.contextPath}/resources/js/graphdf.js" ></script>
                 <fieldset>
-                    <legend>المهام الأساسية</legend>
-                    <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-wrench "> </i>&nbsp;&nbsp;&nbsp;إعدادات</a>
+                    <legend>المهام الأساسية</legend>                   
+                    <a href="#{request.contextPath}/faces/type_Donnees_Marginales/#{type_Donnees_MarginalesController.prepareList()}.xhtml" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-wrench "> </i>&nbsp;&nbsp;&nbsp;إعدادات</a>
                     <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-hdd "> </i>&nbsp;&nbsp;&nbsp;استعادة قاعدة البيانات</a>
                     <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-download-alt"> </i>&nbsp;&nbsp;&nbsp;نسخ قاعدة البيانات</a>
                     <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-file"> </i>&nbsp;&nbsp;&nbsp;دليل الإستعمال</a>
+
                 </fieldset>
                 <br />
                 <fieldset>

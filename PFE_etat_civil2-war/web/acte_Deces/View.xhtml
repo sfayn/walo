@@ -16,7 +16,7 @@
             </h:panelGroup>
             <h:form>
                 <br />
-                <b:alert severity="#{acte_DecesController.selected.checked==true ? 'success' : 'error' }" closable="false" rendered="#{userController.loggedUser().role == 'Admin'}">
+                <b:alert severity="#{acte_DecesController.selected.checked==true ? 'success' : 'error' }" closable="false" rendered="#{userController.loggedUser().role == 'Admin' || userController.loggedUser().role == 'Moderateur'}">
                     <b:gridRow  >
                         <b:gridColumn span="2" >
                             <h:commandLink id="btn" class="btn #{acte_DecesController.selected.checked == true ? 'btn-success  icon-ok' : 'btn-danger icon-ban-circle'}" value="  #{bundle.CreateActe_NaissanceSaveLink}" style="font-size: 14pt;" >

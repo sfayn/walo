@@ -3,34 +3,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.EditType_Donnees_MarginalesTitle}"></h:outputText>
+            <h:outputText value="#{bundle.CreateType_Donnees_MarginalesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form prependId="false" id="formCreate">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditType_Donnees_MarginalesLabel_libelleAr}" for="libelleAr" />
-                    <h:inputText id="libelleAr" value="#{type_Donnees_MarginalesController.selected.libelleAr}" title="#{bundle.EditType_Donnees_MarginalesTitle_libelleAr}" />
-                    <h:outputLabel value="#{bundle.EditType_Donnees_MarginalesLabel_libelleFr}" for="libelleFr" />
-                    <h:inputText id="libelleFr" value="#{type_Donnees_MarginalesController.selected.libelleFr}" title="#{bundle.EditType_Donnees_MarginalesTitle_libelleFr}" />
-                    <h:outputLabel value="#{bundle.EditType_Donnees_MarginalesLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{type_Donnees_MarginalesController.selected.id}" title="#{bundle.EditType_Donnees_MarginalesTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_libelleAr}" for="libelleAr" />
+                    <h:inputText id="libelleAr" value="#{type_Donnees_MarginalesController.selected.libelleAr}" title="#{bundle.CreateType_Donnees_MarginalesTitle_libelleAr}" />
+                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_libelleFr}" for="libelleFr" />
+                    <h:inputText id="libelleFr" value="#{type_Donnees_MarginalesController.selected.libelleFr}" title="#{bundle.CreateType_Donnees_MarginalesTitle_libelleFr}" />
+                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{type_Donnees_MarginalesController.selected.id}" title="#{bundle.CreateType_Donnees_MarginalesTitle_id}" />
+
                 </h:panelGrid>
-                <h:commandLink action="#{type_Donnees_MarginalesController.update}" value="#{bundle.EditType_Donnees_MarginalesSaveLink}"/>
+                <b:gridColumn span="6">
+                    <h:panelGrid columns="2" dir="rtl">
+                        <h:outputLabel value=" صيغة البيان : " for="descrAr" />
+                        <h:inputTextarea cols="30" rows="5" id="descrAr" value="#{type_Donnees_MarginalesController.selected.descrAr}"/>
+                    </h:panelGrid>
+                </b:gridColumn>
+
+                <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                    <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                            margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن البيانات الهامشية :</legend>
+                    <b:gridRow styleClass="show" fluid="true" id="donnees_marginales">
+
+                        <ui:repeat var="attr"  value="#{type_Donnees_MarginalesController.attrs}" >
+                            <br/>
+                            <b:gridRow styleClass="show" fluid="true" style=" font-size: 30pt; border-top:  rgb(58,135,173) solid 1px;">
+                                <b:gridColumn span="12">
+                                    <h:commandLink title="remove" >
+                                        <font size="+1" title="حذف"><i class="icon-remove-circle" style="color: red"></i></font>
+                                        <f:ajax event="click" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{type_Donnees_MarginalesController.changeDonnees_MarginalesRemove(donnee_Marginale)}"/> 
+                                    </h:commandLink>
+                                </b:gridColumn>
+                            </b:gridRow>
+                            <b:gridRow styleClass="show" fluid="true" >                                    
+
+                                <b:gridColumn span="10">
+                                    <h:panelGrid columns="2" dir="rtl">
+                                        <h:outputLabel value="نوع البيان" for="type" />
+                                        <h:selectOneMenu value="#{attr.libelle}" id="type">
+                                            <f:selectItems value="#{type_Donnees_MarginalesController.m.entrySet()}" var="entry" 
+                                                           itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+                                        </h:selectOneMenu>
+                                    </h:panelGrid>
+                                </b:gridColumn>
+                            </b:gridRow>
+
+                        </ui:repeat>
+
+                    </b:gridRow>
+                    <b:gridRow styleClass="show" fluid="true">
+
+                        <b:gridColumn span="12">
+                            <h:commandLink class="btn btn-primary" style="font-size: 14pt;" value="إضافة بيان هامشي">
+                                <f:ajax event="click" execute="donnees_marginales" render="donnees_marginales" listener="#{type_Donnees_MarginalesController.changeDonnees_Marginales()}"/>
+                            </h:commandLink>
+                        </b:gridColumn>
+                    </b:gridRow>
+                </fieldset>
+
+
+                <br />
+                <h:commandLink action="#{type_Donnees_MarginalesController.update()}" value="#{bundle.CreateType_Donnees_MarginalesSaveLink}" />
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditType_Donnees_MarginalesViewLink}"/>
-                <br />
-                <h:commandLink action="#{type_Donnees_MarginalesController.prepareList}" value="#{bundle.EditType_Donnees_MarginalesShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{type_Donnees_MarginalesController.prepareList}" value="#{bundle.CreateType_Donnees_MarginalesShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.EditType_Donnees_MarginalesIndexLink}" />
+                <h:link outcome="/index" value="#{bundle.CreateType_Donnees_MarginalesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
