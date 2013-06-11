@@ -74,11 +74,12 @@ public class Acte_DecesController implements Serializable {
     private int i = 0;
     private int k = 0;
     private Long numActeFilter;
-    private String anneeFilter;
+    private Long anneeFilter;
     private Integer primaryRowCount = 10;
     private String communeN;
     private int numActeN;
     private String anneeN;
+    private boolean test = false;
 
     public String getCommuneN() {
         return communeN;
@@ -132,37 +133,24 @@ public class Acte_DecesController implements Serializable {
         this.numActeFilter = numActeFilter;
     }
 
-    public String getAnneeFilter() {
+    public Long getAnneeFilter() {
         return anneeFilter;
     }
 
-    public void setAnneeFilter(String anneeFilter) {
+    public void setAnneeFilter(Long anneeFilter) {
         this.anneeFilter = anneeFilter;
     }
-
-    public Filter<?> getNumActeFilterImpl() {
-        return new Filter<Acte_Deces>() {
-            public boolean accept(Acte_Deces item) {
-                Long numActe = getNumActeFilter();
-                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
-                    return true;
-                }
-                return false;
-            }
-        };
+    
+    public void numActeFilterImpl() {
+        if ((numActeFilter != null && numActeFilter > 0) || (anneeFilter != null && anneeFilter > 0)) {
+            test = true;
+        } else {
+            test = false;
+        }
+        System.out.println(test);
+        this.destroyModel();
     }
 
-    public Filter<?> getAnneeFilterImpl() {
-        return new Filter<Acte_Deces>() {
-            public boolean accept(Acte_Deces item) {
-                String Annee = getAnneeFilter();
-                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
-                    return true;
-                }
-                return false;
-            }
-        };
-    }
 
     public void check() {
         UtilitaireSession us = UtilitaireSession.getInstance();
@@ -682,15 +670,42 @@ public class Acte_DecesController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(primaryRowCount) {
                 @Override
                 public int getItemsCount() {
-                    return getFacade().count();
+                    if (test) {
+                        Long a = new Long(0);
+                        Long b = new Long(0);
+                        if (anneeFilter != null && anneeFilter > 0) {
+                            b = anneeFilter;
+                        }
+                        if (numActeFilter != null && numActeFilter > 0) {
+                            a = numActeFilter;
+                        }
+
+                        return getFacade().findByAnnee(a, b).size();
+                    } else {
+                        return getFacade().count();
+                    }
+                    
                 }
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    if (test) {
+                        Long a = new Long(0);
+                        Long b = new Long(0);
+                        if (anneeFilter != null && anneeFilter > 0) {
+                            b = anneeFilter;
+                        }
+                        if (numActeFilter != null && numActeFilter > 0) {
+                            a = numActeFilter;
+                        }
+
+                        return new ListDataModel(getFacade().findByAnnee(a, b));
+                    } else {
+                        return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    }
                 }
             };
         }
@@ -842,6 +857,13 @@ public class Acte_DecesController implements Serializable {
         return items;
     }
 
+    public void destroyModel() {
+        items = null;
+        System.out.println("destroyModel");
+        pagination = null;
+        items = getPagination().createPageDataModel();
+    }
+    
     private void recreateModel() {
         items = null;
     }

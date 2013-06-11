@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -26,6 +27,7 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 @LocalBean
+@WebService()
 public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte_DecesFacadeLocal {
     @PersistenceContext(unitName = "PFE_etat_civil2-ejbPU")
     private EntityManager em;
@@ -128,6 +130,24 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         queryProductsByName.setParameter("month", month);
         Integer results = queryProductsByName.getFirstResult();
         
+        return results;
+    }
+    
+    public List<Acte_Deces> findByAnnee(Long acte, Long annee) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.findByAnnee");
+        String a = "%";
+        String b = "%";
+        if(acte>0){
+            a=""+acte;
+        }
+        
+        if(annee>0 ){
+            b = ""+annee;
+        }
+        queryProductsByName.setParameter("acte", a);
+        queryProductsByName.setParameter("annee", b);
+        List<Acte_Deces> results = queryProductsByName.getResultList();
+
         return results;
     }
 }

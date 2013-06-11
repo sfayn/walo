@@ -50,6 +50,35 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
 
         return getEntityManager().createQuery(cq).getResultList();
     }
+    
+    public List<Acte_Naissance> findByNumActe(Long acte) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Acte_Naissance.class);
+        Root emp = cq.from(Acte_Naissance.class);
+        Predicate predicate = cb.equal(emp.get("numActe"), acte);
+        cq.where(predicate);
+        cq.select(emp);
+
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+    
+    public List<Acte_Naissance> findByAnnee(Long acte, Long annee) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.findByAnnee");
+        String a = "%";
+        String b = "%";
+        if(acte>0){
+            a=""+acte;
+        }
+        
+        if(annee>0 ){
+            b = ""+annee;
+        }
+        queryProductsByName.setParameter("acte", a);
+        queryProductsByName.setParameter("annee", b);
+        List<Acte_Naissance> results = queryProductsByName.getResultList();
+
+        return results;
+    }
 
     public List<Object[]> countByDate(Integer annee) {
         Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByDate");
