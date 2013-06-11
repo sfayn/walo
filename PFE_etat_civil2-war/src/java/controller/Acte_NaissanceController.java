@@ -944,7 +944,21 @@ public class Acte_NaissanceController implements Serializable {
             pagination = new PaginationHelper(primaryRowCount) {
                 @Override
                 public int getItemsCount() {
-                    return getFacade().count();
+                    if (test) {
+                        Long a = new Long(0);
+                        Long b = new Long(0);
+                        if (anneeFilter != null && anneeFilter > 0) {
+                            b = anneeFilter;
+                        }
+                        if (numActeFilter != null && numActeFilter > 0) {
+                            a = numActeFilter;
+                        }
+
+                        return getFacade().findByAnnee(a, b).size();
+                    } else {
+                        return getFacade().count();
+                    }
+                    
                 }
 
                 @Override
