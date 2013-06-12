@@ -1,7 +1,9 @@
 package controller;
 
 import bean.Acte_Naissance;
+import bean.Attr;
 import bean.Donnees_Marginales;
+import bean.Type_Donnees_Marginales;
 import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
@@ -80,6 +82,18 @@ public class Acte_NaissanceController implements Serializable {
     private String adresseAr;
     private String professionAr;
     private boolean test = false;
+    List<Attr> attrs;
+    Map m = new HashMap();
+
+    public List<Attr> chargerAttr(Type_Donnees_Marginales tdm) throws UnsupportedEncodingException {
+        if (!tdm.getAttrs().isEmpty()) {
+            String[] arr = tdm.getAttrs().split(":");
+            for (int i = 0; i < arr.length; i++) {
+                attrs.add(new Attr(arr[i]));
+            }
+        }
+        return attrs;
+    }
 
     public String getEtatFamilleAr() {
         return etatFamilleAr;
@@ -138,7 +152,7 @@ public class Acte_NaissanceController implements Serializable {
         System.out.println(test);
         this.destroyModel();
     }
-    
+
     public Acte_NaissanceController() {
     }
 
@@ -958,7 +972,7 @@ public class Acte_NaissanceController implements Serializable {
                     } else {
                         return getFacade().count();
                     }
-                    
+
                 }
 
                 @Override

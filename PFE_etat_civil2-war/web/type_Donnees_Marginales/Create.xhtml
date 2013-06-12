@@ -42,7 +42,7 @@
                                 <b:gridColumn span="12">
                                     <h:commandLink title="remove" >
                                         <font size="+1" title="حذف"><i class="icon-remove-circle" style="color: red"></i></font>
-                                        <f:ajax event="click" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{type_Donnees_MarginalesController.changeDonnees_MarginalesRemove(donnee_Marginale)}"/> 
+                                        <f:ajax event="click" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{type_Donnees_MarginalesController.changeDonnees_MarginalesRemove(attr)}"/> 
                                     </h:commandLink>
                                 </b:gridColumn>
                             </b:gridRow>

@@ -455,6 +455,19 @@
                                                 <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
                                                 <f:ajax event="change" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{acte_NaissanceController.changeDescDM(donnee_Marginale)}"/> 
                                             </h:selectOneMenu>
+                                            <ui:repeat var="attr"  value="#{type_Donnees_MarginalesController.attrs}" >
+                                                <br/>                                                
+                                                <b:gridRow styleClass="show" fluid="true" >                                    
+
+                                                    <b:gridColumn span="10">
+                                                        <h:panelGrid columns="2" dir="rtl">
+                                                            <h:outputLabel value=" " for="attribut" />
+                                                                <h:inputText id="attribut" value="#{attr.libelle}"/>                                                            
+                                                        </h:panelGrid>
+                                                    </b:gridColumn>
+                                                </b:gridRow>
+
+                                            </ui:repeat>
                                             <h:outputLabel value="معلومات عن البيان" for="descAr" />
                                             <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />
                                         </h:panelGrid>
