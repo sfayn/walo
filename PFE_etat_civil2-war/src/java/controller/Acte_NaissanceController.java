@@ -1,7 +1,9 @@
 package controller;
 
 import bean.Acte_Naissance;
+import bean.Attr;
 import bean.Donnees_Marginales;
+import bean.Type_Donnees_Marginales;
 import bean.User;
 import controller.util.Helper;
 import controller.util.JsfUtil;
@@ -80,6 +82,24 @@ public class Acte_NaissanceController implements Serializable {
     private String adresseAr;
     private String professionAr;
     private boolean test = false;
+    List<Attr> attrs;
+    Map m = new HashMap();
+
+    public Map getM() {
+        return m;
+    }
+
+    public void setM(Map m) {
+        this.m = m;
+    }
+
+    public List<Attr> getAttrs() {
+        return attrs;
+    }
+
+    public void setAttrs(List<Attr> attrs) {
+        this.attrs = attrs;
+    }
 
     public String getEtatFamilleAr() {
         return etatFamilleAr;
@@ -138,11 +158,32 @@ public class Acte_NaissanceController implements Serializable {
         System.out.println(test);
         this.destroyModel();
     }
-    
+
     public Acte_NaissanceController() {
+        
+    }
+
+    public void changeDonnees_Marginales() {
+        Donnees_Marginales dm = new Donnees_Marginales();
+        current.getDonnees_Marginaless().add(dm);
+        attrs = new ArrayList<Attr>();
+    }
+    public void chargerAttr(Donnees_Marginales dm) throws UnsupportedEncodingException {
+        if (!dm.getType().getAttrs().isEmpty()) {
+            String[] arr = dm.getType().getAttrs().split(":");
+            for (int i = 0; i < arr.length; i++) {
+                attrs.add(new Attr(arr[i]));
+            }
+            ajouterMap(dm, attrs);
+        }
+    }
+    public void ajouterMap(Donnees_Marginales dm , List<Attr> attrs){
+        m.put(dm, attrs);
     }
 
     public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
+        chargerAttr(dm);
+        System.out.println("haniii : "+m.size()+" "+ m.toString());
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
@@ -194,11 +235,6 @@ public class Acte_NaissanceController implements Serializable {
                 }
             }
         }
-    }
-
-    public void changeDonnees_Marginales() {
-        Donnees_Marginales dm = new Donnees_Marginales();
-        current.getDonnees_Marginaless().add(dm);
     }
 
     public void GToHAnnee() {
@@ -1050,5 +1086,22 @@ public class Acte_NaissanceController implements Serializable {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Acte_Naissance.class.getName());
             }
         }
+    }
+    public static void main(String[] args) {
+
+            Acte_NaissanceController ac=new Acte_NaissanceController();
+            Donnees_Marginales dm1 = new Donnees_Marginales();
+            dm1.setDescFr("desc1");
+            Donnees_Marginales dm2 = new Donnees_Marginales();
+            dm2.setDescFr("desc2");
+            ac.ajouterMap(dm1, new ArrayList<Attr>());
+            ac.ajouterMap(dm2, new ArrayList<Attr>());
+            
+            Map m = new HashMap();
+            m.put(dm1, new ArrayList<Attr>());
+            m.put(dm2, new ArrayList<Attr>());
+           
+           System.out.println(ac.getM().size()+ "  "+ ac.getM().toString());
+           System.out.println(m.size()+ "  "+ m.toString());
     }
 }

@@ -383,7 +383,7 @@
                                     <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
                                     <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateTah_G" value="#{acte_NaissanceController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
                                         <f:convertDateTime pattern="dd-MM-yyyy" />
-                                        <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G" listener="#{acte_NaissanceController.setL(0)}"/> 
+                                        <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G prenomP_Ar prenomP_Fr nationalteP_Ar nationalteP_Fr professionP_Ar professionP_Fr addressePa_Ar addressePa_Fr" listener="#{acte_NaissanceController.setL(0)}"/> 
                                     </h:inputText>
                                     <h:outputLabel value=" "/>
                                     <h:inputText readonly="true" id="dateTh_G_textAr" value="#{acte_NaissanceController.datetasM_Ar}"/>
@@ -454,10 +454,23 @@
                                             <h:selectOneMenu id="type" value="#{donnee_Marginale.type}" title="نوع البيان" >
                                                 <f:selectItems value="#{type_Donnees_MarginalesController.itemsAvailableSelectOne}"/>
                                                 <f:ajax event="change" render=":formCreate:donnees_marginales" execute=":formCreate:donnees_marginales" listener="#{acte_NaissanceController.changeDescDM(donnee_Marginale)}"/> 
-                                            </h:selectOneMenu>
+                                            </h:selectOneMenu>                                            
                                             <h:outputLabel value="معلومات عن البيان" for="descAr" />
                                             <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />
                                         </h:panelGrid>
+
+                                        <ui:repeat var="attr" value="#{acte_NaissanceController.m.get(donnee_Marginale)}" >
+                                            <br/>                                                
+                                            <b:gridRow styleClass="show" fluid="true" >                              
+                                                <b:gridColumn span="10">
+                                                    <h:panelGrid columns="2" dir="rtl">
+                                                        <h:outputLabel value=" " for="attribut" />
+                                                        <h:inputText id="attribut" value="#{attr.libelle}"/>                                                            
+                                                    </h:panelGrid>
+                                                </b:gridColumn>
+                                            </b:gridRow>
+
+                                        </ui:repeat>
                                     </b:gridColumn>
                                 </b:gridRow>
 

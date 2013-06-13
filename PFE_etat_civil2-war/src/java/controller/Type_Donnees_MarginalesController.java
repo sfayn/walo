@@ -4,8 +4,6 @@ import bean.Attr;
 import bean.Type_Donnees_Marginales;
 import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
-import session.Type_Donnees_MarginalesFacade;
-
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import session.Type_Donnees_MarginalesFacade;
 
 @ManagedBean(name = "type_Donnees_MarginalesController")
 @SessionScoped
@@ -62,6 +61,14 @@ public class Type_Donnees_MarginalesController implements Serializable {
         Attr a = new Attr();
         attrs.add(a);
     }
+    public void changeDonnees_MarginalesRemove(Attr attr) {
+        for (int i = 0; i < attrs.size(); i++) {
+            if (attrs.get(i) == attr) {
+                attrs.remove(i);
+            }
+        }
+    }
+   
 
     public Type_Donnees_MarginalesController() {
         Set s = new HashSet();
@@ -152,7 +159,6 @@ public class Type_Donnees_MarginalesController implements Serializable {
             selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
             if (!current.getAttrs().isEmpty()) {
                 String[] arr = current.getAttrs().split(":");
-                System.out.println("haniiiiiiiiii arr:" + arr.length);
                 for (int i = 0; i < arr.length; i++) {
                     attrs.add(new Attr(arr[i]));
                 }
