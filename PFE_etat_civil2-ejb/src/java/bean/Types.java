@@ -1,6 +1,5 @@
 package bean;
 
-import sun.applet.Main;
 
 /*package bean;*/
 /**
