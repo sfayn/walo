@@ -89,9 +89,9 @@ public class Acte_Naissance implements Serializable {
     private String lieu_de_NaissP_Fr;
     @Lob
     private String lieu_de_NaissP_Ar;
-    private String nationalteP_Fr;
+    private String nationalteP_Fr="Marocaine";
     @Lob
-    private String nationalteP_Ar;
+    private String nationalteP_Ar="مغربية";
     private boolean noMJP=false;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissP_H;
@@ -109,9 +109,9 @@ public class Acte_Naissance implements Serializable {
     private String lieu_de_NaissM_Fr;
     @Lob
     private String lieu_de_NaissM_Ar;
-    private String nationalteM_Fr;
+    private String nationalteM_Fr="Marocaine";
     @Lob
-    private String nationalteM_Ar;
+    private String nationalteM_Ar="مغربية";
     private boolean noMJM=false;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date_de_naissM_H;
