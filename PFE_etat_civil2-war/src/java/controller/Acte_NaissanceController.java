@@ -622,6 +622,8 @@ public class Acte_NaissanceController implements Serializable {
             current.setNationalteP_Fr("décédé");
             current.setProfessionP_Ar("متوفي");
             current.setProfessionP_Fr("décédé");
+            current.setDate_de_naissP_G(null);
+            current.setDate_de_naissP_H(null);
         } else {
             current.setLieu_de_NaissP_Ar("");
             current.setLieu_de_NaissP_Fr("");
@@ -641,6 +643,8 @@ public class Acte_NaissanceController implements Serializable {
             current.setNationalteM_Fr("décédée");
             current.setProfessionM_Ar("متوفية");
             current.setProfessionM_Fr("décédée");
+            current.setDate_de_naissM_G(null);
+            current.setDate_de_naissM_H(null);
         } else {
             current.setLieu_de_NaissM_Ar("");
             current.setLieu_de_NaissM_Fr("");
@@ -833,6 +837,13 @@ public class Acte_NaissanceController implements Serializable {
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integrale.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        java.util.List pages = jasperPrint.getPages();
+          for (Iterator<java.util.List> i=pages.iterator(); i.hasNext();) 
+          {          
+                JRPrintPage page = (JRPrintPage)i.next();          
+                if (page.getElements().size() == 0)              
+                i.remove();      
+          }
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");

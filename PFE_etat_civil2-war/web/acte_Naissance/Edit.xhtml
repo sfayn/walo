@@ -161,7 +161,7 @@
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="متوفي" for="decesP" />
                                     <h:selectBooleanCheckbox id="decesP" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
-                                        <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
+                                        <f:ajax event="change" render="date_de_naissP_G date_de_naissP_H professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -251,7 +251,7 @@
                                 <h:panelGrid columns="2" dir="ltr" >
                                     <h:outputLabel value="متوفية" for="decesM" />
                                     <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفية', labelOff: 'غير متوفية', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
-                                        <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
+                                        <f:ajax event="change" render="date_de_naissM_G date_de_naissM_H professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
                             </b:gridColumn>
