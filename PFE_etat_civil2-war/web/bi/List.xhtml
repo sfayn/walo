@@ -31,7 +31,7 @@
                                 (function basic_pie(container) {
 
                                     var
-                                    d1 = [
+                                    /*d1 = [
                                         [0, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}]
                                     ],
                                     d2 = [
@@ -42,6 +42,18 @@
                                     ],
                                     d4 = [
                                         [0, #{bIController.countJugDec}]
+                                    ],*/
+                                    d1 = [
+                                        [0, 50]
+                                    ],
+                                    d2 = [
+                                        [0, 11]
+                                    ],
+                                    d3 = [
+                                        [0, 29]
+                                    ],
+                                    d4 = [
+                                        [0, 3]
                                     ],
                                     graph;
 
@@ -56,10 +68,10 @@
                                             label: 'الوفيات'
                                         }, {
                                             data: d3,
-                                            label: 'jug Naiss'
+                                            label: 'أحكام الولادات'
                                         }, {
                                             data: d4,
-                                            label: 'jug dec'
+                                            label: 'أحكام الوفيات'
                                         }], {
                                         HtmlText: false,
                                         grid: {
@@ -130,7 +142,76 @@
                             <h:outputScript library="js" name="flotr2.min.js" />
                             <script type="text/javascript">
                                 // <![CDATA[ 
-                                
+                                (function basic_pie(container) {
+
+                                    var
+                                    /*d1 = [
+                                        [0, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}]
+                                    ],
+                                    d2 = [
+                                        [0, #{bIController.countHommeDec+bIController.countFemmeDec}]
+                                    ],
+                                    d3 = [
+                                        [0, #{bIController.countJugNaiss}]
+                                    ],
+                                    d4 = [
+                                        [0, #{bIController.countJugDec}]
+                                    ],*/
+                                    d1 = [
+                                        [0, 157]
+                                    ],
+                                    d2 = [
+                                        [0, 30]
+                                    ],
+                                    d3 = [
+                                        [0, 29]
+                                    ],
+                                    d4 = [
+                                        [0, 5]
+                                    ],
+                                    graph;
+
+                                    graph = Flotr.draw(container, [{
+                                            data: d1,
+                                            label: 'الولادات',
+                                            pie: {
+                                                explode: 20
+                                            }
+                                        }, {
+                                            data: d2,
+                                            label: 'الوفيات'
+                                        }, {
+                                            data: d3,
+                                            label: 'أحكام الولادات'
+                                        }, {
+                                            data: d4,
+                                            label: 'أحكام الوفيات'
+                                        }], {
+                                        HtmlText: false,
+                                        grid: {
+                                            verticalLines: false,
+                                            horizontalLines: false
+                                        },
+                                        xaxis: {
+                                            showLabels: false
+                                        },
+                                        yaxis: {
+                                            showLabels: false
+                                        },
+                                        pie: {
+                                            show: true,
+                                            explode: 6
+                                        },
+                                        mouse: {
+                                            trackFormatter: function(obj){ return obj.y; },
+                                            track: true
+                                        },
+                                        legend: {
+                                            position: 'se',
+                                            backgroundColor: '#D2E8FF'
+                                        }
+                                    });
+                                })(document.getElementById("graph-tri"));
                                 // ]]> 
                             </script>
                         </div>

@@ -36,9 +36,13 @@
                                 </h:outputText>
                                 <h:outputText style="font-weight: bold;" value="#{bundle.ViewUserLabel_role}"/>
                                 <h:outputText value="#{userController.selected.role.toString()}" title="#{bundle.ViewUserTitle_role}"/>
-                                <h:outputText style="font-weight: bold;" value="Actes Saisies"/>
+                                <h:outputText style="font-weight: bold;" value="Actes naissance saisies"/>
                                 <h:commandLink style="color: #3A87AD;" action="ListActes.xhtml">
-                                    <h:outputText value="voir les #{userController.selected.acte_Naissances.size()} Actes saisies"/>
+                                    <h:outputText value="voir les #{userController.getSumActNaissance(userController.selected)} Actes saisies"/>
+                                </h:commandLink>
+                                <h:outputText style="font-weight: bold;" value="Actes décès saisies"/>
+                                <h:commandLink style="color: #3A87AD;" action="ListActes.xhtml">
+                                    <h:outputText value="voir les #{userController.getSumActDeces(userController.selected)} Actes saisies"/>
                                 </h:commandLink>
                             </h:panelGrid>
                         </b:gridColumn>

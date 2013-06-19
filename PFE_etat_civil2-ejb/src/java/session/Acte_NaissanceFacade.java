@@ -109,6 +109,13 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         
         return results;
     }
+    
+    public int countByUser(Long user) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByUser");
+        queryProductsByName.setParameter("user", user.intValue());
+        int count = Integer.parseInt(queryProductsByName.getSingleResult()+"");
+        return count;
+    }
 
     public List<Object[]> countByAgeMere(Integer annee, Integer month, Integer min, Integer max) {
         Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByAgeMere");

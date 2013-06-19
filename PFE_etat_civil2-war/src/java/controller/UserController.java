@@ -35,6 +35,10 @@ public class UserController implements Serializable {
     private DataModel items = null;
     @EJB
     private session.UserFacade ejbFacade;
+    @EJB
+    private session.Acte_NaissanceFacade acteNaissanceFacade;
+    @EJB
+    private session.Acte_DecesFacade acte_DecesFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String password = "";
@@ -48,7 +52,14 @@ public class UserController implements Serializable {
         this.loggedUser = loggedUser;
     }
     
-
+    public int getSumActNaissance(User user) {
+        return acteNaissanceFacade.countByUser(user.getId());
+    }
+    
+    public int getSumActDeces(User user) {
+        return acte_DecesFacade.countByUser(user.getId());
+    }
+    
     public String getPassword() {
         return password;
     }

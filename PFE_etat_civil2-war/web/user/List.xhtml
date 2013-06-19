@@ -26,7 +26,8 @@
                                 <th><h:outputText value="#{bundle.ListUserTitle_nom}"/></th>
                                 <th><h:outputText value="#{bundle.ListUserTitle_prenom}"/></th>
                                 <th><h:outputText value="#{bundle.ListUserTitle_login}"/></th>
-                                <th><h:outputText value="#{bundle.ListUserTitle_acts}"/></th>
+                                <th><h:outputText value="Naissances"/></th>
+                                <th><h:outputText value="Décès"/></th>
                                 <th><h:outputText value="#{bundle.ListUserTitle_lastLogin}"/></th>
                                 <th><h:outputText value="#{bundle.ListUserTitle_role}"/></th>
                                 <th><h:outputText value="action"/></th>
@@ -46,7 +47,10 @@
                                         <h:outputText value="#{item.login}"/>
                                     </td>
                                     <td>
-                                        <h:outputText value="#{item.acte_Naissances.size()}"/>
+                                        <h:outputText value="#{userController.getSumActNaissance(item)}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{userController.getSumActDeces(item)}"/>
                                     </td>
                                     <td>
                                         <h:outputText value="#{item.lastLogin==null?'aucun':item.lastLogin}">

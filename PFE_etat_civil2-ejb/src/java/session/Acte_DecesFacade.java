@@ -113,6 +113,13 @@ public class Acte_DecesFacade extends AbstractFacade<Acte_Deces> implements Acte
         return results;
     }
     
+    public int countByUser(Long user) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByUser");
+        queryProductsByName.setParameter("user", user.intValue());
+        int count = Integer.parseInt(queryProductsByName.getSingleResult()+"");
+        return count;
+    }
+    
     public Integer countByTriMonths(Integer annee, Integer month1, Integer month2, Integer month3) {
         Query queryProductsByName = em.createNamedQuery("Acte_Deces.countByTriMonths");
         queryProductsByName.setParameter("year", annee);
