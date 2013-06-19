@@ -79,6 +79,7 @@ public class Type_Donnees_MarginalesController implements Serializable {
         }
         attrs = new ArrayList<Attr>();
     }
+    
 
     public Type_Donnees_Marginales getSelected() {
         if (current == null) {

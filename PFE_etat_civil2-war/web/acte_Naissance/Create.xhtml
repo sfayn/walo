@@ -163,7 +163,7 @@
                                 <h:panelGrid columns="2" dir="ltr">
                                     <h:outputLabel value="متوفي" for="decesP" />
                                     <h:selectBooleanCheckbox id="decesP" class="checkbox {labelOn: 'متوفي', labelOff: 'غير متوفي', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesP}" >
-                                        <f:ajax event="change" render="date_de_naissP_G professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
+                                        <f:ajax event="change" render="date_de_naissP_G date_de_naissP_H professionP_Fr professionP_Ar lieu_de_NaissP_Ar lieu_de_NaissP_Fr nationalteP_Fr nationalteP_Ar" execute="decesP" listener="#{acte_NaissanceController.changeDecesP()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -253,7 +253,7 @@
                                 <h:panelGrid columns="2" dir="ltr" >
                                     <h:outputLabel value="متوفية" for="decesM" />
                                     <h:selectBooleanCheckbox  id="decesM" class="checkbox {labelOn: 'متوفية', labelOff: 'غير متوفية', easing: 'easeOutBounce', duration: 500}" title="متوفي" value="#{acte_NaissanceController.selected.decesM}" >
-                                        <f:ajax event="change" render="date_de_naissM_G professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
+                                        <f:ajax event="change" render="date_de_naissM_G date_de_naissM_H professionM_Fr professionM_Ar lieu_de_NaissM_Ar lieu_de_NaissM_Fr nationalteM_Fr nationalteM_Ar" execute="decesM" listener="#{acte_NaissanceController.changeDecesM()}"/> 
                                     </h:selectBooleanCheckbox>
                                 </h:panelGrid>
                             </b:gridColumn>
@@ -459,13 +459,13 @@
                                             <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />
                                         </h:panelGrid>
 
-                                        <ui:repeat var="attr" value="#{acte_NaissanceController.m.get(donnee_Marginale)}" >
+                                        <ui:repeat var="attr" value="#{acte_NaissanceController.m.get(donnee_Marginale).entrySet().toArray()}" >
                                             <br/>                                                
                                             <b:gridRow styleClass="show" fluid="true" >                              
                                                 <b:gridColumn span="10">
                                                     <h:panelGrid columns="2" dir="rtl">
-                                                        <h:outputLabel value=" " for="attribut" />
-                                                        <h:inputText id="attribut" value="#{attr.libelle}"/>                                                            
+                                                        <h:outputLabel value="#{acte_NaissanceController.nomAtrr(attr.key.libelle)}" for="attribut" />
+                                                        <h:inputText id="attribut" value="#{attr.value.valeur}"/>
                                                     </h:panelGrid>
                                                 </b:gridColumn>
                                             </b:gridRow>

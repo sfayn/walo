@@ -30,6 +30,15 @@ public class Donnees_Marginales implements Serializable {
     private Date date;    
     @ManyToOne
     private Type_Donnees_Marginales type;
+    private String attrValues;
+
+    public String getAttrValues() {
+        return attrValues;
+    }
+
+    public void setAttrValues(String attrValues) {
+        this.attrValues = attrValues;
+    }
     
     @ManyToOne
     private Acte_Naissance acte;
