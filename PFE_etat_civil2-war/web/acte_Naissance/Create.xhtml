@@ -459,13 +459,13 @@
                                             <h:inputTextarea cols="30" rows="5" id="descAr" value="#{donnee_Marginale.descAr}" title="#{bundle.CreateDonnees_MarginalesTitle_descAr}" />
                                         </h:panelGrid>
 
-                                        <ui:repeat var="attr" value="#{acte_NaissanceController.m.get(donnee_Marginale)}" >
+                                        <ui:repeat var="attr" value="#{acte_NaissanceController.m.get(donnee_Marginale).entrySet().toArray()}" >
                                             <br/>                                                
                                             <b:gridRow styleClass="show" fluid="true" >                              
                                                 <b:gridColumn span="10">
                                                     <h:panelGrid columns="2" dir="rtl">
-                                                        <h:outputLabel value=" " for="attribut" />
-                                                        <h:inputText id="attribut" value="#{attr.libelle}"/>                                                            
+                                                        <h:outputLabel value="#{acte_NaissanceController.nomAtrr(attr.key.libelle)}" for="attribut" />
+                                                        <h:inputText id="attribut" value="#{attr.value.valeur}"/>
                                                     </h:panelGrid>
                                                 </b:gridColumn>
                                             </b:gridRow>

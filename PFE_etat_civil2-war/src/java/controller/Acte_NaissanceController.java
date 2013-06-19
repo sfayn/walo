@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -82,22 +83,27 @@ public class Acte_NaissanceController implements Serializable {
     private String adresseAr;
     private String professionAr;
     private boolean test = false;
-    List<Attr> attrs;
-    Map m = new HashMap();
+    Map<Attr,Value> attrs;
+    Map <Donnees_Marginales,Map> m = new HashMap<Donnees_Marginales,Map>();
 
-    public Map getM() {
+    public Map<Donnees_Marginales, Map> getM() {
         return m;
     }
 
-    public void setM(Map m) {
+    public void setM(Map<Donnees_Marginales, Map> m) {
         this.m = m;
     }
 
-    public List<Attr> getAttrs() {
+    
+    public String nomAtrr(String attr){
+    return ResourceBundle.getBundle("attrs").getString(attr);
+    }
+
+    public Map<Attr, Value> getAttrs() {
         return attrs;
     }
 
-    public void setAttrs(List<Attr> attrs) {
+    public void setAttrs(Map<Attr, Value> attrs) {
         this.attrs = attrs;
     }
 
@@ -166,24 +172,25 @@ public class Acte_NaissanceController implements Serializable {
     public void changeDonnees_Marginales() {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
-        attrs = new ArrayList<Attr>();
+        attrs = new HashMap<Attr,Value>();
     }
     public void chargerAttr(Donnees_Marginales dm) throws UnsupportedEncodingException {
-        if (!dm.getType().getAttrs().isEmpty()) {
+        dm.setAttrValues("");
+        if (!dm.getType().getAttrs().isEmpty()){
             String[] arr = dm.getType().getAttrs().split(":");
             for (int i = 0; i < arr.length; i++) {
-                attrs.add(new Attr(arr[i]));
+                Attr attr=new Attr(arr[i]);
+                attrs.put(attr,new Value(""));
             }
-            ajouterMap(dm, attrs);
+           
+            m.put(dm, attrs);
+            
+            
         }
-    }
-    public void ajouterMap(Donnees_Marginales dm , List<Attr> attrs){
-        m.put(dm, attrs);
     }
 
     public void changeDescDM(Donnees_Marginales dm) throws UnsupportedEncodingException {
         chargerAttr(dm);
-        System.out.println("haniii : "+m.size()+" "+ m.toString());
         for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
             if (current.getDonnees_Marginaless().get(i) == dm) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 1) {
@@ -550,7 +557,23 @@ public class Acte_NaissanceController implements Serializable {
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                Map mp=m.get(dm);
+                Set listKeys=mp.keySet();  // Obtenir la liste des clés
+    		Iterator iterateur=listKeys.iterator();
+    		// Parcourir les clés et afficher les entrées de chaque clé;
+    		while(iterateur.hasNext())
+    		{                 
+    			Object key= iterateur.next();
+                         if (dm.getAttrValues().equals("")) {
+                             dm.setAttrValues("("+key+"="+mp.get(key)+")"+"&");
+                    } else {
+                        dm.setAttrValues(dm.getAttrValues()+"("+key+"="+mp.get(key)+")"+"&");
+                    }
+                        
+    			
+    		}
                 ejbFacade2.create(dm);
+                m.clear();
             }
             getFacade().create(current);
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
@@ -584,10 +607,10 @@ public class Acte_NaissanceController implements Serializable {
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Acte_NaissanceUpdated"));
+          JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
@@ -1098,21 +1121,5 @@ public class Acte_NaissanceController implements Serializable {
             }
         }
     }
-    public static void main(String[] args) {
 
-            Acte_NaissanceController ac=new Acte_NaissanceController();
-            Donnees_Marginales dm1 = new Donnees_Marginales();
-            dm1.setDescFr("desc1");
-            Donnees_Marginales dm2 = new Donnees_Marginales();
-            dm2.setDescFr("desc2");
-            ac.ajouterMap(dm1, new ArrayList<Attr>());
-            ac.ajouterMap(dm2, new ArrayList<Attr>());
-            
-            Map m = new HashMap();
-            m.put(dm1, new ArrayList<Attr>());
-            m.put(dm2, new ArrayList<Attr>());
-           
-           System.out.println(ac.getM().size()+ "  "+ ac.getM().toString());
-           System.out.println(m.size()+ "  "+ m.toString());
-    }
 }
