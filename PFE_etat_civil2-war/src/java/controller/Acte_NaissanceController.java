@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -83,8 +85,8 @@ public class Acte_NaissanceController implements Serializable {
     private String adresseAr;
     private String professionAr;
     private boolean test = false;
-    Map<Attr,Value> attrs;
-    Map <Donnees_Marginales,Map> m = new HashMap<Donnees_Marginales,Map>();
+    Map<Attr, Value> attrs;
+    Map<Donnees_Marginales, Map> m = new HashMap<Donnees_Marginales, Map>();
 
     public Map<Donnees_Marginales, Map> getM() {
         return m;
@@ -94,9 +96,8 @@ public class Acte_NaissanceController implements Serializable {
         this.m = m;
     }
 
-    
-    public String nomAtrr(String attr){
-    return ResourceBundle.getBundle("attrs").getString(attr);
+    public String nomAtrr(String attr) {
+        return ResourceBundle.getBundle("attrs").getString(attr);
     }
 
     public Map<Attr, Value> getAttrs() {
@@ -166,26 +167,28 @@ public class Acte_NaissanceController implements Serializable {
     }
 
     public Acte_NaissanceController() {
-        
     }
 
     public void changeDonnees_Marginales() {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
-        attrs = new HashMap<Attr,Value>();
+        
+
     }
+
     public void chargerAttr(Donnees_Marginales dm) throws UnsupportedEncodingException {
-        dm.setAttrValues("");
-        if (!dm.getType().getAttrs().isEmpty()){
+        attrs = new HashMap<Attr, Value>();
+        dm.setDescAr(dm.getType().getDescrAr());
+        dm.setDescFr(dm.getType().getDescrFr());
+        if (!dm.getType().getAttrs().isEmpty()) {
             String[] arr = dm.getType().getAttrs().split(":");
             for (int i = 0; i < arr.length; i++) {
-                Attr attr=new Attr(arr[i]);
-                attrs.put(attr,new Value(""));
+                Attr attr = new Attr(arr[i]);
+                attrs.put(attr, new Value(""));
             }
-           
+
             m.put(dm, attrs);
-            
-            
+
         }
     }
 
@@ -557,21 +560,20 @@ public class Acte_NaissanceController implements Serializable {
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
-                Map mp=m.get(dm);
-                Set listKeys=mp.keySet();  // Obtenir la liste des clés
-    		Iterator iterateur=listKeys.iterator();
-    		// Parcourir les clés et afficher les entrées de chaque clé;
-    		while(iterateur.hasNext())
-    		{                 
-    			Object key= iterateur.next();
-                         if (dm.getAttrValues().equals("")) {
-                             dm.setAttrValues("("+key+"="+mp.get(key)+")"+"&");
+                Map mp = m.get(dm);
+                Set listKeys = mp.keySet();  // Obtenir la liste des clés
+                Iterator iterateur = listKeys.iterator();
+                // Parcourir les clés et afficher les entrées de chaque clé;
+                while (iterateur.hasNext()) {
+                    Object key = iterateur.next();
+                    if (dm.getAttrValues().equals("")) {
+                        dm.setAttrValues(key + "=" + mp.get(key) + "&");
                     } else {
-                        dm.setAttrValues(dm.getAttrValues()+"("+key+"="+mp.get(key)+")"+"&");
+                        dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
                     }
-                        
-    			
-    		}
+
+
+                }
                 ejbFacade2.create(dm);
                 m.clear();
             }
@@ -579,6 +581,7 @@ public class Acte_NaissanceController implements Serializable {
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
@@ -592,6 +595,47 @@ public class Acte_NaissanceController implements Serializable {
     public String prepareEdit() {
         current = (Acte_Naissance) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        m.clear();
+        if (!current.getDonnees_Marginaless().isEmpty()) {
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                try {
+                    Map<Attr, Value> map = new HashMap<Attr, Value>();
+                    if (!dm.getAttrValues().isEmpty()) {
+                        String[] pairs = dm.getAttrValues().split("&");
+                        for (int i = 0; i < pairs.length; i++) {
+                            String pair = pairs[i];
+                            String[] keyValue = pair.split("=");
+                            map.put(new Attr(keyValue[0]), new Value(keyValue[1]));
+                        }
+                        m.put(dm, map);
+                    }
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return "Edit";
+    }
+    public String prepareEdit2() {
+        m.clear();
+        if (!current.getDonnees_Marginaless().isEmpty()) {
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                try {
+                    Map<Attr, Value> map = new HashMap<Attr, Value>();
+                    if (!dm.getAttrValues().isEmpty()) {
+                        String[] pairs = dm.getAttrValues().split("&");
+                        for (int i = 0; i < pairs.length; i++) {
+                            String pair = pairs[i];
+                            String[] keyValue = pair.split("=");
+                            map.put(new Attr(keyValue[0]), new Value(keyValue[1]));
+                        }
+                        m.put(dm, map);
+                    }
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         return "Edit";
     }
 
@@ -599,18 +643,32 @@ public class Acte_NaissanceController implements Serializable {
         try {
             encode();
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                dm.setAttrValues("");
+                Map mp = m.get(dm);
+                Set listKeys = mp.keySet();
+                Iterator iterateur = listKeys.iterator();
+                while (iterateur.hasNext()) {
+                    Object key = iterateur.next();
+                    if (dm.getAttrValues().equals("")) {
+                        dm.setAttrValues(key + "=" + mp.get(key) + "&");
+                    } else {
+                        dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                    }
+                }
+
                 ejbFacade2.create(dm);
             }
             getFacade().edit(current);
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
-          JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -678,6 +736,55 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
+    public String traitMen(String attr) {
+        String res = "";
+        try {
+            if (!current.getDonnees_Marginaless().isEmpty()) {
+                for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                    Map<Attr, Value> map = new HashMap<Attr, Value>();
+                    if (!dm.getAttrValues().isEmpty()) {
+                        String[] pairs = dm.getAttrValues().split("&");
+                        for (int i = 0; i < pairs.length; i++) {
+                            String pair = pairs[i];
+                            String[] keyValue = pair.split("=");
+                            if (keyValue[0].equals(attr)) {
+                                return keyValue[1];
+                            }
+                        }
+                    }
+                }
+            }
+            res=showFields(current,attr);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SecurityException ex) {
+            Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+    }
+
+    public String showFields(Object o,String attr) throws IllegalArgumentException, IllegalAccessException {
+        Class<?> clazz = o.getClass();
+
+        for (Field field : clazz.getDeclaredFields()) {
+            System.out.println(field.getName()+" : "+attr);
+           if(field.getName().equals(attr)){
+                try {
+                    field.setAccessible(true);
+                    String res=(String) field.get(o);
+                return URLDecoder.decode(res, "UTF-8");
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+           }       
+        }
+        return null;
+    }
+
     public void PDF() throws JRException, IOException {
         List<Acte_Naissance> acts = new ArrayList<Acte_Naissance>();
         Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
@@ -706,8 +813,8 @@ public class Acte_NaissanceController implements Serializable {
             params.put("nationnalite", "Marocaine");
             params.put("pere", current.getPrenomP_Fr());
             params.put("mere", current.getPrenomM_Fr());
-            params.put("nomAr", current.getNom_Ar());
-            params.put("prenomAr", current.getPrenom_Ar());
+            params.put("nomAr", traitMen("nom_Ar"));
+            params.put("prenomAr", traitMen("prenom_Ar"));
             params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
             params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("nationnaliteAr", "مغربية");
@@ -861,12 +968,12 @@ public class Acte_NaissanceController implements Serializable {
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integrale.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
         java.util.List pages = jasperPrint.getPages();
-          for (Iterator<java.util.List> i=pages.iterator(); i.hasNext();) 
-          {          
-                JRPrintPage page = (JRPrintPage)i.next();          
-                if (page.getElements().size() == 0)              
-                i.remove();      
-          }
+        for (Iterator<java.util.List> i = pages.iterator(); i.hasNext();) {
+            JRPrintPage page = (JRPrintPage) i.next();
+            if (page.getElements().size() == 0) {
+                i.remove();
+            }
+        }
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
@@ -1121,5 +1228,4 @@ public class Acte_NaissanceController implements Serializable {
             }
         }
     }
-
 }

@@ -231,8 +231,7 @@
                     <b:gridColumn span="10">
                         <h:panelGrid columns="3" dir="rtl" style="width: 50%;" cellpadding="10">
                             <a title="remove" class="btn btn-danger icon-trash" style="font-size: 14pt;" onclick="#{b:show('customModal')}">    #{bundle.ViewActe_NaissanceDestroyLink}</a> 
-
-                            <h:link class="btn btn-warning icon-wrench" style="font-size: 14pt;" outcome="Edit" value="    #{bundle.ViewActe_NaissanceEditLink}"/>
+                            <h:commandLink class="btn btn-warning icon-wrench" style="font-size: 14pt;" action="#{acte_NaissanceController.prepareEdit2}" value="    #{bundle.ViewActe_NaissanceEditLink}"/>                           
                             <b:gridRow rendered="#{!acte_NaissanceController.selected.checked}" >
                                 <a class="btn btn-primary icon-file" style="font-size: 14pt;"  onclick="#{b:show('customModal2')}">   الوثائق</a>
                             </b:gridRow >
