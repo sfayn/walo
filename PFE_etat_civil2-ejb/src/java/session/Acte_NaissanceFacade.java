@@ -138,7 +138,7 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         queryProductsByName.setParameter("month1", month1);
         queryProductsByName.setParameter("month2", month2);
         queryProductsByName.setParameter("month3", month3);
-        Integer results = queryProductsByName.getFirstResult();
+        Integer results = Integer.parseInt(queryProductsByName.getSingleResult()+"");
         
         return results;
     }

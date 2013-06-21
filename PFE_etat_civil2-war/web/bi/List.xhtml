@@ -31,7 +31,7 @@
                                 (function basic_pie(container) {
 
                                     var
-                                    /*d1 = [
+                                    d1 = [
                                         [0, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}]
                                     ],
                                     d2 = [
@@ -42,18 +42,6 @@
                                     ],
                                     d4 = [
                                         [0, #{bIController.countJugDec}]
-                                    ],*/
-                                    d1 = [
-                                        [0, 50]
-                                    ],
-                                    d2 = [
-                                        [0, 11]
-                                    ],
-                                    d3 = [
-                                        [0, 29]
-                                    ],
-                                    d4 = [
-                                        [0, 3]
                                     ],
                                     graph;
 
@@ -125,6 +113,10 @@
                                     <f:selectItem itemLabel="11" itemValue="11"/>
                                     <f:selectItem itemLabel="12" itemValue="12"/>
                                 </h:selectOneMenu>
+                                <h:outputText style="font-weight: bold;" value="الولادات: #{bIController.countFemmeNaiss+bIController.countHommeNaiss}" />
+                                <h:outputText style="font-weight: bold;" value="أحكام الولادات: #{bIController.countJugNaiss}" />
+                                <h:outputText style="font-weight: bold;" value="الوفيات: #{bIController.countFemmeDec+bIController.countHommeDec}" />
+                                <h:outputText style="font-weight: bold;" value="أحكام الوفيات: #{bIController.countJugDec}" />
                                 <h:commandLink actionListener="#{bIController.DOCX1}" target="_blank" value="جذاذة الفرز 1" styleClass="btn btn-primary span2" />
                                 <h:commandLink actionListener="#{bIController.DOCX2}" value="جذاذة الفرز 2" styleClass="btn btn-primary span2" />
                                 <h:commandLink action="#" value="جذاذة الفرز 3" styleClass="btn btn-primary span2" />
@@ -145,29 +137,17 @@
                                 (function basic_pie(container) {
 
                                     var
-                                    /*d1 = [
-                                        [0, #{bIController.countHommeNaiss+bIController.countFemmeNaiss}]
-                                    ],
-                                    d2 = [
-                                        [0, #{bIController.countHommeDec+bIController.countFemmeDec}]
-                                    ],
-                                    d3 = [
-                                        [0, #{bIController.countJugNaiss}]
-                                    ],
-                                    d4 = [
-                                        [0, #{bIController.countJugDec}]
-                                    ],*/
                                     d1 = [
-                                        [0, 157]
+                                    [0, #{bIController.countTriNaiss}]
                                     ],
                                     d2 = [
-                                        [0, 30]
+                                        [0, #{bIController.countTriDec}]
                                     ],
                                     d3 = [
-                                        [0, 29]
+                                        [0, #{bIController.countTriJugNaiss}]
                                     ],
                                     d4 = [
-                                        [0, 5]
+                                        [0, #{bIController.countTriJugDec}]
                                     ],
                                     graph;
 
@@ -218,18 +198,22 @@
                         <b:gridColumn span="4">
                             <h:panelGrid columns="2" dir="rtl">
                                 <h:outputText styleClass="span2" value="السنة:" />
-                                <h:selectOneMenu styleClass="input-large" id="annee-tri" value="#{bIController.anneeGeneral}" >
-                                    <f:ajax execute="annee" event="change" render="flot" listener="#{bIController.table1()}" />
+                                <h:selectOneMenu styleClass="input-large" id="annee-tri" value="#{bIController.anneeGeneralTri}" >
+                                    <f:ajax execute="annee-tri" event="change" render="flot-tri" listener="#{bIController.table2()}" />
                                     <f:selectItems value="#{acte_DecesController.listannee()}"/>
                                 </h:selectOneMenu>
                                 <h:outputText value="الأشهر:" />
-                                <h:selectOneMenu styleClass="input-large" id="mois-tri" value="#{bIController.mois}" >
-                                    <f:ajax execute="mois" render="flot" listener="#{bIController.table1()}" />
+                                <h:selectOneMenu styleClass="input-large" id="mois-tri" value="#{bIController.triMois}" >
+                                    <f:ajax execute="mois-tri" render="flot-tri" listener="#{bIController.table2()}" />
                                     <f:selectItem itemLabel="01-02-03" itemValue="01"/>
                                     <f:selectItem itemLabel="04-05-06" itemValue="02"/>
                                     <f:selectItem itemLabel="07-08-09" itemValue="03"/>
                                     <f:selectItem itemLabel="10-11-12" itemValue="04"/>
                                 </h:selectOneMenu>
+                                <h:outputText style="font-weight: bold;" value="الولادات: #{bIController.countTriNaiss}" />
+                                <h:outputText style="font-weight: bold;" value="أحكام الولادات: #{bIController.countTriJugNaiss}" />
+                                <h:outputText style="font-weight: bold;" value="الوفيات: #{bIController.countTriDec}" />
+                                <h:outputText style="font-weight: bold;" value="أحكام الوفيات: #{bIController.countTriJugDec}" />
                             </h:panelGrid>
                             <h:commandLink actionListener="#{bIController.DOCX1}" target="_blank" value="طباعة الإحصائيات" styleClass="btn btn-primary span4" />
                         </b:gridColumn>
