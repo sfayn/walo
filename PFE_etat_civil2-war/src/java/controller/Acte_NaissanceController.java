@@ -592,6 +592,7 @@ public class Acte_NaissanceController implements Serializable {
     public String prepareEdit() {
         current = (Acte_Naissance) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        System.out.println(current.getNom_Fr());
         return "Edit";
     }
 

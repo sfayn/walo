@@ -35,10 +35,12 @@ import javax.persistence.UniqueConstraint;
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )
-
+//SELECT YEAR(`DATETAH_G`),count(*),MONTH(`DATETAH_G`) FROM `acte_naissance` WHERE YEAR(`DATETAH_G`)>=1978 AND YEAR(`DATETAH_G`) <= 1992 GROUP BY YEAR(`DATETAH_G`), MONTH(`DATETAH_G`)
 @NamedQueries({
     @NamedQuery(name="Acte_Naissance.countByMonth",
                 query="SELECT COUNT(c) FROM Acte_Naissance c WHERE FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month"),
+    @NamedQuery(name="Acte_Naissance.countByYearsMonths",
+                query="SELECT FUNC('YEAR',c.dateTah_G), COUNT(c), FUNC('MONTH',c.dateTah_G) FROM Acte_Naissance c WHERE FUNC('YEAR',c.dateTah_G)>=:year1 AND FUNC('YEAR',c.dateTah_G)<=:year2 GROUP BY FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G)"),
     @NamedQuery(name="Acte_Naissance.countBySex",
                 query="SELECT COUNT(c),s.libelleFr FROM Acte_Naissance c, Sex s WHERE s = c.sex AND FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month GROUP BY c.sex, FUNC('YEAR',c.dateTah_G), FUNC('MONTH',c.dateTah_G)"),
     @NamedQuery(name="Acte_Naissance.countByDateAndSex",

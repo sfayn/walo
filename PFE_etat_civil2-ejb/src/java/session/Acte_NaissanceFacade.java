@@ -127,7 +127,6 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         for (Object[] result : results) {
             String sex = ((String) result[1]);
             int count = ((Number) result[0]).intValue();
-            //System.out.println(min+""+max+" --> sex: "+sex+", count: "+count);
         }
         return results;
     }
@@ -140,6 +139,20 @@ public class Acte_NaissanceFacade extends AbstractFacade<Acte_Naissance> impleme
         queryProductsByName.setParameter("month3", month3);
         Integer results = Integer.parseInt(queryProductsByName.getSingleResult()+"");
         
+        return results;
+    }
+    
+    public List<Object[]> countByYearsMonths(Integer year1, Integer year2) {
+        Query queryProductsByName = em.createNamedQuery("Acte_Naissance.countByYearsMonths");
+        queryProductsByName.setParameter("year1", year1);
+        queryProductsByName.setParameter("year2", year2);
+        List<Object[]> results = queryProductsByName.getResultList();
+        /*for (Object[] result : results) {
+            int year = ((Number) result[0]).intValue();
+            int count = ((Number) result[1]).intValue();
+            int month = ((Number) result[2]).intValue();
+            //System.out.println("year: "+year+" | month: "+month+" | count: "+count);
+        }*/
         return results;
     }
     
