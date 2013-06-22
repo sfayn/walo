@@ -30,10 +30,10 @@ public class Donnees_Marginales implements Serializable {
     private Date date;    
     @ManyToOne
     private Type_Donnees_Marginales type;
-    private String attrValues;
+    private String attrValues="";
 
-    public String getAttrValues() {
-        return attrValues;
+    public String getAttrValues() throws UnsupportedEncodingException {
+        return attrValues == null ? "" : URLDecoder.decode(attrValues, "UTF-8");
     }
 
     public void setAttrValues(String attrValues) {

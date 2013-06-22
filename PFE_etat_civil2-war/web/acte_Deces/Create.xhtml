@@ -221,18 +221,18 @@
                                             <h:outputLabel style="width: 103px;" value="Prénom père" for="prenomP_Fr" />
                                             <h:inputText id="prenomP_Fr" value="#{acte_DecesController.selected.prenomP_Fr}" />
                                             <h:outputLabel style="width: 103px;" value="Nationalité père" for="nationaliteP" />
-                                            <h:inputText id="nationaliteP" value="#{acte_DecesController.selected.nationaliteP_Fr}"  />
-                                            <h:outputLabel style="width: 103px;" value="Profession père" for="professionP" />
-                                            <h:inputText id="professionP" value="#{acte_DecesController.selected.professionP_Fr}"  />
+                                            <h:inputText id="nationaliteP_Fr" value="#{acte_DecesController.selected.nationaliteP_Fr}"  />
+                                            <h:outputLabel style="width: 103px;" value="Profession père" for="professionP_Fr" />
+                                            <h:inputText id="professionP_Fr" value="#{acte_DecesController.selected.professionP_Fr}"  />
                                             <h:outputLabel style="width: 103px" value="Adresse père" for="adresseP_Fr" />
                                             <h:inputText id="adresseP_Fr" value="#{acte_DecesController.selected.adresseP_Fr}"/>
                                             
                                             <h:outputLabel style="width: 103px;" value="Prénom mère" for="prenomM_Fr" />
                                             <h:inputText id="prenomM_Fr" value="#{acte_DecesController.selected.prenomM_Fr}"  />
-                                            <h:outputLabel style="width: 103px;" value="Nationalité mère" for="nationaliteM" />
-                                            <h:inputText id="nationaliteM" value="#{acte_DecesController.selected.nationaliteM_Fr}"  />                                            
-                                            <h:outputLabel style="width: 103px;" value="Profession mère" for="professionM" />
-                                            <h:inputText id="professionM" value="#{acte_DecesController.selected.professionM_Fr}"  />
+                                            <h:outputLabel style="width: 103px;" value="Nationalité mère" for="nationaliteM_Fr" />
+                                            <h:inputText id="nationaliteM_Fr" value="#{acte_DecesController.selected.nationaliteM_Fr}"  />                                            
+                                            <h:outputLabel style="width: 103px;" value="Profession mère" for="professionM_Fr" />
+                                            <h:inputText id="professionM_Fr" value="#{acte_DecesController.selected.professionM_Fr}"  />
                                             <h:outputLabel style="width: 103px" value="Adresse mère" for="adresseM_Fr" />
                                             <h:inputText id="adresseM_Fr" value="#{acte_DecesController.selected.adresseM_Fr}" />
                                             
@@ -244,16 +244,16 @@
                                         <h:panelGrid columns="2" dir="rtl">
                                             <h:outputLabel style="width: 103px;" value="إسم الأب" for="prenomP_Ar" />
                                             <h:inputText id="prenomP_Ar" value="#{acte_DecesController.selected.prenomP_Ar}"/>
-                                            <h:outputLabel style="width: 103px;" value="جنسية الأب" for="nationaliteP_ar" />
-                                            <h:inputText id="nationaliteP_ar" value="#{acte_DecesController.selected.nationaliteP_Ar}"  />
+                                            <h:outputLabel style="width: 103px;" value="جنسية الأب" for="nationaliteP_Ar" />
+                                            <h:inputText id="nationaliteP_Ar" value="#{acte_DecesController.selected.nationaliteP_Ar}"  />
                                             <h:outputLabel style="width: 103px;" value="حرفة الأب" for="professionP_Ar" />
                                             <h:inputText id="professionP_Ar" value="#{acte_DecesController.selected.professionP_Ar}"  />                                            
                                             <h:outputLabel style="width: 103px" value="عنوان الأب" for="adresseP_Ar" />
                                             <h:inputText id="adresseP_Ar" value="#{acte_DecesController.selected.adresseP_Ar}" />
                                             <h:outputLabel style="width: 103px;" value="إسم الأم" for="prenomM_Ar" />
                                             <h:inputText id="prenomM_Ar" value="#{acte_DecesController.selected.prenomM_Ar}"/>
-                                            <h:outputLabel style="width: 103px;" value="جنسية الأم" for="nationaliteM_ar" />
-                                            <h:inputText id="nationaliteM_ar" value="#{acte_DecesController.selected.nationaliteM_Ar}"  />
+                                            <h:outputLabel style="width: 103px;" value="جنسية الأم" for="nationaliteM_Ar" />
+                                            <h:inputText id="nationaliteM_Ar" value="#{acte_DecesController.selected.nationaliteM_Ar}"  />
                                             <h:outputLabel style="width: 103px;" value="حرفة الأم" for="professionM_Ar" />
                                             <h:inputText id="professionM_Ar" value="#{acte_DecesController.selected.professionM_Ar}"  />
                                             <h:outputLabel style="width: 103px" value="عنوان الأم" for="adresseM_Ar" />
@@ -360,7 +360,7 @@
                                             <h:outputLabel value=" تاريخ التصريح الميلادي" for="dateTah_G" />
                                             <h:inputText class="form_date" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" id="dateTah_G" value="#{acte_DecesController.selected.dateTah_G}" title=" تاريخ التصريح الميلادي" >
                                                 <f:convertDateTime pattern="dd-MM-yyyy" />
-                                                <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G prenomP_Ar prenomP_Fr nationalteP_Ar nationalteP_Fr professionP_Ar professionP_Fr addressePa_Ar addressePa_Fr" listener="#{acte_DecesController.setL(0)}"/> 
+                                                <f:ajax event="change" render="declaration_Ar declaration_Fr dateTh_G_textAr dateTh_G_textFr dateTh_H_textAr dateTh_H_textFr dateTah_H" execute="dateTah_G prenomP_Ar prenomP_Fr nationaliteP_Ar nationaliteP_Fr professionP_Ar professionP_Fr adresseP_Fr adresseP_Ar" listener="#{acte_DecesController.setL(0)}"/> 
                                             </h:inputText>
                                             <h:outputLabel value=" "/>
                                             <h:inputText readonly="true" id="dateTh_G_textAr" value="#{acte_DecesController.datetasM_Ar}"/>
