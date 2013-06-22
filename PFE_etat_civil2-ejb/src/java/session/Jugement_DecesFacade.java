@@ -76,7 +76,7 @@ public class Jugement_DecesFacade extends AbstractFacade<Jugement_Deces> impleme
         queryProductsByName.setParameter("month1", month1);
         queryProductsByName.setParameter("month2", month2);
         queryProductsByName.setParameter("month3", month3);
-        Integer results = queryProductsByName.getFirstResult();
+        Integer results = Integer.parseInt(queryProductsByName.getSingleResult()+"");
         
         return results;
     }

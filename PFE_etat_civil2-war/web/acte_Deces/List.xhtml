@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <h:panelGroup >
-                    <h:dataTable style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_DecesController.items}" var="item" filterVar="filterValue" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                    <h:dataTable style="width: 100%;" rowClasses="odd,even" styleClass="table table-striped table-bordered" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{acte_DecesController.items}" var="item" rows="#{acte_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
                         <h:column >
                             <f:facet name="header">
                                 <h:outputText value="رقم الرسم"/>
@@ -110,15 +110,21 @@
                             </b:modal>
                         </h:column>
                         <f:facet name="footer">
-                            <rich:dataScroller renderIfSinglePage="false" style="direction: ltr;" maxPages="10" id="scroller" fastControls="hide"  styleClass="wrap-paginacao" boundaryControls="hide" stepControls="show">
+                            <h:outputText value="#{acte_DecesController.pagination.pageFirstItem + 1}"/>&nbsp;
+                            <h:outputText value="إلى" />&nbsp;
+                            <h:outputText value="#{acte_DecesController.pagination.pageLastItem + 1}"/>&nbsp;
+                            <h:outputText value="من مجموع" />&nbsp;
+                            <h:outputText value="#{acte_DecesController.pagination.itemsCount}"/>&nbsp;
+
+                            <rich:dataScroller style="direction: ltr;" boundaryControls="hide">
                                 <f:facet name="previous">
-                                    <h:commandLink value="السابق &larr;" rendered="#{acte_NaissanceController.pagination.hasPreviousPage}">
-                                        <f:ajax event="click" listener="#{acte_NaissanceController.previous}" render="extended" />
+                                    <h:commandLink value="السابق &larr;" rendered="#{acte_DecesController.pagination.hasPreviousPage}">
+                                        <f:ajax event="click" listener="#{acte_DecesController.previous}" render="extended" />
                                     </h:commandLink>
                                 </f:facet>
                                 <f:facet name="next">
-                                    <h:commandLink value="&rarr; التالي" rendered="#{acte_NaissanceController.pagination.hasNextPage}">
-                                        <f:ajax event="click" listener="#{acte_NaissanceController.next}" render="extended" />
+                                    <h:commandLink value="&rarr; التالي" rendered="#{acte_DecesController.pagination.hasNextPage}">
+                                        <f:ajax event="click" listener="#{acte_DecesController.next}" render="extended" />
                                     </h:commandLink>
                                 </f:facet>
                             </rich:dataScroller>

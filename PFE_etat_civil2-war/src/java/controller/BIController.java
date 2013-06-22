@@ -44,11 +44,13 @@ public class BIController implements Serializable {
     @EJB
     private session.Jugement_DecesFacade jugement_DecesFacade;
     private Integer anneeGeneral = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
+    private Integer anneeGeneralTri = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
+    private Integer fromYear = 1990;
+    private Integer toYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()));
     private Integer mois = Integer.parseInt(new SimpleDateFormat("MM").format(new Date()));
     private Integer triMois = 2;
     private List<Integer> dataD = new ArrayList<Integer>();
     private List<Integer> dataN = new ArrayList<Integer>();
-    
     /*
      * count d'un mois
      */
@@ -63,15 +65,27 @@ public class BIController implements Serializable {
     /*
      * count de trois mois
      */
-    Integer countTriHommeNaiss = 0;
-    Integer countTriFemmeNaiss = 0;
     Integer countTriNaiss = 0;
     Integer countTriJugNaiss = 0;
-    Integer countTriHommeDec = 0;
-    Integer countTriFemmeDec = 0;
     Integer countTriDec = 0;
     Integer countTriJugDec = 0;
     Map params = new HashMap();
+
+    public Integer getFromYear() {
+        return fromYear;
+    }
+
+    public void setFromYear(Integer fromYear) {
+        this.fromYear = fromYear;
+    }
+
+    public Integer getToYear() {
+        return toYear;
+    }
+
+    public void setToYear(Integer toYear) {
+        this.toYear = toYear;
+    }
 
     public Integer getAnneeGeneral() {
         return anneeGeneral;
@@ -79,6 +93,14 @@ public class BIController implements Serializable {
 
     public void setAnneeGeneral(Integer anneeGeneral) {
         this.anneeGeneral = anneeGeneral;
+    }
+
+    public Integer getAnneeGeneralTri() {
+        return anneeGeneralTri;
+    }
+
+    public void setAnneeGeneralTri(Integer anneeGeneralTri) {
+        this.anneeGeneralTri = anneeGeneralTri;
     }
 
     public Integer getCountJugNaiss() {
@@ -98,7 +120,7 @@ public class BIController implements Serializable {
     public void setCountJugDec(Integer countJugDec) {
         this.countJugDec = countJugDec;
     }
-    
+
     public Integer getMois() {
         return mois;
     }
@@ -147,8 +169,45 @@ public class BIController implements Serializable {
         this.countFemmeDec = countFemmeDec;
     }
 
+    public Integer getCountTriNaiss() {
+        return countTriNaiss;
+    }
+
+    public void setCountTriNaiss(Integer countTriNaiss) {
+        this.countTriNaiss = countTriNaiss;
+    }
+
+    public Integer getCountTriJugNaiss() {
+        return countTriJugNaiss;
+    }
+
+    public void setCountTriJugNaiss(Integer countTriJugNaiss) {
+        this.countTriJugNaiss = countTriJugNaiss;
+    }
+
+    public Integer getCountTriDec() {
+        return countTriDec;
+    }
+
+    public void setCountTriDec(Integer countTriDec) {
+        this.countTriDec = countTriDec;
+    }
+
+    public Integer getCountTriJugDec() {
+        return countTriJugDec;
+    }
+
+    public void setCountTriJugDec(Integer countTriJugDec) {
+        this.countTriJugDec = countTriJugDec;
+    }
+
     public void table1() {
         naissance();
+        deces();
+    }
+
+    public void table2() {
+        naissanceTri();
         //deces();
     }
 
@@ -239,93 +298,47 @@ public class BIController implements Serializable {
             }
         }
     }
-    
-    
+
     public void naissanceTri() {
-        countHommeNaiss = 0;
-        countFemmeNaiss = 0;
-        params = new HashMap();
-        params.put("h18", "0");
-        params.put("f18", "0");
-        params.put("h1819", "0");
-        params.put("f1819", "0");
-        for (int i = 20; i < 50; i += 5) {
-            params.put("h" + i + "" + (i + 4), "0");
-            params.put("f" + i + "" + (i + 4), "0");
+        if (triMois == 1) {
+            countTriNaiss = acte_NaissanceFacade.countByTriMonths(anneeGeneralTri, 1, 2, 3);
+            countTriDec = acte_DecesFacade.countByTriMonths(anneeGeneralTri, 1, 2, 3);
+            countTriJugNaiss = jugement_NaissanceFacade.countByTriMonths(anneeGeneralTri, 1, 2, 3);
+            countTriJugDec = jugement_DecesFacade.countByTriMonths(anneeGeneralTri, 1, 2, 3);
+            System.out.println("countTriNaiss: " + countTriNaiss);
+            System.out.println("countTriDec: " + countTriDec);
+            System.out.println("countTriJugNaiss: " + countTriJugNaiss);
+            System.out.println("countTriJugDec: " + countTriJugDec);
         }
-        params.put("h50", "0");
-        params.put("f50", "0");
-        List<Object[]> results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 0, 17);
-        for (Object[] result : results) {
-            String sex = ((String) result[1]);
-            int count = ((Number) result[0]).intValue();
-            System.out.println("18 --> sex: " + sex + ", count: " + count);
-            if (sex.equals("Masculin")) {
-                System.out.println("h18");
-                params.put("h18", "" + count);
-            } else {
-                System.out.println("f18");
-                params.put("f18", "" + count);
-            }
+        if (triMois == 2) {
+            countTriNaiss = acte_NaissanceFacade.countByTriMonths(anneeGeneralTri, 4, 5, 6);
+            countTriDec = acte_DecesFacade.countByTriMonths(anneeGeneralTri, 4, 5, 6);
+            countTriJugNaiss = jugement_NaissanceFacade.countByTriMonths(anneeGeneralTri, 4, 5, 6);
+            countTriJugDec = jugement_DecesFacade.countByTriMonths(anneeGeneralTri, 4, 5, 6);
+            System.out.println("countTriNaiss: " + countTriNaiss);
+            System.out.println("countTriDec: " + countTriDec);
+            System.out.println("countTriJugNaiss: " + countTriJugNaiss);
+            System.out.println("countTriJugDec: " + countTriJugDec);
         }
-        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 18, 19);
-        for (Object[] result : results) {
-            String sex = ((String) result[1]);
-            int count = ((Number) result[0]).intValue();
-            System.out.println("1819 --> sex: " + sex + ", count: " + count);
-            if (sex.equals("Masculin")) {
-                System.out.println("h1819");
-                params.put("h1819", "" + count);
-            } else {
-                System.out.println("f1819");
-                params.put("f1819", "" + count);
-            }
+        if (triMois == 3) {
+            countTriNaiss = acte_NaissanceFacade.countByTriMonths(anneeGeneralTri, 7, 8, 9);
+            countTriDec = acte_DecesFacade.countByTriMonths(anneeGeneralTri, 7, 8, 9);
+            countTriJugNaiss = jugement_NaissanceFacade.countByTriMonths(anneeGeneralTri, 7, 8, 9);
+            countTriJugDec = jugement_DecesFacade.countByTriMonths(anneeGeneralTri, 7, 8, 9);
+            System.out.println("countTriNaiss: " + countTriNaiss);
+            System.out.println("countTriDec: " + countTriDec);
+            System.out.println("countTriJugNaiss: " + countTriJugNaiss);
+            System.out.println("countTriJugDec: " + countTriJugDec);
         }
-
-        for (int i = 20; i < 50; i += 5) {
-            results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, i, i + 4);
-            for (Object[] result : results) {
-                String sex = ((String) result[1]);
-                int count = ((Number) result[0]).intValue();
-                System.out.println(i + "" + (i + 4) + " --> sex: " + sex + ", count: " + count);
-                if (sex.equals("Masculin")) {
-                    System.out.println("h" + i + "" + (i + 4));
-                    params.put("h" + i + "" + (i + 4), "" + count);
-                } else {
-                    System.out.println("f" + i + "" + (i + 4));
-                    params.put("f" + i + "" + (i + 4), "" + count);
-                }
-            }
-        }
-
-        results = acte_NaissanceFacade.countByAgeMere(anneeGeneral, mois, 50, 1900);
-        for (Object[] result : results) {
-            String sex = ((String) result[1]);
-            int count = ((Number) result[0]).intValue();
-            System.out.println("50 --> sex: " + sex + ", count: " + count);
-            if (sex.equals("Masculin")) {
-                System.out.println("h50");
-                params.put("h50", "" + count);
-            } else {
-                System.out.println("h50");
-                params.put("f50", "" + count);
-            }
-        }
-
-        params.put("countHommeNaiss", "0");
-        params.put("countFemmeNaiss", "0");
-
-        results = acte_NaissanceFacade.countBySex(anneeGeneral, mois);
-        for (Object[] result : results) {
-            String sex = ((String) result[1]);
-            int count = ((Number) result[0]).intValue();
-            if (sex.equals("Masculin")) {
-                countHommeNaiss += count;
-                params.put("countHommeNaiss", "" + count);
-            } else {
-                countFemmeNaiss += count;
-                params.put("countFemmeNaiss", "" + count);
-            }
+        if (triMois == 4) {
+            countTriNaiss = acte_NaissanceFacade.countByTriMonths(anneeGeneralTri, 10, 11, 12);
+            countTriDec = acte_DecesFacade.countByTriMonths(anneeGeneralTri, 10, 11, 12);
+            countTriJugNaiss = jugement_NaissanceFacade.countByTriMonths(anneeGeneralTri, 10, 11, 12);
+            countTriJugDec = jugement_DecesFacade.countByTriMonths(anneeGeneralTri, 10, 11, 12);
+            System.out.println("countTriNaiss: " + countTriNaiss);
+            System.out.println("countTriDec: " + countTriDec);
+            System.out.println("countTriJugNaiss: " + countTriJugNaiss);
+            System.out.println("countTriJugDec: " + countTriJugDec);
         }
     }
 
@@ -373,7 +386,7 @@ public class BIController implements Serializable {
             }
         }
 
-        for (int i = 5; i < 80; i += 5){
+        for (int i = 5; i < 80; i += 5) {
             results = acte_DecesFacade.countByAge(anneeGeneral, mois, i, i + (i + 4));
             for (Object[] result : results) {
                 String sex = ((String) result[1]);
@@ -385,7 +398,7 @@ public class BIController implements Serializable {
                 }
             }
         }
-        
+
         results = acte_DecesFacade.countByAge(anneeGeneral, mois, 80, 4000);
         for (Object[] result : results) {
             String sex = ((String) result[1]);
@@ -409,7 +422,7 @@ public class BIController implements Serializable {
                 params.put("countFemmeDec", "" + count);
             }
         }
-        
+
         try {
             Wini ini = new Wini(new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/conf.ini")));
             params.put("communeAr", ini.get("commune", "communeAr"));
@@ -491,9 +504,10 @@ public class BIController implements Serializable {
                 dataN.add(0);
             }
         }
+        acte_NaissanceFacade.countByYearsMonths(1979, 1983);
         return dataN;
     }
-    
+
     public List<Integer> getDataD() {
         dataD = new ArrayList<Integer>();
         List<Object[]> results = acte_DecesFacade.countByDate(anneeGeneral);
@@ -515,4 +529,106 @@ public class BIController implements Serializable {
         return dataD;
     }
 
+    private String[] rtn = {"", ""};
+    private String[] rtnd = {"", ""};
+    private String renderGraph = "mois";
+
+    public String getRenderGraph() {
+        return renderGraph;
+    }
+
+    public void setRenderGraph(String renderGraph) {
+        this.renderGraph = renderGraph;
+    }
+    
+    public String[] getRtn() {
+        return rtn;
+    }
+
+    public void setRtn(String[] rtn) {
+        this.rtn = rtn;
+    }
+    public String[] getRtnd() {
+        return rtnd;
+    }
+
+    public void setRtnd(String[] rtnd) {
+        this.rtnd = rtnd;
+    }
+    
+    public void getDataYears() {
+        
+        List<Object[]> results = acte_NaissanceFacade.countByYearsMonths(fromYear, toYear);
+        int tmp = 1;
+        String s = "[";
+        String t = "[";
+        for (int i = fromYear; i <= toYear; i++) {
+            //[[month,count],[month,count],]
+            for (int j = 1; j <= 12; j++) {
+                int y = i;
+                int c = 0;
+                int m = j;
+                for (Object[] result : results) {
+                    int year = ((Number) result[0]).intValue();
+                    int count = ((Number) result[1]).intValue();
+                    int month = ((Number) result[2]).intValue();
+                    if (year == i && month == j) {
+                        y = year;
+                        c = count;
+                        m = month;
+                    }
+                }
+                s += "[" + tmp + "," + c + "],";
+                if(m<10){
+                    t += "[" + tmp + ",'0" + m + "/" + y + "'],";
+                }else{
+                    t += "[" + tmp + ",'" + m + "/" + y + "'],";
+                }
+                tmp++;
+            }
+        }
+        s += "]";
+        t += "]";
+        rtn[0] = s;
+        rtn[1] = t;
+        getDataYearsD();
+    }
+    
+    public void getDataYearsD() {
+        
+        List<Object[]> results = acte_DecesFacade.countByYearsMonths(fromYear, toYear);
+        int tmp = 1;
+        String s = "[";
+        String t = "[";
+        for (int i = fromYear; i <= toYear; i++) {
+            //[[month,count],[month,count],]
+            for (int j = 1; j <= 12; j++) {
+                int y = i;
+                int c = 0;
+                int m = j;
+                for (Object[] result : results) {
+                    int year = ((Number) result[0]).intValue();
+                    int count = ((Number) result[1]).intValue();
+                    int month = ((Number) result[2]).intValue();
+                    if (year == i && month == j) {
+                        y = year;
+                        c = count;
+                        m = month;
+                    }
+                }
+                s += "[" + tmp + "," + c + "],";
+                if(m<10){
+                    t += "[" + tmp + ",'0" + m + "/" + y + "'],";
+                }else{
+                    t += "[" + tmp + ",'" + m + "/" + y + "'],";
+                }
+                tmp++;
+            }
+        }
+        s += "]";
+        t += "]";
+        rtnd[0] = s;
+        rtnd[1] = t;
+        
+    }
 }

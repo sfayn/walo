@@ -11,7 +11,7 @@
             صفحة الإستقبال
         </ui:define>
         <ui:define name="body">
-            <h:form>
+            <h:form prependId="false">
                 <script src="#{request.contextPath}/resources/js/graphdf.js" ></script>
                 <fieldset>
                     <legend>المهام الأساسية</legend>                   
@@ -24,105 +24,192 @@
                 <br />
                 <fieldset>
                     <legend>إحصائيات عامة</legend>
-                    <div style="text-align: center; font-family: fantasy; font-weight: bold; font-size: 14pt;">
-                        <h:outputText value="#{bundle.bIControllertitre}"/>
-                        <br/>
-                        <h:outputText value="لسنة" />
-                        <h:outputText id="title" value=" #{bIController.anneeGeneral}" />
-                    </div>
-                    <div style="float: left; vertical-align: middle;" dir="rtl" align="left">
-                        <h:outputText value="السنة:" />
-                        <h:selectOneMenu styleClass="input-medium" id="annees" value="#{bIController.anneeGeneral}" >
-                            <f:ajax render="flot title" event="change" execute="@this" />
-                            <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                    <div style="float: right; vertical-align: middle;" dir="rtl" align="left">
+                        <h:selectOneMenu styleClass="input-medium" value="#{bIController.renderGraph}" >
+                            <f:ajax render="@form" event="change" execute="@this" />
+                            <f:selectItem  itemLabel="الشهور" itemValue="mois" />
+                            <f:selectItem  itemLabel="السنوات" itemValue="annee" />
                         </h:selectOneMenu>
                     </div>
-                    <div>
-                    </div>
-                    <div style="clear: both; height: 10px;"></div>
-                    <h:panelGroup id="flot">
-                        <div id="graph" style="height: 500px;"> </div>
-                        <h:outputScript library="js" name="flotr2.min.js" />
-                        <script type="text/javascript">
-                            d1 = [], i = 1
-                        </script>
-                        <ui:repeat value="#{bIController.dataN}" var="data">
+                    <h:panelGroup id="group-mois" rendered="#{bIController.renderGraph == 'mois'}">
+                        <div style="text-align: center; font-family: fantasy; font-weight: bold; font-size: 14pt;">
+                            <h:outputText value="#{bundle.bIControllertitre}"/>
+                            <br/>
+                            <h:outputText value="لسنة" />
+                            <h:outputText id="title" value=" #{bIController.anneeGeneral}" />
+                        </div>
+                        <div style="float: left; vertical-align: middle;" dir="rtl" align="left">
+                            <h:outputText value="السنة:" />
+                            <h:selectOneMenu styleClass="input-medium" id="annees" value="#{bIController.anneeGeneral}" >
+                                <f:ajax render="flot title" event="change" execute="@this" />
+                                <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div style="clear: both; height: 10px;"></div>
+                        <h:panelGroup id="flot">
+                            <div id="graph" style="height: 500px;"> </div>
+                            <h:outputScript library="js" name="flotr2.min.js" />
                             <script type="text/javascript">
-                                point = [i-0.25, #{data}];
-                                d1.push(point);
-                                i++;
+                                d1 = [], i = 1
                             </script>
-                        </ui:repeat>
-                        <script type="text/javascript">
-                            d2 = [], i = 1
-                        </script>
-                        <ui:repeat value="#{bIController.dataD}" var="data">
-                            <script type="text/javascript">
-                                point = [i+0.25, #{data}];
-                                d2.push(point);
-                                i++;
-                            </script>
-                        </ui:repeat>
-                        <script type="text/javascript">
-                            // <![CDATA[ 
-                            (function basic_bars(container, horizontal) {
-
-                                var horizontal = ( horizontal ? true : false),
-                                // Show horizontal bars
-                                //d1 = [],
-                                // First data series
-                                //d2 = [],
-                                // Second data series
-                                point, // Data point variable declaration
-                                i;
-
-                                /*for ( i = 1; i < 13; i++) {
-
-                                    if (horizontal) {
-                                        point = [Math.ceil(Math.random() * 100), i];
-                                    } else {
-                                        point = [i, Math.ceil(Math.random() * 100)];
-                                    }
+                            <ui:repeat value="#{bIController.dataN}" var="data">
+                                <script type="text/javascript">
+                                    point = [i-0.25, #{data}];
                                     d1.push(point);
+                                    i++;
+                                </script>
+                            </ui:repeat>
+                            <script type="text/javascript">
+                                d2 = [], i = 1
+                            </script>
+                            <ui:repeat value="#{bIController.dataD}" var="data">
+                                <script type="text/javascript">
+                                    point = [i+0.25, #{data}];
+                                    d2.push(point);
+                                    i++;
+                                </script>
+                            </ui:repeat>
+                            <script type="text/javascript">
+                                // <![CDATA[ 
+                                (function basic_bars(container, horizontal) {
 
-                                    if (horizontal) {
-                                        point = [Math.ceil(Math.random() * 100), i + 0.5];
-                                    } else {
-                                        point = [i + 0.5, Math.ceil(Math.random() * 100)];
+                                    var horizontal = ( horizontal ? true : false),
+                                    // Show horizontal bars
+                                    //d1 = [],
+                                    // First data series
+                                    //d2 = [],
+                                    // Second data series
+                                    point, // Data point variable declaration
+                                    i;
+
+                                    /*for ( i = 1; i < 13; i++) {
+
+                                        if (horizontal) {
+                                            point = [Math.ceil(Math.random() * 100), i];
+                                        } else {
+                                            point = [i, Math.ceil(Math.random() * 100)];
+                                        }
+                                        d1.push(point);
+
+                                        if (horizontal) {
+                                            point = [Math.ceil(Math.random() * 100), i + 0.5];
+                                        } else {
+                                            point = [i + 0.5, Math.ceil(Math.random() * 100)];
+                                        }
+
+                                        d2.push(point);
+                                    };*/
+
+                                    // Draw the graph
+                                    Flotr.draw(container, [{data:d1, label:"الولادات"}, {data:d2, label:"الوفيات"}], {
+                                        bars : {
+                                            show : true,
+                                            horizontal : horizontal,
+                                            shadowSize : 0,
+                                            barWidth : 0.5
+                                        },
+                                        mouse : {
+                                            trackFormatter: function(obj){ return obj.y; },
+                                            track : true,
+                                            relative : true
+                                        },
+                                        xaxis:{
+                                            title : 'الشهر',
+                                            tickSize : 1,
+                                            min: 1,
+                                            ticks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                                        },
+                                        yaxis : {
+                                            title : 'العدد',
+                                            min : 0,
+                                            autoscaleMargin : 1
+                                        },
+                                        legend: { show: true }
+                                    });
+                                })(document.getElementById("graph"));
+                                // ]]> 
+                            </script>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                    <h:panelGroup id="groupe-annee" rendered="#{bIController.renderGraph == 'annee'}">
+                        #{bIController.getDataYears()}
+                        <div style="float: left; vertical-align: middle;" dir="rtl" align="left">
+                            <h:outputText value="من:" />
+                            <h:selectOneMenu styleClass="input-medium" id="from" value="#{bIController.fromYear}" >
+                                <f:ajax render="flot-years" event="change" execute="@this" listener="#{bIController.getDataYears()}" />
+                                <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                            </h:selectOneMenu>
+                            &nbsp;&nbsp;&nbsp;
+                            <h:outputText value="إلى:" />
+                            <h:selectOneMenu styleClass="input-medium" id="to" value="#{bIController.toYear}" >
+                                <f:ajax render="flot-years" event="change" execute="@this" listener="#{bIController.getDataYears()}" />
+                                <f:selectItems value="#{acte_DecesController.listannee()}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div style="clear: both; height: 10px;"></div>
+                        <h:panelGroup id="flot-years" >
+                            <div id="dataYears" style="height: 500px;"> </div>
+                            <h:outputScript library="js" name="flotr2.min.js" />
+
+                            <script type="text/javascript">
+                                // <![CDATA[ 
+                                (function mouse_zoom(container) {
+                                    var
+                                    d1 = #{bIController.rtn[0]},
+                                    d2 = #{bIController.rtnd[0]},
+                                    d3 = [],
+                                    options, 
+                                    graph;
+
+
+                                    options = {
+                                        selection: {
+                                            mode: 'x',
+                                            fps: 60
+                                        },
+                                        title: 'رسم بياني لتطور الولادات و الوفيات بين سنتي #{bIController.fromYear} و #{bIController.toYear}'
+                                    };
+
+                                    // Draw graph with default options, overwriting with passed options
+
+
+                                    function drawGraph(opts) {
+
+                                        // Clone the options, so the 'options' variable always keeps intact.
+                                        var o = Flotr._.extend(Flotr._.clone(options), opts || {});
+
+                                        // Return a new graph.
+                                        return Flotr.draw(
+                                        container, [d1, d2, d3], o);
                                     }
 
-                                    d2.push(point);
-                                };*/
+                                    // Actually draw the graph.
+                                    graph = drawGraph();
 
-                                // Draw the graph
-                                Flotr.draw(container, [{data:d1, label:"الولادات"}, {data:d2, label:"الوفيات"}], {
-                                    bars : {
-                                        show : true,
-                                        horizontal : horizontal,
-                                        shadowSize : 0,
-                                        barWidth : 0.5
-                                    },
-                                    mouse : {
-                                        trackFormatter: function(obj){ return obj.y; },
-                                        track : true,
-                                        relative : true
-                                    },
-                                    xaxis:{
-                                        title : 'الشهر',
-                                        tickSize : 1,
-                                        min: 1,
-                                        ticks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                                    },
-                                    yaxis : {
-                                        title : 'العدد',
-                                        min : 0,
-                                        autoscaleMargin : 1
-                                    },
-                                    legend: { show: true }
-                                });
-                            })(document.getElementById("graph"));
-                            // ]]> 
-                        </script>
+                                    // Hook into the 'flotr:select' event.
+                                    Flotr.EventAdapter.observe(container, 'flotr:select', function(area) {
+
+                                        // Draw graph with new area
+                                        graph = drawGraph({
+                                            xaxis: {
+                                                min: area.x1,
+                                                max: area.x2,
+                                                ticks: #{bIController.rtn[1]}
+                                            },
+                                            yaxis: {
+                                                min: area.y1,
+                                                max: area.y2,
+                                            }
+                                        });
+                                    });
+                                    // When graph is clicked, draw the graph with default area.
+                                    Flotr.EventAdapter.observe(container, 'flotr:click', function() {
+                                        drawGraph();
+                                    });
+                                })(document.getElementById("dataYears"));
+                                // ]]> 
+                            </script>
+                        </h:panelGroup>
                     </h:panelGroup>
                 </fieldset>
             </h:form>
