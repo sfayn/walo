@@ -180,7 +180,7 @@
 
                                         // Return a new graph.
                                         return Flotr.draw(
-                                        container, [d1, d2, d3], o);
+                                        container, [{data:d1, label:"الولادات"}, {data:d2, label:"الوفيات"}, d3], o);
                                     }
 
                                     // Actually draw the graph.
@@ -197,9 +197,11 @@
                                                 ticks: #{bIController.rtn[1]}
                                             },
                                             yaxis: {
+                                                title : 'العدد',
                                                 min: area.y1,
                                                 max: area.y2,
-                                            }
+                                            },
+                                            legend: { show: true }
                                         });
                                     });
                                     // When graph is clicked, draw the graph with default area.
