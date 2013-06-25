@@ -8,32 +8,40 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreateType_Donnees_MarginalesTitle}"></h:outputText>
+            <h:outputText value="إعدادات : تعديل نوع بيان هامشي"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form prependId="false" id="formCreate">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_libelleAr}" for="libelleAr" />
-                    <h:inputText id="libelleAr" value="#{type_Donnees_MarginalesController.selected.libelleAr}" title="#{bundle.CreateType_Donnees_MarginalesTitle_libelleAr}" />
-                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_libelleFr}" for="libelleFr" />
-                    <h:inputText id="libelleFr" value="#{type_Donnees_MarginalesController.selected.libelleFr}" title="#{bundle.CreateType_Donnees_MarginalesTitle_libelleFr}" />
-                    <h:outputLabel value="#{bundle.CreateType_Donnees_MarginalesLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{type_Donnees_MarginalesController.selected.id}" title="#{bundle.CreateType_Donnees_MarginalesTitle_id}" />
-
-                </h:panelGrid>
-                <b:gridColumn span="6">
-                    <h:panelGrid columns="2" dir="rtl">
-                        <h:outputLabel value=" صيغة البيان : " for="descrAr" />
-                        <h:inputTextarea cols="30" rows="5" id="descrAr" value="#{type_Donnees_MarginalesController.selected.descrAr}"/>
-                    </h:panelGrid>
-                </b:gridColumn>
-
                 <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
                     <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
-                            margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن البيانات الهامشية :</legend>
+                            margin-left:16px; border-bottom: 0px; width: auto;">معلومات عن النوع</legend>
+                <b:gridRow>
+                    <b:gridColumn span="4">
+                        <h:panelGrid columns="2" dir="ltr">
+                            <h:outputLabel value="titre" for="libelleFr" />
+                            <h:inputText id="libelleFr" value="#{type_Donnees_MarginalesController.selected.libelleFr}" />                                                                   
+                            <h:outputLabel value="Description : " for="descrFr" />
+                            <h:inputTextarea cols="30" rows="5" id="descrFr" value="#{type_Donnees_MarginalesController.selected.descrFr}"/>
+                        </h:panelGrid>                          
+                    </b:gridColumn>                
+                    <b:gridColumn span="5">
+                        <h:panelGrid columns="2" dir="rtl">
+                            <h:outputLabel value="العنوان" for="libelleAr" />
+                            <h:inputText id="libelleAr" value="#{type_Donnees_MarginalesController.selected.libelleAr}" />
+                            <h:outputLabel value=" صيغة البيان : " for="descrAr" />
+                            <h:inputTextarea cols="30" rows="5" id="descrAr" value="#{type_Donnees_MarginalesController.selected.descrAr}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" dir="rtl">
+                        </h:panelGrid>
+                    </b:gridColumn>
+                </b:gridRow>
+                </fieldset>
+                <fieldset style="border:2px solid rgb(58,135,173); margin-left: 20px; margin-top: 20px; margin-bottom: 20px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px;">
+                    <legend style=" margin-bottom:0px; font-size: 30px;margin-right: 10px;
+                            margin-left:16px; border-bottom: 0px; width: auto;">هذا البيان سيسمح بتعديل </legend>
                     <b:gridRow styleClass="show" fluid="true" id="donnees_marginales">
 
                         <ui:repeat var="attr"  value="#{type_Donnees_MarginalesController.attrs}" >
@@ -71,16 +79,9 @@
                         </b:gridColumn>
                     </b:gridRow>
                 </fieldset>
+                <br />
+                <h:commandLink class="btn btn-primary" style="font-size: 14pt" action="#{type_Donnees_MarginalesController.update()}" value="تعديل" />
 
-
-                <br />
-                <h:commandLink action="#{type_Donnees_MarginalesController.update()}" value="#{bundle.CreateType_Donnees_MarginalesSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{type_Donnees_MarginalesController.prepareList}" value="#{bundle.CreateType_Donnees_MarginalesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateType_Donnees_MarginalesIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
