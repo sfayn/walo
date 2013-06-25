@@ -37,40 +37,48 @@
                     </div>
                 </div>
                 <h:panelGroup >
-                    <rich:extendedDataTable  rendered="#{jugement_NaissanceController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="mitTable" headerClass="mitTableHeader" id="extended" reRender="scroller" value="#{jugement_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{jugement_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
-                        <rich:column width="110px" sortBy="#{item.numActe}" filterExpression="#{empty filterValue or item.numActe eq filterValue}"
-                                     filterValue="#{jugement_NaissanceController.numActeFilter == 0? '': jugement_NaissanceController.numActeFilter}"
-                                     filterConverterMessage="Error converting the 'Mileage' filter value" >
-                            <f:facet name="header"><h:outputText value="رقم الرسم"/></f:facet>
+                    <h:dataTable  rendered="#{jugement_NaissanceController.items.rowCount != 0}" style="width: 100%;" rowClasses="odd,even" styleClass="table table-striped table-bordered" id="extended" reRender="scroller" value="#{jugement_NaissanceController.items}" var="item" filterVar="filterValue" rows="#{jugement_NaissanceController.primaryRowCount}"  cellpadding="0" cellspacing="0" border="0" >
+                        <h:column >
+                            <f:facet name="header">
+                                <h:outputText value="رقم الرسم"/>
+                                <br /> 
+                                <h:inputText value="#{jugement_NaissanceController.numActeFilter}" style="width: 60px;height: 10px;" >
+                                    <f:ajax event="change" listener="#{jugement_NaissanceController.numActeFilterImpl()}" render="extended" />
+                                </h:inputText>
+                            </f:facet>
                             <h:outputText value="#{item.numActe}"/>
-                        </rich:column>
-                        <rich:column width="110px" sortBy="#{item.registre.annee}" filterExpression="#{empty filterValue or item.registre.annee eq filterValue}"
-                                     filterValue="#{jugement_NaissanceController.anneeFilter}"
-                                     filterConverterMessage="Error converting the 'Mileage' filter value">
-                            <f:facet name="header"><h:outputText value="السنة"/></f:facet>
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header">
+                                <h:outputText value="السنة"/>
+                                <br /> 
+                                <h:inputText value="#{jugement_NaissanceController.anneeFilter}" style="width: 60px;height: 10px;" >
+                                    <f:ajax event="change" listener="#{jugement_NaissanceController.numActeFilterImpl()}" render="extended" />
+                                </h:inputText>
+                            </f:facet>
                             <h:outputText value="#{item.registre.annee}"/>
-                        </rich:column>
-                        <rich:column width="170px" sortBy="#{item.prenom_Ar}">
+                        </h:column>
+                        <h:column >
                             <f:facet name="header"><h:outputText value="الإسم"/></f:facet>
                             <h:outputText value="#{item.prenom_Ar}"/>
-                        </rich:column>
-                        <rich:column width="170px" sortBy="#{item.acte_deces.nom_Ar}">
+                        </h:column>
+                        <h:column >
                             <f:facet name="header"><h:outputText value="النسب"/></f:facet>
                             <h:outputText value="#{item.nom_Ar}"/>
-                        </rich:column>
-                        <rich:column width="170px" sortBy="#{item.date_de_naiss_G}">
+                        </h:column>
+                        <h:column >
                             <f:facet name="header"><h:outputText value="تاريخ الإزدياد"/></f:facet>
                             <h:outputFormat value="#{item.noMJ == false ? '{0, date, yyyy-MM-dd}' : '{0, date, yyyy}'}">
                                 <f:param value="#{item.date_de_naiss_G}" />
                             </h:outputFormat>
-                        </rich:column>                       
-                        <rich:column width="120px">
+                        </h:column>                       
+                        <h:column >
                             <f:facet name="header"><h:outputText value="Validé"/></f:facet>
                             <font size="+1" title="#{item.checked == true ? 'validé' : 'non validé'}">
                                 <i class="#{item.checked == true ? 'icon-ok' : 'icon-ban-circle'}" style="#{item.checked == true ? 'color: green;' : 'color: red;'}"></i>
                             </font>
-                        </rich:column>
-                        <rich:column width="90px">
+                        </h:column>
+                        <h:column >
                             <f:facet name="header"><h:outputText value="action"/></f:facet>
                             <h:commandLink action="#{jugement_NaissanceController.prepareView}">
                                 <font size="+1" title="عرض"><i class="icon-eye-open" style="color: black"></i></font>
@@ -94,8 +102,8 @@
                                     <b:commandButton value="لا" mode="client" onclick="#{b:hide('customModal')}" />
                                 </b:footerFacet>
                             </b:modal>
-                        </rich:column>
-                    </rich:extendedDataTable>
+                        </h:column>
+                    </h:dataTable>
                 </h:panelGroup>
                 <br />
                 <div class="row">
