@@ -172,7 +172,7 @@ public class Acte_NaissanceController implements Serializable {
     public void changeDonnees_Marginales() {
         Donnees_Marginales dm = new Donnees_Marginales();
         current.getDonnees_Marginaless().add(dm);
-        
+
 
     }
 
@@ -560,19 +560,21 @@ public class Acte_NaissanceController implements Serializable {
             UtilitaireSession us = UtilitaireSession.getInstance();
             current.setCreatedBy((User) us.get("auth"));
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
-                Map mp = m.get(dm);
-                Set listKeys = mp.keySet();  // Obtenir la liste des clés
-                Iterator iterateur = listKeys.iterator();
-                // Parcourir les clés et afficher les entrées de chaque clé;
-                while (iterateur.hasNext()) {
-                    Object key = iterateur.next();
-                    if (dm.getAttrValues().equals("")) {
-                        dm.setAttrValues(key + "=" + mp.get(key) + "&");
-                    } else {
-                        dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                if (!dm.getType().getAttrs().equals("")) {
+                    Map mp = m.get(dm);
+                    Set listKeys = mp.keySet();  // Obtenir la liste des clés
+                    Iterator iterateur = listKeys.iterator();
+                    // Parcourir les clés et afficher les entrées de chaque clé;
+                    while (iterateur.hasNext()) {
+                        Object key = iterateur.next();
+                        if (dm.getAttrValues().equals("")) {
+                            dm.setAttrValues(key + "=" + mp.get(key) + "&");
+                        } else {
+                            dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                        }
+
+
                     }
-
-
                 }
                 ejbFacade2.create(dm);
                 m.clear();
@@ -581,7 +583,7 @@ public class Acte_NaissanceController implements Serializable {
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
-                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
+                //dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
@@ -616,6 +618,7 @@ public class Acte_NaissanceController implements Serializable {
         }
         return "Edit";
     }
+
     public String prepareEdit2() {
         m.clear();
         if (!current.getDonnees_Marginaless().isEmpty()) {
@@ -643,19 +646,20 @@ public class Acte_NaissanceController implements Serializable {
         try {
             encode();
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
-                dm.setAttrValues("");
-                Map mp = m.get(dm);
-                Set listKeys = mp.keySet();
-                Iterator iterateur = listKeys.iterator();
-                while (iterateur.hasNext()) {
-                    Object key = iterateur.next();
-                    if (dm.getAttrValues().equals("")) {
-                        dm.setAttrValues(key + "=" + mp.get(key) + "&");
-                    } else {
-                        dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                if (!dm.getType().getAttrs().equals("")) {
+                    dm.setAttrValues("");
+                    Map mp = m.get(dm);
+                    Set listKeys = mp.keySet();
+                    Iterator iterateur = listKeys.iterator();
+                    while (iterateur.hasNext()) {
+                        Object key = iterateur.next();
+                        if (dm.getAttrValues().equals("")) {
+                            dm.setAttrValues(key + "=" + mp.get(key) + "&");
+                        } else {
+                            dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                        }
                     }
                 }
-
                 ejbFacade2.create(dm);
             }
             getFacade().edit(current);
@@ -668,7 +672,7 @@ public class Acte_NaissanceController implements Serializable {
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -754,7 +758,7 @@ public class Acte_NaissanceController implements Serializable {
                     }
                 }
             }
-            res=showFields(current,attr);
+            res = showFields(current, attr);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalArgumentException ex) {
@@ -767,20 +771,20 @@ public class Acte_NaissanceController implements Serializable {
         return res;
     }
 
-    public String showFields(Object o,String attr) throws IllegalArgumentException, IllegalAccessException {
+    public String showFields(Object o, String attr) throws IllegalArgumentException, IllegalAccessException {
         Class<?> clazz = o.getClass();
 
         for (Field field : clazz.getDeclaredFields()) {
-            System.out.println(field.getName()+" : "+attr);
-           if(field.getName().equals(attr)){
+            System.out.println(field.getName() + " : " + attr);
+            if (field.getName().equals(attr)) {
                 try {
                     field.setAccessible(true);
-                    String res=(String) field.get(o);
-                return URLDecoder.decode(res, "UTF-8");
+                    String res = (String) field.get(o);
+                    return URLDecoder.decode(res, "UTF-8");
                 } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-           }       
+            }
         }
         return null;
     }
@@ -806,20 +810,20 @@ public class Acte_NaissanceController implements Serializable {
             params.put("commune", ini.get("commune", "commune"));
             params.put("communeAr", ini.get("commune", "communeAr"));
             params.put("provinceAr", ini.get("commune", "provinceAr"));
-            params.put("nom", current.getNom_Fr());
-            params.put("prenom", current.getPrenom_Fr());
-            params.put("lieuNaissance", current.getLieu_de_Naiss_Fr());
+            params.put("nom", traitMen("nom_Fr"));
+            params.put("prenom", traitMen("prenom_Fr"));
+            params.put("lieuNaissance", traitMen("lieu_de_Naiss_Fr"));
             params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("nationnalite", "Marocaine");
-            params.put("pere", current.getPrenomP_Fr());
-            params.put("mere", current.getPrenomM_Fr());
+            params.put("pere", traitMen("prenomP_Fr"));
+            params.put("mere", traitMen("prenomM_Fr"));
             params.put("nomAr", traitMen("nom_Ar"));
             params.put("prenomAr", traitMen("prenom_Ar"));
-            params.put("lieuNaissanceAr", current.getLieu_de_Naiss_Ar());
+            params.put("lieuNaissanceAr", traitMen("lieu_de_Naiss_Ar"));
             params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("nationnaliteAr", "مغربية");
-            params.put("pereAr", current.getPrenomP_Ar());
-            params.put("mereAr", current.getPrenomM_Ar());
+            params.put("pereAr", traitMen("prenomP_Ar"));
+            params.put("mereAr", traitMen("prenomM_Ar"));
             boolean trouve = false;
             for (int i = 0; i < current.getDonnees_Marginaless().size(); i++) {
                 if (current.getDonnees_Marginaless().get(i).getType().getId() == 14 || current.getDonnees_Marginaless().get(i).getType().getId() == 15) {

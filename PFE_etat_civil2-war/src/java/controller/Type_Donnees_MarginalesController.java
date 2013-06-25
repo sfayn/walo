@@ -99,7 +99,7 @@ public class Type_Donnees_MarginalesController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(getFacade().count()) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -185,7 +185,8 @@ public class Type_Donnees_MarginalesController implements Serializable {
             getFacade().edit(current);
             attrs.clear();
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Type_Donnees_MarginalesUpdated"));
-            return "View";
+            recreateModel();
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
