@@ -326,7 +326,13 @@ public class Acte_DecesController implements Serializable {
         params.put("dateTahG", Helper.dateToStrArG(current.getDateTah_G()));
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integralDecesAr.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
-
+        java.util.List pages = jasperPrint.getPages();
+        for (Iterator<java.util.List> i = pages.iterator(); i.hasNext();) {
+            JRPrintPage page = (JRPrintPage) i.next();
+            if (page.getElements().size() == 0) {
+                i.remove();
+            }
+        }   
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");
