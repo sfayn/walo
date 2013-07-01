@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dcc7a5d2-e5f6-406f-8ff2-8c688ede9ffb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c6ae66bf-4e12-4036-983a-ad974d6f68f9" x="446" y="0" width="109" height="42"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="15" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[المملكة المغربية
+وزارة الداخلية
+         ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="477" y="42" width="78" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[عمالة ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="095c3e86-8523-4ccb-9732-1571c1a9bd46" x="435" y="40" width="95" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b0d7e999-9663-4ed4-b486-75f691f28e45" x="430" y="55" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="477" y="55" width="78" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[جماعة 
+                
+                ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="457" y="70" width="98" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[مكتب الحالة المدنية لجماعة]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b0d7e999-9663-4ed4-b486-75f691f28e45" x="357" y="70" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

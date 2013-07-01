@@ -106,13 +106,11 @@ public class Jugement_NaissanceController implements Serializable {
         } else {
             test = false;
         }
-        System.out.println(test);
         this.destroyModel();
     }
     
     public void destroyModel() {
         items = null;
-        System.out.println("destroyModel");
         pagination = null;
         items = getPagination().createPageDataModel();
     }

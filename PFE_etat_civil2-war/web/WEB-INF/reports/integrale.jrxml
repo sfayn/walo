@@ -589,14 +589,14 @@
 				<textFieldExpression><![CDATA[$F{declaration_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="382" y="160" width="82" height="20"/>
+				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="382" y="201" width="158" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Fr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="467" y="141" width="73" height="20"/>
+				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="382" y="141" width="158" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -617,8 +617,8 @@
 				<textFieldExpression><![CDATA[$F{professionP_Ar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="0" y="631" width="361" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
+				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="0" y="637" width="361" height="35"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{officierAr}]]></textFieldExpression>
@@ -830,14 +830,14 @@
 				<reportElement uuid="6867fba0-2f21-4b1a-a91c-75f44a9fc07f" x="0" y="197" width="140" height="1"/>
 			</line>
 			<componentElement>
-				<reportElement uuid="1a9811c7-e253-4d59-b116-708950107397" x="382" y="215" width="157" height="73"/>
+				<reportElement uuid="1a9811c7-e253-4d59-b116-708950107397" x="382" y="231" width="157" height="73"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="dataset1" uuid="8b1fcf67-3247-415b-acda-782d564846c5">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{donnees_Marginaless})]]></dataSourceExpression>
 					</datasetRun>
 					<jr:listContents height="73" width="157">
 						<textField>
-							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="1" width="155" height="20"/>
+							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="0" width="155" height="20"/>
 							<textElement textAlignment="Right" verticalAlignment="Bottom">
 								<font fontName="Arial" size="10" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 							</textElement>
@@ -854,14 +854,14 @@
 				</jr:list>
 			</componentElement>
 			<textField>
-				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="467" y="160" width="73" height="20"/>
+				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="382" y="181" width="158" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="382" y="141" width="82" height="20"/>
+				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="382" y="159" width="157" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -881,6 +881,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Fr}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="0" y="672" width="361" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

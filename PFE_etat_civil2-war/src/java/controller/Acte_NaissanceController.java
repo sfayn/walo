@@ -583,7 +583,7 @@ public class Acte_NaissanceController implements Serializable {
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
-                //dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
+                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
                 ejbFacade2.edit(dm);
             }
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
@@ -672,7 +672,7 @@ public class Acte_NaissanceController implements Serializable {
             JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "View";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }

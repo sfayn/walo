@@ -6,6 +6,7 @@ import controller.util.JsfUtil;
 import controller.util.PaginationHelper;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -143,12 +144,13 @@ public class Type_Donnees_MarginalesController implements Serializable {
                     }
                 }
             }
+            current.setDescrAr(URLEncoder.encode(current.getDescrAr(), "UTF-8"));
             getFacade().create(current);
             attrs.clear();
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Type_Donnees_MarginalesCreated"));
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
@@ -183,12 +185,12 @@ public class Type_Donnees_MarginalesController implements Serializable {
                 }
             }
             getFacade().edit(current);
-            attrs.clear();
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("Type_Donnees_MarginalesUpdated"));
-            recreateModel();
+            attrs.clear();            
+            recreateModel();            
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
             return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
             return null;
         }
     }
