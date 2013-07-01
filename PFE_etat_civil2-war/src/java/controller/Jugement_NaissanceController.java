@@ -802,6 +802,13 @@ public class Jugement_NaissanceController implements Serializable {
         JRProperties.setProperty("net.sf.jasperreports.default.pdf.font.name", FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/reports/arialbd.ttf"));
         InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/integrale_J_N.jasper");
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        java.util.List pages = jasperPrint.getPages();
+        for (Iterator<java.util.List> i = pages.iterator(); i.hasNext();) {
+            JRPrintPage page = (JRPrintPage) i.next();
+            if (page.getElements().size() == 0) {
+                i.remove();
+            }
+        }
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.setContentType("application/pdf");
         //httpServletResponse.setHeader("Content-Disposition", "attachment; filename=MyAwesomeJasperReportDownload.pdf");

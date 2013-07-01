@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95b66382-4144-48ee-bee1-6bee4b079750">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="306"/>
+	<property name="ireport.y" value="417"/>
 	<subDataset name="dataset1" uuid="e4238793-2086-43fc-865a-f602c89a58e3">
 		<queryString>
 			<![CDATA[]]>
@@ -176,51 +176,51 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="644" splitType="Stretch">
+		<band height="751" splitType="Stretch">
 			<textField>
-				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="477" y="160" width="73" height="20"/>
+				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="475" y="160" width="79" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="392" y="160" width="82" height="20"/>
+				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="377" y="160" width="98" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Fr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="392" y="141" width="82" height="20"/>
+				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="377" y="141" width="98" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_Fr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="477" y="141" width="73" height="20"/>
+				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="475" y="141" width="79" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{prenom_Ar}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement uuid="37fd8df9-0cc6-4a7c-99ad-212cb2fd57c1" x="377" y="195" width="173" height="92"/>
+				<reportElement uuid="37fd8df9-0cc6-4a7c-99ad-212cb2fd57c1" x="377" y="195" width="177" height="92"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="dataset1" uuid="4a073b08-d734-4976-8ea2-e50c1a0c911c">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{donnees_Marginaless})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:listContents height="92" width="173">
+					<jr:listContents height="92" width="177">
 						<textField>
-							<reportElement uuid="9f45122f-b4de-4ed6-9469-a3826ac8f494" x="0" y="27" width="171" height="65"/>
+							<reportElement uuid="9f45122f-b4de-4ed6-9469-a3826ac8f494" x="0" y="27" width="177" height="65"/>
 							<textElement textAlignment="Right" verticalAlignment="Top">
-								<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								<font fontName="Arial" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$F{descAr}]]></textFieldExpression>
 						</textField>
 						<textField>
-							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="7" width="173" height="20"/>
+							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="7" width="177" height="20"/>
 							<textElement textAlignment="Right" verticalAlignment="Bottom">
 								<font fontName="Arial" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 							</textElement>
@@ -230,31 +230,31 @@
 				</jr:list>
 			</componentElement>
 			<textField>
-				<reportElement uuid="285b588a-6d6a-4f5f-b5f2-bbd7963bbc28" x="0" y="141" width="359" height="409"/>
+				<reportElement uuid="285b588a-6d6a-4f5f-b5f2-bbd7963bbc28" x="0" y="141" width="359" height="499"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font fontName="Arial" size="14" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descrAr}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="164" y="550" width="195" height="20"/>
+				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="164" y="640" width="195" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[الذي بعد الإطلاع عليه أمضاه معنا أو أمضيناه وحدنا نحن]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="69" y="570" width="290" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
+				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="0" y="660" width="359" height="50"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{officierAr}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="aae2eaf5-b70a-4c53-8410-d22c013572e2" x="366" y="141" width="1" height="502"/>
+				<reportElement uuid="aae2eaf5-b70a-4c53-8410-d22c013572e2" x="366" y="141" width="1" height="610"/>
 			</line>
 			<staticText>
-				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="277" y="603" width="51" height="20"/>
+				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="277" y="711" width="51" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -263,28 +263,28 @@
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="b0d7e999-9663-4ed4-b486-75f691f28e45" x="165" y="604" width="112" height="19"/>
+				<reportElement uuid="b0d7e999-9663-4ed4-b486-75f691f28e45" x="165" y="712" width="112" height="19"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="130" y="623" width="78" height="20"/>
+				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="130" y="731" width="78" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[ضابط الحالة المدنية]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="dea379d8-2d29-47e8-ac13-bd6214226aa3" x="39" y="604" width="100" height="20"/>
+				<reportElement uuid="dea379d8-2d29-47e8-ac13-bd6214226aa3" x="39" y="712" width="100" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy/MM/dd").format(new Date())]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="127" y="603" width="28" height="20"/>
+				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="127" y="711" width="28" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
