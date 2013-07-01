@@ -171,6 +171,7 @@ public class Acte_Deces implements Serializable {
     public void setNationaliteM_Ar(String nationaliteM_Ar) {
         this.nationaliteM_Ar = nationaliteM_Ar;
     }
+    
 
     public Acte_Deces() {
         donnees_Marginaless=new ArrayList<Donnees_Marginales_A_D>();
