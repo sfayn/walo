@@ -61,6 +61,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="431f6612-16b3-4d8b-839b-8cdc5c3aa00e" x="175" y="70" width="112" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[نشاط المكتب خلال أشهر]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
