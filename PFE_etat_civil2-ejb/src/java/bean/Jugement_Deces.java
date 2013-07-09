@@ -38,7 +38,7 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(name="Jugement_Deces.countByMonth",
                 query="SELECT COUNT(c) FROM Jugement_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year AND FUNC('MONTH',c.dateTah_G)=:month"),
     @NamedQuery(name="Jugement_Deces.countByTriMonths",
-                query="SELECT COUNT(c) FROM Jugement_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year AND (FUNC('MONTH',c.dateTah_G)=:month1 OR FUNC('MONTH',c.dateTah_G)=:month2 OR FUNC('MONTH',c.dateTah_G)=:month3)"),
+                query="SELECT COUNT(c) FROM Jugement_Deces c WHERE FUNC('YEAR',c.dateTah_G)=:year AND (FUNC('MONTH',c.dateTah_G)=:month1 OR FUNC('MONTH',c.dateTah_G)=:month2 OR FUNC('MONTH',c.dateTah_G)=:month3)")
 })
 public class Jugement_Deces implements Serializable {
     @OneToMany(mappedBy = "jugement", targetEntity=Donnees_Marginales_J_D.class, fetch = FetchType.EAGER,orphanRemoval=true)

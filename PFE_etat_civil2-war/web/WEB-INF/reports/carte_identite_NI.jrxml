@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="extrait" pageWidth="630" pageHeight="421" orientation="Landscape" columnWidth="590" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9dec0617-bc67-4840-a631-577a85c01589">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="106"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="dateNaissance" class="java.lang.String"/>
 	<parameter name="dateNaissanceAr" class="java.lang.String"/>
 	<parameter name="nationnalitePAr" class="java.lang.String"/>
@@ -624,7 +624,7 @@
 				<textFieldExpression><![CDATA[$F{numCertificat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="560" y="22" width="28" height="13"/>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="560" y="34" width="28" height="13"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -633,21 +633,21 @@
                 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="2a11acdc-5f0b-4bc0-9797-f0808522e5f4" x="453" y="35" width="82" height="14"/>
+				<reportElement uuid="2a11acdc-5f0b-4bc0-9797-f0808522e5f4" x="453" y="23" width="82" height="14"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{provinceAr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f15a8e67-8645-4a4a-b56d-0d9e7759170f" x="465" y="22" width="92" height="15"/>
+				<reportElement uuid="f15a8e67-8645-4a4a-b56d-0d9e7759170f" x="465" y="34" width="92" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{communeAr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{communeAr} ]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="535" y="35" width="53" height="15"/>
+				<reportElement uuid="15315e9a-c89c-4fed-ae01-fcfeba8e6767" x="535" y="23" width="53" height="15"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>

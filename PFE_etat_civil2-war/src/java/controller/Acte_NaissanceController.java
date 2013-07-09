@@ -1,4 +1,4 @@
- package controller;
+package controller;
 
 import bean.Acte_Naissance;
 import bean.Attr;
@@ -29,6 +29,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -553,47 +555,6 @@ public class Acte_NaissanceController implements Serializable {
 
     }
 
-    public String create() {
-        try {
-            encode();
-            current.setCreatedAt(new Date());
-            UtilitaireSession us = UtilitaireSession.getInstance();
-            current.setCreatedBy((User) us.get("auth"));
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
-                if (!dm.getType().getAttrs().equals("")) {
-                    Map mp = m.get(dm);
-                    Set listKeys = mp.keySet();  // Obtenir la liste des clés
-                    Iterator iterateur = listKeys.iterator();
-                    // Parcourir les clés et afficher les entrées de chaque clé;
-                    while (iterateur.hasNext()) {
-                        Object key = iterateur.next();
-                        if (dm.getAttrValues().equals("")) {
-                            dm.setAttrValues(key + "=" + mp.get(key) + "&");
-                        } else {
-                            dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
-                        }
-
-
-                    }
-                }
-                ejbFacade2.create(dm);
-                m.clear();
-            }
-            getFacade().create(current);
-            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
-                dm.setActe(current);
-                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
-                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
-                ejbFacade2.edit(dm);
-            }
-            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
-            return prepareCreate();
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
-            return null;
-        }
-    }
-
     public String prepareEdit() {
         current = (Acte_Naissance) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -642,6 +603,43 @@ public class Acte_NaissanceController implements Serializable {
         return "Edit";
     }
 
+    public String create() {
+        try {
+            encode();
+            current.setCreatedAt(new Date());
+            UtilitaireSession us = UtilitaireSession.getInstance();
+            current.setCreatedBy((User) us.get("auth"));
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                if (!dm.getType().getAttrs().equals("")) {
+                    dm.setAttrValues("");
+                    Map mp = m.get(dm);
+                    Set listKeys = mp.keySet();  // Obtenir la liste des clés
+                    Iterator iterateur = listKeys.iterator();
+                    while (iterateur.hasNext()) {
+                        Object key = iterateur.next();
+                        if (dm.getAttrValues().equals("")) {
+                            dm.setAttrValues(key + "=" + mp.get(key) + "&");
+                        } else {
+                            dm.setAttrValues(dm.getAttrValues() + key + "=" + mp.get(key) + "&");
+                        }
+                    }
+                }
+                ejbFacade2.create(dm);                
+            }
+            getFacade().create(current);
+            for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
+                dm.setActe(current);
+                dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));
+                dm.setAttrValues(URLEncoder.encode(dm.getAttrValues(), "UTF-8"));
+                ejbFacade2.edit(dm);
+            }
+            JsfUtil.addSuccessMessage("تم التسجيل بنجاح");
+            return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage("المرجو تصحيح المعلومات");
+            return null;
+        }
+    }
     public String update() {
         try {
             encode();
@@ -740,8 +738,8 @@ public class Acte_NaissanceController implements Serializable {
         }
     }
 
-    public String traitMen(String attr) {
-        String res = "";
+    public Object traitMen(String attr) {
+        Object res = "";
         try {
             if (!current.getDonnees_Marginaless().isEmpty()) {
                 for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
@@ -771,16 +769,26 @@ public class Acte_NaissanceController implements Serializable {
         return res;
     }
 
-    public String showFields(Object o, String attr) throws IllegalArgumentException, IllegalAccessException {
+    public Date stringToDate(String dateS) {
+        String[] pair2 = dateS.split("-");
+        Date date = new Date(Integer.parseInt(pair2[2])-1900, Integer.parseInt(pair2[1]), Integer.parseInt(pair2[0]));
+        return date;
+    }
+
+    public Object showFields(Object o, String attr) throws IllegalArgumentException, IllegalAccessException {
         Class<?> clazz = o.getClass();
 
         for (Field field : clazz.getDeclaredFields()) {
-            System.out.println(field.getName() + " : " + attr);
             if (field.getName().equals(attr)) {
                 try {
                     field.setAccessible(true);
-                    String res = (String) field.get(o);
-                    return URLDecoder.decode(res, "UTF-8");
+                    if (attr.equals("date_de_naiss_G")) {
+                        Date res = (Date) field.get(o);
+                        return res;
+                    } else {
+                        String res = (String) field.get(o);
+                        return URLDecoder.decode(res, "UTF-8");
+                    }
                 } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -813,14 +821,16 @@ public class Acte_NaissanceController implements Serializable {
             params.put("nom", traitMen("nom_Fr"));
             params.put("prenom", traitMen("prenom_Fr"));
             params.put("lieuNaissance", traitMen("lieu_de_Naiss_Fr"));
-            params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("dateNaissance", (traitMen("date_de_naiss_G") instanceof String) ? Helper.dateToStrG(stringToDate((String)traitMen("date_de_naiss_G"))) : current.isNoMJ() == false ? Helper.dateToStrG((Date) traitMen("date_de_naiss_G")) : "سنة " + Helper.int2str(Integer.parseInt(y.format((Date) traitMen("date_de_naiss_G")))));
+           // params.put("dateNaissance", current.isNoMJ() == false ? Helper.dateToStrG(current.getDate_de_naiss_G()) : Helper.int2str(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
             params.put("nationnalite", "Marocaine");
             params.put("pere", traitMen("prenomP_Fr"));
             params.put("mere", traitMen("prenomM_Fr"));
             params.put("nomAr", traitMen("nom_Ar"));
             params.put("prenomAr", traitMen("prenom_Ar"));
             params.put("lieuNaissanceAr", traitMen("lieu_de_Naiss_Ar"));
-            params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(current.getDate_de_naiss_G()) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(current.getDate_de_naiss_G()))));
+            params.put("dateNaissanceAr", (traitMen("date_de_naiss_G") instanceof String) ? Helper.dateToStrArG(stringToDate((String)traitMen("date_de_naiss_G"))) : current.isNoMJ() == false ? Helper.dateToStrArG((Date) traitMen("date_de_naiss_G")) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format((Date) traitMen("date_de_naiss_G")))));
+            //params.put("dateNaissanceAr", current.isNoMJ() == false ? Helper.dateToStrArG(((Date) traitMen("date_de_naiss_G"))) : "سنة " + Helper.int2strAr(Integer.parseInt(y.format(((Date)traitMen("date_de_naiss_G"))))));
             params.put("nationnaliteAr", "مغربية");
             params.put("pereAr", traitMen("prenomP_Ar"));
             params.put("mereAr", traitMen("prenomM_Ar"));
