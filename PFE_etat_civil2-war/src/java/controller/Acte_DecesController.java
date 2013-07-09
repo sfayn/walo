@@ -45,7 +45,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
 import org.ini4j.Wini;
-import org.richfaces.model.Filter;
 import session.Acte_DecesFacade;
 
 @ManagedBean(name = "acte_DecesController")
@@ -733,10 +732,14 @@ public class Acte_DecesController implements Serializable {
             current.setProfessionP_Ar(URLEncoder.encode(current.getProfessionP_Ar(), "UTF-8"));
             current.setOfficierAr(URLEncoder.encode(current.getOfficierAr(), "UTF-8"));
             current.setAdresse_Ar(URLEncoder.encode(current.getAdresse_Ar(), "UTF-8"));
+            current.setAdresseP_Ar(URLEncoder.encode(current.getAdresseP_Ar(), "UTF-8"));
+            current.setAdresseM_Ar(URLEncoder.encode(current.getAdresseM_Ar(), "UTF-8"));
             current.setDeclaration_Ar(URLEncoder.encode(current.getDeclaration_Ar(), "UTF-8"));
             current.setSituation_familiale(URLEncoder.encode(current.getSituation_familiale(), "UTF-8"));
             current.setLieuDeces_Ar(URLEncoder.encode(current.getLieuDeces_Ar(), "UTF-8"));
             current.setProfession_Ar(URLEncoder.encode(current.getProfession_Ar(), "UTF-8"));
+            current.setNationaliteM_Ar(URLEncoder.encode(current.getNationaliteM_Ar(), "UTF-8"));
+            current.setNationaliteP_Ar(URLEncoder.encode(current.getNationaliteP_Ar(), "UTF-8"));
 
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Acte_NaissanceController.class.getName()).log(Level.SEVERE, null, ex);

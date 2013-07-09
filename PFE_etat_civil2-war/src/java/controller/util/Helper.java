@@ -513,7 +513,7 @@ public class Helper {
                 return int2strAr(a % 10) + " و " + int2strAr(a - a % 10);
             }
         } else if (a == 100) {
-            return "مئة";
+            return "مائة";
         } else if (a < 200) {
             return int2strAr(100) + " و " + int2strAr(a % 100);
         } else if (a == 200) {

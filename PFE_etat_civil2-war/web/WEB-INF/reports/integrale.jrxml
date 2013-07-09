@@ -617,8 +617,8 @@
 				<textFieldExpression><![CDATA[$F{professionP_Ar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="0" y="631" width="361" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Bottom">
+				<reportElement uuid="2532d676-f9b9-4ef0-a29a-e53d4408f89e" x="0" y="637" width="361" height="35"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Arial" size="12" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{officierAr}]]></textFieldExpression>
@@ -881,6 +881,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Fr}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="b78daa84-a89f-4cb8-bb19-786e4417f835" x="0" y="672" width="361" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

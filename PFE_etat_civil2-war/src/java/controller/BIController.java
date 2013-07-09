@@ -25,6 +25,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -477,6 +478,51 @@ public class BIController implements Serializable {
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         String file = new SimpleDateFormat("yyyyMMdd").format(new Date());
         httpServletResponse.addHeader("Content-disposition", "attachment; filename=table2-" + file + ".docx");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JRDocxExporter docxExporter = new JRDocxExporter();
+        docxExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+        docxExporter.setParameter(JRExporterParameter.OUTPUT_STREAM, servletOutputStream);
+        docxExporter.exportReport();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+    
+    public void DOCX3(ActionEvent actionEvent) throws JRException, IOException {
+        List items = new ArrayList<Acte_Naissance>();
+        items.add(new Acte_Naissance());
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(items);
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/table3.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        String file = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table3-" + file + ".docx");
+        ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+        JRDocxExporter docxExporter = new JRDocxExporter();
+        docxExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+        docxExporter.setParameter(JRExporterParameter.OUTPUT_STREAM, servletOutputStream);
+        docxExporter.exportReport();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+    
+    public void DOCX45(ActionEvent actionEvent) throws JRException, IOException {
+        List items = new ArrayList<Acte_Naissance>();
+        items.add(new Acte_Naissance());
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(items);
+        JRBeanCollectionDataSource beanCollectionDataSource2 = new JRBeanCollectionDataSource(items);
+        InputStream reportSource = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/table45.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportSource, params, beanCollectionDataSource);
+        
+        JasperPrint jasperPrint2;
+            InputStream reportSource2 = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/WEB-INF/reports/table45-2.jasper");
+            jasperPrint2 = JasperFillManager.fillReport(reportSource2, params, beanCollectionDataSource2);
+            List pages = jasperPrint2.getPages();
+            for (Iterator i = pages.iterator(); i.hasNext();) {
+                JRPrintPage jRPrintPage = (JRPrintPage) i.next();
+                jasperPrint.addPage(jRPrintPage);
+            }
+        
+        HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        String file = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        httpServletResponse.addHeader("Content-disposition", "attachment; filename=table45-" + file + ".docx");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
         JRDocxExporter docxExporter = new JRDocxExporter();
         docxExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);

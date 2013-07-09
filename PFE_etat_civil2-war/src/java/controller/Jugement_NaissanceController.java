@@ -1,9 +1,6 @@
 package controller;
 
-import bean.Acte_Naissance;
-import bean.Donnees_Marginales;
 import bean.Donnees_Marginales_J_N;
-import bean.Jugement_Deces;
 import bean.Jugement_Naissance;
 import bean.Registre;
 import bean.User;
@@ -68,7 +65,7 @@ public class Jugement_NaissanceController implements Serializable {
     private int numActe;
     private Registre registre;
     private Long numActeFilter;
-    private String anneeFilter;
+    private Long anneeFilter;
     private Integer primaryRowCount = 10;
     private int i = 0;
     private int j = 0;
@@ -76,6 +73,7 @@ public class Jugement_NaissanceController implements Serializable {
     private int l = 0;
     private String etatFamilleAr;
     private String adresseAr;
+    private boolean test = false;
     private String professionAr;
 
     public String getEtatFamilleAr() {
@@ -102,7 +100,20 @@ public class Jugement_NaissanceController implements Serializable {
         this.professionAr = professionAr;
     }
     
+    public void numActeFilterImpl() {
+        if ((numActeFilter != null && numActeFilter > 0) || (anneeFilter != null && anneeFilter > 0)) {
+            test = true;
+        } else {
+            test = false;
+        }
+        this.destroyModel();
+    }
     
+    public void destroyModel() {
+        items = null;
+        pagination = null;
+        items = getPagination().createPageDataModel();
+    }
 
     public void changetext() {
 //    current.setDescriptionAr("بعد اخبارنا بتاريخ    هجرية موافق   بالحكم تحت عدد:          الصادر من المحكمة الابتدائية   بتاريخ   هجرية موافق  و المتعلق بولادة    ننقل مضمون هدا الحكم   ـــــــــــــــــــــــــــ لهده الاسباب ـــــــــــــــــــــــــــــــ    فقد صدر الحكم انه بتاريخ  هجرية موافق   ميلادية    ولد ب     من ابيه  المولود ب                في           هجرية موافق                ميلادية        المغربي الجنسية حرفته       و من والدته    المولودة ب           في          هجرية موافق         ميلادية جنسيتها مغربية حرفتها               و الساكنان   كما امرت المحكمة بتسجيل مضمون هدا الحكم في سجلات الحالة المدنية للسنة الجارية بالاشارة الموجزة لمضمونه في سجلات السنة التي كان من الواجب ان يسجل فيها قانونيا ـــــــــ  و نقلناه بتاريخ  تاني رجب  سنة   ألف و أربعمائة و أربعة و ثلاثين هجرية موافق ثاني عشر ماي  سنة   ألفين  و ثلاثة عشر ميلادية  لدينا نحن ");
@@ -279,11 +290,11 @@ public class Jugement_NaissanceController implements Serializable {
         this.numActeFilter = numActeFilter;
     }
 
-    public String getAnneeFilter() {
+    public Long getAnneeFilter() {
         return anneeFilter;
     }
 
-    public void setAnneeFilter(String anneeFilter) {
+    public void setAnneeFilter(Long anneeFilter) {
         this.anneeFilter = anneeFilter;
     }
 
@@ -352,30 +363,6 @@ public class Jugement_NaissanceController implements Serializable {
     public void changeDonnees_Marginales() {
         Donnees_Marginales_J_N dm = new Donnees_Marginales_J_N();
         current.getDonnees_Marginaless().add(dm);
-    }
-
-    public Filter<?> getNumActeFilterImpl() {
-        return new Filter<Jugement_Naissance>() {
-            public boolean accept(Jugement_Naissance item) {
-                Long numActe = getNumActeFilter();
-                if (numActe == null || numActe == 0 || numActe.compareTo(item.getNumActe().longValue()) >= 0) {
-                    return true;
-                }
-                return false;
-            }
-        };
-    }
-
-    public Filter<?> getAnneeFilterImpl() {
-        return new Filter<Jugement_Naissance>() {
-            public boolean accept(Jugement_Naissance item) {
-                String Annee = getAnneeFilter();
-                if (Annee == null || Annee.length() == 0 || Annee.equals(item.getRegistre().getAnnee())) {
-                    return true;
-                }
-                return false;
-            }
-        };
     }
 
     public void check() {
@@ -458,7 +445,7 @@ public class Jugement_NaissanceController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(primaryRowCount) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -466,7 +453,20 @@ public class Jugement_NaissanceController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    if (test) {
+                        Long a = new Long(0);
+                        Long b = new Long(0);
+                        if (anneeFilter != null && anneeFilter > 0) {
+                            b = anneeFilter;
+                        }
+                        if (numActeFilter != null && numActeFilter > 0) {
+                            a = numActeFilter;
+                        }
+
+                        return new ListDataModel(getFacade().findByAnnee(a, b));
+                    } else {
+                        return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    }
                 }
             };
         }
@@ -744,7 +744,7 @@ public class Jugement_NaissanceController implements Serializable {
         JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
 
     }
-public void pdfVie() throws JRException, IOException {
+    public void pdfVie() throws JRException, IOException {
         List<Jugement_Naissance> acts = new ArrayList<Jugement_Naissance>();
         acts.add(current);
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(acts);

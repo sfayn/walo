@@ -35,6 +35,8 @@ import javax.persistence.UniqueConstraint;
 @NamedQueries({
     @NamedQuery(name="Jugement_Naissance.countByMonth",
                 query="SELECT COUNT(c) FROM Jugement_Naissance c WHERE FUNC('YEAR',c.dateJug)=:year AND FUNC('MONTH',c.dateJug)=:month"),
+    @NamedQuery(name="Jugement_Naissance.findByAnnee",
+                query="SELECT c FROM Jugement_Naissance c, Registre_jugement_Naissance r WHERE c.registre=r AND c.numActe LIKE :acte AND r.annee LIKE :annee"),
     @NamedQuery(name="Jugement_Naissance.countByTriMonths",
                 query="SELECT COUNT(c) FROM Jugement_Naissance c WHERE FUNC('YEAR',c.dateJug)=:year AND (FUNC('MONTH',c.dateJug)=:month1 OR FUNC('MONTH',c.dateJug)=:month2 OR FUNC('MONTH',c.dateJug)=:month3)")
 })

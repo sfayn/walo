@@ -89,4 +89,22 @@ public class Jugement_NaissanceFacade extends AbstractFacade<Jugement_Naissance>
         
         return results;
     }
+    
+    public List<Jugement_Naissance> findByAnnee(Long acte, Long annee) {
+        Query queryProductsByName = em.createNamedQuery("Jugement_Naissance.findByAnnee");
+        String a = "%";
+        String b = "%";
+        if(acte>0){
+            a=""+acte;
+        }
+        
+        if(annee>0 ){
+            b = ""+annee;
+        }
+        queryProductsByName.setParameter("acte", a);
+        queryProductsByName.setParameter("annee", b);
+        List<Jugement_Naissance> results = queryProductsByName.getResultList();
+
+        return results;
+    }
 }
