@@ -110,7 +110,7 @@
                                     <h:selectBooleanCheckbox class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}"  id="noMJ" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJ}" >
                                         <f:ajax event="change" render="blocNoMJ" execute="noMJ"/> 
                                     </h:selectBooleanCheckbox>
-                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJ" />
                                 </h:panelGrid> 
                             </b:gridColumn>
                         </b:gridRow>
@@ -125,12 +125,14 @@
                                     <h:inputText id="date_de_naiss_G2" rendered="#{acte_NaissanceController.selected.noMJ}" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naiss_H2" execute="date_de_naiss_G2" listener="#{acte_NaissanceController.GToHAnnee()}"/> 
                                         <f:convertDateTime pattern="yyyy" />
+                                        <f:validator validatorId="controller.Datevalidator" />
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naiss_H2" rendered="#{acte_NaissanceController.selected.noMJ}" />
                                     <h:inputText id="date_de_naiss_H2" rendered="#{acte_NaissanceController.selected.noMJ}" value="#{acte_NaissanceController.selected.date_de_naiss_H}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
-                                        <f:convertDateTime pattern="yyyy" />
-                                        <f:ajax event="blur" render="@this" />
+                                        <f:convertDateTime pattern="yyyy"/>
+                                        <f:validator validatorId="controller.Datevalidator" />
+                                        <f:ajax event="blur" render="@this"/>
                                     </h:inputText>
                                     <h:outputLabel id="outdate_de_naiss_G" value="تاريخ الإزدياد الميلادي" rendered="#{!acte_NaissanceController.selected.noMJ}" for="date_de_naiss_G" />
                                     <h:inputText onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" rendered="#{!acte_NaissanceController.selected.noMJ}" id="date_de_naiss_G" value="#{acte_NaissanceController.selected.date_de_naiss_G}" required="True" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
@@ -198,7 +200,7 @@
                                     <h:selectBooleanCheckbox readonly="#{acte_NaissanceController.selected.decesP}" id="noMJP" class="checkbox {labelOn: 'نعم', labelOff: 'لا', easing: 'easeOutBounce', duration: 500}" title="إزالة اليوم و الشهر" value="#{acte_NaissanceController.selected.noMJP}" >
                                         <f:ajax event="change" render="blocNoMJP" execute="noMJP"/> 
                                     </h:selectBooleanCheckbox>
-                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJM" />
+                                    <h:outputLabel style="width: 103px;text-align: right;" value="إزالة اليوم و الشهر" for="noMJP" />
                                 </h:panelGrid> 
                             </b:gridColumn>
                         </b:gridRow>
@@ -213,11 +215,13 @@
                                     <h:inputText id="date_de_naissP_G2" rendered="#{acte_NaissanceController.selected.noMJP}" value="#{acte_NaissanceController.selected.date_de_naissP_G}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naissP_H2" execute="date_de_naissP_G2" listener="#{acte_NaissanceController.GToHAnneeP()}"/> 
                                         <f:convertDateTime pattern="yyyy" />
+                                        <f:validator validatorId="controller.Datevalidator"/>
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissP_H2" rendered="#{acte_NaissanceController.selected.noMJP}" />
                                     <h:inputText id="date_de_naissP_H2" rendered="#{acte_NaissanceController.selected.noMJP}" value="#{acte_NaissanceController.selected.date_de_naissP_H}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy" />
+                                        <f:validator validatorId="controller.Datevalidator"/>
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
 
@@ -306,11 +310,13 @@
                                     <h:inputText id="date_de_naissM_G2" rendered="#{acte_NaissanceController.selected.noMJM}" value="#{acte_NaissanceController.selected.date_de_naissM_G}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:ajax event="change" render="date_de_naissM_H2" execute="date_de_naissM_G2" listener="#{acte_NaissanceController.GToHAnneeM()}"/> 
                                         <f:convertDateTime pattern="yyyy" />
+                                        <f:validator validatorId="controller.Datevalidator"/>
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الهجري" for="date_de_naissM_H2" rendered="#{acte_NaissanceController.selected.noMJM}" />
                                     <h:inputText id="date_de_naissM_H2" rendered="#{acte_NaissanceController.selected.noMJM}" value="#{acte_NaissanceController.selected.date_de_naissM_H}" style="#{ component.valid ? '' : 'border-color: rgba(255, 0, 0, 0.8);box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);outline: 0 none;'}" title="تاريخ الإزدياد" >
                                         <f:convertDateTime pattern="yyyy" />
+                                        <f:validator validatorId="controller.Datevalidator"/>
                                         <f:ajax event="blur" render="@this" />
                                     </h:inputText>
                                     <h:outputLabel value="تاريخ الإزدياد الميلادي" for="date_de_naissM_G" rendered="#{!acte_NaissanceController.selected.noMJM}"/>
@@ -464,8 +470,10 @@
                                             <b:gridRow styleClass="show" fluid="true" >                              
                                                 <b:gridColumn span="10">
                                                     <h:panelGrid columns="2" dir="rtl">
-                                                        <h:outputLabel style="width: 103px" value="#{acte_NaissanceController.nomAtrr(attr.key.libelle)}" for="attribut" />
-                                                        <h:inputText id="attribut" value="#{attr.value.valeur}"/>
+                                                        <h:outputLabel style="width: 103px" value="#{acte_NaissanceController.nomAtrr(attr.key.libelle)}" rendered="#{attr.key.libelle!='date_de_naiss_G'}" for="attribut" />
+                                                        <h:inputText id="attribut" rendered="#{attr.key.libelle!='date_de_naiss_G'}" value="#{attr.value.valeur}"/>
+                                                        <h:outputLabel style="width: 103px" rendered="#{attr.key.libelle=='date_de_naiss_G'}" value="#{acte_NaissanceController.nomAtrr(attr.key.libelle)}" for="attribut2" />
+                                                        <h:inputText id="attribut2" rendered="#{attr.key.libelle=='date_de_naiss_G'}" value="#{attr.value.valeur}" onmouseover="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});" onfocus="javascript: $(this).datepicker({format: 'dd-mm-yyyy',language:  'fr',autoclose: 1});"/>
                                                     </h:panelGrid>
                                                 </b:gridColumn>
                                             </b:gridRow>

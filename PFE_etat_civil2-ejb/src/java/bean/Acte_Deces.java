@@ -49,7 +49,7 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(name="Acte_Deces.countByAge",
                 query="SELECT COUNT(c), s.libelleFr FROM Acte_Deces c, Sex s WHERE :year-FUNC('YEAR',c.date_de_naiss_G)<=:max AND :year-FUNC('YEAR',c.date_de_naiss_G)>=:min AND FUNC('YEAR',c.dateDecesG)=:year AND FUNC('MONTH',c.dateDecesG)=:month AND c.sex=s GROUP BY c.sex"),
     @NamedQuery(name="Acte_Deces.countByUser",
-                query="SELECT COUNT(c) FROM Acte_Deces c, User u WHERE c.createdBy=u AND u.id=:user"),
+                query="SELECT COUNT(c) FROM Acte_Deces c, User u WHERE c.createdBy=u AND u.id=:user")
 })
 public class Acte_Deces implements Serializable {
     @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales_A_D.class, fetch = FetchType.EAGER,orphanRemoval=true)

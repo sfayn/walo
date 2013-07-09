@@ -589,14 +589,14 @@
 				<textFieldExpression><![CDATA[$F{declaration_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="382" y="160" width="82" height="20"/>
+				<reportElement uuid="9bb54aec-f51e-42dd-9413-67e2472efb03" x="378" y="160" width="87" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Fr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="467" y="141" width="73" height="20"/>
+				<reportElement uuid="12792466-53a0-4ae3-a0c9-cb0422f75a66" x="465" y="141" width="75" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
@@ -830,21 +830,21 @@
 				<reportElement uuid="6867fba0-2f21-4b1a-a91c-75f44a9fc07f" x="0" y="197" width="140" height="1"/>
 			</line>
 			<componentElement>
-				<reportElement uuid="1a9811c7-e253-4d59-b116-708950107397" x="382" y="215" width="157" height="73"/>
+				<reportElement uuid="1a9811c7-e253-4d59-b116-708950107397" x="379" y="197" width="160" height="91"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="dataset1" uuid="8b1fcf67-3247-415b-acda-782d564846c5">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{donnees_Marginaless})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:listContents height="73" width="157">
+					<jr:listContents height="91" width="160">
 						<textField>
-							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="1" width="155" height="20"/>
+							<reportElement uuid="6c47f109-56b2-4ebb-8387-70a550b70f26" x="0" y="1" width="159" height="20"/>
 							<textElement textAlignment="Right" verticalAlignment="Bottom">
 								<font fontName="Arial" size="10" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 							</textElement>
 							<textFieldExpression><![CDATA[""+$F{type}.getLibelleAr()]]></textFieldExpression>
 						</textField>
 						<textField>
-							<reportElement uuid="9f45122f-b4de-4ed6-9469-a3826ac8f494" x="0" y="21" width="157" height="52"/>
+							<reportElement uuid="9f45122f-b4de-4ed6-9469-a3826ac8f494" x="0" y="21" width="159" height="70"/>
 							<textElement textAlignment="Right" verticalAlignment="Top">
 								<font fontName="Arial" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 							</textElement>
@@ -854,14 +854,14 @@
 				</jr:list>
 			</componentElement>
 			<textField>
-				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="467" y="160" width="73" height="20"/>
+				<reportElement uuid="848930cb-9b34-4687-b66d-d3fa95a768c8" x="465" y="160" width="75" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom_Ar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="382" y="141" width="82" height="20"/>
+				<reportElement uuid="a8e2462e-412f-4226-b499-4d0776e3660f" x="378" y="141" width="87" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Arial" size="10" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
