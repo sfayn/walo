@@ -523,8 +523,8 @@ Grégorienne
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date());]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="220b7dfa-aa9b-4f04-9b8e-4c0402ac1d33" x="29" y="186" width="120" height="15"/>
-				<textElement textAlignment="Right">
+				<reportElement uuid="220b7dfa-aa9b-4f04-9b8e-4c0402ac1d33" x="235" y="186" width="120" height="15"/>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[إمضاء ضابط الحالة المدنية بالتفويض]]></text>
@@ -546,8 +546,8 @@ Grégorienne
 				<text><![CDATA[Sceau du bureau de l'Etat Civil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="39" y="201" width="99" height="15"/>
-				<textElement>
+				<reportElement uuid="a21a821c-029e-4a5f-b2ed-99928b15ec36" x="246" y="201" width="99" height="15"/>
+				<textElement textAlignment="Center">
 					<font fontName="Arial"/>
 				</textElement>
 				<text><![CDATA[L'officier de l'etat Civil
