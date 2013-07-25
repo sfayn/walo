@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 /**
  *
  * @author Sfayn
  */
 @Entity
+@Table( name="type_donnees_marginales")
 public class Type_Donnees_Marginales implements Serializable {
 
     private static final long serialVersionUID = 1L;

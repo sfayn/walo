@@ -27,7 +27,7 @@ import javax.persistence.UniqueConstraint;
  * @author Sfayn
  */
 @Entity
-@Table( 
+@Table( name="transcription",
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )

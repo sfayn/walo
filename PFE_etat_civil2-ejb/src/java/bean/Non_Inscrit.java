@@ -23,7 +23,7 @@ import javax.persistence.UniqueConstraint;
  * @author Sfayn
  */
 @Entity
-@Table( 
+@Table(  name = "non_inscrit",
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numCertificat"})
     )

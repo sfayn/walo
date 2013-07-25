@@ -19,7 +19,7 @@ import javax.persistence.UniqueConstraint;
  * @author Sfayn
  */
 @Entity
-@Table( 
+@Table( name = "registre",
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numReg", "annee"})
     )

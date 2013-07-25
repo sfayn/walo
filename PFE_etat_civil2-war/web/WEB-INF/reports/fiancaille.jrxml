@@ -343,8 +343,8 @@
 				<text><![CDATA[لجماعة  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c6078e06-3756-48bd-ac22-63e7b4643d8f" x="304" y="0" width="77" height="37"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement uuid="c6078e06-3756-48bd-ac22-63e7b4643d8f" x="304" y="2" width="77" height="37"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المملكة المغربية وزارة الداخلية
