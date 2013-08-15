@@ -4,12 +4,11 @@
  */
 package controller;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.text.Collator;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -18,17 +17,33 @@ import java.util.Set;
 public class TestIni {
 
     public static void main(String args[]) {
-        Set s = new HashSet();
-        Map m = new HashMap();
-        s = ResourceBundle.getBundle("Bundle2").keySet();
-        for (Iterator it = s.iterator(); it.hasNext();) {
-            String object = it.next().toString();
-            m.put(object, ResourceBundle.getBundle("Bundle2").getString(object));
-            System.out.println(object+" --> "+ResourceBundle.getBundle("Bundle2").getString(object));
-        }
+        /*Set s = new HashSet();
+         Map m = new HashMap();
+         s = ResourceBundle.getBundle("Bundle2").keySet();
+         for (Iterator it = s.iterator(); it.hasNext();) {
+         String object = it.next().toString();
+         m.put(object, ResourceBundle.getBundle("Bundle2").getString(object));
+         System.out.println(object+" --> "+ResourceBundle.getBundle("Bundle2").getString(object));
+         }*/
+
+        Locale TEST_LOCALE = Locale.FRANCE;
+        List<String> words = Arrays.asList(
+                "ahmed", "bouchaub", "abed", "bct", "gatp", "youssef", "reda");
+        System.out.println(words + " - Original Data");
+        Collator collator = Collator.getInstance(TEST_LOCALE);
+        collator.setStrength(Collator.PRIMARY);
+        Collections.sort(words, collator);
+        System.out.println(words.toString() + " " + Collator.PRIMARY);
         
         
-        
+        TEST_LOCALE = Locale.forLanguageTag("Ar");
+        words = Arrays.asList(
+                "خرسوا", "شاطر", "رفعة", "جماهير", "أولئك", "خدعنا", "بنطلون");
+        System.out.println(words + " - Original Data");
+        collator = Collator.getInstance(TEST_LOCALE);
+        collator.setStrength(Collator.PRIMARY);
+        Collections.sort(words, collator);
+        System.out.println(words.toString() + " " + Collator.PRIMARY);
         //System.out.println(ResourceBundle.getBundle("Bundle2").getKeys().nextElement());
 
 

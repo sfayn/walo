@@ -251,6 +251,7 @@ public class Acte_NaissanceController implements Serializable {
 
     public void GToHAnnee() {
         if (current.getDate_de_naiss_G() != null) {
+            System.out.println("DateGr: "+current.getDate_de_naiss_G());
             current.setDate_de_naiss_H(Helper.dateGrToH(current.getDate_de_naiss_G()));
         }
     }
@@ -258,6 +259,7 @@ public class Acte_NaissanceController implements Serializable {
     public void GToHAnneeP() {
         if (current.getDate_de_naissP_G() != null) {
             current.setDate_de_naissP_H(Helper.dateGrToH(current.getDate_de_naissP_G()));
+            
         }
     }
 
@@ -627,6 +629,7 @@ public class Acte_NaissanceController implements Serializable {
                 ejbFacade2.create(dm);                
             }
             getFacade().create(current);
+            System.out.println("Année: "+current.getDate_de_naiss_G());
             for (Donnees_Marginales dm : current.getDonnees_Marginaless()) {
                 dm.setActe(current);
                 dm.setDescAr(URLEncoder.encode(dm.getDescAr(), "UTF-8"));

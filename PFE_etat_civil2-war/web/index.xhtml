@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://richfaces.org/sandbox/bootstrap"
+      xmlns:rich="http://richfaces.org/rich">
 
     <ui:composition template="/template.xhtml" >
 
@@ -11,14 +13,68 @@
             صفحة الإستقبال
         </ui:define>
         <ui:define name="body">
-            <h:form prependId="false">
+            <h:panelGroup id="messagePanel" layout="block">
+                
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                
+            </h:panelGroup>
+            <h:form prependId="false" >
                 <script src="#{request.contextPath}/resources/js/graphdf.js" ></script>
                 <fieldset>
-                    <legend>المهام الأساسية</legend>                   
+                    <legend>المهام الأساسية</legend>
+                    <script>
+
+                        function vaZy(){
+                            alert('ok');
+                            location.href=location.href;
+                        }
+
+                    </script>
                     <a href="#{request.contextPath}/faces/type_Donnees_Marginales/#{type_Donnees_MarginalesController.prepareList()}.xhtml" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-wrench "> </i>&nbsp;&nbsp;&nbsp;إعدادات</a>
-                    <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-hdd "> </i>&nbsp;&nbsp;&nbsp;استعادة قاعدة البيانات</a>
-                    <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-download-alt"> </i>&nbsp;&nbsp;&nbsp;نسخ قاعدة البيانات</a>
+                    <a href="" onclick="#{b:show('restoreModal')}" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-hdd "> </i>&nbsp;&nbsp;&nbsp;استعادة قاعدة البيانات</a>
+                    <h:commandLink action="#{backupController.backupDB()}" target="_blank" styleClass="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-download-alt"> </i>&nbsp;&nbsp;&nbsp;نسخ قاعدة البيانات</h:commandLink>
                     <a href="" class="btn btn-primary span2" style="font-size: 14pt;" ><i class="icon-file"> </i>&nbsp;&nbsp;&nbsp;دليل الإستعمال</a>
+
+                    <b:modal id="restoreModal" style="width: 800px; margin-left: -400px; margin-top: -200px;" closeable="false">
+                        <b:headerFacet>
+                            <h3 class="icon-ok-sign" style="text-align: right; direction: rtl;">  استعادة قاعدة البيانات</h3>
+                        </b:headerFacet>
+                        <b:bodyFacet>
+                            <div style="height: 250px; overflow-y: auto;">
+                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th><h:outputText value="التاريخ"/></th>
+                                            <th><h:outputText value="عمليات"/></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat id="backup-list" value="#{backupController.readFromXml()}" var="item">
+                                            <tr>
+                                                <td style="direction: ltr;"><h:outputText value="#{item.getDate()}"/></td>
+                                                <td>
+                                                    <h:commandLink target="_blank" action="#{backupController.downloadFile(item)}" styleClass="btn btn-success" style="font-size: 14pt;" ><i class="icon-download-alt"> </i> تحميل</h:commandLink>
+                                                    &nbsp;
+                                                    <h:commandLink target="_blank" action="#{backupController.restoreDB(item)}" styleClass="btn btn-warning" style="font-size: 14pt;" ><i class="icon-share-alt"> </i> إسترجاع</h:commandLink>
+                                                    &nbsp;
+                                                    <h:commandLink action="#{backupController.removeItem(item)}" styleClass="btn btn-danger" style="font-size: 14pt;" ><i class="icon-remove"> </i> حذف</h:commandLink>
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h:commandLink action="#{backupController.zipAll()}" styleClass="btn btn-primary" style="font-size: 14pt;" ><i class="icon-remove"> </i> حذف</h:commandLink>
+                            <p style="text-align: right; direction: rtl;">إسترجاع نسخة خارجية</p>
+                            
+                        </b:bodyFacet>
+                        <b:footerFacet>
+                            <b:commandButton  mode="client" onclick="#{b:hide('restoreModal')}" >إخفاء</b:commandButton>
+                        </b:footerFacet>
+                    </b:modal>
+                    <h:commandLink action="#{backupController.uploadFile()}" styleClass="btn btn-primary" style="font-size: 14pt;" ><i class="icon-remove"> </i> File</h:commandLink>
+
+
 
                 </fieldset>
                 <br />
