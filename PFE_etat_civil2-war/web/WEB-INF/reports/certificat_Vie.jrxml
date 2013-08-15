@@ -35,8 +35,8 @@
 	<title>
 		<band height="121" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="c6ae66bf-4e12-4036-983a-ad974d6f68f9" x="283" y="0" width="98" height="31"/>
-				<textElement textAlignment="Center">
+				<reportElement uuid="c6ae66bf-4e12-4036-983a-ad974d6f68f9" x="279" y="5" width="98" height="31"/>
+				<textElement textAlignment="Right">
 					<font fontName="Arial" size="12" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[المملكة المغربية
@@ -190,9 +190,9 @@
 				<text><![CDATA[نحن]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="964246f1-6e24-42cb-94ab-86f4783e4e5f" x="101" y="13" width="147" height="20"/>
+				<reportElement uuid="964246f1-6e24-42cb-94ab-86f4783e4e5f" x="101" y="1" width="147" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Arial" size="14" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="16" isBold="true" isUnderline="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[شهادة الحياة الفردية]]></text>
 			</staticText>

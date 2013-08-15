@@ -29,7 +29,7 @@ import javax.persistence.UniqueConstraint;
  * @author Sfayn
  */
 @Entity
-@Table( 
+@Table( name = "jugement_naissance",
         uniqueConstraints =
 @UniqueConstraint(columnNames = {"numActe", "registre_id"}))
 @NamedQueries({

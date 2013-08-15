@@ -29,7 +29,7 @@ import javax.persistence.UniqueConstraint;
  * @author Sfayn
  */
 @Entity
-@Table( 
+@Table(name = "acte_deces",
         uniqueConstraints=
             @UniqueConstraint(columnNames={"numActe", "registre_id"})
     )
@@ -51,6 +51,7 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(name="Acte_Deces.countByUser",
                 query="SELECT COUNT(c) FROM Acte_Deces c, User u WHERE c.createdBy=u AND u.id=:user")
 })
+
 public class Acte_Deces implements Serializable {
     @OneToMany(mappedBy = "acte", targetEntity=Donnees_Marginales_A_D.class, fetch = FetchType.EAGER,orphanRemoval=true)
     private List<Donnees_Marginales_A_D> donnees_Marginaless;

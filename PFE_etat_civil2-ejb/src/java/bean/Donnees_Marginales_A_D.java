@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +22,7 @@ import javax.persistence.Temporal;
  * @author Sfayn
  */
 @Entity
+@Table( name = "donnees_marginales_a_d")
 public class Donnees_Marginales_A_D implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
