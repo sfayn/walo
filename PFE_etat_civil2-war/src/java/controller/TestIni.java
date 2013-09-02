@@ -36,7 +36,7 @@ public class TestIni {
         System.out.println(words.toString() + " " + Collator.PRIMARY);
         
         
-        TEST_LOCALE = Locale.forLanguageTag("Ar");
+        //TEST_LOCALE = Locale.forLanguageTag("Ar");
         words = Arrays.asList(
                 "خرسوا", "شاطر", "رفعة", "جماهير", "أولئك", "خدعنا", "بنطلون");
         System.out.println(words + " - Original Data");
